@@ -9,13 +9,21 @@ html {
 body {
     margin: 0
 }
-  #content, .content {
+
+nav {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+#content, .content {
       width: 80%;
       max-width: 980px;
       margin: auto;
 }
+
 #table-of-contents {
-    margin-top: 105px;
+    margin-top: 3em;
     font-size: 12pt;
     position: fixed;
     left: 1em;
@@ -25,6 +33,7 @@ body {
     max-height: 80%;
     width: 350px;
     overflow: auto;
+    padding-bottom: 1em;
 }
 
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary {
@@ -2437,10 +2446,14 @@ p {
     margin: 1em auto
 }
 
-dl,ol,ul {
+dl,ol {
     margin: 0 auto
 }
-
+ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
 .title {
     margin: .8em auto;
     color: #000
@@ -2709,8 +2722,11 @@ kbd {
 }
 
 #postamble p,#preamble p {
+    text-align: center;
     font-size: 90%;
-    margin: .2em
+    margin: .2em;
+    padding-bottom:10px;
+    border-bottom: 1px dashed #ccc;
 }
 
 p.verse {
