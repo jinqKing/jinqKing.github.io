@@ -11,15 +11,16 @@ body {
 }
 
 nav {
-        border-bottom: 1px solid #ccc;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
-    }
+    display: block;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
 
 #content, .content {
-      width: 80%;
-      max-width: 980px;
-      margin: auto;
+    width: 80%;
+    max-width: 980px;
+    margin: auto;
 }
 
 #table-of-contents {
@@ -36,7 +37,7 @@ nav {
     padding-bottom: 1em;
 }
 
-article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary {
+article,aside,details,figcaption,figure,footer,header,main,menu,section,summary {
     display: block
 }
 
@@ -2450,10 +2451,12 @@ dl,ol {
     margin: 0 auto
 }
 ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
 .title {
     margin: .8em auto;
     color: #000
