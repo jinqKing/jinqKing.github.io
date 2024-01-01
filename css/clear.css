@@ -2729,9 +2729,10 @@ kbd {
     font-size: 90%;
     margin: .2em;
     padding-bottom:10px;
+}
+#postamble p:last-child, #preamble p:last-child {
     border-bottom: 1px dashed #ccc;
 }
-
 p.verse {
     margin-left: 3%
 }
