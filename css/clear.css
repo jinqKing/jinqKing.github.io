@@ -9,16 +9,24 @@ html {
 body {
     margin: 0
 }
+  #content, .content {
+      width: 80%;
+      max-width: 980px;
+      margin: auto;
+}
 #table-of-contents {
     margin-top: 105px;
     font-size: 12pt;
     position: fixed;
-    left: 0em;
-    top: 0em;
-    background: white;
+    left: 1em;
+    top: 0.5em;
+    background: #e5e5e5;
+    border: 0.5px dashed black;
     max-height: 80%;
+    width: 350px;
     overflow: auto;
 }
+
 article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary {
     display: block
 }
