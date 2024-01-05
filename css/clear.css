@@ -11,10 +11,11 @@ body {
 }
 
 nav {
-    display: block;
+    display: flex;
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
     margin-bottom: 20px;
+    justify-content: space-between;
 }
 
 #content, .content {
@@ -25,14 +26,18 @@ nav {
 
 #table-of-contents {
     margin-top: 3em;
+    top: 0.5em;
     font-size: 12pt;
     position: fixed;
-    left: 1em;
-    top: 0.5em;
+    
+    left:1em;
+    padding-left:1em;
+
+    width: 14em;
+    max-height: 20%;
+    
     background: #e5e5e5;
-    border: 0.5px dashed black;
-    max-height: 80%;
-    width: 350px;
+    border: 0.5px dashed black;  
     overflow: auto;
     padding-bottom: 1em;
 }
@@ -2454,8 +2459,8 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: space-between;
+    display: contents;
+    
 }
 .title {
     margin: .8em auto;
@@ -2724,13 +2729,13 @@ kbd {
     text-decoration: underline
 }
 
-#postamble p,#preamble p {
+#postamble,#preamble {
     text-align: center;
     font-size: 90%;
     margin: .2em;
     padding-bottom:10px;
 }
-#postamble p:last-child, #preamble p:last-child {
+#postamble :last-child, #preamble :last-child {
     border-bottom: 1px dashed #ccc;
 }
 p.verse {
@@ -2806,7 +2811,7 @@ p.verse {
     content: "Javascript"
 }
 
-// More languages 0% http://orgmode.org/worg/org-contrib/babel/languages.html .org-src-container>pre.src-abc:before {
+.org-src-container>pre.src-abc:before {
     content: "ABC"
 }
 
