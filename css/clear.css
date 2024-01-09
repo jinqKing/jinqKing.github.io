@@ -17,7 +17,12 @@ nav {
     margin-bottom: 20px;
     justify-content: space-between;
 }
-
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: contents;    
+}
 #content, .content {
     width: 80%;
     max-width: 980px;
@@ -2455,13 +2460,7 @@ p {
 dl,ol {
     margin: 0 auto
 }
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: contents;
-    
-}
+
 .title {
     margin: .8em auto;
     color: #000
