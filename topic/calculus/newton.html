@@ -6,7 +6,7 @@
 <!-- 2024-01-14 Sun 00:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>做梦</title>
+<title>牛顿</title>
 <meta name="author" content="Justin" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -193,52 +193,297 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
-<nav>
-            <ul>
-              <a href='/index.html'>Home</a>
+<link rel="stylesheet" type="text/css" href="/css/clear.css">
+<nav><ul>
+<a href='/index.html'>Home</a>
 <a href='/content.html'>Index</a>
 <a href='/about.html'>About</a>
-            </ul>
-          </nav>
+            </ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-01-11 Thu 15:17 | 凝墨: 2024-01-12 Fri 22:22 </p>
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: %&lt;%Y-%m-%d %a %H:%M&gt; | 凝墨: 2024-01-13 Sat 20:44 </p>
 </div>
 <div id="content" class="content">
-<h1 class="title">做梦</h1>
+<h1 class="title">牛顿</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgcf5b3d2">1. 二项式展开</a>
+<ul>
+<li><a href="#org0c4175e">1.1. 组合数</a></li>
+<li><a href="#orgf4c3f8b">1.2. 递推的广义二项展开</a>
+<ul>
+<li><a href="#org13b8ca4">1.2.1. 计算案例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org2d28ea4">2. 逆级数</a></li>
+<li><a href="#orgda75153">3. 正弦级数推导（牛顿版）</a></li>
+<li><a href="#org30c40fd">4. 积分</a></li>
+<li><a href="#org8af0995">5. 参考</a></li>
+</ul>
+</div>
+</div>
 <p>
-今天有点像做梦呀，刚刚看到一个特别有趣的视频，我认为作者充分利用一切资源来展示内容，演员十分棒。看完了回味倒感觉有一些遗憾，自己似乎失掉了一些做梦的能力，我的生活是否变成了实在的虚空呢。或许只有才有变数
+数学的陈列室
 </p>
 
 <p>
-生活从他们的视野看起来如此丰富有趣，我在想假如有人感到生活灰暗就该看看，他们的简记，流畅丝滑，内容丰富调度合理，也许可以让
+大名鼎鼎的人物，不同凡响的思维，历史掩盖了曾经的光辉。
+</p>
+
+<blockquote>
+<p>
+尽管本章仅限于讨论牛顿早期的工作，但是需要指出，牛顿“早期的工作”几乎总是超越其它任何人深思熟虑的工作。
+</p>
+</blockquote>
+
+<p>
+师从巴罗（据信已经发现微积分基本公式）
 </p>
 
 <p>
-如果让我来做，好像这件事就我未必可以 <del>办不成。</del>
+牛顿（以及前后的数学家）善于从幂级数中发现函数的秘密
 </p>
 
 <p>
-我看到的第一个视频是游戏的切换，也是我最感到有趣的，在不同场景重生，不同的人假如和相遇，最后推广手柄总体是一气呵成是连冠的故事虽然小细节上我部记得具体有些场景上发生什么了，但是配色效果具有典型性，后者充分体现了各种我的固有印象，于是我就像穿梭于各个虚拟世界一般。这里游戏是一种生活本身的行使出现的，稍微看看以前的视频，他一直在融入一些游戏到实拍之中，这一次大概经费充足是一个游戏的完全体。正是当游戏称为，是的整个视频的调性不同，原来又一个是完全的正是生活，没有游戏的上帝视角和辅助图表元素，两者都是可是是有差异性的感受，因此我在思考究竟可能有一些本质性的事物并非宿舍开门到游戏结束换一个场景这样的剪辑带来的，我感到游戏本身可以带来一种不同寻常的体验。
+<b>动机：</b> 牛顿如何得到三角函数的级数展开～不直接使用求导（泰勒展开）如何得到幂级数形式的三角函数
+</p>
+<div id="outline-container-orgcf5b3d2" class="outline-2">
+<h2 id="orgcf5b3d2"><span class="section-number-2">1.</span> 二项式展开</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+发明了 \(a^{-1}:=\frac{1}{a};a^{1/2}:=\sqrt{a}\)
 </p>
 
 <p>
-我对游戏其实是并不赞赏，按照的话
+将二项式化简为级数的简单方法。
 </p>
+<ul class="org-ul">
+<li>化简：对于当时而言，可能多项式更容易理解</li>
+<li>简单：牛顿先生自己发明的东西可能自己用格外顺手</li>
+</ul>
 
 <p>
-上次去其它宿舍交作业
+可能的想法：通过观察帕斯卡三角（杨辉三角）推广
 </p>
+<p class="verse">
+0: 1<br />
+1: 1  1<br />
+2: 1  2  1<br />
+3: 1  3  3  1<br />
+4: 1  4  6  4  1<br />
+5: 1  5 10 10  5  1<br />
+</p>
+\begin{matrix}
+0:& 1& \\
+1:& 1& 1& \\
+2:& 1& 2&  1 \\
+3:& 1& 3&  3&  1 \\
+4:& 1& 4&  6&  4&  1 \\
+5:& 1& 5& 10& 10&  5&  1 \\
+\end{matrix}
+<p>
+加入分数，自然而然的想法是：
+</p>
+<ul class="org-ul">
+<li>第一列是1</li>
+<li>第二列是行数（1,2,3,&#x2026;）</li>
+<li>第三列寻找规律：
+0,1,3,6,10&#x2026;
+\(\frac{1\times(1-1)}{2},\frac{2\times (2-1)}{2},\frac{3\times(3-1)}{2},\frac{4\times(4-1)}{2},\frac{5\times(5-1)}{2}\dots\)
+公式： \(\frac{n\times(n-1)}{2}\)</li>
+<li>之后： 0次，1次，2次…之后应该是高次，再除以某个数：
+找规律： \(\frac{n(n-1)(n-2)}{3!},\frac{n(n-1)(n-2)(n-3)}{4!},\dots,\frac{n(n-1)\cdots(n-m-1)}{m!}\)</li>
+</ul>
+
+\begin{matrix}
+0:& 1& \\
+\frac{1}{2}:&1&\frac{1}{2}&-\frac{1}{8}&\cdots\\
+1:& 1& 1& \\
+\frac{3}{2}:&1&\frac{3}{2}&\frac{3}{8}&\cdots\\
+2:& 1& 2&  1 \\
+\frac{5}{2}:&1&\frac{5}{2}&\frac{5}{8}&\cdots\\
+3:& 1& 3&  3&  1 \\
+\frac{7}{2}:&1&\frac{7}{2}&\frac{7}{8}&\cdots\\
+4:& 1& 4&  6&  4&  1 \\
+\frac{9}{2}:&1&\frac{9}{2}&\frac{9}{8}&\cdots\\
+5:& 1& 5& 10& 10&  5&  1 \\
+\end{matrix}
 
 <p>
-end of buffer
+此时可以注意到：非整数的行会无限延伸，总是可以计算出不为0下一项,事实上整数是因为得到了0于是之后地向无法存在。
 </p>
 </div>
+<div id="outline-container-org0c4175e" class="outline-3">
+<h3 id="org0c4175e"><span class="section-number-3">1.1.</span> 组合数</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+以上和高中数学讲的组合数一致，
+事实上，如果从组合出发可以得到整数的情况就是组合数
+</p>
+
+<p>
+因此可以想见推广浙一结论就是
+</p>
+
+<p>
+以上应当比较简单。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf4c3f8b" class="outline-3">
+<h3 id="orgf4c3f8b"><span class="section-number-3">1.2.</span> 递推的广义二项展开</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+在书中给出了广义二项展开和递推的形式
+</p>
+\begin{equation}
+\label{eq:1}
+\begin{split}
+(p+pq)^{\frac{m}{n}}& = p^{\frac{m}{n}}+\frac{m}{n}\overbrace{A}^{p \frac{m}{n}}q+\frac{m-n}{2n}\overbrace{B}^{\frac{m}{n}Aq}q+\frac{m-2n}{3n}\overbrace{C}^{\frac{m-n}{2n}Bq}q+\frac{m-3n}{4n}\overbrace{D}^{\frac{m-2n}{3n}Cq}q+\dots
+\end{split}
+\end{equation}
+<p>
+这里 \(A,B,C,D\dots\) 均表示前一项
+</p>
+</div>
+<div id="outline-container-org13b8ca4" class="outline-4">
+<h4 id="org13b8ca4"><span class="section-number-4">1.2.1.</span> 计算案例</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ol class="org-ol">
+<li>展开 \(\sqrt{c^2+x^2}\)</li>
+</ol>
+<p>
+此处 \(p=c^2,q=\frac{x^2}{c^2},m=1,n=2\)
+</p>
+\begin{equation}
+\label{eq:2}
+\begin{split}
+\sqrt{c^2+x^2}&=(c^2)^{\frac{1}{2}}+\frac{1}{2}A \frac{x^2}{c^2}+\frac{1-2}{2\times 2}B \frac{x^2}{c^2}+\frac{1-2\times 2}{3\times2}C \frac{x^2}{c^2} \\
+&= c+\frac{1}{2}c \frac{x^2}{c^2}-\frac{1}{4}\frac{x^2}{2c}\frac{x^2}{c^2}-\frac{1}{2}\frac{-x^4}{8c^3}\frac{x^2}{c^2}+\cdots \\
+&= c+\frac{x^2}{2c}-\frac{x^4}{8c^3}+\frac{x^6}{16c^5}+\cdots
+\end{split}
+\end{equation}
+<p>
+可能当代人已经习惯了直接使用公式，不过真正计算起时，牛顿给出的递推表示具有不同寻常的吸引力。
+</p>
+<ol class="org-ol">
+<li>展开 \((1-x^2)^{-\frac{1}{2}}\)</li>
+</ol>
+<p>
+此时更简单
+</p>
+\begin{equation}
+\label{eq:3}
+\begin{split}
+\frac{1}{\sqrt{1-x^2}}&=1+\frac{-1}{2}(-x^2)+\frac{\frac{-1}{2}\times \frac{-3}{2}}{2}\frac{x^2}{2}(-x^2)+\frac{\frac{-1}{2}-\frac{-5}{2}}{3}\frac{3x^4}{8}(-x^2)+\cdots\\
+&=1+\frac{1}{2}x^2+\frac{3}{8}x^4+\frac{5}{16}x^6+\frac{35}{128}x^8+\cdots
+\end{split}
+\end{equation}
+<p>
+你甚至可以检验它的平方是等比数列的结果：
+</p>
+\begin{equation}
+\label{eq:4}
+\begin{split}
+&(1+\frac{1}{2}x^2+\frac{3}{8}x^4+\frac{5}{16}x^6+\frac{35}{128}x^8+\cdots)\times\\
+&(1+\frac{1}{2}x^2+\frac{3}{8}x^4+\frac{5}{16}x^6+\frac{35}{128}x^8+\cdots)\\
+&=1+(\frac{1}{2}+\frac{1}{2})x^2+(2\times \frac{3}{8}+\frac{1}{2}\times \frac{1}{2})x^4+(2\times \frac{5}{16}+2\times (\frac{1}{2}\times \frac{3}{8}))x^6\cdots\\
+&=1+x^2+x^4+x^6+x^8+\cdots\\
+&=\frac{1}{1-x^2}
+\end{split}
+\end{equation}
+<p>
+一项一项整齐划一十分神奇
+</p>
+<blockquote>
+<p>
+这样会消除那些其原始形式看起来几乎无法逾越的困难
+</p>
+</blockquote>
+<p>
+我之前也已经习惯了不过事实上我认为我的确并不理解，我只是认同了使用分数根式南至余特殊字母组合表示的
+</p>
+
+<p>
+下面我们哪个特殊字母组合的函数的破解秘密做最后的准备
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d28ea4" class="outline-2">
+<h2 id="org2d28ea4"><span class="section-number-2">2.</span> 逆级数</h2>
+</div>
+<div id="outline-container-orgda75153" class="outline-2">
+<h2 id="orgda75153"><span class="section-number-2">3.</span> 正弦级数推导（牛顿版）</h2>
+<div class="outline-text-2" id="text-3">
+<blockquote>
+<p>
+关于正弦和余弦的这些级数第一次出现在了欧洲人的手稿里。
+</p>
+</blockquote>
+<p>
+印度数学家据信更造就已经发现了这个级数。
+</p>
+</div>
+</div>
+<div id="outline-container-org30c40fd" class="outline-2">
+<h2 id="org30c40fd"><span class="section-number-2">4.</span> 积分</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+积分 quadrature intergal
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8af0995" class="outline-2">
+<h2 id="org8af0995"><span class="section-number-2">5.</span> 参考</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+泰勒思路
+</p>
+</div>
+</div>
+</div>
 <div id="postamble" class="status">
-<p> HI ;)  Blog of Justin  2022092009@email.szu.edu.cn</p>
-<p>comment system use giscus</p>
+<p> HI ;)  Blog of Justin  2022092009@email.szu.edu.cn</p><p>comment system use giscus</p>
 <script src='https://giscus.app/client.js'
         data-repo='jinqKing/jinqKing.github.io'
         data-repo-id='R_kgDOK-0BQA'
@@ -252,9 +497,7 @@ end of buffer
         data-theme='preferred_color_scheme'
         data-lang='zh-CN'
         crossorigin='anonymous'
-        async>
-</script>
-<div class='giscus'></div>
+        async></script><div class='giscus'></div>
 </div>
 </body>
 </html>

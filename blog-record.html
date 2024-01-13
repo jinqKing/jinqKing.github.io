@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-01-12 Fri 21:37 -->
+<!-- 2024-01-14 Sun 00:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>sitemap</title>
@@ -193,6 +193,7 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
 </head>
 <body>
 <div id="content" class="content">
@@ -214,61 +215,7 @@
 </ul>
 </div>
 </div>
-<script>
-    // JavaScript脚本可以在这里添加
-    function toggleCalendar() {
-        var calendarContainer = document.getElementById("calendar-container");
-        if (calendarContainer.style.display === "" || calendarContainer.style.display === "none") {
-            calendarContainer.style.display = "block";
-        } else {
-            calendarContainer.style.display = "none";
-        }
-    }
-</script>
-<button onclick="toggleCalendar()">Toggle Calendar</button>
-<div id="calendar-container"></div>
 
-<script>
-    // 获取博文数量的假数据（替换为实际数据）
-    const blogData = {
-        "2022-01-01": 3,
-        "2022-01-02": 1,
-        // 添加更多数据...
-    };
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const calendarContainer = document.getElementById("calendar-container");
-
-        // 获取当前年份
-        const currentYear = new Date().getFullYear();
-
-        // 创建一个Date对象，设置为当前年份的1月1日
-        let currentDate = new Date(currentYear, 0, 1);
-
-        // 渲染日历
-        while (currentDate.getFullYear() === currentYear) {
-            const dayElement = document.createElement("div");
-            dayElement.classList.add("day");
-
-            // 获取日期字符串，如 "2022-01-01"
-            const dateString = currentDate.toISOString().split("T")[0];
-
-            // 设置日期文本
-            dayElement.textContent = currentDate.getDate();
-
-            // 如果有博文数量，则在悬停时显示
-            if (blogData[dateString]) {
-                dayElement.title = `Blog posts: ${blogData[dateString]}`;
-            }
-
-            // 将日期元素添加到日历容器中
-            calendarContainer.appendChild(dayElement);
-
-            // 增加一天
-            currentDate.setDate(currentDate.getDate() + 1);
-        }
-    });
-</script>
 <div id="outline-container-orgbbcbbb0" class="outline-2">
 <h2 id="orgbbcbbb0"><span class="section-number-2">1.</span> 2024</h2>
 <div class="outline-text-2" id="text-1">
@@ -277,6 +224,7 @@
 <h3 id="org91287bf"><span class="section-number-3">1.1.</span> 01</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
+<li><a href="posts/我听到流水汇聚的声音.html">12-我听到流水汇聚的声音</a></li>
 <li><a href="posts/做梦.html">11-做梦</a></li>
 <li><a href="posts/微分方程的热情.html">10-微分方程的热情</a></li>
 <li><a href="posts/每个视频都想投币.html">09-每个视频都想投币</a></li>
@@ -312,7 +260,7 @@
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Kintrol</p>
-<p class="date">Created: 2024-01-12 Fri 21:37</p>
+<p class="date">Created: 2024-01-14 Sun 00:27</p>
 </div>
 </body>
 </html>
