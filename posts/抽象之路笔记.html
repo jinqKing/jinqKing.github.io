@@ -1,0 +1,1199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-02-03 Sat 08:56 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>抽象之路笔记（持续整理中）</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<nav>
+            <ul>
+              <a href='/index.html'>Home</a>
+<a href='/content.html'>Index</a>
+<a href='/about.html'>About</a>
+            </ul>
+          </nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-02-02 Fri 18:02 | 凝墨: 2024-02-02 Fri 22:37 </p>
+</div>
+<div id="content" class="content">
+<h1 class="title">抽象之路笔记（持续整理中）</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgaeb7545">1. 1代数</a>
+<ul>
+<li><a href="#org648e42e">1.1. 古巴比伦</a></li>
+<li><a href="#org919a97a">1.2. 欧几里德</a></li>
+<li><a href="#orgc17d050">1.3. 3 丢番图 Diophantus</a></li>
+<li><a href="#org34b9a2e">1.4. 3 阿拉伯数学</a></li>
+<li><a href="#org41c5e20">1.5. 三次四次方程的求根方程</a></li>
+</ul>
+</li>
+<li><a href="#org3bb4e12">2. 2</a>
+<ul>
+<li><a href="#orgb70f275">2.1. Fermat(1601-1665) 费马 数论之父</a></li>
+<li><a href="#orgebbc95b">2.2. Euler(1701-1783) 欧拉 最多产数学家</a></li>
+<li><a href="#orge22cdbe">2.3. 法国3L: Lagrange(1736-1813),Laplace,Legendre(1752-1833)</a>
+<ul>
+<li><a href="#orgca7462b">2.3.1. Lagrange</a></li>
+<li><a href="#orgd7decb0">2.3.2. Legendre</a></li>
+</ul>
+</li>
+<li><a href="#org72156fe">2.4. Gauss(1777-1855) 数学王子</a></li>
+<li><a href="#orgced6455">2.5. Abel(1802-1829) Galois(1811-1832)</a></li>
+<li><a href="#orge0222dc">2.6. Abel</a></li>
+<li><a href="#orgeb55ca7">2.7. Galois</a></li>
+</ul>
+</li>
+<li><a href="#org305ebe8">3. 3 数学理论</a>
+<ul>
+<li><a href="#orgd5402f3">3.1. 群论基础：</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+代数与数论
+抽象之路
+</p>
+
+<p>
+欧阳毅
+讲座
+BV1zS4y1b7es
+</p>
+
+<ul class="org-ul">
+<li><p>
+简介：
+</p>
+<ul class="org-ul">
+<li>官方：</li>
+</ul>
+
+<p>
+讲代数的历史，包括很多人文性内容如时代背景、历史变迁、横向对应
+</p></li>
+</ul>
+
+<p>
+一次笔记尝试、算是看过一些基本代数包括数学女孩后的兴之所至吧。
+</p>
+<div id="outline-container-orgaeb7545" class="outline-2">
+<h2 id="orgaeb7545"><span class="section-number-2">1.</span> 1代数</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+讲座说一说数学家从会算到不会算的历程：对数字理解不断加深发现更多关于数的秘密（无穷无尽定理）的过程。
+</p>
+</div>
+<div id="outline-container-org648e42e" class="outline-3">
+<h3 id="org648e42e"><span class="section-number-3">1.1.</span> 古巴比伦</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+历史常识：两河(幼发拉底河与底格里斯河)流域的文明，公元前1900-前1600，汉谟拉比法典诞生之地方；楔形文字 cuneiform 写在泥板上；对应夏朝
+数学能力：
+</p>
+<ol class="org-ol">
+<li>二次方程的求解 \(ax^2+bx+c=0\)</li>
+</ol>
+
+<p>
+使用60进制，1-60 60-80 80-99
+4*20+10+9
+</p>
+
+<p>
+归功于
+Francois thureau-Danigin 法国人 和 Otto Neugebauer
+破解 BM13901 大英博物馆 BM 藏品
+</p>
+
+<ol class="org-ol">
+<li>勾股数组</li>
+</ol>
+<p>
+在中国商高定理、勾三股四弦五
+</p>
+
+<p>
+考古发现泥板上记载了巨大的勾股数，如 \((12709,13500,18541)\quad (2291,2700,3541)\)
+哥伦比亚大学 Plimpton 322  (Plimpton赠与的322号) ，Otto 和 Sachs 破译
+</p>
+
+<p>
+存入词大的数推测当时人应当知道公式。
+</p>
+
+<p>
+中国已知证明：可从古代图像看出
+13901 问题2:
+正方形面积-边长＝1430,求边长
+此处
+等价于问
+\(x^2-x=870\)
+</p>
+
+<p>
+解答：
+\(x^2-bx=c\)
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">步骤</th>
+<th scope="col" class="org-left">说明</th>
+<th scope="col" class="org-left">字母表示</th>
+<th scope="col" class="org-right">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">写下系数1</td>
+<td class="org-left">b</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">取一半</td>
+<td class="org-left">\(\frac{b}{2}\)</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">取平方</td>
+<td class="org-left">\(\left( \frac{b}{2} \right)^2\)</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">加上870(c)</td>
+<td class="org-left">\(\left( \frac{b}{2} \right)^2+c\)</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">这是 \(29 \frac{1}{2}\) 的平方（开根号）</td>
+<td class="org-left">\(\sqrt{\left( \frac{b}{2} \right)^2+c}\)</td>
+<td class="org-right">\(29 \frac{1}{2}\)</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">加上0.30</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+一步一步教过程
+</p>
+
+<p>
+322
+\(a^2+b^2=c^2 \Rightarrow \left( \frac{a}{c} \right)^2+\left( \frac{b}{c} \right)^2=1\)
+取单位元 \(x^2+y^2=1\)
+交点坐标
+</p>
+
+<p>
+\(k\rightarrow (\frac{k^2-1}{k^2+1},\frac{2k}{k^2+1})\)
+取 \(k=\frac{m}{n}\) 得到 \((\frac{m^2-n^2}{m^2+n^2},\frac{2mn}{m^2+n^2})\)
+于是得到勾股数组： \((m^2-n^2,2mn,m^2+n^2)\)
+得到本原的解
+</p>
+
+<p>
+\(k=\{\frac{12}{5},\frac{64}{27},\frac{125}{54},\frac{9}{5},\dots\}\)
+对注意到 \(m,n=2^i3^j5^k\) 原因：60进制
+</p>
+
+<p>
+失传空白
+</p>
+
+<p>
+Otto Neugebauer
+只与数论波尔（尼耳斯波尔弟弟）发表一篇纯数学论文，主要是
+创立 Zentrablatt Math(1931),
+哥廷根。
+希特勒上台在美国创立 Math Reviews(1939)
+</p>
+
+<p>
+数学评论：
+</p>
+
+<p>
+数学评论不应当和文章质量成正比。好文章：大家都去读吧；
+</p>
+
+<p>
+伟大数学家犯错误比末流数学家发现概率大。不应当忽视小数学家的贡献
+</p>
+
+<p>
+张载（1020-1077）长安：为…
+数学应当为往圣继绝学，传承。
+我想更应该取理解发掘，因为传承下来总是存在前人的删减，但可能删去了一些非凡之处
+</p>
+</div>
+</div>
+<div id="outline-container-org919a97a" class="outline-3">
+<h3 id="org919a97a"><span class="section-number-3">1.2.</span> 欧几里德</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+长平之战赵襄王，秦始皇之前
+</p>
+
+<p>
+几何学之父
+《几何原本》 Elements
+</p>
+
+<p>
+(应当就叫原本)
+西方科学数学基础
+</p>
+
+<p>
+不赞同降低小学难度，需要建立好良好的逻辑体系。
+</p>
+
+<p>
+几何为主
+</p>
+
+<p>
+我认为这是因为古希腊人对数的观念有关
+</p>
+
+<p>
+同时是数论的起源。
+</p>
+
+<p>
+13章 7-9章自然数整数的理论。
+</p>
+
+<ol class="org-ol">
+<li>欧几里德引理
+若素数 p|ab
+素性（定义素理想等等的根源）可以直接推得 算数基本定义 高斯最先证明
+整数的唯一分解性质</li>
+<li>欧几里德第二定理：素数有无穷多
+证明：假设素数哥舒有限，有 \(p_1,\dots, p_n\)
+令 \(N=p_1\cdots p_n+1\)
+则N 与\(p_1,\dots, p_n\) 互素，矛盾。反证成立。</li>
+</ol>
+<p>
+历史上第一个关于无穷的结果
+</p>
+
+<p>
+关注几何，于是对测量天文观测感兴趣，有
+古典几何的三大难题
+</p>
+<ol class="org-ol">
+<li></li>
+</ol>
+
+<p>
+归化为代数问题，如果有
+</p>
+
+<p>
+1837 1,3 1882 -2
+</p>
+</div>
+</div>
+<div id="outline-container-orgc17d050" class="outline-3">
+<h3 id="orgc17d050"><span class="section-number-3">1.3.</span> 3 丢番图 Diophantus</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+被称为代数学之父 I
+(总共有3个人)
+</p>
+
+<p>
+生平为200-284
+三国时代
+对应有中国（可谓成就最大）数学家刘徽（225-295） 
+</p>
+
+<ul class="org-ul">
+<li>著作：《算数》 Arithmetica 130个问题</li>
+</ul>
+<p>
+他的年龄是根据数
+6 12  7
+</p>
+
+<p>
+当时著作往往是问题集，例如海岛算经、孙子算经
+</p>
+
+<p>
+丢番图方程/不定方程，
+研究称为丢番图分析
+</p>
+
+<p>
+例如
+A=2a+1,求 \(x,y\in \mathbb{Q}\)
+\(x^2+y^2=A,\quad x^2,y^2>a\)
+</p>
+
+<p>
+圆上作直线
+</p>
+
+<ul class="org-ul">
+<li>研究三类二次方程</li>
+</ul>
+\begin{align*}
+ax^2+bx =c \\
+ax^2 =bx +c \\
+ax^2+c=bx
+\end{align*}
+
+<p>
+当时没有0,复数用的很少因此这样书写（才符合当时可以接受的形式）
+</p>
+
+<p>
+（对应几何的思维方式）
+</p>
+<blockquote>
+<p>
+应用合适的概念有时候可促使研究更方便
+</p>
+</blockquote>
+
+<p>
+中世纪
+古希腊失掉
+此时没有完全失传
+重新连上
+</p>
+
+<p>
+线性同余数方程
+</p>
+</div>
+</div>
+<div id="outline-container-org34b9a2e" class="outline-3">
+<h3 id="org34b9a2e"><span class="section-number-3">1.4.</span> 3 阿拉伯数学</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+花剌子模 Mohammad ibnmussa al-khwarizmi
+(780-850)(成吉思汗屠城)
+</p>
+
+<p>
+唐朝晚期
+波斯人
+</p>
+
+<p>
+首都巴格达智慧宫，研究数学、航海
+</p>
+
+<p>
+文艺复兴从阿拉伯文成新翻译回来
+</p>
+
+<p>
+著作： al-Jabar
+代数
+</p>
+
+<pre class="example" id="orgb7147e8">
+这个词的含义是一步一步的操作
+</pre>
+
+<p>
+12世纪中叶
+</p>
+
+<ul class="org-ul">
+<li>引入印度数字（即阿拉伯数字）</li>
+
+<li>拉丁写法： algorism,algoritmi=algrothm</li>
+</ul>
+
+<p>
+2500年前的事情重做一遍
+</p>
+
+<p>
+al Karaji
+</p>
+
+<ul class="org-ul">
+<li>将代数从几何图形运算操作中解决出来，出现四则运算</li>
+<li>同余数问题
+有有理直角三角形（边长是有理数）边长 \(a,b,c\in \mathbb{Q}\) ，面积 \(n=\frac{1}{2}ab\)
+找出所有整数 n.
+等价于
+对于怎样 n 有 \(\exists a\in Q\) 使得 \(a^2\pm n\) 也是有理平方数  
+\((a,b,c)\rightarrow (\left( \frac{c}{2} \right)^2-n, \left(  \frac{c}{2} \right)^2, \left( \frac{c}{2} \right)^2+n)=(\left( \frac{a-b}{2} \right)^2, \left( \frac{c}{2} \right)^2,\left( \frac{a-b}{2} \right)^2)\)
+等价于（现代数学研究）
+\(y^2=x^3-n^2x\) 椭圆曲线
+有 \((x,y) \quad x,y\in \mathbb{Q}\quad y\neq 0\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org41c5e20" class="outline-3">
+<h3 id="org41c5e20"><span class="section-number-3">1.5.</span> 三次四次方程的求根方程</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+16世纪（文艺复兴全盛期，后三杰活跃时期）意大利人的成就
+</p>
+
+<p>
+历史背景：
+城邦国家：米兰公国、威尼斯共和国、佛罗伦萨共和国（文艺复兴的中心）
+在意大利北部
+(1870现代意大利的国家
+世界第一所大学： Bologue 大学1088 世界大学之母（校训）
+12世纪 巴黎大学、帕洛瓦大学（意大利）
+王安石去世两年后
+</p>
+
+<p>
+1 del Ferro(1465-1526)
+Bologue 大学教授
+1515 发现三次方程公式，未发表
+1525 告诉学生 Fior 菲奥尔, 
+dello Nave(女婿+学生) 给了一本笔记本记录了求解思路过程
+针对方程：
+</p>
+\begin{align*}
+\label{eq:1}
+\text{I} \quad&x^3+px=q\\
+\text{II} \quad &x^3=px+q \quad p,q\neq 0
+\end{align*}
+<p>
+fior 会 I
+2 Tartaglia 塔塔利亚（1500-1557）威尼斯共和国 Brescia 人
+名词是蔑称，表示口吃。因为1512 与法国交战负伤
+自学成才，教学为生
+一生潦倒，有钱就投入自己喜欢的军事研究，尤其大炮
+3 决斗：互相出题
+Fior 自得为唯一传人，认为塔塔利亚虚名不实或者剽窃，发起挑战：
+</p>
+<div class="org-center">
+<p>
+1535.2.22开始，双方各出30题，两个月时间求解
+</p>
+</div>
+<p>
+1535.2.13凌晨 塔塔利亚钻研出两种方程的解法。随后自己出题类型包含 I 和 II 。
+而 Fior 只出 I ,于是塔塔利亚一小时解出所有题，大获全胜。
+4 Cardano/Cardan 卡尔丹诺（1501-1576）米兰大公国
+医生、星象学家
+长袖善舞。
+治好苏格兰大主教
+大逆不道上帝星座被赦免
+赌博（出千的技术），作家
+自己
+写信给塔塔利亚，承诺将对方介绍给米兰的西班牙总督，资助他继续军事研究。同时自己永不发表结果。
+唯一在场是 Cardano 学生： Ferrari
+5 Ferrari 1540 发现四次方程的解法
+Ferriari 天才聪颖
+Cardano 写书 Ars Magna (The Great Art)
+1543  della Navr 邀请
+1545 出版，记录了
+</p>
+
+<p>
+文艺复兴最重要的数学著作
+1546 塔塔利亚自己出版
+6 Ferrari (1522-1565)
+14岁作为Cardano学徒
+之后作Bologue 大学教授
+早逝
+Cardano 生命短暂不要期望他们取悦你
+</p>
+
+<p>
+塔塔利亚
+\(x=u+v\)
+</p>
+\begin{equation}
+\label{eq:2}
+\begin{split}
+u^3+v^3=-q \\
+uv=-\frac{p}{3}
+\end{split}
+\end{equation}
+<p>
+四次方程：
+</p>
+\begin{equation}
+\label{eq:3}
+x^4+px^2+qx+r=0
+\end{equation}
+<p>
+令 \(z=x^2+y\)
+</p>
+\begin{equation}
+\label{eq:4}
+\Delta = q^2-4()()
+\end{equation}
+<p>
+三次方程
+</p>
+
+<p>
+副产物：虚数的诞生
+</p>
+\begin{equation}
+\label{eq:5}
+\Delta=\frac{q^2}{4}+\frac{p^3}{27}
+\end{equation}
+<p>
+\(\Delta<0\) 三次求根无意义
+例： \(x^3-15x-4=0\)
+Ars Magna 引入复数
+Ra
+Algrbra(使用拉丁文引入代数)
+包含：丢番图、
+介绍复数的运算法则
+</p>
+<blockquote>
+<p>
+复分析：可视化
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-org3bb4e12" class="outline-2">
+<h2 id="org3bb4e12"><span class="section-number-2">2.</span> 2</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+文艺复兴结束的人物：韦达（1540-）
+1591《解析艺术引论》，使用现代的数学符号 xyz abc 符号运算
+韦达定理：总结三次四次根与系数的关系
+</p>
+\begin{equation}
+\label{eq:6}
+\begin{split}
+x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n \\
+=(x-x_1)\cdots(x-x_n)\\
+\end{split}
+\end{equation}
+\begin{equation}
+\label{eq:7}
+a_k=(-1)^k \sum\limit_{1<i_1<\cdots<i_k<=n}x_{i_1}\cdotsx_{i_k}
+\end{equation}
+<p>
+关于 x&#x2026; 第 k 次初等对称多项式
+</p>
+
+<p>
+过来知道系数如何知道根（伽罗瓦）
+</p>
+
+<p>
+传奇人生：
+</p>
+<ul class="org-ul">
+<li>破译密码：帮助法国国王赢得对西班牙的战争
+代数与数论的应用</li>
+<li>芬兰数学家挑战，要求法国国王解45次方程。韦达给出答案。</li>
+</ul>
+</div>
+<div id="outline-container-orgb70f275" class="outline-3">
+<h3 id="orgb70f275"><span class="section-number-3">2.1.</span> Fermat(1601-1665) 费马 数论之父</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+最高刑事法官
+业余数学之王
+</p>
+
+<ul class="org-ul">
+<li>解析几何（同笛卡尔）
+代数用几何表达
+几何用代数表达</li>
+<li>概率论（与帕斯卡通信）</li>
+</ul>
+<p>
+费马挚爱：数论
+当时是小众学科，（帕斯卡不愿意）写信告诉法国科学家
+无人感兴趣
+额外贡献：光学费马原理
+</p>
+<ul class="org-ul">
+<li>费马小定理： \(a^{p}\equiv a \mod p \quad p| \forall a \in \mathbb{Z}\)</li>
+<li>p 是平方和 \(\Leftrightarrow\)  \(p=2, p=\equiv1\mod 4\)</li>
+<li>大定理： 大于等于三没有整数解
+只需要考虑 \(n=4,n=p\)
+猜测他对于自己无穷递降法太自信于是写出“地方太小写不下”</li>
+</ul>
+<p>
+证明 \(n=4\) 无非平凡解
+</p>
+<ol class="org-ol">
+<li>不妨设 xy 互素</li>
+<li>回顾勾股方程的本原解</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgebbc95b" class="outline-3">
+<h3 id="orgebbc95b"><span class="section-number-3">2.2.</span> Euler(1701-1783) 欧拉 最多产数学家</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+庞德丽亚金（双目失明）
+算数的巅峰
+伯努利的学生
+</p>
+
+<p>
+圣彼得堡、柏林
+</p>
+
+<p>
+分析进入数论
+\(\zeta(s)=\sum\limit_{n>=1}\frac{1}{n^s}=\Pi_p \frac{1}{1-p^{-s}}\)
+欧拉乘积
+借此证明素数有无穷多
+(有限乘积收敛，左边调和级数在1发散)
+</p>
+<ul class="org-ul">
+<li>\(\zeta(2)=1+=\frac{\pi^2}{6}\) 巴塞尔问题
+\(\zeta(2n)=C_n\Pi^{2n}\)</li>
+</ul>
+<p>
+黎曼将它变成复函数，解析开拓
+3,5
+</p>
+
+<ul class="org-ul">
+<li>(数论的)欧拉定理： \(\phi(n)=#\left\{ 0<a<n,(a,n)=1 \right\}\)
+\(a^{\varphi(n)}\equiv\)</li>
+</ul>
+<p>
+模n的缩系
+20岁干了很多事
+</p>
+</div>
+</div>
+<div id="outline-container-orge22cdbe" class="outline-3">
+<h3 id="orge22cdbe"><span class="section-number-3">2.3.</span> 法国3L: Lagrange(1736-1813),Laplace,Legendre(1752-1833)</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+年纪轻轻的天才
+</p>
+</div>
+<div id="outline-container-orgca7462b" class="outline-4">
+<h4 id="orgca7462b"><span class="section-number-4">2.3.1.</span> Lagrange</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+自学数学成才
+19 都灵教授
+柏林科学院院士
+拜伦普希金
+</p>
+<ul class="org-ul">
+<li>1770:4平方定理
+分析为什么次数小于4有根
+分析求根公式
+研究置换（为之后）</li>
+</ul>
+<p>
+拉格朗日预解式
+定理
+$\left| H \right|\left| \left| G \right| \right.$
+元素的阶整除群的阶
+</p>
+</div>
+</div>
+<div id="outline-container-orgd7decb0" class="outline-4">
+<h4 id="orgd7decb0"><span class="section-number-4">2.3.2.</span> Legendre</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+符号
+</p>
+
+\begin{equation}
+\label{eq:8}
+\left( \frac{a}{p} \right)=
+\begin{cases}
+0 & p|a \\
+1 & a\equiv b^2 \mod p\\
+-1& \text{else}
+\end{cases}
+\end{equation}
+<p>
+后来被高斯重新做了
+猜测：
+</p>
+<ul class="org-ul">
+<li>二次互反律</li>
+</ul>
+\begin{equation}
+\label{eq:10}
+\left( \frac{q}{p} \right)\left( \frac{p}{q} \right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+\end{equation}
+<p>
+一直苦恼于自己证明存在瑕疵
+</p>
+<ul class="org-ul">
+<li>素数定理：</li>
+</ul>
+\begin{equation}
+\label{eq:11}
+\Pi(x)=#\left\{ p:p<x \right\}=\frac{x}{\log x}
+\end{equation}
+</div>
+</div>
+</div>
+<div id="outline-container-org72156fe" class="outline-3">
+<h3 id="org72156fe"><span class="section-number-3">2.4.</span> Gauss(1777-1855) 数学王子</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+不世出的天才高斯登场了，可惜的是他基本只在25岁（1793）前研究数论，之后唯一关注的数论问题是上文素数定理
+1801 《算数研究》 Disquisitiones Arithmeticae（基本是拉丁文写的最后学术专著）
+</p>
+<ul class="org-ul">
+<li>第一本数论专著/教科书</li>
+<li>先总结欧拉欧几里德中国算数，也就是初等数论到此总结完了</li>
+<li>发明同余符号 \(a\equiv b \mod m \Leftrightarrow m|a-b\) 后一种是以前的写法</li>
+<li>现代数论的开始（可以二次互反律）</li>
+<li>证明二次互反律</li>
+</ul>
+<p>
+二次型三次型－类数猜想～群（把之后概念拿过来就发现完美符合）
+尺规正17边－费马素数
+代数基本定理
+复数引入数论
+</p>
+<ul class="org-ul">
+<li>三平方和，从此可以立即推导出拉格朗日四次</li>
+</ul>
+
+<p>
+184x
+</p>
+
+<p>
+提升了数论的地位
+</p>
+
+<p>
+费马无人问津，欧拉分析，因为高斯提升了数学家对数论的品味
+</p>
+</div>
+</div>
+<div id="outline-container-orgced6455" class="outline-3">
+<h3 id="orgced6455"><span class="section-number-3">2.5.</span> Abel(1802-1829) Galois(1811-1832)</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+挪威 法国
+</p>
+
+<p>
+受到时代巨大影响，对他们的人生
+拿破仑垮台（1814第一次下台）挪威丹麦
+丹麦支持拿破仑，之后将挪威让给瑞典
+当年很穷（之后因为发现石油富裕）
+政治动荡
+</p>
+</div>
+</div>
+<div id="outline-container-orge0222dc" class="outline-3">
+<h3 id="orge0222dc"><span class="section-number-3">2.6.</span> Abel</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+穷苦家庭 15岁开始学数学，之后进展飞快
+良师指导 Holmboe
+发现才能看欧拉拉格朗日拉普拉斯等等
+1820父亲去世，帮助继续读高中
+深入唯一的大学当时是克里斯蒂安娜（首都，现在是奥斯陆）
+挪威政府资助游学
+Crelle 柏林：1825 ds爱好者办杂志 6篇Abel
+纯粹与应用数学
+之前印刷
+现存最古老杂质
+19
+德文 
+美国 anlysa of math
+</p>
+
+<p>
+老师评价极高
+五次方程
+主流数学椭圆函数
+雅可比
+贫病
+1828柏林给教授
+病逝
+Abel 积分范畴群引理判别
+2002 Abel prize 挪威
+百万
+李 Lie
+解析数论
+近世代数C罗定理
+身前身后名
+</p>
+
+<p>
+高斯没看过
+</p>
+</div>
+</div>
+<div id="outline-container-orgeb55ca7" class="outline-3">
+<h3 id="orgeb55ca7"><span class="section-number-3">2.7.</span> Galois</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+等刘维尔发掘的悲情人物
+</p>
+
+<p>
+法国
+路易18
+共和党和保皇党斗争
+王后镇 Banorg-la-Reine
+一家是共和党人
+父亲是市长
+12岁前母亲教导
+路易大帝中学，最好的中学另一个是亨利四世中学
+当时未学数学
+人大附中
+1823
+1827学数学
+一入侯门深似海，
+参加考试
+几个大学校 brand
+巴黎高师、巴黎综合理工
+当年politic
+未考上
+1829完成主要数学成功，发表连分数（已经蕴涵思想）
+5月提交五次方程
+柯西审稿退回，因为Abel,希望修改后重新
+7月父亲自杀因为他人羞辱
+12月通过会考录取高师（高师就在路易里面的几间房子）
+数学认为表达不清但聪明其余科目不认可
+再次提交傅里叶作为秘书1830.5.16去世，稿件丢失
+奖给了Abel jacobi 椭圆函数
+29 30
+1831.1.17 泊松看不懂，认为没有完全展开
+1815路易18上台24去世弟弟查理1937 七月革命推翻波旁王朝
+菲利普国王上台
+1831期间从事政治活动，被关监狱，长达10月
+1832.5.30决斗31去世
+写了一晚上信，总结自己贡献，寄给好朋友Chevalier,可以评价自己的成果
+同其弟Alfred Galois 寄
+写信给数学家，没有回信
+1843.9.4 Liouville 报告提到伽罗瓦完全正确
+原封不动发表自己杂志（法语的纯粹与应用杂志（第二古老数学杂志））
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org305ebe8" class="outline-2">
+<h2 id="org305ebe8"><span class="section-number-2">3.</span> 3 数学理论</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Galois 创立群论
+在群论和域建立联系
+</p>
+</div>
+<div id="outline-container-orgd5402f3" class="outline-3">
+<h3 id="orgd5402f3"><span class="section-number-3">3.1.</span> 群论基础：</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+集合和运算
+群三公理：
+</p>
+<ol class="org-ol">
+<li>结合律</li>
+<li>单位元</li>
+<li>逆元</li>
+</ol>
+<p>
+为什么是结合，最本质是置换，不满足交换
+</p>
+<ul class="org-ul">
+<li>满足交换律的群：交换群＝阿贝尔群（abelian group）</li>
+<li>有限群：群</li>
+</ul>
+
+<p>
+例子：
+</p>
+<ol class="org-ol">
+<li>\((\mathbb{Z},+)\)</li>
+<li>同余</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p> HI ;)  Blog of Justin  2022092009@email.szu.edu.cn</p>
+<p>comment system use giscus</p>
+<script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async>
+</script>
+<div class='giscus'></div>
+</div>
+</body>
+</html>
