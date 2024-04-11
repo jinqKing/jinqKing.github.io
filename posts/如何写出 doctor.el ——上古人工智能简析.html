@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-08 Mon 23:18 -->
+<!-- 2024-04-12 Fri 00:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>如何写出 doctor.el ——上古人工智能简析*</title>
@@ -200,14 +200,124 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-08 Mon 20:09 </p>
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-10 Wed 21:49 </p>
 </div>
 <div id="content" class="content">
 <h1 class="title">如何写出 doctor.el ——上古人工智能简析*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org34d1de9">1. 研究</a></li>
+<li><a href="#orgfb408e0">2. 设想</a></li>
+</ul>
+</div>
+</div>
 <p>
 希望我能把它做完
 &lt;c
+梳理文档结构
 </p>
+<ul class="org-ul">
+<li>1-28: LISP 文档标准格式
+<ul class="org-ul">
+<li>1-22
+<ul class="org-ul">
+<li>1-2: 简介</li>
+<li>3-4: 版权</li>
+<li>5-7: 维护</li>
+<li>10-22: GNU 协议</li>
+</ul></li>
+<li>23-28 Comm</li>
+</ul></li>
+<li>29-30: Code</li>
+<li>31-113: 定义变量 (defavr &#x2026;)</li>
+<li>-540</li>
+<li>548-817: (doctor-put-meaning &#x2026; '&#x2026;)</li>
+<li>818-858:</li>
+<li>859-927: [;; Main processing function for sentences that have been read.]</li>
+<li>928-1348: 定义语法词汇函数[;; Things done to process sentences once read.]</li>
+<li>-1348</li>
+<li>1349-1402: 定义合成回复函数 [;; Output of replies.]</li>
+<li>1403-1621: 定义特定话题 [;; Functions that handle specific words or meanings when found.] (defun doctor-zippy ()
+1596-1597 注释</li>
+<li>1624-1626: 结束</li>
+</ul>
+<p>
+需要认识词汇（有一定话题可聊）
+</p>
+
+<p>
+流程上分析：
+</p>
+<ol class="org-ol">
+<li>标准输出</li>
+<li>接受输入</li>
+<li>处理识别</li>
+<li>分析回复</li>
+<li>循环</li>
+</ol>
+
+
+<p>
+打开时显示
+<img src="如何写出 doctor.el ——上古人工智能简析/20240410210009.png" alt="20240410210009.png" />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-doctor">I am the psychotherapist.  Please, describe your problems.  Each time
+you are finished talking, type RET twice.
+
+</pre>
+</div>
+
+<p>
+这是
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp">  (define-derived-mode doctor-mode text-mode "Doctor"
+  "Major mode for running the Doctor (Eliza) program.
+Like Text mode with Auto Fill mode
+except that RET when point is after a newline, or LFD at any time,
+reads the sentence before point, and prints the Doctor's answer."
+  :interactive nil
+  (doctor-make-variables)
+  (turn-on-auto-fill)
+  (doctor-type '(i am the psychotherapist \.
+                 (doc$ doctor--please) (doc$ doctor--describe) your (doc$ doctor--problems) \.
+                 each time you are finished talking\, type \R\E\T twice \.))
+  (insert "\n"))
+</pre>
+</div>
+<div id="outline-container-org34d1de9" class="outline-2">
+<h2 id="org34d1de9"><span class="section-number-2">1.</span> 研究</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+在知道了它能聊这些，针对性问，看是不是有这样的意思。
+</p>
+
+<p>
+分析是否达到一个心理医生的
+</p>
+
+<p>
+问题：
+重复性太高，所以很无趣，能谈的很少，限制性强；换一当年开发者个就是一个
+</p>
+</div>
+</div>
+<div id="outline-container-orgfb408e0" class="outline-2">
+<h2 id="orgfb408e0"><span class="section-number-2">2.</span> 设想</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+首先我们考虑基于英语的对话，能不能让程序是在一个词典上运行的，开始词典内单词很少，比如只有hello，之后和我对话或者我引入一些同义词，使用内部的函数达到认识更多词语，了解更多环境（关于环境可以额外再有一个文档存储想象力部分的资料）比如parents，father。。是family，这和house，living有关系等；于是，建立在一个不断变大的（类似数据库的）词典上的程序可以对话边智能
+</p>
+
+<p>
+我注意到，这个词典可能像是现代的数据库，不同元素之间会有复杂的联系，这一点如何记录比较好。如一个单词，它和什么词常常一起出现甚至前后组词，它和什么词同义可以替换。我可以使用什么样的存储词典呢，如果lisp很难实现，可以用python适合的体系，txt？json，yaml？
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p> HI ;)  Blog of Justin  2022092009@email.szu.edu.cn</p>
