@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-12 Fri 00:15 -->
+<!-- 2024-04-15 Mon 00:06 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>如何写出 doctor.el ——上古人工智能简析*</title>
@@ -200,7 +200,7 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-10 Wed 21:49 </p>
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-14 Sun 11:47 </p>
 </div>
 <div id="content" class="content">
 <h1 class="title">如何写出 doctor.el ——上古人工智能简析*</h1>
@@ -208,8 +208,14 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org34d1de9">1. 研究</a></li>
-<li><a href="#orgfb408e0">2. 设想</a></li>
+<li><a href="#org6bb5553">1. 前置知识</a></li>
+<li><a href="#org0b722b3">2. 宏与函数</a></li>
+<li><a href="#orgf020433">3. 缓冲开始</a></li>
+<li><a href="#orga7adce3">4. 意义相关列表</a></li>
+<li><a href="#orgce7d8bf">5. 心理咨询正式开始</a></li>
+<li><a href="#orgc22c363">6. 百变医生</a></li>
+<li><a href="#org34d1de9">7. 研究</a></li>
+<li><a href="#orgfb408e0">8. 设想</a></li>
 </ul>
 </div>
 </div>
@@ -231,7 +237,7 @@
 <li>23-28 Comm</li>
 </ul></li>
 <li>29-30: Code</li>
-<li>31-113: 定义变量 (defavr &#x2026;)</li>
+<li>31-113: 初始化变量 (defavr &#x2026;)</li>
 <li>-540</li>
 <li>548-817: (doctor-put-meaning &#x2026; '&#x2026;)</li>
 <li>818-858:</li>
@@ -289,26 +295,339 @@ reads the sentence before point, and prints the Doctor's answer."
   (insert "\n"))
 </pre>
 </div>
-<div id="outline-container-org34d1de9" class="outline-2">
-<h2 id="org34d1de9"><span class="section-number-2">1.</span> 研究</h2>
+
+<p>
+生成的
+</p>
+
+<div id="outline-container-org6bb5553" class="outline-2">
+<h2 id="org6bb5553"><span class="section-number-2">1.</span> 前置知识</h2>
 <div class="outline-text-2" id="text-1">
+<p>
+我自己并不了解 Emacs 里面一些函数，这里正好统一收集整理。
+</p>
+
+<ul class="org-ul">
+<li>不加引用（‘）是对象，可能是原子、变量</li>
+
+<li>加引用’是对象的值，比如想要让 C-z 运行 undo 函数</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(global-set-key (kbd "C-z") 'undo)
+</pre>
+</div>
+
+<p>
+'就像是（一个指针）把对象的地址作为参数传了过去。一般这样称为绑定，lisp 所谓表处理，就是在不断地求值，值是一种表示（这理由好比是所有的对象存在一张哈希表，一个对象对应一个值），不过程序代码是无法操作的（不像 C 把列表地址加一就是下一个元素了）。
+</p>
+
+<p>
+当然只有绑定了的符号才有值，比如初始化未指定的变量就没值（nil）。
+大部分定义的对象的值是本身，比如函数就是内部代码的值，列表也是；
+而符号的值是绑定的对象（所谓符号，就是比如字符串 my-list 这样的符号；），
+宏 macro 的值是（代码）展开形式，缓冲区和窗口也不是自身。
+</p>
+
+<p>
+函数
+</p>
+<ul class="org-ul">
+<li>defvar:
+和 setq 区别： defvar 用于全局变量，一般文档开始大量使用，便于阅读（约定俗成的行为），再次定义相同符号不改值（会警告），setq 无条件设置任何值（再次赋值相同符号就会更新）</li>
+
+<li>defun:
+经典 LISP 函数，用来定函数</li>
+<li>defmacro:
+利用已有函数</li>
+<li><p>
+define
+</p>
+
+<p>
+define-derived-mode
+</p></li>
+</ul>
+
+
+<p>
+doc// 函数不明白，难道是换行用？
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0b722b3" class="outline-2">
+<h2 id="org0b722b3"><span class="section-number-2">2.</span> 宏与函数</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+doc$ 和 doctor-$
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">(defmacro doc$ (what)
+  "Quoted arg form of `doctor-$'."
+  `(doctor-$ ',what))
+
+(defun doctor-$ (what)
+  "Return the car of a list, rotating the list each time."
+  (let* ((vv (symbol-value what))
+         (first (car vv))
+         (ww (append (cdr vv) (list first))))
+    (set what ww)
+    first))
+</pre>
+</div>
+
+<p>
+量我见识短浅，这里的代码还是颇为巧妙。
+核心功能是获得列表的第一个元素，然后将列表这个元素放最后。
+而为了有时候需要不改变表，额外定义了（相当于条件复杂效果更精巧）的 doc$
+这时传入的参数（实际上是表的值）不会被改变
+</p>
+
+<p>
+下面是一个更具体分析：
+这个函数的作用是返回一个列表的第一个元素，并且将列表中的元素循环移动，使得下一次调用时返回的是原列表中的下一个元素。
+</p>
+
+<p>
+doc-$
+</p>
+<ol class="org-ol">
+<li>(defmacro doc$ (what) &#x2026;)：这行代码定义了一个名为 doc$ 的宏，它接受一个参数 what。</li>
+<li>"Quoted arg form of 'doctor-$'."：这是对这个宏的简短文档说明，说明了宏的作用。</li>
+<li>`(doctor-$ ',what))：这是宏的主体部分。在这里，`（反引号）用于引用代码，,（逗号）用于在宏中插入参数值。所以 (doctor-$ ',what) 这部分代码的作用是生成调用 doctor-$ 函数的代码，其中参数 what 被引用了进去，并且在引用时被加上了单引号 '，这样它就成了一个被引用的列表。</li>
+</ol>
+<p>
+总结起来，这个宏的作用就是生成调用 doctor-$ 函数的代码，并且将传入的参数作为引用加入到生成的代码中。
+</p>
+
+<p>
+为什么不能每次直接使用 doctor-$ 呢？
+方便引用，类比 set 与 setq 关系。
+使用宏还可以避免在每次调用时都手动加上引号
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf020433" class="outline-2">
+<h2 id="orgf020433"><span class="section-number-2">3.</span> 缓冲开始</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+用了 defvar-keymap 绑定两个函数，
+这里值得注意的是加了＃，GPT说这是约定俗成，一般后面调用是函数或宏就加＃以示区分
+</p>
+
+<p>
+继续定义基本的 buffer 内容
+</p>
+<ol class="org-ol">
+<li>定义了一个 major mode，名为 "Doctor"。</li>
+<li>设置了 mode-line 的显示为 "Doctor"。</li>
+<li>提供了一个简要的描述，说明这个 major mode 是用于运行 Doctor (Eliza) 程序的。</li>
+<li>禁止了用户直接调用这个 mode 的命令（:interactive nil）。</li>
+<li>调用了 doctor-make-variables 函数，用于初始化一些相关的变量。</li>
+<li>打开了自动换行（Auto Fill）模式。</li>
+<li>调用了 doctor-type 函数，这个函数用于模拟用户的输入，每次输入一句话给 Doctor，然后打印 Doctor 的回答。</li>
+<li>最后，在缓冲区中插入一个空行。</li>
+</ol>
+
+<p>
+函数 defun doctor-make-variables
+</p>
+
+<p>
+用了 setq-local 可能只在运行时创建的变量
+</p>
+
+<p>
+这里有一个纠错机制
+</p>
+
+<p>
+问了GPT，给了一个 dolist 写法，据说减少了遍历次数
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">
+在进行纠错和全名部分的处理时，我会建议使用一个更简洁和高效的方法来实现。以下是一个可能的最佳实践：
+
+elisp
+Copy code
+(defvar doctor--typos
+  '((theyll . ("they'll" . "they will"))
+    (don7t . ("don't" . "do not"))
+    (you7re . ("you're" . "i am"))
+    (you7ll . ("you'll" . "i will"))))
+
+(defun doctor-make-variables ()
+  (dolist (typo doctor--typos)
+    (let ((spelltypo (car typo))
+          (correction (car (cdr (cdr typo))))
+          (expansion (cdr (cdr typo))))
+      (put spelltypo 'doctor-correction correction)
+      (put spelltypo 'doctor-expansion expansion)))
+</pre>
+</div>
+
+<p>
+下面是几段套话，具体来说是给了一些话题用词，看到这个不由得让人想起初中口语话题集，现在的 IELTS 话题。看来 AI 也要话题词汇积累嘿
+</p>
+
+<p>
+仔细看还有特别之处，比如
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(setq-local doctor--famlst
+          '((tell me (doc$ doctor--something) about (doc// doctor-owner) family \.)
+            (you seem to dwell on (doc// doctor-owner) family \.)
+            ((doc$ doctor--areyou) hung up on (doc// doctor-owner) family \?)))
+</pre>
+</div>
+<p>
+变量定义在 316
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(setq-local doctor--something '((something)
+                              (more)
+                              (how you feel)))
+</pre>
+</div>
+
+<p>
+这个语言组合游戏于是内部又可以组合（可以找找有没有你中有我我中有你的情况）
+不过还用到了开篇定义的宏 doc$ ,增加语言多样性（我以为多样性可以用概率，可能随机选对纯列表 lisp 压力大一些）
+</p>
+
+<p>
+也不知道怎么保证不会有几个词撞在一起出现不成句子的情况（难道编程序的“语言学家”提前订好了词性结构）
+</p>
+
+<p>
+一路到539
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga7adce3" class="outline-2">
+<h2 id="orga7adce3"><span class="section-number-2">4.</span> 意义相关列表</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-elisp">(defun doctor-meaning (x) (get x 'doctor-meaning))
+
+(defmacro doctor-put-meaning (symb val)
+  "Store the base meaning of a word on the property list."
+  `(put ',symb 'doctor-meaning ,val))
+</pre>
+</div>
+
+<p>
+现在是把那些词对应那些话题给了出来，
+</p>
+
+<p>
+我很不喜欢相似的内容不是相似的格式，如果是我写代码，一定会把上面话题类型的 setq-local 单独领出来
+</p>
+
+<p>
+而且很不好的是似乎他把函数和属性都命名为 doctor-meaning (居然用 meaning)
+</p>
+
+<p>
+一路到达817
+</p>
+
+<p>
+居然在 819 出现，也不知道是不是惯例，淡厮乎这样太不方便吧，这属于基本的内容应该放在定义buffer 附近。
+好的，我宣布上面的话果然是小白的话
+</p>
+
+<p>
+因为这里出现了一个小东西
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgce7d8bf" class="outline-2">
+<h2 id="orgce7d8bf"><span class="section-number-2">5.</span> 心理咨询正式开始</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-elisp">  
+;;;###autoload
+</pre>
+</div>
+<p>
+这个818行的代码特别之处
+;###autoload 注释标记某些函数或宏，那么在加载文件时，Emacs 会记住这些标记，并在需要时自动加载相应的函数或宏。
+</p>
+
+<p>
+类比就像之前的代码是医生的基础知识，现在进入正式环节
+</p>
+
+<p>
+另外我以前对于 require 和 provide 也弄错了，我以为的 require 是 load 的功能
+</p>
+
+<p>
+语法和橘子结构开始上线了
+构成复数形式
+</p>
+
+<p>
+医生的关键察觉（ attenion !）
+用了 memq
+(应该放后面不要混在语法一起)
+</p>
+
+<p>
+svo!
+</p>
+
+<p>
+注意到一个缩短句子的函数，注释说 hack
+</p>
+
+<p>
+好奇点：
+如何拼成句子，关键在于有多少模板，它的上限在哪？
+记忆是如何实现的？
+假如希望改进，如何让医生诱导交互，让用户输入医生知道的领域的内容，而不是仅仅检查用户在说啥（大部分情况可能医生无从应对）
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc22c363" class="outline-2">
+<h2 id="orgc22c363"><span class="section-number-2">6.</span> 百变医生</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+奇怪的 defun
+</p>
+</div>
+</div>
+<div id="outline-container-org34d1de9" class="outline-2">
+<h2 id="org34d1de9"><span class="section-number-2">7.</span> 研究</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 在知道了它能聊这些，针对性问，看是不是有这样的意思。
 </p>
 
 <p>
-分析是否达到一个心理医生的
+分析是否达到一个心理医生的水平：大概没有
 </p>
 
 <p>
 问题：
-重复性太高，所以很无趣，能谈的很少，限制性强；换一当年开发者个就是一个
+重复性太高，所以很无趣，能谈的很少，限制性强；换一当年开发者个就是一个想到一个写一个，这很局限很大没意思，不过给了自生成一个思路。
+</p>
+
+<p>
+提到语句生成和 ELIZA 相像，可以去看看分析一下。
 </p>
 </div>
 </div>
 <div id="outline-container-orgfb408e0" class="outline-2">
-<h2 id="orgfb408e0"><span class="section-number-2">2.</span> 设想</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="orgfb408e0"><span class="section-number-2">8.</span> 设想</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 首先我们考虑基于英语的对话，能不能让程序是在一个词典上运行的，开始词典内单词很少，比如只有hello，之后和我对话或者我引入一些同义词，使用内部的函数达到认识更多词语，了解更多环境（关于环境可以额外再有一个文档存储想象力部分的资料）比如parents，father。。是family，这和house，living有关系等；于是，建立在一个不断变大的（类似数据库的）词典上的程序可以对话边智能
 </p>
