@@ -23,7 +23,7 @@ nav ul {
     padding: 0;
     display: contents;    
 }
-#content, .content {
+/* #content, .content {
     width: 80%;
     max-width: 980px;
     margin: auto;
@@ -45,6 +45,43 @@ nav ul {
     border: 0.5px dashed black;  
     overflow: auto;
     padding-bottom: 1em;
+} */
+
+#content, .content {
+    margin-left:20%;
+    margin-right:15%;
+    width: 90%;
+    max-width: 1000px;
+    /* margin: auto; */
+    z-index:2;
+}
+
+#table-of-contents {
+    left: 1%;
+    top: 10em;
+    font-size: 12pt;
+    position: fixed;
+    width: 19%;
+    background: #e5e5e5;
+    transition: width 0.3s ease-in-out;
+    z-index:1;
+}
+@media only screen and (max-width: 600px) {
+    #table-of-contents{
+        /* width: 10px; */
+        height: 70%;
+        /* display: none; */
+         width: 3%;       
+        /* content: "C"; /* 添加 content 属性，使其仅显示矩形，不显示原始内容 */ 
+        /* display: block;  */
+    }
+    #table-of-contents ul {
+        display: none; /* 隐藏原始内容 */
+         /* opacity: 0; */
+    }
+    #table-of-contents h2{
+        opacity: 0;
+    }    
 }
 
 article,aside,details,figcaption,figure,footer,header,main,menu,section,summary {

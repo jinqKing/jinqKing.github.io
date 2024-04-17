@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-15 Mon 00:06 -->
+<!-- 2024-04-17 Wed 12:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>如何写出 doctor.el ——上古人工智能简析*</title>
@@ -200,7 +200,7 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-14 Sun 11:47 </p>
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-16 Tue 19:57 </p>
 </div>
 <div id="content" class="content">
 <h1 class="title">如何写出 doctor.el ——上古人工智能简析*</h1>
@@ -213,9 +213,13 @@
 <li><a href="#orgf020433">3. 缓冲开始</a></li>
 <li><a href="#orga7adce3">4. 意义相关列表</a></li>
 <li><a href="#orgce7d8bf">5. 心理咨询正式开始</a></li>
-<li><a href="#orgc22c363">6. 百变医生</a></li>
-<li><a href="#org34d1de9">7. 研究</a></li>
-<li><a href="#orgfb408e0">8. 设想</a></li>
+<li><a href="#orgb192ce0">6. 核心分类</a></li>
+<li><a href="#org6bf5132">7. 具体函数</a></li>
+<li><a href="#orgb11e10d">8. 语法</a></li>
+<li><a href="#orgac3df63">9. 打出回复</a></li>
+<li><a href="#orgc22c363">10. 百变医生</a></li>
+<li><a href="#org34d1de9">11. 研究</a></li>
+<li><a href="#orgfb408e0">12. 设想</a></li>
 </ul>
 </div>
 </div>
@@ -551,8 +555,21 @@ Copy code
 <h2 id="orgce7d8bf"><span class="section-number-2">5.</span> 心理咨询正式开始</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
-<pre class="src src-elisp">  
-;;;###autoload
+<pre class="src src-elisp">    
+  ;;;###autoload
+(defun doctor ()
+  "Switch to *doctor* buffer and start giving psychotherapy."
+  (interactive)
+  (switch-to-buffer "*doctor*")
+  (doctor-mode))
+
+(defun doctor-ret-or-read (arg)
+  "Insert a newline if preceding character is not a newline.
+Otherwise call the Doctor to parse preceding sentence."
+  (interactive "*p" doctor-mode)
+  (if (= (preceding-char) ?\n)
+      (doctor-read-print)
+    (newline arg)))
 </pre>
 </div>
 <p>
@@ -565,11 +582,518 @@ Copy code
 </p>
 
 <p>
+首先是819打开 doctor buffer,开启 132 定义的 doctor-mode;
+接着 doctor-ret-or-read 检测前一个字符是否是换行符，是的话就调用下面的
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(defun doctor-read-print ()
+  "Top level loop."
+  (interactive nil doctor-mode)
+  (setq doctor-sent (doctor-readin))
+  (insert "\n")
+  (setq doctor--lincount (1+ doctor--lincount))
+  (doctor-doc)
+  (insert "\n")
+  (setq doctor--bak doctor-sent))
+
+(defun doctor-readin ()
+  "Read a sentence.  Return it as a list of words."
+  (let (sentence)
+    (backward-sentence 1)
+    (while (not (eobp))
+      (setq sentence (append sentence (list (doctor-read-token)))))
+    sentence))
+
+(defun doctor-read-token ()
+  "Read one word from buffer."
+  (prog1 (intern (downcase (buffer-substring (point)
+                                             (progn
+                                               (forward-word 1)
+                                               (point)))))
+    (re-search-forward "\\Sw*")))
+
+</pre>
+</div>
+<p>
+这三个函数可以反过来解释
+</p>
+<ul class="org-ul">
+<li>read-token 很奇怪,功能是:</li>
+</ul>
+<p>
+把前一个词赋予一个变量存下来，
+（用的 intern ：保证原来如果没有就用这个，有了就新建）
+移动到下一个词
+</p>
+
+<ul class="org-ul">
+<li>doctor-readin 利用 -read-token 是一个把前一个句子分解成单词列表的函数，返回列表。</li>
+</ul>
+<p>
+（看起来只能读一个句子）
+</p>
+
+<ul class="org-ul">
+<li>doctor-read-print (被回车触发)调用 -readin 得到列表，
+赋值给变量 doctor-sent，换行加1到行数记录变量 &#x2013;lincount</li>
+</ul>
+<p>
+1449,1454 用到 doctor&#x2013;lincount 不知道作用是什么
+同时还备份一个回复到变量 doctor&#x2013;bak 
+核心部分调用接下来的 doctor-doc
+</p>
+
+
+<div id="org547692d" class="figure">
+<p><img src="如何写出 doctor.el ——上古人工智能简析/DOT:20240416165752.png" alt="DOT:20240416165752.png" />
+</p>
+</div>
+
+<p>
+可见，整个 doctoc 就是被 doctor-read-print 调控，它相当于 main 函数了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgb192ce0" class="outline-2">
+<h2 id="orgb192ce0"><span class="section-number-2">6.</span> 核心分类</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+下面 doctor-doc 详细给出如何处理接收到的用户输入
+（不能用指针传参只能全局真不爽）
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-doc ()
+  (cond
+   ((equal doctor-sent '(foo))
+    (doctor-type '(bar! (doc$ doctor--please) (doc$ doctor--continue) \.)))
+   ((member doctor-sent doctor--howareyoulst)
+    (doctor-type '(i\'m ok \.  (doc$ doctor--describe) yourself \.)))
+   ((or (member doctor-sent '((good bye) (see you later) (i quit) (so long)
+                              (go away) (get lost)))
+        (memq (car doctor-sent)
+              '(bye halt break quit done exit goodbye
+                    bye\, stop pause goodbye\, stop pause)))
+    (doctor-type (doc$ doctor--bye)))
+   ((and (eq (car doctor-sent) 'you)
+         (memq (cadr doctor-sent) doctor--abusewords))
+    (setq doctor-found (cadr doctor-sent))
+    (doctor-type (doc$ doctor--abuselst)))
+   ((eq (car doctor-sent) 'whatmeans)
+    (doctor-def (cadr doctor-sent)))
+   ((equal doctor-sent '(parse))
+    (doctor-type (list  'subj '= doctor-subj ",  "
+                        'verb '= doctor-verb "\n"
+                        'object 'phrase '= doctor-obj ","
+                        'noun 'form '=  doctor-object "\n"
+                        'current 'keyword 'is doctor-found
+                        ", "
+                        'most 'recent 'possessive
+                        'is doctor-owner "\n"
+                        'sentence 'used 'was
+                        "..."
+                        '(doc// doctor--bak))))
+   ((memq (car doctor-sent) '(are is do has have how when where who why))
+    (doctor-type (doc$ doctor--qlist)))
+   ;;   ((eq (car sent) 'forget)
+   ;;    (set (cadr sent) nil)
+   ;;    (doctor-type '((doc$ doctor--isee) (doc$ doctor--please)
+   ;;     (doc$ doctor--continue)\.)))
+   (t
+    (if (doctor-defq doctor-sent) (doctor-define doctor-sent doctor-found))
+    (if (&gt; (length doctor-sent) 12)
+        (setq doctor-sent (doctor-shorten doctor-sent)))
+    (setq doctor-sent (doctor-correct-spelling
+                       (doctor-replace doctor-sent doctor--replist)))
+    (cond ((and (not (memq 'me doctor-sent)) (not (memq 'i doctor-sent))
+                (memq 'am doctor-sent))
+           (setq doctor-sent (doctor-replace doctor-sent '((am . (are)))))))
+    (cond ((equal (car doctor-sent) 'yow) (doctor-zippy))
+          ((&lt; (length doctor-sent) 2)
+           (cond ((eq (doctor-meaning (car doctor-sent)) 'howdy)
+                  (doctor-howdy))
+                 (t (doctor-short))))
+          (t
+           (if (memq 'am doctor-sent)
+               (setq doctor-sent (doctor-replace doctor-sent '((me . (i))))))
+           (setq doctor-sent (doctor-fixup doctor-sent))
+           (if (and (eq (car doctor-sent) 'do) (eq (cadr doctor-sent) 'not))
+               (cond ((zerop (random 3))
+                      (doctor-type '(are you (doc$ doctor--afraidof) that \?)))
+                     ((zerop (random 2))
+                      (doctor-type '(don\'t tell me what to do \. i am the
+                                            doctor here!))
+                      (doctor-rthing))
+                     (t
+                      (doctor-type '((doc$ doctor--whysay) that i shouldn\'t
+                                     (cddr doctor-sent)
+                                     \?))))
+             (doctor-go (doctor-wherego doctor-sent))))))))
+
+</pre>
+</div>
+
+<p>
+又是一个结构我看起来十分混乱的函数，不明白为什么不把回复的特定组合存起来，难道节省空间？
+</p>
+
+<p>
+?&#x2013; 表； - 函数、变量
+</p>
+
+<p>
+满足任何一个就回复
+</p>
+<ul class="org-ul">
+<li>foo</li>
+<li>howareyou -&gt;
+回复 我好 &#x2013;describe</li>
+<li>检查告别 -&gt;
+回复 &#x2013;bye</li>
+<li>侮辱 -&gt;
+回复 -abuselst</li>
+<li>whatmean 含义 -&gt;
+回复 -def</li>
+<li>parse</li>
+<li>一般疑问</li>
+<li>t 默认
+<ol class="org-ol">
+<li>看有无可以解答 defq-&gt;define</li>
+<li>缩句</li>
+<li>替换？</li>
+<li>如果没有 i me 将 am 换成 are</li>
+<li>判断；
+<ul class="org-ul">
+<li>以 "yow" 开头 -&gt; zippy</li>
+<li>少于两个词：
+<ul class="org-ul">
+<li>取首词检验 <span class="underline">是</span> howdy -&gt; howdy</li>
+<li>否：短句回应</li>
+</ul></li>
+<li>一般
+<ul class="org-ul">
+<li>有 "am" ：将 me 换成 i</li>
+<li>-fixup</li>
+<li>开头是 "do not"</li>
+<li>-go</li>
+</ul></li>
+</ul></li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6bf5132" class="outline-2">
+<h2 id="org6bf5132"><span class="section-number-2">7.</span> 具体函数</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+基本句子操作：拼写、缩短
+[930-954]
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-correct-spelling (sent)
+  "Correct the spelling and expand each word in sentence."
+  (if sent
+      (apply 'append (mapcar (lambda (word)
+                                (if (memq word doctor--typos)
+                                    (get (get word 'doctor-correction)
+                                         'doctor-expansion)
+                                  (list word)))
+                             sent))))
+
+(defun doctor-shorten (sent)
+  "Make a sentence manageably short using a few hacks."
+  (let (foo
+        (retval sent)
+        (temp '(because but however besides anyway until
+                    while that except why how)))
+    (while temp
+           (setq foo (memq (car temp) sent))
+           (if (and foo
+                    (&gt; (length foo) 3))
+               (setq retval (doctor-fixup foo)
+                     temp nil)
+               (setq temp (cdr temp))))
+    retval))
+</pre>
+</div>
+
+<p>
+拼写纠错：
+利用 typo 表
+</p>
+
+<p>
+缩短原理：
+？扔掉连接词
+</p>
+
+<p>
+医生一些行为
+</p>
+
+<p>
+解释含义
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-define (sent found)
+  (doctor-svo sent found 1 nil)
+  (and
+   (doctor-nounp doctor-subj)
+   (not (doctor-pronounp doctor-subj))
+   doctor-subj
+   (doctor-meaning doctor-object)
+   (put doctor-subj 'doctor-meaning (doctor-meaning doctor-object))
+   t))
+
+  (defun doctor-defq (sent)
+  "Set global var DOCTOR-FOUND to first keyword found in sentence SENT."
+  (setq doctor-found nil)
+  (let ((temp '(means applies mean refers refer related
+                      similar defined associated linked like same)))
+    (while temp
+           (if (memq (car temp) sent)
+               (setq doctor-found (car temp)
+                     temp nil)
+               (setq temp (cdr temp)))))
+  doctor-found)
+  (defun doctor-def (x)
+  (doctor-type (list 'the 'word x 'means (doctor-meaning x) 'to 'me))
+  nil)
+  (defun doctor-forget ()
+  "Delete the last element of the history list."
+  (setq doctor--history (reverse (cdr (reverse doctor--history)))))
+  (defun doctor-query (x)
+  "Prompt for a line of input from the minibuffer until a noun or verb is seen.
+Put dialogue in buffer."
+  (let (a
+        (prompt (concat (doctor-make-string x)
+                        " what ?  "))
+        retval)
+    (while (not retval)
+           (while (not a)
+             (insert ?\n
+                     prompt
+                     (read-string prompt)
+                     ?\n)
+             (setq a (doctor-readin)))
+           (while (and a (not retval))
+                  (cond ((doctor-nounp (car a))
+                         (setq retval (car a)))
+                        ((doctor-verbp (car a))
+                         (setq retval (doctor-build
+                                       (doctor-build x " ")
+                                       (car a))))
+                        ((setq a (cdr a))))))
+    retval))
+</pre>
+</div>
+
+<p>
+defq 
+是一个查找函数，将全局 DOCTOR-FOUND 作为状态量。
+查找是否有 temp 列表中的词 (means applies mean refers refer related similar defined associated linked like same)
+如果有，就用 define 造句。
+</p>
+
+<p>
+doctor-go 很有意思，假如没有
+</p>
+
+<p>
+遗忘
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgb11e10d" class="outline-2">
+<h2 id="orgb11e10d"><span class="section-number-2">8.</span> 语法</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-subjsearch (sent key type)
+  "Search for the subject of a sentence SENT, looking for the noun closest
+to and preceding KEY by at least TYPE words.  Set global variable `doctor-subj'
+to the subject noun, and return the portion of the sentence following it."
+  (let ((i (- (length sent) (length (memq key sent)) type)))
+    (while (and (&gt; i -1) (not (doctor-nounp (nth i sent))))
+      (setq i (1- i)))
+    (cond ((&gt; i -1)
+           (setq doctor-subj (nth i sent))
+           (nthcdr (1+ i) sent))
+          (t
+           (setq doctor-subj 'you)
+           nil))))
+
+(defun doctor-nounp (x)
+  "Return non-nil if the symbol argument is a noun."
+        (or (doctor-pronounp x)
+            (not (or (doctor-verbp x)
+                     (equal x 'not)
+                     (doctor-prepp x)
+                     (doctor-modifierp x) )) ))
+
+(defun doctor-pronounp (x)
+  "Return non-nil if the symbol argument is a pronoun."
+  (memq x '(
+        i me mine myself
+        we us ours ourselves ourself
+        you yours yourself yourselves
+        he him himself she hers herself
+        it that those this these things thing
+        they them themselves theirs
+        anybody everybody somebody
+        anyone everyone someone
+        anything something everything)))
+
+
+(dolist (x
+         '(abort aborted aborts ask asked asks am
+           applied applies apply are associate
+           ...
+           write writes writing wrote use used uses using))
+  (put x 'doctor-sentence-type 'verb))
+
+(defun doctor-verbp (x) (if (symbolp x)
+                            (eq (get x 'doctor-sentence-type) 'verb)))
+
+(defun doctor-plural (x)
+  "Form the plural of the word argument."
+  (let ((foo (doctor-make-string x)))
+    (cond ((string-equal (substring foo -1) "s")
+           (cond ((string-equal (substring foo -2 -1) "s")
+                  (intern (concat foo "es")))
+                 (t x)))
+           ((string-equal (substring foo -1) "y")
+            (intern (concat (substring foo 0 -1)
+                            "ies")))
+           (t (intern (concat foo "s"))))))
+
+(defun doctor-setprep (sent key)
+  (let ((val)
+        (foo (memq key sent)))
+    (cond ((doctor-prepp (cadr foo))
+           (setq val (doctor-getnoun (cddr foo)))
+           (cond (val val)
+                 (t 'something)))
+          ((doctor-articlep (cadr foo))
+           (setq val (doctor-getnoun (cddr foo)))
+           (cond (val (doctor-build (doctor-build (cadr foo) " ") val))
+                 (t 'something)))
+          (t 'something))))
+
+(defun doctor-getnoun (x)
+  (cond ((null x) (setq doctor-object 'something))
+        ((atom x) (setq doctor-object x))
+        ((eq (length x) 1)
+         (setq doctor-object (cond
+                       ((doctor-nounp (setq doctor-object (car x))) doctor-object)
+                       (t (doctor-query doctor-object)))))
+        ((eq (car x) 'to)
+         (doctor-build 'to\  (doctor-getnoun (cdr x))))
+        ((doctor-prepp (car x))
+         (doctor-getnoun (cdr x)))
+        ((not (doctor-nounp (car x)))
+         (doctor-build (doctor-build (cdr (assq (car x)
+                                                (append
+                                                 '((a . this)
+                                                   (some . this)
+                                                   (one . that))
+                                                 (list
+                                                  (cons
+                                                   (car x) (car x))))))
+                                     " ")
+                       (doctor-getnoun (cdr x))))
+        (t (setq doctor-object (car x))
+           (doctor-build (doctor-build (car x) " ") (doctor-getnoun (cdr x))))
+        ))
+</pre>
+</div>
+
+
+<p>
+1044 dolist
+</p>
+
+<p>
+下面的函数的确奇怪，
+用 memp 检查是否有检查输入里是否有参考表里面，
+为什么要写一个函数，而不是直接定义一个通用查找函数和各类参考列表呢？
+?电脑内存
+</p>
+
+<p>
+搜索参考表函数有：
+</p>
+<ul class="org-ul">
+<li>articlep: the a an</li>
+<li>nmbrp</li>
+<li>colorp</li>
+<li>sizep</li>
+<li>possesiveprounp</li>
+<li>othermodifierp</li>
+<li>prepp 介词</li>
+<li>[1294] vowlp 元音</li>
+</ul>
+
+<p>
+-remember
+</p>
+
+<p>
+-type
+使用 1351 的
+</p>
+
+<p>
+-fixup
+将反身人称代词
+语气词
+</p>
+
+<p>
+-fix-2
+</p>
+
+
+
+<p>
+doctor-replace: [1297]
+替换表有的换掉没有的保留（可能代码写的复杂了？）
+</p>
+
+<p>
+-wherego
+</p>
+
+
+<p>
+-svo
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgac3df63" class="outline-2">
+<h2 id="orgac3df63"><span class="section-number-2">9.</span> 打出回复</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+-txtype
+</p>
+
+<p>
+-type-symbol
+</p>
+
+
+<p>
+应该将 sent 改为 receive
+</p>
+
+<p>
 另外我以前对于 require 和 provide 也弄错了，我以为的 require 是 load 的功能
 </p>
 
 <p>
-语法和橘子结构开始上线了
+语法和句子结构开始上线了
 构成复数形式
 </p>
 
@@ -597,16 +1121,18 @@ svo!
 </div>
 
 <div id="outline-container-orgc22c363" class="outline-2">
-<h2 id="orgc22c363"><span class="section-number-2">6.</span> 百变医生</h2>
-<div class="outline-text-2" id="text-6">
+<h2 id="orgc22c363"><span class="section-number-2">10.</span> 百变医生</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 奇怪的 defun
 </p>
 </div>
 </div>
+
+
 <div id="outline-container-org34d1de9" class="outline-2">
-<h2 id="org34d1de9"><span class="section-number-2">7.</span> 研究</h2>
-<div class="outline-text-2" id="text-7">
+<h2 id="org34d1de9"><span class="section-number-2">11.</span> 研究</h2>
+<div class="outline-text-2" id="text-11">
 <p>
 在知道了它能聊这些，针对性问，看是不是有这样的意思。
 </p>
@@ -626,8 +1152,8 @@ svo!
 </div>
 </div>
 <div id="outline-container-orgfb408e0" class="outline-2">
-<h2 id="orgfb408e0"><span class="section-number-2">8.</span> 设想</h2>
-<div class="outline-text-2" id="text-8">
+<h2 id="orgfb408e0"><span class="section-number-2">12.</span> 设想</h2>
+<div class="outline-text-2" id="text-12">
 <p>
 首先我们考虑基于英语的对话，能不能让程序是在一个词典上运行的，开始词典内单词很少，比如只有hello，之后和我对话或者我引入一些同义词，使用内部的函数达到认识更多词语，了解更多环境（关于环境可以额外再有一个文档存储想象力部分的资料）比如parents，father。。是family，这和house，living有关系等；于是，建立在一个不断变大的（类似数据库的）词典上的程序可以对话边智能
 </p>
