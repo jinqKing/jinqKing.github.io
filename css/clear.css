@@ -23,38 +23,18 @@ nav ul {
     padding: 0;
     display: contents;    
 }
-/* #content, .content {
-    width: 80%;
-    max-width: 980px;
-    margin: auto;
-}
 
-#table-of-contents {
-    margin-top: 3em;
-    top: 0.5em;
-    font-size: 12pt;
-    position: fixed;
-    
-    left:1em;
-    padding-left:1em;
-
-    width: 14em;
-    max-height: 20%;
-    
-    background: #e5e5e5;
-    border: 0.5px dashed black;  
-    overflow: auto;
-    padding-bottom: 1em;
-} */
-
-#content, .content {
-    margin-left:20%;
-    margin-right:15%;
+#content {
+    margin-left: 15%;
     width: 90%;
     max-width: 1000px;
-    /* margin: auto; */
-    z-index:2;
+    z-index: 2;
+
+    max-height:80%;
+    overflow:auto;
 }
+
+/* 如果有需要，.content 的样式也可以放在这里 */
 
 #table-of-contents {
     left: 1%;
@@ -63,25 +43,37 @@ nav ul {
     position: fixed;
     width: 19%;
     background: #e5e5e5;
-    transition: width 0.3s ease-in-out;
-    z-index:1;
+    transition: width 0.4s ease-in-out;
+    z-index: 1;
 }
-@media only screen and (max-width: 600px) {
-    #table-of-contents{
-        /* width: 10px; */
-        height: 70%;
-        /* display: none; */
-         width: 3%;       
-        /* content: "C"; /* 添加 content 属性，使其仅显示矩形，不显示原始内容 */ 
-        /* display: block;  */
+
+/* 在媒体查询中简化样式 */
+@media only screen and (max-width: 1000px) {
+    #content {
+        margin-left: 10%;
     }
-    #table-of-contents ul {
-        display: none; /* 隐藏原始内容 */
-         /* opacity: 0; */
+    #table-of-contents {
+        width: 8%;
+        transition: width 0.4s ease-in-out, text-align 0.4s ease-in-out; /* 在这里添加 text-align 过渡 */
     }
-    #table-of-contents h2{
-        opacity: 0;
-    }    
+    #table-of-contents h2 {
+        font-size: 7pt;
+    }
+    #text-table-of-contents {
+        display: none;
+    }
+    #table-of-contents:hover #text-table-of-contents {
+        display: block;
+        width: 80%;
+    }
+    #table-of-contents:hover {
+        width: 80%;
+        text-align: left; /* 改变文本对齐方式 */
+    }
+}
+
+.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    font-family: fangsong, sans-serif; /* 替换 "Your Font Name" 为你喜欢的字体名称 */
 }
 
 article,aside,details,figcaption,figure,footer,header,main,menu,section,summary {
@@ -2823,7 +2815,7 @@ p.verse {
     content: "bash"
 }
 
-.org-src-container>pre.src-emacs-lisp:before {
+.org-src-container>pre.src-emacs-lisp:before .org-src-container>pre.src-elisp:before{
     content: "Emacs Lisp"
 }
 

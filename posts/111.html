@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-22 Mon 16:13 -->
+<!-- 2024-04-17 Wed 18:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>如何写出 doctor.el</title>
@@ -200,7 +200,7 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-18 Thu 19:00 </p>
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-17 Wed 16:39 </p>
 </div>
 <div id="content" class="content">
 <h1 class="title">如何写出 doctor.el</h1>
@@ -208,18 +208,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org6bb5553">1. 前置知识</a></li>
-<li><a href="#org0b722b3">2. 宏与函数</a></li>
-<li><a href="#orgf020433">3. 缓冲开始</a></li>
-<li><a href="#org4d51b4a">4. 相关话题列表</a></li>
-<li><a href="#orgce7d8bf">5. 心理咨询正式开始</a></li>
-<li><a href="#orgb192ce0">6. 核心分类</a></li>
-<li><a href="#org6bf5132">7. 具体函数</a></li>
-<li><a href="#orgb11e10d">8. 语法</a></li>
-<li><a href="#orgac3df63">9. 打出回复</a></li>
-<li><a href="#orgc22c363">10. 百变医生</a></li>
-<li><a href="#org34d1de9">11. 研究</a></li>
-<li><a href="#orgfb408e0">12. 设想</a></li>
+<li><a href="#org2dba906">1. 前置知识</a></li>
+<li><a href="#org942c70a">2. 宏与函数</a></li>
+<li><a href="#org8ef9f66">3. 缓冲开始</a></li>
+<li><a href="#orga62c6b6">4. 意义相关列表</a></li>
+<li><a href="#org99bc4f7">5. 心理咨询正式开始</a></li>
+<li><a href="#orgc175e92">6. 核心分类</a></li>
+<li><a href="#org730b163">7. 具体函数</a></li>
+<li><a href="#org4ba56e4">8. 语法</a></li>
+<li><a href="#org95fd8a4">9. 打出回复</a></li>
+<li><a href="#org055b62b">10. 百变医生</a></li>
+<li><a href="#org94a1f1b">11. 研究</a></li>
+<li><a href="#org0fb37d6">12. 设想</a></li>
 </ul>
 </div>
 </div>
@@ -308,8 +308,8 @@ reads the sentence before point, and prints the Doctor's answer."
 生成的
 </p>
 
-<div id="outline-container-org6bb5553" class="outline-2">
-<h2 id="org6bb5553"><span class="section-number-2">1.</span> 前置知识</h2>
+<div id="outline-container-org2dba906" class="outline-2">
+<h2 id="org2dba906"><span class="section-number-2">1.</span> 前置知识</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 我自己并不了解 Emacs 里面一些函数，这里正好统一收集整理。
@@ -364,8 +364,8 @@ doc// 函数不明白，难道是换行用？
 </div>
 </div>
 
-<div id="outline-container-org0b722b3" class="outline-2">
-<h2 id="org0b722b3"><span class="section-number-2">2.</span> 宏与函数</h2>
+<div id="outline-container-org942c70a" class="outline-2">
+<h2 id="org942c70a"><span class="section-number-2">2.</span> 宏与函数</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 doc$ 和 doctor-$
@@ -418,8 +418,8 @@ doc-$
 </div>
 </div>
 
-<div id="outline-container-orgf020433" class="outline-2">
-<h2 id="orgf020433"><span class="section-number-2">3.</span> 缓冲开始</h2>
+<div id="outline-container-org8ef9f66" class="outline-2">
+<h2 id="org8ef9f66"><span class="section-number-2">3.</span> 缓冲开始</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 用了 defvar-keymap 绑定两个函数，
@@ -516,8 +516,8 @@ Copy code
 </div>
 </div>
 
-<div id="outline-container-org4d51b4a" class="outline-2">
-<h2 id="org4d51b4a"><span class="section-number-2">4.</span> 相关话题列表</h2>
+<div id="outline-container-orga62c6b6" class="outline-2">
+<h2 id="orga62c6b6"><span class="section-number-2">4.</span> 意义相关列表</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
 <pre class="src src-elisp">(defun doctor-meaning (x) (get x 'doctor-meaning))
@@ -555,8 +555,8 @@ Copy code
 </div>
 </div>
 
-<div id="outline-container-orgce7d8bf" class="outline-2">
-<h2 id="orgce7d8bf"><span class="section-number-2">5.</span> 心理咨询正式开始</h2>
+<div id="outline-container-org99bc4f7" class="outline-2">
+<h2 id="org99bc4f7"><span class="section-number-2">5.</span> 心理咨询正式开始</h2>
 <div class="outline-text-2" id="text-5">
 <div class="org-src-container">
 <pre class="src src-elisp">    
@@ -648,7 +648,7 @@ Otherwise call the Doctor to parse preceding sentence."
 </p>
 
 
-<div id="org547692d" class="figure">
+<div id="orgd386c39" class="figure">
 <p><img src="如何写出 doctor.el ——上古人工智能简析/DOT:20240416165752.png" alt="DOT:20240416165752.png" />
 </p>
 </div>
@@ -658,8 +658,8 @@ Otherwise call the Doctor to parse preceding sentence."
 </p>
 </div>
 </div>
-<div id="outline-container-orgb192ce0" class="outline-2">
-<h2 id="orgb192ce0"><span class="section-number-2">6.</span> 核心分类</h2>
+<div id="outline-container-orgc175e92" class="outline-2">
+<h2 id="orgc175e92"><span class="section-number-2">6.</span> 核心分类</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 下面 doctor-doc 详细给出如何处理接收到的用户输入
@@ -785,8 +785,8 @@ Otherwise call the Doctor to parse preceding sentence."
 </ul>
 </div>
 </div>
-<div id="outline-container-org6bf5132" class="outline-2">
-<h2 id="org6bf5132"><span class="section-number-2">7.</span> 具体函数</h2>
+<div id="outline-container-org730b163" class="outline-2">
+<h2 id="org730b163"><span class="section-number-2">7.</span> 具体函数</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 基本句子操作：拼写、缩短
@@ -909,8 +909,8 @@ doctor-go 很有意思，假如没有
 </div>
 
 
-<div id="outline-container-orgb11e10d" class="outline-2">
-<h2 id="orgb11e10d"><span class="section-number-2">8.</span> 语法</h2>
+<div id="outline-container-org4ba56e4" class="outline-2">
+<h2 id="org4ba56e4"><span class="section-number-2">8.</span> 语法</h2>
 <div class="outline-text-2" id="text-8">
 <div class="org-src-container">
 <pre class="src src-elisp">  (defun doctor-subjsearch (sent key type)
@@ -1076,8 +1076,8 @@ doctor-replace: [1297]
 </div>
 
 
-<div id="outline-container-orgac3df63" class="outline-2">
-<h2 id="orgac3df63"><span class="section-number-2">9.</span> 打出回复</h2>
+<div id="outline-container-org95fd8a4" class="outline-2">
+<h2 id="org95fd8a4"><span class="section-number-2">9.</span> 打出回复</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 -txtype
@@ -1124,8 +1124,8 @@ svo!
 </div>
 </div>
 
-<div id="outline-container-orgc22c363" class="outline-2">
-<h2 id="orgc22c363"><span class="section-number-2">10.</span> 百变医生</h2>
+<div id="outline-container-org055b62b" class="outline-2">
+<h2 id="org055b62b"><span class="section-number-2">10.</span> 百变医生</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 奇怪的 defun
@@ -1134,8 +1134,8 @@ svo!
 </div>
 
 
-<div id="outline-container-org34d1de9" class="outline-2">
-<h2 id="org34d1de9"><span class="section-number-2">11.</span> 研究</h2>
+<div id="outline-container-org94a1f1b" class="outline-2">
+<h2 id="org94a1f1b"><span class="section-number-2">11.</span> 研究</h2>
 <div class="outline-text-2" id="text-11">
 <p>
 在知道了它能聊这些，针对性问，看是不是有这样的意思。
@@ -1155,8 +1155,8 @@ svo!
 </p>
 </div>
 </div>
-<div id="outline-container-orgfb408e0" class="outline-2">
-<h2 id="orgfb408e0"><span class="section-number-2">12.</span> 设想</h2>
+<div id="outline-container-org0fb37d6" class="outline-2">
+<h2 id="org0fb37d6"><span class="section-number-2">12.</span> 设想</h2>
 <div class="outline-text-2" id="text-12">
 <p>
 首先我们考虑基于英语的对话，能不能让程序是在一个词典上运行的，开始词典内单词很少，比如只有hello，之后和我对话或者我引入一些同义词，使用内部的函数达到认识更多词语，了解更多环境（关于环境可以额外再有一个文档存储想象力部分的资料）比如parents，father。。是family，这和house，living有关系等；于是，建立在一个不断变大的（类似数据库的）词典上的程序可以对话边智能
