@@ -1,3 +1,5 @@
 /posts/ltximg/*.png
 */ltximg/*.png
-topic/analysis/ltximg/*.png
+topic/分析/ltximg/*.png
+*ltximg*
+topic/
