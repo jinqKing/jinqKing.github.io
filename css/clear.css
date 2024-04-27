@@ -29,9 +29,6 @@ nav ul {
     width: 90%;
     max-width: 1000px;
     z-index: 2;
-
-    max-height:80%;
-    overflow:auto;
 }
 
 /* 如果有需要，.content 的样式也可以放在这里 */
@@ -45,6 +42,8 @@ nav ul {
     background: #e5e5e5;
     transition: width 0.4s ease-in-out;
     z-index: 1;
+    max-height:80%;
+    overflow:auto;
 }
 
 /* 在媒体查询中简化样式 */
@@ -54,7 +53,7 @@ nav ul {
     }
     #table-of-contents {
         width: 8%;
-        transition: width 0.4s ease-in-out, text-align 0.4s ease-in-out; /* 在这里添加 text-align 过渡 */
+        transition: width 0.4s ease-in-out, text-align 0.4s ease-in-out;
     }
     #table-of-contents h2 {
         font-size: 7pt;

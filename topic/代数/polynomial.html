@@ -6,7 +6,7 @@
 <!-- 2024-04-28 Sun 00:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Topics</title>
+<title>多项式</title>
 <meta name="author" content="Kintrol" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -199,46 +199,161 @@
 <a href='/content.html'>Index</a>
 <a href='/about.html'>About</a>
             </ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔:  | 凝墨: 2024-04-28 Sun 00:05 </p>
+<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 Sat 22:08 | 凝墨: 2024-04-27 Sat 22:23 </p>
 </div>
 <div id="content" class="content">
-<h1 class="title">Topics</h1>
-<ul class="org-ul">
-<li>读书影视
-<ul class="org-ul">
-<li><a href="读书影视/疑犯追踪・西部世界.html">疑犯追踪・西部世界*</a></li>
-<li><a href="读书影视/吉卜力的大制作.html">吉卜力的大制作</a></li>
-<li><a href="读书影视/还书总结：元素的盛宴、进化的大脑.html">还书总结：元素的盛宴、进化的大脑</a></li>
-</ul></li>
-<li>微积分的历史
-<ul class="org-ul">
-<li><a href="微积分的历史/newton.html">牛顿</a></li>
-<li><a href="微积分的历史/history.html">关于历史的感想*</a></li>
-<li><a href="微积分的历史/q1intro.html">齐振宇 Calculus 笔记重拓扑部分*</a></li>
-<li><a href="微积分的历史/lebniz.html">莱布尼兹级数：藏在奇数中的圆周率</a></li>
-</ul></li>
-<li>量子
-<ul class="org-ul">
-<li><a href="量子/intro.html">量子物理史探0新的舞台已搭好</a></li>
-<li><a href="量子/nt.html">笔记</a></li>
-</ul></li>
-<li>分析
-<ul class="org-ul">
-<li><a href="分析/complex.html">复分析笔记***</a></li>
-</ul></li>
-<li>代数
-<ul class="org-ul">
-<li><a href="代数/polynomial.html">多项式</a></li>
-<li><a href="代数/EasyNumberTheroy.html">初等数论群论</a></li>
-</ul></li>
-<li>音乐剧
-<ul class="org-ul">
-<li><a href="音乐剧/intro.html">音乐剧世界</a></li>
-</ul></li>
+<h1 class="title">多项式</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org192c811">1. 定义</a></li>
+<li><a href="#org9b06a75">2. 参数</a></li>
+<li><a href="#org9a8b630">3. 诱导函数</a></li>
+<li><a href="#orge6fe5ce">4. 性质</a></li>
 </ul>
+</div>
+</div>
+<div class="org-center">
+<p>
+BV1jg411e7qy|
+BV1tQ4y1c7A3|
+</p>
+</div>
+
+<p>
+多项式：
+</p>
+<div id="outline-container-org192c811" class="outline-2">
+<h2 id="org192c811"><span class="section-number-2">1.</span> 定义</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+非映射（不存在定义域和），是一个形式，可以没有取值。
+使用形式幂级数定义这个形式。
+</p>
+
+<p>
+有了加法乘法，得到环。
+未定元 indeterminate
+</p>
+</div>
+</div>
+<div id="outline-container-org9b06a75" class="outline-2">
+<h2 id="org9b06a75"><span class="section-number-2">2.</span> 参数</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+最重要参数：次数
+</p>
+
+<p>
+参数：系数、不定元、次数
+</p>
+<ul class="org-ul">
+<li>系数：指定数域</li>
+<li>不定元：术语之外</li>
+<li>次数：自然数</li>
+</ul>
+
+<blockquote>
+<p>
+国内都把x叫做未定元，关于x的形式表达式定义成多项式蛮容易让人困惑的。
+其实柯斯特利金卷一的多项式讲得就那蛮清楚的，
+定义成仅含有限非零项的无穷序列，乘积定义成离散序列卷积，然后再给出形式表达式。
+</p>
+</blockquote>
+
+<p>
+考虑所有这样的集合：环
+</p>
+</div>
+</div>
+<div id="outline-container-org9a8b630" class="outline-2">
+<h2 id="org9a8b630"><span class="section-number-2">3.</span> 诱导函数</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+多项式函数
+这是一个函数，判定条件不同。
+形式相同，定义域…相同
+</p>
+
+<p>
+合同：两个多项式诱导相通的多项式函数
+</p>
+
+<p>
+相同 \(\Rightarrow\) 合同
+</p>
+
+<p>
+数域上成立（实数复数），一般的
+<img src="polynomial/20240427222200.png" alt="20240427222200.png" />
+012 模3
+</p>
+
+<p>
+有限域不成立，需要无穷多
+</p>
+
+<p>
+合同与相同
+</p>
+</div>
+</div>
+<div id="outline-container-orge6fe5ce" class="outline-2">
+<h2 id="orge6fe5ce"><span class="section-number-2">4.</span> 性质</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+重要性质：是否可约
+</p>
+
+<p>
+隐形定义可交换
+</p>
+
+<p>
+添加性质更好－扩域
+</p>
+
+<p>
+多元多项式环 \(F[x,y]=F[x][y]\) 依次添加
+</p>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 
