@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-28 Sun 00:05 -->
+<!-- 2024-04-29 Mon 00:13 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>多项式</title>
+<title>多项式*-</title>
 <meta name="author" content="Kintrol" />
 <meta name="generator" content="Org Mode" />
 <style>
@@ -234,31 +234,39 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 Sat 22:08 | 凝墨: 2024-04-27 Sat 22:23 </p>
+<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 Sat 22:08 | 凝墨: 2024-04-28 Sun 20:23 </p>
 </div>
 <div id="content" class="content">
-<h1 class="title">多项式</h1>
+<h1 class="title">多项式*-</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
 <li><a href="#org192c811">1. 定义</a></li>
 <li><a href="#org9b06a75">2. 参数</a></li>
-<li><a href="#org9a8b630">3. 诱导函数</a></li>
-<li><a href="#orge6fe5ce">4. 性质</a></li>
+<li><a href="#orga4a5ecd">3. 诱导多项式函数</a></li>
+<li><a href="#orgdaad83c">4. 意义</a>
+<ul>
+<li><a href="#org9ccee37">4.1. 一元多项式通用性质</a></li>
+</ul>
+</li>
+<li><a href="#orge6fe5ce">5. 性质</a></li>
 </ul>
 </div>
 </div>
+<p>
+复习（高等）代数中的多项式
+</p>
 <div class="org-center">
 <p>
 BV1jg411e7qy|
-BV1tQ4y1c7A3|
+</p>
+
+<p>
+非常棒：BV1tQ4y1c7A3|
 </p>
 </div>
 
-<p>
-多项式：
-</p>
 <div id="outline-container-org192c811" class="outline-2">
 <h2 id="org192c811"><span class="section-number-2">1.</span> 定义</h2>
 <div class="outline-text-2" id="text-1">
@@ -270,7 +278,17 @@ BV1tQ4y1c7A3|
 <p>
 有了加法乘法，得到环。
 未定元 indeterminate
+和未知量 unknown 不同，后者是方程。没有任何含义。
 </p>
+
+<p>
+<b>定义</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-定义">形式表达式 $$a_nx_n+a_{n-1}x_{n-1}+\cdots+a_1x+a_0$$
+称为不定元多项式或整式， x 称为不定元。
+</pre>
+</div>
 </div>
 </div>
 <div id="outline-container-org9b06a75" class="outline-2">
@@ -284,8 +302,8 @@ BV1tQ4y1c7A3|
 参数：系数、不定元、次数
 </p>
 <ul class="org-ul">
-<li>系数：指定数域</li>
-<li>不定元：术语之外</li>
+<li>系数：（一般限定于）指定数域</li>
+<li>不定元：数域之外，任意取（即不能取代数元）</li>
 <li>次数：自然数</li>
 </ul>
 
@@ -298,18 +316,71 @@ BV1tQ4y1c7A3|
 </blockquote>
 
 <p>
-考虑所有这样的集合：环
+加法是有差异的，特殊的，但不做区分
+</p>
+
+<p>
+考虑所有这样的集合：组成环 \(F(+,\cdot)\)。
+对加法交换群，乘法是幺半群
+</p>
+
+<p>
+定义：
+域 \(F\) 上一元多项式组成的集合记作 \(F[x]\)
+称作一元多项式环。
 </p>
 </div>
 </div>
-<div id="outline-container-org9a8b630" class="outline-2">
-<h2 id="org9a8b630"><span class="section-number-2">3.</span> 诱导函数</h2>
+<div id="outline-container-orga4a5ecd" class="outline-2">
+<h2 id="orga4a5ecd"><span class="section-number-2">3.</span> 诱导多项式函数</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-多项式函数
-这是一个函数，判定条件不同。
-形式相同，定义域…相同
+构造一个代入多项式的映射：
+将数域的值代入
+？同时涉及代入运算
 </p>
+
+<p>
+多项式函数
+\[f:F\to F\]
+\[t\mapsto a_nt^n+\cdots+a_1t+a_0\]
+</p>
+
+<p>
+这是一个函数，判定条件不同：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">类型</th>
+<th scope="col" class="org-left">判定相等条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">多项式</td>
+<td class="org-left">形式表达式</td>
+<td class="org-left">完全相同</td>
+</tr>
+
+<tr>
+<td class="org-left">多项式函数</td>
+<td class="org-left">映射</td>
+<td class="org-left">定义域、值域、对应规则</td>
+</tr>
+</tbody>
+</table>
 
 <p>
 合同：两个多项式诱导相通的多项式函数
@@ -322,21 +393,92 @@ BV1tQ4y1c7A3|
 <p>
 数域上成立（实数复数），一般的
 <img src="polynomial/20240427222200.png" alt="20240427222200.png" />
+</p>
+
+<p>
+<b>例</b>:
+\(\mathbb{F}_3[x]\) \(f(x)=x^3+2x^2+2,g(x)=2x^2+x+2\)
+</p>
+
+<p>
 012 模3
 </p>
 
 <p>
-有限域不成立，需要无穷多
+有限域不成立，需要无穷多元素
 </p>
 
 <p>
-合同与相同
+合同与相同：相等强于合同，本质上是两个纬度一个是形式，一个是映射
 </p>
 </div>
 </div>
-<div id="outline-container-orge6fe5ce" class="outline-2">
-<h2 id="orge6fe5ce"><span class="section-number-2">4.</span> 性质</h2>
+<div id="outline-container-orgdaad83c" class="outline-2">
+<h2 id="orgdaad83c"><span class="section-number-2">4.</span> 意义</h2>
 <div class="outline-text-2" id="text-4">
+<p>
+明明多项式函数更有意思，可以分析，
+没有【意义】的多项式更具体的定义有什么【形式】意义？
+</p>
+
+<blockquote>
+<p>
+正是因为多项式没有意义，就意味着它的意义没有受到限制，
+我们可以自由地赋予意义。
+</p>
+</blockquote>
+
+<p>
+强大之处在于，它不仅可以代入系数域中的元素，
+还可以代入更一般的元素，进行拓展的运算，进而发现普世的规律
+</p>
+</div>
+
+<div id="outline-container-org9ccee37" class="outline-3">
+<h3 id="org9ccee37"><span class="section-number-3">4.1.</span> 一元多项式通用性质</h3>
+<div class="outline-text-3" id="text-4-1">
+
+<div id="orga22d4d6" class="figure">
+<p><img src="polynomial/20240428201220.png" alt="20240428201220.png" />
+</p>
+</div>
+
+<p>
+域 \(F\) 相当于是环 \(F[x]\) 的子环，是系数为零的多项式集合
+</p>
+
+<p>
+保持运算『同态』。
+如，研究矩阵多项式
+</p>
+
+<p>
+交换环 \(R\) 是域 \(F\) 上的扩环，意为有 \(\tau:F\to R_1\overset{\text{ring}}{\subset} R\)
+环中任意元素 \(t\) 可以诱导出环同态 \(\sigma(t):F[x]\to R\)
+</p>
+<div class="org-src-container">
+<pre class="src src-latex">\begin{equation}
+\label{eq:1}
+\sigma(t): \sum\limits_{j=0}^na_jx_j\mapsto\sum\limits_{j=0}^n\tau(a_j)t^j
+\end{equation}
+</pre>
+</div>
+<p>
+称 \(\sigma(t)\) 为把 t 代入 x ，同态像称为 t 的定元多项式
+</p>
+
+<p>
+把多项式送到多项式：
+</p>
+<ul class="org-ul">
+<li>系数 \(a\mapsto \tau(a)\) 映到</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orge6fe5ce" class="outline-2">
+<h2 id="orge6fe5ce"><span class="section-number-2">5.</span> 性质</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 重要性质：是否可约
 </p>
