@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-29 Mon 00:13 -->
+<!-- 2024-06-01 Sat 00:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>多项式*-</title>
@@ -234,7 +234,7 @@
 </head>
 <body>
 <div id="preamble" class="status">
-<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 Sat 22:08 | 凝墨: 2024-04-28 Sun 20:23 </p>
+<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 Sat 22:08 | 凝墨: 2024-05-08 Wed 20:26 </p>
 </div>
 <div id="content" class="content">
 <h1 class="title">多项式*-</h1>
@@ -248,9 +248,17 @@
 <li><a href="#orgdaad83c">4. 意义</a>
 <ul>
 <li><a href="#org9ccee37">4.1. 一元多项式通用性质</a></li>
+<li><a href="#orge992818">4.2. 超越元</a></li>
 </ul>
 </li>
 <li><a href="#orge6fe5ce">5. 性质</a></li>
+<li><a href="#org959f43f">6. 多项式分解</a>
+<ul>
+<li><a href="#org527bc0a">6.1. 互素分解</a></li>
+<li><a href="#org9312c3c">6.2. 不可约分解</a></li>
+<li><a href="#org0856a3b">6.3. 方幂和展开</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -438,33 +446,36 @@ BV1jg411e7qy|
 <h3 id="org9ccee37"><span class="section-number-3">4.1.</span> 一元多项式通用性质</h3>
 <div class="outline-text-3" id="text-4-1">
 
-<div id="orga22d4d6" class="figure">
+<div id="orgb510bab" class="figure">
 <p><img src="polynomial/20240428201220.png" alt="20240428201220.png" />
 </p>
 </div>
+
+<p>
+将所有 x 换成 t ,数变成
+</p>
 
 <p>
 域 \(F\) 相当于是环 \(F[x]\) 的子环，是系数为零的多项式集合
 </p>
 
 <p>
-保持运算『同态』。
+它们在运算性质上完全一样，保持运算『同态』。
 如，研究矩阵多项式
 </p>
 
 <p>
+使用环论语言描述：
 交换环 \(R\) 是域 \(F\) 上的扩环，意为有 \(\tau:F\to R_1\overset{\text{ring}}{\subset} R\)
 环中任意元素 \(t\) 可以诱导出环同态 \(\sigma(t):F[x]\to R\)
 </p>
-<div class="org-src-container">
-<pre class="src src-latex">\begin{equation}
-\label{eq:1}
-\sigma(t): \sum\limits_{j=0}^na_jx_j\mapsto\sum\limits_{j=0}^n\tau(a_j)t^j
-\end{equation}
-</pre>
-</div>
 <p>
 称 \(\sigma(t)\) 为把 t 代入 x ，同态像称为 t 的定元多项式
+</p>
+
+
+<p>
+举例：矩阵运算的定元多项式 \(2A=2EA\)
 </p>
 
 <p>
@@ -473,9 +484,72 @@ BV1jg411e7qy|
 <ul class="org-ul">
 <li>系数 \(a\mapsto \tau(a)\) 映到</li>
 </ul>
+
+<p>
+多项式中的带余除法、裴蜀定理、整除
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge992818" class="outline-3">
+<h3 id="orge992818"><span class="section-number-3">4.2.</span> 超越元</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+代数元：是域上多项式的根；否则是超越元
+</p>
+
+<p>
+E 是 F 的扩环（域）， E 中元素 a 是 \(F[x]\) 中多项式的根，称 a 为代数元。
+</p>
+
+<p>
+例： \(\sqrt{2},\mathrm{i}\) 是 \(\mathbb{Q}\) 代数元； \(\pi\) 是超越元
+实多项式函数的集合，可以有代数函数和超越函数
+</p>
+
+<p>
+超越元具有特殊性，比如分析学取极限构造。
+它们在原集合中像是无意义的符号，地位等同于不定元。同样定元就一定是代数元
+</p>
+
+<p>
+只要系数域足够大，超越元迟早成为代数元
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">定元</td>
+<td class="org-left">代数元</td>
+<td class="org-left">代入多项式结果在扩环中</td>
+</tr>
+
+<tr>
+<td class="org-left">不定元</td>
+<td class="org-left">超越元</td>
+<td class="org-left">多项式结果是新元素</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+多元多项式：多项式上的多项式 \(F[x,y]\to F[x][y]\) 关于 y 的，系数是关于 x 多项式
+？柯里化
+</p>
 </div>
 </div>
 </div>
+
+
 <div id="outline-container-orge6fe5ce" class="outline-2">
 <h2 id="orge6fe5ce"><span class="section-number-2">5.</span> 性质</h2>
 <div class="outline-text-2" id="text-5">
@@ -496,9 +570,72 @@ BV1jg411e7qy|
 </p>
 </div>
 </div>
+
+
+<div id="outline-container-org959f43f" class="outline-2">
+<h2 id="org959f43f"><span class="section-number-2">6.</span> 多项式分解</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+有一个次数大于1
+可约： \(f=f_1f_2=f_{11}f_{12}f_{2}\)
+将多项式分解为一系列不可约多项式的乘积。
+</p>
+
+<p>
+不可约多项式与其他多项式要么整除，要么互素
+</p>
+</div>
+
+<div id="outline-container-org527bc0a" class="outline-3">
+<h3 id="org527bc0a"><span class="section-number-3">6.1.</span> 互素分解</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+拆成互素多项式，这至少两个互素因子。
+</p>
+</div>
+</div>
+<div id="outline-container-org9312c3c" class="outline-3">
+<h3 id="org9312c3c"><span class="section-number-3">6.2.</span> 不可约分解</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+：一定存在，相伴时唯一（相差常数倍）
+唯一的体现：
+分解是： \(f=p\cdots p_t=q\cdots q_s\)
+</p>
+<ol class="org-ol">
+<li>s = t</li>
+<li>可以重排得到 \(p_j\sim q'_j\)</li>
+</ol>
+<p>
+证明使用数学归纳法
+</p>
+
+<p>
+素元、不可约元
+</p>
+
+<p>
+使用不可约元是素元
+</p>
+</div>
+</div>
+<div id="outline-container-org0856a3b" class="outline-3">
+<h3 id="org0856a3b"><span class="section-number-3">6.3.</span> 方幂和展开</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+想到进制数位表示倍数
+使用一个表示另一个（完全是除法）
+\(f(x)\) 的 \(g(x)\) 表示
+</p>
+
+<p>
+部分分式分解定理
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-
 <script src='https://giscus.app/client.js'
         data-repo='jinqKing/jinqKing.github.io'
         data-repo-id='R_kgDOK-0BQA'

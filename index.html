@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-04-29 Mon 23:45 -->
+<!-- 2024-06-01 Sat 00:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>这是 Justin King 的 Github 主页</title>
@@ -202,15 +202,15 @@
 <h2 id="orgcf0c74c"><span class="section-number-2">1.</span> 主页</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-<del>我不会写 index 等有空整一个自动生成主页</del>
-</p>
-
-<p>
-<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-01-06 Sat 05:35&gt;</span></span><span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-15 Mon 16:07&gt;</span></span><span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-24 Wed 22:52&gt;</span></span>
+<a href="pic/king.png">金</a>
 </p>
 
 <hr />
 <div class="org-center">
+<p>
+
+</p>
+
 <p>
 主页之外: <a href="./blogRecord.html">文章年表</a>
 </p>
@@ -248,13 +248,58 @@
 <b>索引里面是所有内容的简介</b>
 </p>
 
-<p>
-<i>下面的链接哪也去不了</i>
-</p>
+<hr />
 
-<p>
-<span class="underline">分类文章</span>
-</p>
+<style>
+        .iframe-container-wrapper {
+            display: flex;
+            flex-wrap: nowrap; /* 不换行 */
+            overflow-x: auto; /* 如果超出容器宽度，允许水平滚动 */
+            width: 150%;
+            height: 600px; /* 设置容器高度 */
+	    margin-left:-20%;
+        }
+        .iframe-container {
+            position: relative;
+            width: 40%; /* 设置容器宽度 */
+            height: 500px; /* 设置容器高度 */
+            overflow: hidden; /* 隐藏溢出内容 */
+        }
+        .iframe-container iframe {
+            width: calc(100% + 20px); /* 让 iframe 宽度比容器大以弥补滚动条的宽度 */
+            height: calc(100% + 20px); /* 让 iframe 高度比容器大以弥补滚动条的高度 */
+            margin: -8px; /* 让 iframe 移动到左上角以隐藏滚动条 */
+            border: none; /* 去除 iframe 边框 */
+        }
+        .iframe-clickable {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+	</style>
+    <p>以下是来自 GitHub 的示例：</p>
+    <div class="iframe-container-wrapper">
+    <div class="iframe-container">
+        <iframe src="https://www.zhihu.com/people/jqk-48-5" frameborder="0"></iframe>
+        <div class="iframe-clickable" onclick="openLink('https://www.zhihu.com/people/jqk-48-5')"></div>
+    </div>
+    
+    <div class="iframe-container">
+        <iframe src="https://space.bilibili.com/345873919" frameborder="0"></iframe>
+        <div class="iframe-clickable" onclick="openLink('https://space.bilibili.com/345873919')"></div>
+    </div>
+     <div class="iframe-container">
+        <iframe src="https://www.douban.com/people/258357147/" frameborder="0"></iframe>
+        <div class="iframe-clickable" onclick="openLink('https://www.douban.com/people/258357147/')"></div>
+    </div>    </div>
+    <script>
+        function openLink(url) {
+            window.open(url, '_blank');
+        }
+    </script>
 
 <hr />
 
@@ -326,7 +371,7 @@
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Kintrol</p>
-<p class="date">Created: 2024-04-29 Mon 23:45</p>
+<p class="date">Created: 2024-06-01 Sat 00:07</p>
 </div>
 </body>
 </html>
