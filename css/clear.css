@@ -6,9 +6,6 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
-body {
-    margin: 0
-}
 
 nav {
     display: flex;
@@ -31,7 +28,6 @@ nav ul {
     z-index: 2;
 }
 
-/* 如果有需要，.content 的样式也可以放在这里 */
 
 #table-of-contents {
     left: 1%;
@@ -72,7 +68,7 @@ nav ul {
 }
 
 .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
-    font-family: fangsong, sans-serif; /* 替换 "Your Font Name" 为你喜欢的字体名称 */
+    font-family: fangsong, sans-serif; 
 }
 
 article,aside,details,figcaption,figure,footer,header,main,menu,section,summary {
@@ -248,11 +244,6 @@ textarea {
 ::-webkit-file-upload-button {
     -webkit-appearance: button;
     font: inherit
-}
-
-body {
-    color: #000;
-    background-color: #fff
 }
 
 .org-alert-high {
@@ -2453,6 +2444,9 @@ a:hover {
 }
 
 body {
+    margin: 0
+    color: #000;
+    background-color: #fff
     width: 95%;
     margin: 2% auto;
     font-size: 14px;
@@ -2477,9 +2471,12 @@ body {
     background: #d6edff
 }
 
+
 ::selection {
-    background: #d6edff
+    color: #e34234;
+    background: #FFF68F;
 }
+
 
 p {
     margin: 1em auto
@@ -2668,6 +2665,8 @@ td.org-center {
 }
 
 blockquote {
+    font-family: STKaiti;
+    font-size: 1.2rem;
     margin: 1em 2em;
     padding-left: 1em;
     border-left: 3px solid #ccc
@@ -2747,6 +2746,7 @@ kbd {
 }
 
 .org-center {
+    font-family: fangsong;
     margin-left: auto;
     margin-right: auto;
     text-align: center
