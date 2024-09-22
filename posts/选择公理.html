@@ -1,0 +1,726 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-01 Thu 11:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>选择公理*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/pic/king.png"><link rel="shortcut icon" href="/pic/king.png"/>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 Sat 15:47 | 凝墨: 2024-06-07 Fri 17:13 </p>
+</div>
+<div id="content" class="content">
+<h1 class="title">选择公理*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org25f35b3">1. 集合上的关系</a>
+<ul>
+<li><a href="#org488fec9">1.1. 偏序 partial order</a></li>
+<li><a href="#org13212cc">1.2. 链/全序集 chain/totally ordered set</a></li>
+<li><a href="#org881f18f">1.3. 有界极大</a></li>
+<li><a href="#orgae879ab">1.4. 良序集 well ordered</a></li>
+<li><a href="#org65055e0">1.5. 后继 successor</a></li>
+</ul>
+</li>
+<li><a href="#org190a713">2. 定理</a>
+<ul>
+<li><a href="#org9d58cae">2.1. 定理 Bourbaki 不动点</a></li>
+<li><a href="#org42916a7">2.2. 关于映射</a></li>
+<li><a href="#org58f1972">2.3. 选择公理的合集</a>
+<ul>
+<li><a href="#org145ea3c">2.3.1. 论述</a></li>
+<li><a href="#orgcbc3ace">2.3.2. 说明</a></li>
+<li><a href="#orga742e06">2.3.3. 证明</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org2ec81f4">3. 分析的应用</a></li>
+<li><a href="#orga0e54fb">4. 梳理一下课程</a></li>
+</ul>
+</div>
+</div>
+<div class="org-center">
+<p>
+做到本文档 org 可渲染、网页索引链接支持
+网课链接：BV1T441117iw
+</p>
+</div>
+
+<div id="outline-container-org25f35b3" class="outline-2">
+<h2 id="org25f35b3"><span class="section-number-2">1.</span> 集合上的关系</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+目的『研究顺序在集合上操作』
+</p>
+<blockquote>
+<p>
+是否符号主义？或者逻辑至上性
+</p>
+</blockquote>
+</div>
+<div id="outline-container-org488fec9" class="outline-3">
+<h3 id="org488fec9"><span class="section-number-3">1.1.</span> 偏序 partial order</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+<b>定义</b>:
+X a set A relation \(leq\) on  X is partial order if:
+</p>
+<ol class="org-ol">
+<li>\(\forall x\in X,x\leq x\)</li>
+<li>\(\forall x,y\in X \left[ x\leq y \wedge y \leq x \Rightarrow x=y\right]\)</li>
+<li>\(\forall x,y,x\in X \left[ x\leq y\wedge y\leq z\Rightarrow x\leq z\right]\)</li>
+</ol>
+
+<div class="org-center">
+<p>
+自反、传递、唯一限制
+</p>
+</div>
+
+<p>
+<b>例子</b>:
+实数上小于等于；集合包含 \(\left( \mathbb{R},\leq \right),\left( \mathscr{P}(X),\subset \right)\)
+ power set 幂集 \((P(X),\subset),P(X):=\left\{ A|A\subset X \right\}\)
+</p>
+
+<p>
+有偏序 \((X,\leq)\) a poset 有 \(A\subset X\)
+于是 A 可以继承这个偏序。
+</p>
+
+<p>
+将这个集合和关系 \((X,\leq)\) 称作偏序集 poset (<b>p</b> artially <b>o</b> rdered <b>set</b>)
+</p>
+</div>
+</div>
+<div id="outline-container-org13212cc" class="outline-3">
+<h3 id="org13212cc"><span class="section-number-3">1.2.</span> 链/全序集 chain/totally ordered set</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-center">
+<p>
+呈序列，顺序一定，可以比大小
+</p>
+</div>
+<p>
+A poset is chain/totally ordered set if
+\(\forall x,y\in X \left[ x\leq y \vee y\leq x\right]\)
+</p>
+
+<p>
+?不是图
+?完备性
+</p>
+
+<p>
+If \((X,\leq)\) is a poset and \(A\subset X\)
+then A has a natural partial order induced by \(\leq\)
+</p>
+
+<p>
+以下默认 \(\left( X,\leq \right)\) 是偏序集
+</p>
+
+<p>
+~常常取子集讨论问题，比如定义域
+</p>
+</div>
+</div>
+<div id="outline-container-org881f18f" class="outline-3">
+<h3 id="org881f18f"><span class="section-number-3">1.3.</span> 有界极大</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+\(b\in X\)
+</p>
+<ol class="org-ol">
+<li>b is an upper bound of A if \(\forall a\in A,a \leq b\)</li>
+<li>b is a greatest element of A if b is an upper bound and \(b\in A\)</li>
+</ol>
+
+<p>
+符号说明：
+上界 lub: the least upper bound
+?inf 
+下界 glb: the greatest lower bound
+?sup
+</p>
+
+<p>
+\(x<y\Leftrightarrow x\leq y\wedge x\neq y\)
+</p>
+
+<p>
+<b>极大元素</b>:
+</p>
+<div class="org-center">
+<p>
+?边界
+</p>
+</div>
+<p>
+b is a maximal element in X if
+\(\forall x \in X,[b\leq x\Rightarrow b=x]\)
+</p>
+
+<p>
+类似有极小元素
+</p>
+
+<p>
+b is a minimal element in X if
+\(\forall x \in X,[x\leq b\Rightarrow b=x]\)
+</p>
+
+<p>
+～也就是没有超过这个元素限度的，它们像是不固定的边界
+</p>
+
+<p>
+有限的集合，似乎都可以有偏序。
+?为了不要有悖论，并且满足完备相容
+</p>
+</div>
+</div>
+<div id="outline-container-orgae879ab" class="outline-3">
+<h3 id="orgae879ab"><span class="section-number-3">1.4.</span> 良序集 well ordered</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-center">
+<p>
+非空集有最小
+</p>
+</div>
+
+<p>
+a chain \((X,\leq)\) if
+\(\forall A\subset X[A\neq \emptyset \Rightarrow A \text{ has a least element}]\)
+</p>
+
+<p>
+<b>比较</b>
+全序：可以比大小；
+良序：有最小。
+</p>
+
+<p>
+目前只知道 \(\mathbb{N}\) 是良序集， \(\mathbb{Z}\) 不是
+</p>
+</div>
+</div>
+<div id="outline-container-org65055e0" class="outline-3">
+<h3 id="org65055e0"><span class="section-number-3">1.5.</span> 后继 successor</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+\(a\in X, \text{succ}_{(X,\leq)}(a)\) is the least element of \(\left\{ x\in X|a<x \right\}\) when \(X\neq \emptyset\)
+</p>
+
+<p>
+?这里原视频用的 if
+</p>
+
+<blockquote>
+<p>
+前任 predecessor
+－我们的课不是要学英文
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div id="outline-container-org190a713" class="outline-2">
+<h2 id="org190a713"><span class="section-number-2">2.</span> 定理</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org9d58cae" class="outline-3">
+<h3 id="org9d58cae"><span class="section-number-3">2.1.</span> 定理 Bourbaki 不动点</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Thereom a version of Bourbaki's fixed point thereom
+</p>
+<blockquote>
+<p>
+我们不举很多的例子，自己要做的事。
+例子课下书上去找
+</p>
+</blockquote>
+
+<p>
+\((X,\leq)\) a poset in which every well-ordered subset has a lub,
+\(X\overset{f}{\rightarrow}X\) a map s.t. \(x\leq f(x)\) for every \(x\in X\) .
+\(\Rightarrow\) \(\exists a\in X,f(a)=a\)
+</p>
+
+<div class="org-center">
+<p>
+证明见 Bredom <i>Topology and Geometry</i> Appendix B
+</p>
+</div>
+
+<p>
+<b>含义</b>
+映射到不比自己小的，那么一定会有元素相等。
+</p>
+
+<blockquote>
+<p>
+很特别的
+<b>只在这里用一下</b>
+集合论里面常见神奇的定理，属于人类聪明才智的体现，
+过程不见得那么容易，透过阅读拓展理解
+</p>
+</blockquote>
+
+<p>
+正整数在实数的状态
+</p>
+
+<p>
+证明中使用术语：
+初始线段？
+initial segment \((X,\leq),a\in X\)
+\[\text{IS}_{X}(a):=\left\{ x\in X|x<a \right\};\text{WIS}_{X}(a):=\left\{ x\in X|x\leq a \right\}\]
+</p>
+</div>
+</div>
+<div id="outline-container-org42916a7" class="outline-3">
+<h3 id="org42916a7"><span class="section-number-3">2.2.</span> 关于映射</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-center">
+<p>
+一些规则
+</p>
+
+<p>
+以前说映射是规则
+</p>
+</div>
+
+<p>
+集合论的定义：
+映射对应直积的子集
+\[X\stackrel{g}{\rightarrow}Y \leftrightarrow \Gamma \subset X \times Y\]
+</p>
+
+
+<div id="orgcc34609" class="figure">
+<p><img src="选择公理/20240427203643.png" alt="20240427203643.png" />
+</p>
+</div>
+
+<p>
+其中
+\(\Gamma: \left\{ (x,g(x))|x\in S \right\}\) s.t. \(\forall x\in X\), \(\exists! y\in Y (x,y)\in\Gamma\)
+</p>
+
+<p>
+－弹幕：集合论的函数从二元关系来，
+二元关系从 ZFC 配对公理来
+</p>
+
+<p>
+不存在具体规则
+</p>
+
+<p>
+没有定义集合
+?像没有定义概率一样
+知道有空集，可以谈元素属于
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org58f1972" class="outline-3">
+<h3 id="org58f1972"><span class="section-number-3">2.3.</span> 选择公理的合集</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org145ea3c" class="outline-4">
+<h4 id="org145ea3c"><span class="section-number-4">2.3.1.</span> 论述</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ol class="org-ol">
+<li><p>
+\(\forall\) set \(S,\mathscr{P}_{0}:=\left\{ X|X\subset S\wedge X\neq\emptyset \right\}\) \(\exists f: \mathscr{P}_{0}/\emptyset\rightarrow S\) s.t. \(\forall X\in \mathscr{P}_0\) \(f(X)\in X\)
+</p>
+
+<p>
+\(f:S\mapsto f(S)\)
+</p>
+
+<p>
+存在映射，使得每一个非空子集都要选一个子集元素
+</p></li>
+
+<li><p>
+A poset \((X,\leq)\) in which every well-ordered subset has a lub \(\Rightarrow\) X has a max element
+</p>
+
+<p>
+偏序集中任子良序集有极大元素，偏序有最大
+</p></li>
+
+<li><p>
+Every poset has a maximal chain
+</p>
+
+<p>
+偏序集中有没有更大的子全序（再加入一个元素不是全序）
+</p>
+
+<p>
+?极大线性无关
+</p></li>
+
+<li><p>
+A poset in which every chain has a upper bound has a max element
+</p>
+
+<p>
+偏序中的任子全序有上界，偏序有最大
+</p></li>
+
+<li><p>
+Every set has a well-order
+</p>
+
+<p>
+良序原理
+</p>
+
+<p>
+总是变成像自然数的结构，有后继的观念
+</p></li>
+
+<li><p>
+\(\forall surj. X\overset{f}{\rightarrow}Y\) \(\exists Y\overset{g}{\rightarrow}X\) \(f\circ g=id_Y\)
+</p>
+
+<p>
+<img src="选择公理/20240427204330.png" alt="20240427204330.png" />
+可以造一个，就去看哪个元素映射到 y ，就去拿这个作为 y 的值，这个过程牵扯到选择
+</p></li>
+
+<li><p>
+A set \(A\), \(\alpha\in A\) given sets \(S_{\alpha}\neq \emptyset\)  \(\exists f:A{\rightarrow}\cup\limits_{\alpha\in A}S_{\alpha}\) s.t. \(\forall \alpha\in A\) \(f(\alpha)\in S_\alpha\)
+</p>
+
+<p>
+选择映射：从编号集到并集，满足每个编号都送到编号集里面
+</p></li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgcbc3ace" class="outline-4">
+<h4 id="orgcbc3ace"><span class="section-number-4">2.3.2.</span> 说明</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+<b>名称</b>
+</p>
+<div class="org-center">
+<p>
+4: Zorn's lemma(代数、分析，处理无限的？前提);
+5: Zermelo's well-ordering principle(任何一个集合良序化问后继);
+7: Axioms of choice
+</p>
+</div>
+
+<blockquote>
+<p>
+那个是定理？
+</p>
+
+<p>
+定理是上述说法等价。
+</p>
+</blockquote>
+
+<p>
+在良序（非空有最小）中讨论后继，
+\(\min\left\{ x\in X|a<x \right\}\) ,
+a 不是极大元素时有后继。
+</p>
+
+<p>
+后继是在良序中讨论的。
+</p>
+
+<p>
+在全序中，最多只有一个最大
+</p>
+
+<p>
+在其中没有后继的最多一个元素，即最小的
+</p>
+
+<p>
+不是总能用整数编上号（？找不到第一个）
+有很多造良序的方法（从自然数出发），不知道一个集合上具体的良序法则？
+</p>
+
+<p>
+?弹幕－字典排序法
+</p>
+
+<p>
+? 自然数公理也是用这个的？
+</p>
+</div>
+</div>
+<div id="outline-container-orga742e06" class="outline-4">
+<h4 id="orga742e06"><span class="section-number-4">2.3.3.</span> 证明</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+长路漫慢
+</p>
+
+<ul class="org-ul">
+<li><p>
+\(7\Rightarrow 1\)
+\(\mathscr{P}_0=\left\{ S|S\in \mathscr{P}_0 \right\}\),
+</p>
+
+<p>
+\((7)\Rightarrow \exists f:A\rightarrow \cup\limit_{\alpha\in A}S_{\alpha}\) s.t. \(f(\alpha)\in S_{\alpha}\)
+</p>
+
+<p>
+\(\exists f:\mathscr{P}_0\rightarrow S\) s.t. \(f(S)\in S\)
+</p></li>
+
+<li><p>
+\(1\Rightarrow2\)
+需要用不动点
+</p>
+
+<p>
+Assume that X has no maxinmal element
+i.e. \(\forall a\in X\)
+\(X_a:=\left\{ x\inX|a<x \right\}\neq\emptyset\)
+</p>
+
+<p>
+\((1)\Rightarrow\) \(\exists f\)
+<img src="选择公理/20240427210814.png" alt="20240427210814.png" />
+箭头表示（？可交换）两者合成等同于 g
+</p>
+
+<p>
+s.t. \(\forall X\subset S\neq \emptyset\) \(f(S)\in S\)
+</p>
+
+<p>
+\(\forall a\in X\) \(g(a)=f(X_a)\in X_a\)
+and hence \(a<g(a)\)
+</p>
+
+<p>
+与不动点（如果）矛盾
+</p></li>
+
+<li><p>
+\(2\Rightarrow3\) 
+偏序中所有良序子集有最小上界自己有最大 \(\Rightarrow\) 偏序中有极大链
+</p>
+
+<p>
+极大，我们就看所有的链
+</p>
+
+<p>
+Consider \(X=\left\{ C|C \text{ is a chain in P w.r.t.} \leq \right\}\)
+</p>
+
+<p>
+ Claim: <span class="underline">Any totally ordered set in X has a lub in X</span> 
+<span class="underline">If \(T\subset X\) is a totally ordered set,</span>
+ <span class="underline">\(\cup_{C\in T}C\) is \(\text{lub}_XT\) .</span>
+</p>
+
+<p>
+\((2)\Rightarrow\) X has a max elememt
+i.e. a maximal chain in P.
+</p></li>
+
+<li><p>
+\(3\Rightarrow4\)
+偏序一定有最大链 \(\Rightarrow\) 每个全序子集有上界这个偏序有最大
+</p>
+
+<p>
+\(3\Rightarrow\) \(\exists\) max chain C
+</p>
+
+<p>
+By assumption, C has an upper bound ,say a, in X.
+</p>
+
+<p>
+Then a is a max. element in X;
+otherwise
+</p>
+
+<p>
+\(\exists x\in X\) \(a<x\) and hence \(C\cup \left\{ x \right\}\) is a chain.
+maximality of C. 矛盾
+</p></li>
+
+<li><p>
+4 \(\Rightarrow\) 5
+偏序中每个链有极大，所以偏序有最大 \(\Rightarrow\) 偏序
+</p>
+
+<p>
+Let Y be a set.
+Consider \(Y:=\left\{ A|A=(S_A,\leq_A \text{where} S_A \wedge \leq_A \text{well-ordered}) \right\}\)
+We define a relation \(\preceq\) on X.:
+</p>
+
+<p>
+\(A\preceq B \Leftrightarrow A=B\) or A is IS of B
+i.e. $&exist; $
+</p>
+
+<p>
+<img src="选择公理/20240427213447.png" alt="20240427213447.png" />
+片段
+</p>
+
+<p>
+<span class="underline">Claim:</span>
+</p>
+<ol class="org-ol">
+<li>X has a maximal element w.r.t.</li>
+</ol></li>
+</ul>
+
+<blockquote>
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-27 Sat 21:37&gt; </span></span> 太难，暂时放一放
+</p>
+</blockquote>
+
+<p>
+<i>P23</i>
+</p>
+<p>
+证明有极大元素，极大是 A 不是 A
+</p>
+
+<p>
+域 \(K\) 上线性空间 \(V\) ，线性无关组（子集），生成子空间（所有生成的组合）
+\(\text{span}_KS=\left\langle S \right\rangle\)
+极大线性无关组；生成集： \(\left\langle S \right\rangle=V\)
+</p>
+<ol class="org-ol">
+<li>存在极大线性无关</li>
+<li>极大线性无关是一个生成集</li>
+</ol>
+
+<p>
+理想，极大存在（Zorn）
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-org2ec81f4" class="outline-2">
+<h2 id="org2ec81f4"><span class="section-number-2">3.</span> 分析的应用</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<i>证明非常容易</i> 不谈泛函分析
+</p>
+
+<p>
+<b>Hahn-Banach 定理</b>
+K(\(\mathbb{R}\))上向量空间X \(X \overset{p}{\rightarrow}\mathbb{R}\)
+满足线性： \(f(x+y)=f(x)+f(y);f(tx)=tf(x)\)
+</p>
+
+<p>
+对子空间 Y
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga0e54fb" class="outline-2">
+<h2 id="orga0e54fb"><span class="section-number-2">4.</span> 梳理一下课程</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+分析：
+</p>
+
+<p>
+向量空间：结合律、零元、分配律
+复分析－向量分析－傅里叶分析
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</div>
+</body>
+</html>

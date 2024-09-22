@@ -1,0 +1,3839 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-31 Sat 19:01 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>统计物理热力学作业汇总整理</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<main id="content" class="content">
+<h1 class="title">统计物理热力学作业汇总整理</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org95e8965">1. 1</a>
+<ul>
+<li><a href="#org5bd2171">1.1. 1.1 Fluctuations in a spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#orgfbe5017">1.2. 2.3 Tossing of dice&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#orgf2fa116">1.3. 2.5 The random walk problem&#xa0;&#xa0;&#xa0;<span class="tag"><span class="____">二项分布</span>&#xa0;<span class="easy">easy</span></span></a></li>
+<li><a href="#orgf918958">1.4. 2.14 Direct calculation of \(\overline{n}\) and \((\Delta n)^2\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></a></li>
+<li><a href="#org728d27b">1.5. 2.15 Density fluctuations in a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org4408074">2. 2</a>
+<ul>
+<li><a href="#org54f409a">2.1. 2.18 Estimate of error of measurement&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="____">均匀分布</span></span></a></li>
+<li><a href="#org5ba16ef">2.2. 2.19 Diffusion o f a molecule in a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#org5fba7e4">2.3. 3.1 Simple example of thermal interaction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#org4a92a45">2.4. 4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="____">数学技巧</span></span></a></li>
+<li><a href="#orge6e407a">2.5. 3.3 One spin in contact with a large spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#org3a771b0">2.6. 第一二章幻灯片整理</a></li>
+</ul>
+</li>
+<li><a href="#org8b1cc49">3. 3</a>
+<ul>
+<li><a href="#org13a69ab">3.1. 3.6  Pressure exerted by an ideal gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intricate">intricate</span></span></a></li>
+<li><a href="#org21c2631">3.2. 3.9 Number of states of a spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></a></li>
+<li><a href="#orgdf2dc9f">3.3. 4.6  Nuclear magnetic resonance absorption&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></a></li>
+<li><a href="#org796e8b5">3.4. 4.12 Quasi-static compression of a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span>&#xa0;<span class="____">绝热压缩</span></span></a></li>
+<li><a href="#orgd4eb55f">3.5. 4.16 Pressure and energy density of any ideal nonrelativistic gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></a></li>
+<li><a href="#orgac8783c">3.6. 第三章幻灯片整理</a></li>
+</ul>
+</li>
+<li><a href="#orge4a2c66">4. 4</a>
+<ul>
+<li><a href="#orgaba728c">4.1. 4.20 Partition function of an entire gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="__">推导</span></span></a></li>
+<li><a href="#org46bdf6b">4.2. 4.22 Mean energy of harmonic oscillator&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></a></li>
+<li><a href="#org71e47f2">4.3. 4.29 Dependence of energy on temperature for a spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="noraml">noraml</span>&#xa0;<span class="____">数学公式</span></span></a></li>
+<li><a href="#org65781bd">4.4. 5.4 Work done tn an adiabatic process&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="_">功</span></span></a></li>
+<li><a href="#orgb45b9c0">4.5. 5.14 Thermal interaction between two systems&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="___">热接触</span></span></a></li>
+<li><a href="#orgc39daf7">4.6. 第四章幻灯片整理</a></li>
+</ul>
+</li>
+<li><a href="#org378e515">5. 5</a>
+<ul>
+<li><a href="#org35f6d8d">5.1. 5.7 Heat absorbed by a system at constant pressure&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="__">定义</span></span></a></li>
+<li><a href="#org6eb21c0">5.2. 5.22 Energy fluctuations of a system in contact with a heat reservoir&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></a></li>
+<li><a href="#org801ad36">5.3. 6.2 Ideal gas in a gravitational field&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></a></li>
+<li><a href="#org2aae645">5.4. 6.5 Determination of large molecular weights by the ultracentrifuge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#orgfce9e47">5.5. 6.14 Calculation of mean values for a molecule in a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="____">速度分布</span></span></a></li>
+<li><a href="#org3a18b37">5.6. 5幻灯片整理</a></li>
+</ul>
+</li>
+<li><a href="#orgc0b86a2">6. 6</a>
+<ul>
+<li><a href="#org8222b0b">6.1. 6.19 Specific heat of anharmonic oscillators&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="__">气体</span></span></a></li>
+<li><a href="#org8eea469">6.2. 6.21 Quantum theory of the specific heat of solids&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="__">热容</span></span></a></li>
+<li><a href="#org6279970">6.3. 7.3 Work done on an ideal gas in a quasi-static adiabatic process</a></li>
+<li><a href="#org9bcd7a7">6.4. 7.4 Specific heat difference \(c_p\) — \(c_v\) of an ideal gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></a></li>
+<li><a href="#orge55af2c">6.5. 7.7 Equilibrium conditions for a system of fixed volume when it is in contact with a heat reservoir</a></li>
+<li><a href="#orgaa9ee35">6.6. 第六章幻灯片整理</a></li>
+</ul>
+</li>
+<li><a href="#org1fcc511">7. 7</a>
+<ul>
+<li><a href="#orgbcad92f">7.1. 7.12 Equilibrium between phases discussed in terms of chemical potential&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="____">定义代换</span></span></a></li>
+<li><a href="#org2b427fe">7.2. 7.14 Refrigerators</a></li>
+<li><a href="#org23382f5">7.3. 7.16 Maximum work obtainable from two identical systems&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intrinsic">intrinsic</span></span></a></li>
+<li><a href="#org308c3cf">7.4. 7.17 Ideal gas Carnot engine</a></li>
+<li><a href="#org4925f87">7.5. 第七章幻灯片整理</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+v0 <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-06-29 Sat 21:47&gt; </span></span> v0.5 <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-06-30 Sun 13:59&gt; </span></span> <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-07-01 Mon 20:35&gt; </span></span> v1 <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-07-01 Mon 23:08&gt; </span></span> v1.5
+</p>
+<div id="outline-container-org95e8965" class="outline-2">
+<h2 id="org95e8965"><span class="section-number-2">1.</span> 1</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org5bd2171" class="outline-3">
+<h3 id="org5bd2171"><span class="section-number-3">1.1.</span> 1.1 Fluctuations in a spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Consider an ideal system of 5 spins in the absence of an external magnetic field. Suppose that one took a movie of this spin system in equilibrium.
+What fraction of the movie frames would show \(n\) spins pointing up?
+Consider all the possibilities n = 0, 1, 2, 3, 4, and 5.
+</p>
+
+<p>
+\paragraph{Solution}
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">n</th>
+<th scope="col" class="org-right">0</th>
+<th scope="col" class="org-right">1</th>
+<th scope="col" class="org-right">2</th>
+<th scope="col" class="org-right">3</th>
+<th scope="col" class="org-right">4</th>
+<th scope="col" class="org-right">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">p</td>
+<td class="org-right">1/32</td>
+<td class="org-right">5/32</td>
+<td class="org-right">\(\binom{5}{2}\left( \frac{1}{2} \right)^{2+3}=\frac{5}{16}\)</td>
+<td class="org-right">5/16</td>
+<td class="org-right">5/32</td>
+<td class="org-right">1/32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-orgfbe5017" class="outline-3">
+<h3 id="orgfbe5017"><span class="section-number-3">1.2.</span> 2.3 Tossing of dice&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Assume that each face of a die is equally likely to land uppermost.
+Consider a game which involves the tossing of 5 such dice. Find the probability that the number "6" appears uppermost
+</p>
+</div>
+
+<div id="outline-container-orgd19a15d" class="outline-4">
+<h4 id="orgd19a15d"><span class="section-number-4">1.2.1.</span> in exactly one die,</h4>
+<div class="outline-text-4" id="text-1-2-1">
+\begin{equation*}
+\text{C}_5^1 \frac{1}{6}\frac{5^4}{6^4}=\frac{3125}{7776}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org7fdea17" class="outline-4">
+<h4 id="org7fdea17"><span class="section-number-4">1.2.2.</span> in at least one die,</h4>
+<div class="outline-text-4" id="text-1-2-2">
+\begin{equation*}
+1-\text{C}_5^0 \frac{5^5}{6^5}=\frac{4651}{7776}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org1f21447" class="outline-4">
+<h4 id="org1f21447"><span class="section-number-4">1.2.3.</span> in exactly two dice.</h4>
+<div class="outline-text-4" id="text-1-2-3">
+\begin{equation*}
+\text{C}_5^2 \frac{1\times 5^3}{6^5}=\frac{1250}{7776}
+\end{equation*}
+</div>
+</div>
+</div>
+
+
+
+<div id="outline-container-orgf2fa116" class="outline-3">
+<h3 id="orgf2fa116"><span class="section-number-3">1.3.</span> 2.5 The random walk problem&#xa0;&#xa0;&#xa0;<span class="tag"><span class="____">二项分布</span>&#xa0;<span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+A man starts out from a lamppost in the middle of a street, taking steps of equal length \(l\).
+The probability is \(p\) that any one of his steps is to the right, and \(q = 1 - p\) that it is to the left.
+The man is so drunk that his behavior at any step shows no traces of memory of what he did at preceding steps.
+His steps are thus statistically independent.
+Suppose that the man has taken \(N\) steps.
+</p>
+
+<p>
+(a) What is the probability \(P(n)\) that \(n\) of these steps are to the right and the remaining \(n' = (N-n)\) steps are to the left?
+</p>
+
+<p>
+(b) What is the probability \(P'(m)\) that the displacement of the man from the lamppost is equal to \(ml\), where \(m=n-n'\) is an integer?
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+SOLUTION
+</p>
+</div>
+<p>
+二项分布；二项分布净
+</p>
+</div>
+<div id="outline-container-orgee25344" class="outline-4">
+<h4 id="orgee25344"><span class="section-number-4">1.3.1.</span> Calculate probability \(P(n)\) of \(n\) to the right&#xa0;&#xa0;&#xa0;<span class="tag"><span class="________">基本数学关系推导</span></span></h4>
+<div class="outline-text-4" id="text-1-3-1">
+\begin{gather*}
+P(n)=\boxed{\binom{N}{n}p^n(1-p)^{N-n}}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org06f6c9a" class="outline-4">
+<h4 id="org06f6c9a"><span class="section-number-4">1.3.2.</span> Calculate probability \(P'(m)\) of net \(m\) to left&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-1-3-2">
+\begin{gather*}
+m=n-n' \rightarrow n=m+n'=m+N-n \rightarrow n=\frac{m+N}{2} \\
+P'(m) = P \left( \frac{m+N}{2} \right) = \boxed{\binom{N}{\frac{m+N}{2}}p^{\frac{m+N}{2}}(1-p)^{\frac{N-m}{2}}}
+\end{gather*}
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf918958" class="outline-3">
+<h3 id="orgf918958"><span class="section-number-3">1.4.</span> 2.14 Direct calculation of \(\overline{n}\) and \((\Delta n)^2\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Consider an ideal system of \(N\) identical spins The number \(n\) of magnetic moments which point in the up direction can then be in the form
+</p>
+\begin{equation*}
+\tag{i}
+n=u_1+u_1+\cdots+u_N
+\end{equation*}
+<p>
+when \(u_i = 1\) if the ith magnetic moment points up and \(u_i = 0\) if its points down.
+Use the expression (i) and the fact that the spins are statistically independent to establish the following results.
+</p>
+</div>
+
+<div id="outline-container-orgeff5c70" class="outline-4">
+<h4 id="orgeff5c70"><span class="section-number-4">1.4.1.</span> Prove \(\overline{n}=N\overline{u}\).</h4>
+<div class="outline-text-4" id="text-1-4-1">
+<p>
+\paragraph{Proof}
+</p>
+\begin{gather*}
+n=\sum\limits_{j=1}^{N}u_j \\
+\boxed{\overline{n}} = \overline{\sum_{j=1}^{N}u_j}=\sum\limits_{j=1}^{N}\overline{u_j}=\boxed{N \overline{u}} \blacksquare
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-orgb1a9c3f" class="outline-4">
+<h4 id="orgb1a9c3f"><span class="section-number-4">1.4.2.</span> Prove \(\overline{(\Delta n)^2}=N \overline{(\Delta u)^2}\).</h4>
+<div class="outline-text-4" id="text-1-4-2">
+<p>
+\paragraph{Proof}
+</p>
+\begin{gather*}
+\Delta n= \sum\limits_{j=1}^{N}\Delta u_j \\
+\begin{split}
+{(\Delta n)^2}
+&= \left( \sum\limits_{i=1}^{N}\Delta u_i \right)\times \left( \sum\limits_{j=1}^{N}\Delta u_j \right)\\
+&= \sum\limits_{j=1}^{N}\Delta u_j^2+\sum\limits_{j=1}^{N}\sum\limits_{i=1,j\ne i}^{N}\Delta u_j \Delta u_{i} 
+\end{split}\\
+\begin{split}
+\boxed{\overline{(\Delta n)^2}} &= \text{E}\left[ \sum\limits_{j=1}^{N}\Delta u_j^2+\sum\limits_{j=1}^{N}\sum\limits_{i=1,j\ne i}^{N}\Delta u_j \Delta u_{i}\right] \\
+&= \text{E}\left[ \sum\limits_{j=1}^{N}\Delta u_j^2 \right] = \sum\limits_{j=1}^{N} \overline{\Delta u_j^2} \\
+&=\boxed{N \overline{(\Delta u)^2}}
+\end{split}
+\blacksquare
+\end{gather*}
+
+<p>
+\paragraph{解}\(E\left[\sum_{j=1}^{N}\sum_{i=1,j\ne i}^{N}\Delta u_j \Delta u_{i}\right]\) 固定一个（比如 j），将一个先求和 \(\sum_{j=1}^{N}\Delta u_j (\sum_{i=1,j\ne i}^{N} \Delta u_{i})\)，则可见 \(\sum_{i=1,j\ne i}^{N} \Delta u_{i} =0\)
+</p>
+
+<p>
+另一解法\footnote{在 N 次方上有点问题}
+</p>
+\begin{gather*}
+\overline{(\Delta n)^2}
+=E((\sum u -N \bar{u})^2)\\
+=E((\sum u)^2)+E((N\bar{u})^2)-E(2N\bar{u}\sum u)\\
+=E(\sum u_j^2+\sum_{j\neq i} u_ju_{i})+N^2\overline{\bar{u}^2}-2N^2\bar{u}^2 \\
+=E(\sum u_j^2)-N^2\bar{u}^2=N(\overline{u^2}-\bar{u}^2)
+=N \overline{(\Delta u)^2}
+\end{gather*}
+</div>
+</div>
+
+
+<div id="outline-container-orgd463559" class="outline-4">
+<h4 id="orgd463559"><span class="section-number-4">1.4.3.</span> Suppose that a magnetic moment has probability \(p\) of pointing up and probability \(q=1-p\) of pointing down. Find \(\overline{u}\) and \(\overline{(\Delta u)^2}\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">定义</span></span></h4>
+<div class="outline-text-4" id="text-1-4-3">
+<p>
+\paragraph{SOLUTION}
+</p>
+\begin{gather*}
+\overline{u}=p\times 1+q\times0=p \\
+ \overline{(\Delta u)^2} = p(1-p)^2+q(0-p)^2=p(1-p)=pq
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org3df3de9" class="outline-4">
+<h4 id="org3df3de9"><span class="section-number-4">1.4.4.</span> Calculate \(\bar{n}\) and \(\overline{(\Delta n)^2}\) and show that your results agree with the relations (66) and (67) found in the text by a less direct method.&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-1-4-4">
+<hr />
+<blockquote>
+\begin{equation*}
+\bar{m}=N(p-q)=N(2p-1)\tag{61}
+\end{equation*}
+
+\begin{equation*}
+\tag{62}\overline{(\Delta m)^{2}}=4Npq
+\end{equation*}
+
+<p>
+&#x2026;&#x2026;
+</p>
+\begin{equation*}
+\tag{65}n=\frac{1}{2}(N+m)
+\end{equation*}
+<p>
+Using the result (61) for \(\overline{m}\),we then obtain
+\[\bar{n}=\frac{1}{2}(N+\overline{m})=\frac{1}{2}N(1+p-q)\]
+or \(n=\frac{1}{2}(N+m)\).
+</p>
+\begin{equation*}
+\tag{66}\boxed{\bar{n}=Np}
+\end{equation*}
+<p>
+since \(q=1-p\). Furthermore, we obtain from (65) the relation
+\[\Delta n\equiv n-\bar{n}=\frac{1}{2}(N+m)-\frac{1}{2}(N+\overline{m})=\frac{1}{2}[m-\overline{m}]\]
+or \(\Delta n=\frac{1}{2}\Delta m\)
+Hence \(\overline{(\Delta n)^{2}}=\frac{1}{4}\overline{(\Delta m)^{2}}\)
+and (62) implies that
+</p>
+\begin{equation*}
+\tag{67}\boxed{( \Delta n) ^{2}= Npq}
+\end{equation*}
+<p>
+&#x2026;&#x2026;
+</p>
+</blockquote>
+<hr />
+<p>
+\paragraph{SOLUTION}
+</p>
+\begin{gather*}
+\overline{n}=N\overline{u}=Np \\
+\overline{(\Delta n)^2} = N \overline{(\Delta u)^2} =Npq
+\end{gather*}
+
+<p>
+基本数学关系推导
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org728d27b" class="outline-3">
+<h3 id="org728d27b"><span class="section-number-3">1.5.</span> 2.15 Density fluctuations in a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Consider an ideal gas of \(N\) molecules which is in equilibrium within a container of volume \(V_0\).
+Denote by \(n\) the number of molecules located within any subvolume \(V\) of this container.
+The probability \(p\) that a given molecule is located within this subvolume \(V\) is then given by \(p = V/V_0\).
+</p>
+
+<p>
+(a) What is the mean number of molecules located within \(V\)? Express your answer in terms of \(N, V_0\), and \(V\).
+</p>
+
+<p>
+(b) Find the standard deviation \(\underset{\sim}{\Delta}n\) in the number of molecules located within the subvolume \(V\). Hence calculate \(\underset{\sim}{\Delta}n/\overline{n}\), expressing your answer in terms of \(N, V_0\), and \(V\).
+</p>
+
+<p>
+(c) What does the answer to part (b) become when \(V \ll V_0\)?
+</p>
+
+<p>
+(d) What value should the standard deviation An assume when \(V\to V_0\)? Does the answer to part (b) agree with this expectation?
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+SOLUTION
+</p>
+</div>
+</div>
+<div id="outline-container-orgc4ddb0f" class="outline-4">
+<h4 id="orgc4ddb0f"><span class="section-number-4">1.5.1.</span> Express mean number of molecules in \(V\) in terms of \(N,V_0,V\).</h4>
+<div class="outline-text-4" id="text-1-5-1">
+\begin{gather*}
+\overline{n}
+=\sum\limits_{n=0}^{N}n\binom{N}{n}p^n(1-p)^{N-n} =np
+=\boxed{N \frac{V}{V_0}}
+\end{gather*}
+</div>
+</div>
+
+
+<div id="outline-container-orga958379" class="outline-4">
+<h4 id="orga958379"><span class="section-number-4">1.5.2.</span> Find standard deviation \(\underset{\sim}{\Delta}n\) and \(\underset{\sim}{\Delta}n/\overline{n}\)</h4>
+<div class="outline-text-4" id="text-1-5-2">
+\begin{gather*}
+D(n)=Npq=\boxed{N \frac{V}{V_0}(1-\frac{V}{V_0})} \\
+{\frac{\underset{\sim}{\Delta}n}{\overline{n}}}=\frac{\sqrt{D(n)}}{\overline{n}}=\frac{\sqrt{Npq}}{Np}
+=\boxed{\frac{1}{\sqrt{N}}\sqrt{\frac{V_0}{V}-1}}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org0c97e80" class="outline-4">
+<h4 id="org0c97e80"><span class="section-number-4">1.5.3.</span> Find limit when \(V \ll V_0\) ?&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-1-5-3">
+\begin{equation*}
+V \ll V_0 \Rightarrow \frac{V_0}{V} \gg 1 
+\Rightarrow \frac{1}{\sqrt{N}}\sqrt{\frac{V_0}{V}-1}\rightarrow \infty \Rightarrow \boxed{\frac{\underset{\sim}{\Delta}n}{\overline{n}} \rightarrow \infty}
+\end{equation*}
+<p>
+\paragraph{注}凡远远大者，趋于无穷。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge71690d" class="outline-4">
+<h4 id="orge71690d"><span class="section-number-4">1.5.4.</span> Find \(\underset{\sim}{\Delta}n\) when \(V\to V_0\)? Does the answer agree with this expectation?</h4>
+<div class="outline-text-4" id="text-1-5-4">
+\begin{equation*}
+V\rightarrow V_0 \Rightarrow \frac{V_0}{V} \to 1 
+\Rightarrow \frac{1}{\sqrt{N}}\sqrt{\frac{V_0}{V}-1}\rightarrow 0 \Rightarrow \boxed{\frac{\underset{\sim}{\Delta}n}{\overline{n}}\to0}
+\end{equation*}
+
+<p>
+We expect it to be 0.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org4408074" class="outline-2">
+<h2 id="org4408074"><span class="section-number-2">2.</span> 2</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org54f409a" class="outline-3">
+<h3 id="org54f409a"><span class="section-number-3">2.1.</span> 2.18 Estimate of error of measurement&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="____">均匀分布</span></span></h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+A man attempts to lay off a distance of 50 meters by placing a meter
+stick end to end 50 times in succession.
+This procedure is necessarily accompanied by some error.
+Thus the man cannot guarantee a distance of precisely one meter between the two chalk marks which he makes each time he places
+the meter stick on the ground.
+He knows, however, that the distance between the two marks is equally likely to lie anywhere between 99.8 and 100.2 cm, and that it certainly does not lie outside these limits. After repeating the operation 50 times, the man will indeed have laid off a mean distance of 50 meters.
+To estimate his total error, calculate the standard deviation of his measured distance.
+</p>
+
+<hr />
+<p>
+\paragraph{Solution}
+Every time, the length is between 99.8 and 100.2 cm.
+</p>
+
+<p>
+The max error is \(|99.8-100|=|100.2-100|=0.2\)
+If randomly choose from the range, we can derive the average of error
+due to its length being equally alike.
+\(\overline{\varepsilon}=0\), \(PDF(\varepsilon)=\frac{1}{0.4}\)
+</p>
+\begin{gather*}
+\overline{\varepsilon}=\int_{-0.2}^{0.2}\varepsilon P(\varepsilon)\mathrm{d}\varepsilon=\int_{-0.2}^{0.2}\frac{\varepsilon}{0.4}\mathrm{d}\varepsilon=\frac{\varepsilon^2}{0.2}\bigg|_{-0.2}^{0.2}=0 \\
+\begin{aligned}
+\sigma^2(\varepsilon) &
+= \int_{-0.2}^{0.2}\varepsilon^2P(\varepsilon)\mathrm{d}\varepsilon=\int_{-0.2}^{0.2}\frac{\varepsilon^2}{0.4}\mathrm{d}\varepsilon\\
+\sigma(\varepsilon) &= \sqrt{50\sigma^2}=0.82
+\end{aligned}
+\end{gather*}
+<p>
+\paragraph{解}难懂－均匀分布算标准差。
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org5ba16ef" class="outline-3">
+<h3 id="org5ba16ef"><span class="section-number-3">2.2.</span> 2.19 Diffusion o f a molecule in a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+A molecule in a gas is free to move in three dimensions.
+Let s denote its displacement between successive collisions with other molecules. Displacements of the molecule between successive collisions are, to fair approximation,statistically independent.
+Furthermore, since there is no preferred direction in space, a molecule is as likely to move in a given direction as in the opposite direction. Thus its mean displacement \(s = 0\) (i.e., each component of this displacement vanishes on the average so that \(s_x = s_y = s_z - 0\) ).
+The total displacement \(R\) of the molecule after \(N\) successive displacements can then be written as
+</p>
+\begin{equation*}
+R=s_1+s_2+s_3+\cdots+s_{N}
+\end{equation*}
+<p>
+where \(s_{i}\) denotes the ith displacement of the molecule.
+Use reasoning similar to that of Sec. 2.5 to answer the following questions:
+</p>
+<blockquote>
+<p>
+2.5 Calculation of Mean Values for a Spin System
+</p>
+</blockquote>
+</div>
+
+
+<div id="outline-container-org3c29f7a" class="outline-4">
+<h4 id="org3c29f7a"><span class="section-number-4">2.2.1.</span> What is the mean displacement \(\bar{R}\) of the molecule after \(N\) displacements?</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+\paragraph{Solution}
+</p>
+\begin{equation*}
+\overline{R}=\sum \overline{s}_j=\sum (0.5\cdot1+0.5\cdot(-1))=\boxed{0}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org15deff5" class="outline-4">
+<h4 id="org15deff5"><span class="section-number-4">2.2.2.</span> What is the standard deviation \(\underset{\texttildelow}{\Delta}R = \overline{(R -\bar{R})^2}\) of this displacement after \(N\) collisions? In particular, what is \(\underset{\texttildelow}{\Delta}R\) if the magnitude of each displacement \(s\) has the same length \(l\) ?</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+\paragraph{Solution}
+</p>
+\begin{align*}
+\sigma^2(R) = \sum \overline{s^2_j} - \sum \overline{s}^2_j=N \\
+\sigma(R) = \sqrt{N}
+\end{align*}
+<p>
+If each displacement \(s\) has the length \(l\)
+</p>
+\begin{equation*}
+\boxed{\sigma=\sqrt{N}l}
+\end{equation*}
+<p>
+\paragraph{解}难懂－算标准差
+\paragraph{注}不言自明假定
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org5fba7e4" class="outline-3">
+<h3 id="org5fba7e4"><span class="section-number-3">2.3.</span> 3.1 Simple example of thermal interaction&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Consider the system of spins described in Table 3.3. Suppose that, when the systems A and A ' are initially separated from each other, measurements show the total magnetic moment of A to be \(-3\mu\) and the total magnetic moment of A' to be +4\(\mu\) The systems are now placed in thermal contact with each other and are allowed to exchange energy until the final equilibrium situation has been reached.
+</p>
+
+<div id="orge2b8902" class="figure">
+<p><img src="stat_t2/20240629224117.png" alt="20240629224117.png" />
+</p>
+</div>
+
+<p>
+Under these conditions calculate:
+</p>
+
+<p>
+(a) The probability \(P(M)\) that the total magnetic moment of A assumes any one of its possible values M.
+</p>
+
+<p>
+(b) The mean value \(\bar{M}\) of the total magnetic moment of A.
+</p>
+
+<p>
+(c) Suppose that the systems are now again separated so that they are no longer free to exchange energy with each other. What are the values of \(P(M)\) and \(\bar{M}\) of the system A after this separation?
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+SOLUTION
+</p>
+</div>
+
+<ul class="org-ul">
+<li>system \(A\)  : \(-3\mu\) 3</li>
+<li>system \(A'\) : \(+4\mu\) 2</li>
+</ul>
+<p>
+equilibrium \(+\mu\)  
+</p>
+</div>
+<div id="outline-container-orgc877ce1" class="outline-4">
+<h4 id="orgc877ce1"><span class="section-number-4">2.3.1.</span> Express \(P(M)\)</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">A</th>
+<th scope="col" class="org-left">\(---\)</th>
+<th scope="col" class="org-left">\(-++\)</th>
+<th scope="col" class="org-left">\(+ -+\)</th>
+<th scope="col" class="org-left">\(++-\)</th>
+<th scope="col" class="org-left">\(-++\)</th>
+<th scope="col" class="org-left">\(+ -+\)</th>
+<th scope="col" class="org-left">\(++-\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">A'</td>
+<td class="org-left">\(++\)</td>
+<td class="org-left">\(+-\)</td>
+<td class="org-left">\(+-\)</td>
+<td class="org-left">\(+-\)</td>
+<td class="org-left">\(-+\)</td>
+<td class="org-left">\(-+\)</td>
+<td class="org-left">\(-+\)</td>
+</tr>
+</tbody>
+</table>
+
+\begin{align*}
+P(M_A=-3\mu) &=\frac{1}{\binom{3}{2}\binom{2}{1}+1}=\frac{1}{7} \\
+P(M_A=+\mu) &=\frac{\binom{3}{2}\binom{2}{1}}{7}=\frac{6}{7}
+\end{align*}
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">A</th>
+<th scope="col" class="org-left">\(-3\mu\)</th>
+<th scope="col" class="org-left">\(+\mu\)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">P</td>
+<td class="org-left">1/7</td>
+<td class="org-left">6/7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-org209471a" class="outline-4">
+<h4 id="org209471a"><span class="section-number-4">2.3.2.</span> Calculate \(\bar{M}\)</h4>
+<div class="outline-text-4" id="text-2-3-2">
+\begin{equation*}
+\overline{M}=\sum M_j P(M_j)=(-3\mu) \frac{1}{7}+ \mu \frac{6}{7}= \boxed{\frac{3}{7}\mu}
+\end{equation*}
+</div>
+</div>
+<div id="outline-container-orgf968787" class="outline-4">
+<h4 id="orgf968787"><span class="section-number-4">2.3.3.</span> Calculate \(\bar{M}\) after seperation</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<p>
+Seperate energy is \(M=n\overline{M}=3\times \frac{3}{7}\mu=\frac{9}{7}\)
+</p>
+\begin{align*}
+P(M_A=-3\mu) &=\frac{1}{7} \\
+P(M_A=+\mu) &=\frac{6}{7} \\
+\overline{M} &=\boxed{\frac{3}{7}\mu}
+\end{align*}
+<p>
+same as before
+</p>
+
+<p>
+\paragraph{解}根据总能量给出可以出现的情况，单个情况事等可能的（ Postulate of equal a priori probabilities
+等先验概率假设），概率即某一类所有基本事件除以总。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4a92a45" class="outline-3">
+<h3 id="org4a92a45"><span class="section-number-3">2.4.</span> 4&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="____">数学技巧</span></span></h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+The probability \(W(n)\) that an event characterized by a probability \(p\) occurs \(n\) times in \(N\) trials was shown to be given by the binomial distribution
+</p>
+
+\begin{equation*}
+\tag{1} W(n)\:=\:\frac{N!}{n!(N\:-\:n)\:!}\:p^n(1\:-\:p)^{N-n}
+\end{equation*}
+
+<p>
+Consider a situation where the probability \(p\) is small \((p\ll1)\) and where one is interested in the case \(n\ll N\). (Note that if \(N\) is large, \(W(n)\) becomes very small if \(n\to N\) because of the smallness of the factor \(p^n\) when \(p\ll 1\) . Hence \(W(n)\) is indeed only appreciable when \(n\ll N\) . )Several approximations can then be made to reduce (1) to simpler form.
+</p>
+</div>
+
+<div id="outline-container-org7bbcd06" class="outline-4">
+<h4 id="org7bbcd06"><span class="section-number-4">2.4.1.</span> Using the result \(\ln(1-p)\approx-p\), show that \((1-p)^{N-n}\approx e^{-Np}\).</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+\paragraph{Proof}
+</p>
+\begin{gather*}
+x\rightarrow 1,\ln x\approx x-1 \\
+1-p\rightarrow 1,\ln 1-p \approx 1-p-1=-p \\
+(1-p)^{N-n}=\mathrm{e}^{(N-n)\ln (1-p)}\approx \mathrm{e}^{(N-n)(-p)}\overset{n\ll N}{\approx} \mathrm{e}^{-Np}
+\quad\blacksquare
+\end{gather*}
+
+<p>
+\paragraph{注}要用对数，就用 e 把原本项放到指数位置上做变换——数学技巧
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6b504ba" class="outline-4">
+<h4 id="org6b504ba"><span class="section-number-4">2.4.2.</span> Show that \(N!/(N-n)!\approx N^{n}\)</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+\paragraph{Proof}
+\(p\ll 1,n\ll N\)
+</p>
+\begin{gather*}
+\frac{N!}{(N-n)!} =N(N-1)\cdots(N-(n-1))\approx N^n
+\quad\blacksquare
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-orgca9de7d" class="outline-4">
+<h4 id="orgca9de7d"><span class="section-number-4">2.4.3.</span> Hence show that</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<p>
+(1) reduces to
+</p>
+\begin{equation*}\tag{2}
+W(n)\:=\:\frac{\lambda^{n}}{n!}\:e^{-\lambda}
+\end{equation*}
+<p>
+where \(\lambda\equiv Np\) is the mean number of events. The distribution (2) is called the “Poisson distribution".
+\paragraph{Proof}
+</p>
+\begin{equation*}
+\begin{split}
+W(n)&=\frac{N!}{n!(N-n)!}p^n(1-p)^{N-n}\\
+&\overset{(a)}{\approx}\frac{N!}{n!(N-n)!}p^n \mathrm{e}^{-Np}\overset{(b)}{\approx}\frac{p^nN^n}{n!}\mathrm{e}^{-Np}\\
+&\overset{\lambda:=Np}{=\!=\!=\!=} \frac{\lambda^n}{n!}\mathrm{e}^{-\lambda} \quad\blacksquare
+\end{split}
+\end{equation*}
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge6e407a" class="outline-3">
+<h3 id="orge6e407a"><span class="section-number-3">2.5.</span> 3.3 One spin in contact with a large spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Generalize the preceding problem by considering the case where the system \(A^{\prime}\) consists of some arbitrarily large number \(N\) of spins \(\frac12\), each having magnetic moment \(\mu_0\). The system \(A\) consists again of a single spin \(\frac12\) with magnetic moment \(\mu _{0}\). Both \(A\) and \(A^\prime\) are located in the same magnetic field B and are placed in contact with each other so that they are free to exchange energy. When the moment of A points up, \(n\) of the moments of \(A^\prime\) point up and the remaining \(n^\prime=N-n\) of the moments of \(A^\prime\) point down.
+</p>
+
+<p>
+\((a)\) When the moment of A points up, find the number of states accessible to the combined system \(A+ A^{\prime }\). This is, of course, just the number of ways in which the N spins of A' can be arranged so that \(n\) of them point up and \(n^\prime\) of them point down.
+</p>
+
+<p>
+\((b)\) Suppose now that the moment of A points down. The total energy of the combined system \(A+A^{\prime}\) must, of course, remain unchanged. How many of the moments of \(A^\prime\) now point up, and how many of them point down? Correspondingly, fnd the number of states accessible to the combined system \(A+A^\prime\).
+</p>
+
+<p>
+(c) Calculate the ratio \(P_-/P_+\), where \(P_-\) is the probability that the moment of \(A\) points down and \(P_+\) is the probability that it points up. Simplify your result by using the fact that \(n\gg1\) and \(n^\prime\gg1\). Is the ratio \(P_-/P_+\) larger or smaller than unity if \(n>n^\prime\)?
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+SOLUTION
+</p>
+</div>
+<p>
+\paragraph{Solution}
+</p>
+<ul class="org-ul">
+<li>\(A'\): N:  \(\mu_0\); \(n\) up , \(n'=N-n\) down.</li>
+<li>\(A\) : 1:  \(-\mu_0\)</li>
+</ul>
+</div>
+
+<div id="outline-container-org96d02f0" class="outline-4">
+<h4 id="org96d02f0"><span class="section-number-4">2.5.1.</span> Find number of pointing up</h4>
+<div class="outline-text-4" id="text-2-5-1">
+\begin{equation*}
+\#=\binom{N}{n}=\frac{N!}{n!(N-n)!}
+\end{equation*}
+</div>
+</div>
+<div id="outline-container-orgc4207c0" class="outline-4">
+<h4 id="orgc4207c0"><span class="section-number-4">2.5.2.</span> Find accessible states of \(A+A'\)</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<ul class="org-ul">
+<li>When the moment of A points up: \(E_1=-n\mu_0B+(N-n)\mu_0B-\mu_0B=(N-2n-1)m_0B\)</li>
+<li>When the moment of A points down: \(E_2=\mu_0B+n'\mu_0B-\mu_0nB=(2n'+1-N)\mu_0B\)</li>
+</ul>
+
+<p>
+counting gives
+</p>
+<ul class="org-ul">
+<li>\(A' -:N-n-1\)</li>
+<li>\(A' +: n+1\)</li>
+</ul>
+
+<p>
+By \(E'_A\) , we solve that n+1 of A’ point up and (N-n-1) point down
+the number of states accessible to the combined system :
+\(\boxed{\frac{N!}{(n+1)!(N-n-1)!}}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgbaa7337" class="outline-4">
+<h4 id="orgbaa7337"><span class="section-number-4">2.5.3.</span> Calculate ratio \(P_-/P_+\)</h4>
+<div class="outline-text-4" id="text-2-5-3">
+\begin{equation*}
+\begin{split}
+\frac{P_-}{P_+}
+&=\frac{\binom{N}{n+1}/2^{N}}{\binom{N}{n'}/2^{N}} \\
+&=\frac{\frac{N!}{(n+1)!(N-n-1)!}}{\frac{N!}{n!(N-n)!}} =\frac{n'}{n+1} \\
+&\approx \frac{n'}{n}
+\end{split}
+\end{equation*}
+
+<p>
+\(n>n'\Rightarrow \frac{P_-}{P_+}<1\) so it's smaller (than unity).
+\paragraph{解}相当于整个系统单独拿出一个粒子
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+<b>第一、二章</b>
+</p>
+
+<p>
+Characteristic Features of Macroscopic Systems
+</p>
+
+<p>
+&amp;
+</p>
+
+<p>
+Basic Probability Concepts
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org3a771b0" class="outline-3">
+<h3 id="org3a771b0"><span class="section-number-3">2.6.</span> 第一二章幻灯片整理</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+基础概率（平均、均值的和、独立性均值）、二项分布、系统（孤立绝热）
+</p>
+
+<p>
+用磁矩（上下）为例算分布、均值、方差、涨落（相对差）
+</p>
+
+<p>
+二项分布结论：
+</p>
+\begin{align*}
+\bar{n}=Np\\
+\sigma^2(n)=Np(1-p)\\
+\sigma(n)=\sqrt{Np(1-p)}\\
+\frac{\sigma(n)}{\bar{n}}=\sqrt{\frac{1-p}{p} \frac{1}{N}}
+\end{align*}
+
+<p>
+磁矩：
+</p>
+
+\begin{gather*}
+\bar{M}=N\bar{\mu}=N(p-q)\mu_0 \\
+m=\frac{M}{\mu_0},\bar{m}=N(p-q)
+\end{gather*}
+
+<p>
+系综 ensemble: 当前系统在当前状态下，可以满足的所有状态集合 we contemplate an assembly (or an ensemble, in more customary termi­
+nology) consisting of some very large number J f of “similar” systems.In principle, J f is imagined to be arbitrarily large . The
+systems are supposed to be “similar” in the sense that each system satisfies the same conditions known to be satisfied by the system A.
+</p>
+
+<hr />
+</div>
+</div>
+</div>
+<div id="outline-container-org8b1cc49" class="outline-2">
+<h2 id="org8b1cc49"><span class="section-number-2">3.</span> 3</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org13a69ab" class="outline-3">
+<h3 id="org13a69ab"><span class="section-number-3">3.1.</span> 3.6  Pressure exerted by an ideal gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intricate">intricate</span></span></h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Consider a single particle, of mass m, confined within a box of edge lengths \(L_x, L_y, L_z\). Suppose that this particle is in a particular quantum state r specified by particular values of the three quantum numbers \(nx, ny, nz\). The energy \(E_r\) of this state is then given by (15).
+</p>
+<blockquote>
+\begin{equation*}
+E=\frac{\pi^{2}\hbar^{2}}{2m}\left(\frac{n_{x}{}^{2}}{L_{x}{}^{2}}+\frac{n_{y}{}^{2}}{L_{y}{}^{2}}+\frac{n_{z}{}^{2}}{L_{z}{}^{2}}\right)\tag{15}
+\end{equation*}
+</blockquote>
+<p>
+When the particle is in the particular state r, it exerts on the right wall of the box (i.e., the wall \(x = L_x\)) some force \(F_r\) in the x direction. This wall must then exert on the particle a force \(-F_r\) (i.e., in the \(-x\) direction). If the right wall of the box is slowly moved to the right by an amount dLx, the work performed on the particle in this state is thus \(-F_r dLx\) and must be equal to the increase in energy \(dE_r\) of the particle in this state. Thus one has
+</p>
+\begin{equation*}
+\tag{i}
+dE_r=-F_rdL_x.
+\end{equation*}
+
+<p>
+The force \(F_\tau\) exerted by a particle in the state \(r\) is thus related to the energy \(E_r\) of the particle in this state by
+</p>
+\begin{equation*}
+\tag{ii}
+F_{r}=-\frac{\partial E_{r}}{\partial L_{x}}
+\end{equation*}
+
+<p>
+Here we have written a partial derivative since the dimensions \(L_{y}\) and \(L_{z}\) are
+</p>
+
+<p>
+(a) Using (ii) and the expression (15) for the energy, calculate the force \(F\) exerted by the particle on the right wall when the particle is in a state specified by given values of \(n_x, n_y\), and \(n_z\).
+</p>
+
+<p>
+(b) Suppose that the particle is not isolated, but is one of the many particles which constitute a gas confined within the container. The particle, being able to interact weakly with the other particles, can then be in any one of many posforce \(\bar{F}\) exerted by the particle in terms of \(\overline n_{x}^{2}\). For simplicity, assume that the box is cubic so that \(L_x=L_y=L_z=L\) the symmetry of the situation then imthe particle.
+</p>
+
+<p>
+(c) If there are \(N\) similar particles in the gas, the mean force exerted by all of them is simply \(N\bar{F}\). Hence show that the mean pressure \(\bar{p}\) of the gas (i.e., the mean force exerted by the gas per unit area of the wall) is simply given by
+</p>
+\begin{equation*}
+\tag{iii}
+\overline{p}=\frac{2}{3}\frac{N}{V}E
+\end{equation*}
+<p>
+where \(\bar{E}\) is the mean energy of one particle in the gas.
+</p>
+
+<p>
+(d) Note that the result (iii) agrees with that derived in (1.21) on the basis of approximate arguments using classical mechanics.
+</p>
+<blockquote>
+\begin{equation*}
+\tag{1.21}\bar{p}\approx\frac{2}{3}n\overline{\epsilon^{(k)}}
+\end{equation*}
+</blockquote>
+
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org178beb2" class="outline-4">
+<h4 id="org178beb2"><span class="section-number-4">3.1.1.</span> Calculate force \(F\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">定义</span></span></h4>
+<div class="outline-text-4" id="text-3-1-1">
+\begin{align*}
+E&=\frac{\pi^2\hbar^2}{2m}\left( \frac{n^2_x}{L^2_x}+ \frac{n^2_y}{L^2_y}+ \frac{n^2_z}{L^2_z} \right) \\
+F_x&=- \frac{\partial E}{\partial L_x}
+=-\frac{\pi^2\hbar^2}{2m}\frac{-2n^2_x}{L^3_x}
+=\boxed{\frac{\pi^2\hbar^2}{m}\frac{n^2_x}{L^3_x}}
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-org5bea94b" class="outline-4">
+<h4 id="org5bea94b"><span class="section-number-4">3.1.2.</span> Express \(F\) by \(\overline{E}\).&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+The average force is same on every direction, so \(F_r\) equals to \(F_x\)
+</p>
+\begin{equation*}
+F_r=\frac{\pi^2\hbar^2}{m}\frac{n^2_x}{L^3_x}
+\end{equation*}
+
+<p>
+Given the variables, with \(n\) in every dirction share same average, I get 
+</p>
+\begin{gather*}
+\overline{E}=\frac{\pi^2\hbar^2}{2m}\frac{3\overline{n}^2_0}{L^2}\\
+F_r=\frac{\pi^2\hbar^2}{m}\frac{n^2_x}{L^3_x}=\frac{\pi^2\hbar^2}{m}\frac{\overline{n}^2}{L^3}
+=\boxed{\frac{2}{3L}\overline{E}}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org53c1e23" class="outline-4">
+<h4 id="org53c1e23"><span class="section-number-4">3.1.3.</span> Prove mean pressure relation</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+\(F_r\) is force by a single molecular
+</p>
+\begin{gather*}
+p=\frac{\overline{F}}{S}=\frac{\sum F_r}{V/L}=\frac{LN F_r }{V}=\frac{NL}{V}\frac{2}{3L}\overline{E}=\frac{2}{3}\frac{N}{V}\overline{E}
+\end{gather*}
+
+<p>
+\paragraph{S2}
+</p>
+\begin{gather*}
+\begin{aligned}
+\mathrm{Mean~force~on~}L_{y}L_{z}:~N\overline{F}&=\frac{2N\overline{E}}{3L}\\
+\mathrm{Pressure:~}\overline{P}&=\frac{N\overline{F}}{L_{y}L_{z}}=\frac{2N\overline{E}}{3V}
+\end{aligned}
+\end{gather*}
+
+<p>
+\paragraph{解}在 \(L_{y}L_{z}\) 面上即 \(L_x\) 力，直接使用 \(p=F/S\) 求解
+</p>
+</div>
+</div>
+<div id="outline-container-org759639d" class="outline-4">
+<h4 id="org759639d"><span class="section-number-4">3.1.4.</span> 4</h4>
+<div class="outline-text-4" id="text-3-1-4">
+\begin{gather*}
+\overline{p}\approx \frac{2}{3}n\varepsilon\\
+\varepsilon\approx \frac{1}{2}mv^2,\overline{E}=\frac{1}{2}m\overline{v}^2\\
+p=\frac{1}{3}nmv^2=\frac{2}{3}n\overline{E}\\
+p=\frac{2}{3}\frac{N}{V}\overline{E}
+\end{gather*}
+
+<p>
+书中42(69)页
+<img src="stat_hw3/20240629232834.png" alt="20240629232834.png" />
+\paragraph{注}总是利用各向同性， <b>力为功能对位移导数</b> 这里得到重要的压强与能量关系（最基础原理是已有量子力学给出能量表达式－求导得力－平均分压强）。
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org21c2631" class="outline-3">
+<h3 id="org21c2631"><span class="section-number-3">3.2.</span> 3.9 Number of states of a spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+A system consists of \(N\) spins \(\frac12\), each having magnetic moment \(\mu_0\), and is located in an applied magnetic feld B. The system is of macroscopic size so that \(N\) is of the order of Avogadro's number. The energy of the system is then equal to
+</p>
+\begin{equation*}
+E=-(n-n^{\prime})\mu_{0}B
+\end{equation*}
+<p>
+if \(n\) denotes the number of its magnetic moments which point up, and \(n^\prime=N-n\) the number which point down.
+</p>
+
+<p>
+(a) Calculate for this spin system the number of states \(\Omega(E)\) which lie in a small energy interval between \(E\) and \(E+ \delta E\) Here \(\delta E\) is understood to be large compared to individual spin energies, i.e., \(\delta E\gg\mu_0B\).
+</p>
+
+<p>
+(b) Find an explicit expression for \(\ln\Omega\) as a function of \(E\) Since both \(n\) and \(n^{\prime}\) are very large, apply the result \(\ln n!\approx n\ln n-n\) derived in (M.10) to calculate both \(n!\) and \(n\)'!. Show thus that, to excellent approximation,
+</p>
+\begin{equation*}
+\ln\Omega(E)=N\ln\left(2N\right)-\frac{1}{2}(N-E^{\prime})\ln\left(N-E^{\prime}\right)-\frac{1}{2}(N+E^{\prime})\ln\left(N+E^{\prime}\right)
+\end{equation*}
+<p>
+where
+</p>
+\begin{equation*}
+E^{\prime}\equiv\frac{E}{\mu_{0}B}
+\end{equation*}
+
+<p>
+(c) Make a rough sketch showing the behavior of ln\(\Omega\) as a function of \(E\) Note that \(\Omega(E)\) does not always increase as a function of \(E\). The reason is that a system of spins is anomalous in that it has not only a lowest possible energy \(E=-N\mu_{0}B\),but also a highest possible energy \(E= N\mu _{0}B\). On the other hand, in all ordinary systems where one does not ignore the kinetic energy of the particles (as we did in discussing the spins), there is no upper bound on the magnitude of the kinetic energy of the system.
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+
+<p>
+<i>use \(\mu\) instead of \(\mu_0\)</i>
+</p>
+</div>
+<div id="outline-container-org8e78844" class="outline-4">
+<h4 id="org8e78844"><span class="section-number-4">3.2.1.</span> Caculate \(\Omega(E)\)</h4>
+<div class="outline-text-4" id="text-3-2-1">
+\begin{gather*}
+n+n'=N \\
+E=-(n-n')\mu B = -(2n-N)\mu B\\
+E+\delta E=-((n+\Delta n)-(n'+ \Delta n'))\mu B \\
+\Delta n=\frac{\delta E}{2\mu B}\\
+\Omega(E)
+=\binom{N}{n}\Delta n
+=\boxed{\frac{N!}{n!(N-n)!}\frac{\delta E}{2\mu B}}
+\end{gather*}
+<p>
+\paragraph{解}核心是最后一行，求能量为 \(\left[ E,E+\delta E  \right]\) 状态数，简单理解为找到那些状态能量为 \(E\) （ \(\binom{N}{n}\)）乘以 \(\delta E\) 这一小部分能量存在的状态（ \(\Delta n\) ）， \(\Delta n\) 的算法为将 \(\delta E\) 除以最小能量差 \(2\mu B\)，也就是 \(\delta E\) 是最小能量的多少倍，这里用到了近似条件（ \(\delta E \gg \mu_0 B\)）当作状态数在能量上均匀分布。
+</p>
+
+
+
+<p>
+<img src="stat_hw3/20240626110921.png" alt="20240626110921.png" />
+\footnote{https://www.youtube.com/watch?v=lizcT1UXeL8}
+</p>
+</div>
+</div>
+<div id="outline-container-org7d0dc7e" class="outline-4">
+<h4 id="org7d0dc7e"><span class="section-number-4">3.2.2.</span> Express \(\ln \Omega(E)\)</h4>
+<div class="outline-text-4" id="text-3-2-2">
+\begin{gather*}
+\ln n!\approx n\ln n-n \\
+\begin{split}
+\ln \Omega (E) 
+&=\ln N!-\ln n!-\ln(N-n)!+\ln \frac{\delta E}{2\mu B}\\
+&=N\ln N-N-(n\ln n-n)-((N-n)\ln (N-n)-(N-n))+\ln \frac{\delta E}{2\mu B}\\
+&=N\ln N-n\ln n-(N-n)\ln(N-n)+\ln \frac{\delta E}{2\mu B}
+\end{split}
+\end{gather*}
+
+
+\begin{gather*}
+E=-(2n-N)\mu B\Rightarrow n=\frac{1}{2}(N-\frac{E}{\mu B})=\frac{1}{2}(N-E') \\
+\begin{split}
+&\ln \Omega(E)\\
+&=N\ln N-n\ln n-(N-n)\ln(N-n)+\ln \frac{\delta E}{2\mu B}\\
+&=N\ln N-\frac{1}{2}(N-E')\ln \frac{1}{2}(N-E')-(N-\frac{1}{2}(N-E'))\ln(N-\frac{1}{2}(N-E'))+\ln \frac{\delta E}{2\mu B} \\
+&=\boxed{N\ln 2N-\frac{1}{2}(N-E')\ln(N-E')-\frac{1}{2}(N+E')\ln(N+E')}
+\end{split}
+\end{gather*}
+
+<p>
+\paragraph{解}思路：化简拼凑对数，将最后没有的项用最后有的项代替（ \(E\to N,E'\)）
+</p>
+</div>
+</div>
+<div id="outline-container-org32857e8" class="outline-4">
+<h4 id="org32857e8"><span class="section-number-4">3.2.3.</span> Sketch</h4>
+<div class="outline-text-4" id="text-3-2-3">
+<p>
+<img src="stat_hw3/20240626111601.png" alt="20240626111601.png" />
+\paragraph{解}关于能量0对称
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdf2dc9f" class="outline-3">
+<h3 id="orgdf2dc9f"><span class="section-number-3">3.3.</span> 4.6  Nuclear magnetic resonance absorption&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+A sample of water is placed in an external magnetic field \(B\). Each proton of the H<sub>2</sub> O molecule has a nuclear spin 1/2 and a small magnetic moment \(\mu_0\). Since each proton can point either “up” or "down", it can be in one of two possible states of respective energies. Suppose that one applies a radio-frequency magnetic field of frequency v which is such that it satisfies the resonance condition \(\hbar \nu =2\mu_0 B\), where \(2\mu_0 B\) is the energy difference between these two proton states and h is Planck’s constant. Then the radiation field produces transitions between these two states, causing the proton to go from the “up” state to the “down” state, or vice versa, with equal probability. The net power absorbed by the protons from the radiation field is then proportional to the difference between the numbers of protons in the two states.
+</p>
+
+<p>
+Assume that the protons always remain very close to equilibrium at the absolute temperature T of the water. How does the absorbed power depend on the temperature T? Use the excellent approximation based on the fact that \(\mu_0\) is so small that \(\mu_0 B\ll kT\).
+</p>
+
+<p>
+How does the absorbed power depend on the
+temperature T?
+\(\mu_0B\ll kT\)
+</p>
+
+<p>
+\paragraph{Solution}
+Known \(\text{P}\propto|n_+-n_-|\) and
+</p>
+
+\begin{gather*}
+\begin{aligned}
+n_+&=NP_+=N\frac{\mathrm{e}^{-\beta\mu B}}{\mathrm{e}^{\beta\mu B}+\mathrm{e}^{-\beta\mu B}}\\
+n_-&=NP_-=N\frac{\mathrm{e}^{\beta\mu B}}{\mathrm{e}^{\beta\mu B}+\mathrm{e}^{-\beta\mu B}}
+\end{aligned}
+\\
+\begin{split}
+n_+-n_-
+&=N\tanh (\beta\mu B)=N\tanh\frac{\mu B}{kT} \\
+&\overset{\mu B\ll kT}{\approx} N\frac{\mu B}{kT}\propto \frac{1}{T} 
+\end{split}
+\\
+\boxed{\text{P}\propto \frac{1}{T}}
+\end{gather*}
+<p>
+\paragraph{解}温度正常是不会出现的，只好利用正则分布自带 \(\beta|1/kT\) 唤出来，本题可简述为…
+</p>
+
+<div id="org0320996" class="figure">
+<p><img src="stat_hw3/DOT:20240629234056.png" alt="DOT:20240629234056.png" />
+</p>
+</div>
+
+<p>
+\paragraph{注}总是设法把物理量表达出来 \(n\to NP \to \beta\)
+</p>
+</div>
+</div>
+<div id="outline-container-org796e8b5" class="outline-3">
+<h3 id="org796e8b5"><span class="section-number-3">3.4.</span> 4.12 Quasi-static compression of a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span>&#xa0;<span class="____">绝热压缩</span></span></h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Consider a thermally insulated ideal gas of particles confined within a container of volume \(V\).
+The gas is initially at some absolute temperature \(T\). Assume now that the volume of this container is very slowly reduced by moving a piston to a new position.
+</p>
+
+<p>
+Give qualitative answers to the following questions:
+</p>
+
+<p>
+\paragraph{SOLUTION}
+V decrease - U increase T increase -energy increase
+</p>
+</div>
+<div id="outline-container-org8e4b412" class="outline-4">
+<h4 id="org8e4b412"><span class="section-number-4">3.4.1.</span> What happens to the energy levels of each particle?</h4>
+<div class="outline-text-4" id="text-3-4-1">
+\begin{gather*}
+W=\Delta U \\
+pV=nRT
+\end{gather*}
+
+<p>
+V decrease so N decrease;
+Thus, <span class="underline">sepearation between levels increase.</span>
+</p>
+</div>
+</div>
+<div id="outline-container-org493da8c" class="outline-4">
+<h4 id="org493da8c"><span class="section-number-4">3.4.2.</span> Does the mean energy of a particle increase or decrease?</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+\(\overline{\varepsilon}=\frac{U}{N}\)
+U increase N decrease
+</p>
+
+<p>
+<span class="underline">increase</span>
+</p>
+</div>
+</div>
+<div id="outline-container-orgd6af749" class="outline-4">
+<h4 id="orgd6af749"><span class="section-number-4">3.4.3.</span> Is the work done on the gas in reducing its volume positive or negative?</h4>
+<div class="outline-text-4" id="text-3-4-3">
+<p>
+<span class="underline">positive</span>
+\paragraph{解}增加其能量，对气体而言为正功
+</p>
+</div>
+</div>
+<div id="outline-container-org365b87e" class="outline-4">
+<h4 id="org365b87e"><span class="section-number-4">3.4.4.</span> Does the mean energy of a particle, measured above its ground state energy, increase or decrease?</h4>
+<div class="outline-text-4" id="text-3-4-4">
+\begin{gather*}
+\frac{1}{kT}=\beta=\frac{\partial \ln\Omega}{\partial E}\sim\frac{f}{E-E_0}
+\end{gather*}
+
+<p>
+<span class="underline">increase</span>
+\paragraph{解}压缩后气体能量增加，每个分子能量均值增加，要说明相对于（压缩后此时）基态能量差也增加
+</p>
+</div>
+</div>
+<div id="outline-container-org1cf7f08" class="outline-4">
+<h4 id="org1cf7f08"><span class="section-number-4">3.4.5.</span> Does the absolute temperature of the gas increase or decrease?</h4>
+<div class="outline-text-4" id="text-3-4-5">
+<p>
+<span class="underline">increase</span>
+</p>
+
+<p>
+\paragraph{注}补充：准静态绝热压缩——熵不变
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd4eb55f" class="outline-3">
+<h3 id="orgd4eb55f"><span class="section-number-3">3.5.</span> 4.16 Pressure and energy density of any ideal nonrelativistic gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Rederive the result of the preceding problem so as to appreciate its full generality and recognize the origin of the factor \(\frac{2}{3}\) Consider thus an ideal gas of \(N\) monatomic particles enclosed in a box of edge lengths \(L_x,L_y\), and \(L_z\) . If the particle is nonrelativistic, its energy \(\epsilon\) is related to its momentum \(\hbar{K}\) by
+</p>
+\begin{equation*}
+\tag{i}
+\epsilon=\frac{(\hbar K)^{2}}{2m}=\frac{\hbar^{2}}{2m}(K_{z}^{2}+K_{y}^{2}+K_{z}^{2})
+\end{equation*}
+
+<p>
+where the possible values of \(K_x,K_y\), and \(K_z\) are given by (3.13).
+</p>
+<hr />
+<blockquote>
+<p>
+&#x2026;&#x2026; To make it vanish for \(x=L_x,y=L_y\), or \(z=L_z\), the constants \(K_x,K_y,K_z\) must satisfy the respective conditions
+</p>
+\begin{equation*}
+\tag{3.13}
+K_x=\frac\pi{L_x}n_x,\quad K_y=\frac\pi{L_y}n_y,\quad K_z=\frac\pi{L_z}n_z
+\end{equation*}
+<p>
+where each of the numbers \(n_x,n_y\), and \(n_z\) can assume any of the positive integral values&#x2026;&#x2026;
+</p>
+</blockquote>
+<hr />
+
+<p>
+(a) Use this expression to calculate the force \(F_{\tau}\) exerted by a particle on the right wall of the container when the particle is in a given state \(r\) specifed by \(n_{x}\), \(n_{y}\), \(n_{z}\).
+</p>
+
+<p>
+(b) By simply averaging, derive an expression for the mean force \(F\) in terms of the mean energy \(\bar{\epsilon}\) of a particle. Use the symmetry requirement that \(\overline{K_{x}^{2}}=\overline{K_{y}^{2}}=\overline{K_{z}^{2}}\) when the gas is in equilibrium.
+</p>
+
+<p>
+(c) Hence show that the mean pressure \(\bar{p}\) exerted by the gas is given by
+</p>
+\begin{equation*}
+\tag{ii}
+\bar{p}=\frac{2}{3}\bar{u}
+\end{equation*}
+<p>
+where \(\bar{u}\) is the mean energy per unit volume of the gas.
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+
+\begin{equation*}
+\varepsilon=\frac{(\hbar K)^2}{2m}
+\end{equation*}
+</div>
+<div id="outline-container-org477b935" class="outline-4">
+<h4 id="org477b935"><span class="section-number-4">3.5.1.</span> Calculate F</h4>
+<div class="outline-text-4" id="text-3-5-1">
+\begin{gather*}
+F_r=\frac{\partial \varepsilon}{\partial K_x}=\frac{\hbar^2}{2m}2K_x=\frac{\hbar^2}{m}K\\
+=\frac{\pi^2\hbar^2 n^2_x}{mL^2_x}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-orgf3b6674" class="outline-4">
+<h4 id="orgf3b6674"><span class="section-number-4">3.5.2.</span> Calculate \(\overline{F}\)</h4>
+<div class="outline-text-4" id="text-3-5-2">
+\begin{gather*}
+\overline{\varepsilon}=\frac{\hbar^2 3K^2_0}{2m} \\
+\overline{F}=\frac{\hbar^2}{m}K_0=\frac{2}{3}\frac{\hbar^2 3K^2_0}{2m}\frac{1}{K_0}=\frac{2}{3}\frac{\overline{\varepsilon}}{L}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-orgc0058e4" class="outline-4">
+<h4 id="orgc0058e4"><span class="section-number-4">3.5.3.</span> Prove <i>again</i></h4>
+<div class="outline-text-4" id="text-3-5-3">
+\begin{gather*}
+\overline{p}=\frac{\overline{F}}{S}
+=\frac{2/3\overline{\varepsilon}}{LL_zL_y}\\
+=\frac{2}{3}\frac{N}{V}\overline{\varepsilon}\\
+=\frac{2}{3}\overline{u}
+\end{gather*}
+<p>
+\paragraph{解}与前3.6类似，换一思路
+</p>
+<hr />
+<div class="org-center">
+<p>
+<b>第三章</b>
+</p>
+
+<p>
+Statistical Description of Systems of Particles
+</p>
+</div>
+\begin{equation*}
+\Delta E = W+Q\overset{\text{理想}}{=}-\int p \mathrm{d}V+Q
+\end{equation*}
+
+<p>
+用能量来规定讨论的范围，以能量为自变量，其它都是能量的函数。使用状态概念，一个能量可以对应多个状态。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgac8783c" class="outline-3">
+<h3 id="orgac8783c"><span class="section-number-3">3.6.</span> 第三章幻灯片整理</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>可及态 \(\Omega(E)\) 区别于 \(\Phi(E)\)(表示能量小于等于 E 的所有状态)；</li>
+<li>自由度；</li>
+<li>约束 A macroscopic condition to which a system is known to be subject；</li>
+<li>(不)可逆过程：在当前给定限制条件下，可以恢复（恢复以及结果依然满足约束）A process which is such that the initial situation of an ensemble of isolated systems subjected to this process can(not) be restored by simply imposing a constraint.</li>
+
+<li>热力学第一定律： \(\Delta E=W+Q\)</li>
+</ul>
+
+<p>
+统计假设：
+平衡态时，各状态发生概率相同。
+</p>
+
+
+<p>
+\(\beta\) 的来源：热平衡参数 \(\beta:=\frac{\partial \ln \Omega}{\partial E}\)，如果两个体系 \(\beta_A=\beta_B\) 称为平衡。
+进一步定义出温度 \(\beta=\frac{1}{kT}\) ，温度也是平衡的标志（热力学第零定律：两者温度相等即热平衡）\footnote{作业已经有了不过详细在后面章节才有说明，再之后就有熵来对体系进一步评价。}
+</p>
+
+<p>
+<del>正则分布满足条件（应该不考）取对数一阶近似</del>
+</p>
+<hr />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge4a2c66" class="outline-2">
+<h2 id="orge4a2c66"><span class="section-number-2">4.</span> 4</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orgaba728c" class="outline-3">
+<h3 id="orgaba728c"><span class="section-number-3">4.1.</span> 4.20 Partition function of an entire gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="__">推导</span></span></h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Consider an ideal gas consisting of N monatomic molecules
+</p>
+
+<p>
+\((a)\) Write down the expression for the partition function Z of this entire gas. By exploiting the properties of the exponential function, show that \(Z\) can be written in the form
+</p>
+\begin{equation*}
+\tag{i}
+Z=Z_0^N
+\end{equation*}
+<p>
+where \(Z_0\) is the partition function for a single molecule and was already calculated
+in Sec.4.7. 
+</p>
+<blockquote>
+<p>
+4.7
+Mean Energy of an Ideal Gas
+166
+</p>
+</blockquote>
+
+<p>
+\((b)\) Use (i) to calculate the mean energy \(\bar{E}\) of the gas by means of the general relation derived in Prob. 4. 18.  Show that the functional form of (i) implies immediately that \(E\) must be simply \(N\) times as large as the mean energy per molecule.
+</p>
+
+<p>
+\((c)\) Use (i) to calculate the mean pressure \(\bar{p}\) of the gas by means of the general relation derived in Prob. 4.I9. Show that the functional form of (i) implies again that \(\bar{p}\) must be simply \(N\) times as large as the mean pressure exerted by a single molecule.
+</p>
+
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org59c0ed3" class="outline-4">
+<h4 id="org59c0ed3"><span class="section-number-4">4.1.1.</span> \(Z=Z_0^{N}\)</h4>
+<div class="outline-text-4" id="text-4-1-1">
+\begin{equation*}
+\begin{split}
+Z
+& =\sum\limits_{j_n}^{fN}\mathrm{e}^{-\beta E_{j_n}}
+=\sum\limits_j^{fN}\mathrm{e}^{-\beta E_{j_1}}\cdots \mathrm{e}^{-\beta E_{j_n}}\\
+& =\sum\limits_j^f\mathrm{e}^{-\beta E_{j_n}}\cdots\sum\limits_j^f\mathrm{e}^{-\beta E_{j_n}}
+=\prod\limits_n^{N}\left(\sum\limits_j^f\mathrm{e}^{-\beta E_{j_n}}\right)\\
+& \overset{Z_0=\sum_j^f\mathrm{e}^{-\beta E_{j_i}}}{=\!=\!=\!=\!=\!=\!=\!=\!=\!=} 
+\prod\limits^{N} Z_0 \\
+&=
+\boxed{Z_0^{N}}
+\end{split}
+\end{equation*}
+
+<p>
+\paragraph{注}详细情况：
+</p>
+\begin{equation*}
+\label{eq:11}
+\begin{split}
+Z_0
+&= \sum\sum\sum \mathrm{e}^{-\beta E_{j}}=\sum\sum\sum\exp\left[-\frac{-\beta\pi^2\hbar^2}{2m}\left( \frac{n^2_x}{L^2_x}+ \frac{n^2_y}{L^2_y}+ \frac{n^2_z}{L^2_z} \right)\right]\\
+&= Z_{0_x}Z_{0_y}Z_{0_z}
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\label{eq:6}
+\begin{aligned}
+Z_{0_x}&=\sum_{n_{x}}\exp\left[-\frac{\beta\pi^{2}h^{2}n_{x}^{2}}{2m}\frac{n_{x}^{2}}{L_{x}^{2}}\right]\\
+&=\int_{0}^{\infty}\exp\left[-\frac{\beta\pi^{2}h^{2}n_{x}^{2}}{2mL_{x}^{2}}\right]dn_{x}\\
+&=\int_{0}^{\infty}\exp\left[-\left(\left(\frac{\beta}{2m}\right)^{\frac{1}{2}}\frac{\pi h}{L_{x}}n_{x}\right)^{2}\right]dn_{x}\\
+&=\frac{1}{\left[\left(\frac{\beta}{2m}\right)^{\frac{1}{2}}\frac{\pi h}{L_{x}}\right]}\int_{0}^{\infty}\exp\left[-\left(\left(\frac{\beta}{2m}\right)^{\frac{1}{2}}\frac{\pi h}{L_{x}}n_{x}\right)^{2}\right]d\left[\left(\frac{\beta}{2m}\right)^{\frac{1}{2}}\frac{\pi h}{L_{x}}\right]n_{x}\\&=\left(\frac{2m}\beta\right)^{\frac12}\frac{L_x}{\pi h}\int_0^\infty\exp[-u^2]du=\left(\frac m{2\pi\hbar^2}\right)^{\frac12}\frac{L_x}{\beta^{1/2}}=b\frac{L_x}{\beta^{1/2}}
+\end{aligned}
+\end{equation*}
+\begin{equation*}
+{Z_0=b\frac{L_x}{\beta^{3/2}}}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org0010199" class="outline-4">
+<h4 id="org0010199"><span class="section-number-4">4.1.2.</span> \(\overline{E}=N\overline{\epsilon}\)</h4>
+<div class="outline-text-4" id="text-4-1-2">
+\begin{align*}
+\label{eq:2}
+\overline{E} &= \sum \limits_j P_j E_j = \sum\limits_j \frac{\mathrm{e}^{-\beta E_j}}{Z}E_j
+= \frac{1}{Z} \sum\limits_j \left(\mathrm{e}^{-\beta E_j}E_j \right)\\
+& = \frac{1}{Z} \sum\limits_j \left(-\frac{\partial \mathrm{e}^{-\beta E_j}}{\partial \beta} \right) 
+= -\frac{1}{Z} \frac{\partial \sum_j \mathrm{e}^{-\beta E_j}}{\partial \beta} 
+= - \frac{\partial Z}{Z \partial \beta} \\
+& = - \frac{\partial \ln Z}{\partial \beta}\overset{\text{(a)}}{=} -\frac{\partial \ln Z_0^{N}}{\partial \beta}\\
+& = N\frac{\partial \ln Z_0}{\partial \beta}\\
+& \overset{\epsilon_0=\frac{\partial \ln Z_0}{\partial \beta}}{=\!=\!=\!=\!=\!=\!=\!}
+\boxed{N \overline{\epsilon}}
+\end{align*}
+
+<p>
+\paragraph{解}联系宏观微观：首先按定义－利用关系 \(\overline{E}={\partial \ln Z}/{\partial \beta}\) 化归第一问
+</p>
+</div>
+</div>
+<div id="outline-container-orgcff0ae8" class="outline-4">
+<h4 id="orgcff0ae8"><span class="section-number-4">4.1.3.</span> \(\overline{p}=N\overline{p}_0\)</h4>
+<div class="outline-text-4" id="text-4-1-3">
+\begin{equation*}
+\begin{split}
+F_{i} & = \sum\limits_j P_j F_j
+= \sum_j\left[\frac{ \mathrm{e}^{-\beta \epsilon_j} }{Z}\left( -\frac{\partial \epsilon_j}{\partial L_x} \right)\right] \\
+& = - \frac{1}{Z} \sum\limits_j  \frac{\partial }{\partial L_i}\left(-\frac{1}{\beta}\mathrm{e}^{-\beta\epsilon_j}\right)\\
+& = - \frac{1}{\beta Z} \frac{\partial \sum_j \mathrm{e}^{-\beta\epsilon_j} }{\partial L_i}
+= - \frac{1}{\beta}  \frac{\partial Z}{Z\partial L_i}\\
+& = - \frac{1}{\beta} \frac{\partial \ln Z}{\partial L_i} \quad i=x,y,z
+\end{split}
+\end{equation*}
+
+\begin{equation*}
+\label{eq:9}
+\begin{split}
+\overline{p}&=\frac{F_{i}}{S_{jk}}
+= - \frac{1}{\beta} \frac{\partial \ln Z}{S_{jk}\partial L_i}= - \frac{1}{\beta} \frac{\partial \ln Z}{\partial V}\\
+& = - \frac{1}{\beta} \frac{\partial \ln Z_0^{N}}{\partial V}\\
+& = -N \frac{1}{\beta} \frac{\partial \ln Z_0}{\partial V}\\
+& \overset{\overline{p}_0= - \frac{1}{\beta} \frac{\partial \ln Z_0}{\partial V}}{=\!=\!=\!=\!=\!=\!=\!=\!=\!=\!}
+\boxed{N\overline{p}_0}
+\end{split}
+\end{equation*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org46bdf6b" class="outline-3">
+<h3 id="org46bdf6b"><span class="section-number-3">4.2.</span> 4.22 Mean energy of harmonic oscillator&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+A harmonic oscillator has a mass and spring constant which are such that its classical angular frequency of oscillation is equal to \(\omega\). In a quantum mechanical description, such an oscillator is characterized by a set of discrete states having energies \(E_n\) given by
+</p>
+\begin{equation*}
+\tag{i}
+E_n=\left( n+\frac{1}{2} \right)\hbar \omega
+\end{equation*}
+<p>
+The quantum number n which labels these states can here assume all the integral values
+</p>
+\begin{equation*}
+\tag{ii}
+n = 0 , 1 , 2, 3 , \cdots
+\end{equation*}
+
+<p>
+A particular instance of a harmonic oscillator might, for example, be an atom vibrating about its equilibrium position in a solid.
+Suppose that such a harmonic oscillator is in thermal equilibrium with some heat reservoir at the absolute temperature \(T\). To find the mean energy \(\overline{E}\) of this oscillator, proceed as follows:
+</p>
+
+<p>
+(a) First calculate the partition function Z for this oscillator, using the definition (ii) of Prob. 4.18.
+(To evaluate the sum, note that it is merely a geometric series.)
+</p>
+
+<hr />
+<blockquote>
+\begin{equation*}
+\tag{ii}
+Z\equiv \sum\limits_r \mathrm{e}^{-\beta E_r}
+\end{equation*}
+<p>
+4.18 Mean energy expressed in terms of partition function
+</p>
+</blockquote>
+<hr />
+
+<p>
+(b) Apply the general relation (i) of Prob. 4.18 to calculate the mean energy of the oscillator.
+</p>
+
+<hr />
+<blockquote>
+<p>
+&#x2026;&#x2026;
+</p>
+\begin{equation*}
+\tag{i}
+\overline{E} = -\frac{\partial \ln Z}{\partial \beta}
+\end{equation*}
+<p>
+4.18 Mean energy expressed in terms of partition function 
+</p>
+</blockquote>
+<hr />
+
+<p>
+(c) Make a qualitative sketch showing how the mean energy E depends on the absolute temperature T.
+</p>
+
+<p>
+(d) Suppose that the temperature \(T\) is very small in the sense that \(kT\ll \hbar\omega\) Without any calculation whatever, using only the energy levels of (i), what can you say about the value of \(\overline{E}\) in this case? Does the result you obtained in (b) properly approach this limiting case?
+</p>
+
+<p>
+(e) Suppose that the temperature \(T\) is very high so that \(kT\gg \hbar\omega\) . What then is the limiting value of the mean energy \(\overline{E}\) obtained in (b)? How does it depend on \(T\) ? How does it depend on \(\omega\)?
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+
+<p>
+To find the mean energy of
+\(E_n=(n+\frac{1}{2})\hbar\omega \quad n\in \mathbb{N}\)
+</p>
+</div>
+<div id="outline-container-orgd05badb" class="outline-4">
+<h4 id="orgd05badb"><span class="section-number-4">4.2.1.</span> Caculate partition function \(Z\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">数学</span></span></h4>
+<div class="outline-text-4" id="text-4-2-1">
+\begin{equation*}
+\begin{split}
+Z
+&= \sum\limits_j^{\infty}\mathrm{e}^{-\beta E_j}=\sum\limits_j^{\infty}\mathrm{e}^{-\beta (j+\frac{1}{2})\hbar\omega}
+= \mathrm{e}^{-\frac{1}{2}\beta\hbar\omega}\sum\limits_j^{\infty}\mathrm{e}^{-\beta\hbar\omega j} \\
+&\overset{\text{geometric serie}}{=\!=\!=\!=\!=\!=\!=\!=\!=\!=} \mathrm{e}^{-\frac{1}{2}\beta\hbar\omega}\frac{1}{1-\mathrm{e}^{-\beta\hbar\omega}}
+= \frac{1}{\mathrm{e}^{\frac{1}{2}\beta\hbar\omega}-\mathrm{e}^{-\frac{1}{2}\beta\hbar\omega}}\\
+&= \boxed{\frac{1}{2\sinh \frac{\beta\hbar\omega}{2}}}
+\end{split}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org63d926d" class="outline-4">
+<h4 id="org63d926d"><span class="section-number-4">4.2.2.</span> Caculate mean energy&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-4-2-2">
+\begin{equation*}
+\begin{split}
+\overline{E}
+&= -\frac{\partial \ln Z}{\partial \beta}
+= -\frac{\partial}{\partial \beta} {\left(-\frac{1}{2}\beta\hbar\omega-\ln(1-\mathrm{e}^{-\beta\hbar\omega})\right)} \\
+&= \boxed{\frac{1}{2}\hbar\omega+ \frac{\hbar\omega}{\mathrm{e}^{\beta\hbar\omega}-1}}
+= \frac{1}{2}\hbar\omega \frac{\mathrm{e}^{\beta\hbar\omega}+1}{\mathrm{e}^{\beta\hbar\omega}-1}
+\end{split}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org64bb40c" class="outline-4">
+<h4 id="org64bb40c"><span class="section-number-4">4.2.3.</span> mean energy &amp; temperature</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+sketch
+<img src="stat_hw4/20240626185020.png" alt="20240626185020.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org88f5439" class="outline-4">
+<h4 id="org88f5439"><span class="section-number-4">4.2.4.</span> \(kT\ll \hbar\omega\)</h4>
+<div class="outline-text-4" id="text-4-2-4">
+\begin{gather*}
+\beta=\frac{\hbar\omega}{kT}\rightarrow \infty \quad
+\mathrm{e}^{\beta\hbar\omega}\to \infty \quad
+\frac{\hbar\omega}{\mathrm{e}^{\beta\hbar\omega}-1} \to 0 \\
+\begin{split}
+\overline{E} &=
+\frac{1}{2}\hbar\omega+ \frac{\hbar\omega}{\mathrm{e}^{\beta\hbar\omega}-1} \\
+&\approx \boxed{\frac{1}{2}{\hbar\omega}}
+\end{split}
+\end{gather*}
+
+<p>
+The system may be at its ground state, and its agrees with the limit in part 1. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1840fa8" class="outline-4">
+<h4 id="org1840fa8"><span class="section-number-4">4.2.5.</span> \(kT\gg\hbar\omega\)</h4>
+<div class="outline-text-4" id="text-4-2-5">
+\begin{gather*}
+\beta=\frac{\hbar\omega}{kT}\to0 \quad
+\mathrm{e}^{\beta\hbar\omega}-1\to \beta\hbar\omega \\
+\begin{split}
+\overline{E}
+&=\frac{1}{2}\hbar\omega+ \frac{\hbar\omega}{\mathrm{e}^{\beta\hbar\omega}-1}\\
+&\approx \frac{1}{2}\hbar\omega+ \frac{\hbar\omega}{\beta\hbar\omega}=\frac{1}{2}\hbar\omega+\frac{1}{\beta}\\
+&=\boxed{\frac{1}{2}\hbar\omega+kT}
+\end{split}
+\end{gather*}
+
+<p>
+\paragraph{注}经典（谐振子模型）极限内容：
+</p>
+\begin{gather*}
+\overline{E}=\left\langle \frac{1}{2}m\omega^2x \right\rangle+\left\langle \frac{1}{2}mv^2 \right\rangle=\frac{1}{2}kT+\frac{1}{2}kT=kT \\
+kT\gg \hbar\omega \overline{E}=\frac{1}{2}\hbar\omega +kT\approx kT
+\end{gather*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org71e47f2" class="outline-3">
+<h3 id="org71e47f2"><span class="section-number-3">4.3.</span> 4.29 Dependence of energy on temperature for a spin system&#xa0;&#xa0;&#xa0;<span class="tag"><span class="noraml">noraml</span>&#xa0;<span class="____">数学公式</span></span></h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+The number of states \(\Omega(E)\) of a system of \(N\) spins \(\frac12\), each having a magnetic moment \(\mu_0\) and located in a magnetic field \(B\), has been calculated in Prob.3.9.
+</p>
+<blockquote>
+<p>
+SOLUTION
+</p>
+\begin{gather*}
+\Omega(E)=\frac{N!}{n!(N-n)!}\frac{\delta E}{2\mu B}
+\end{gather*}
+<p>
+*3.9 Number of states of a spin system
+</p>
+</blockquote>
+
+<p>
+(a) Use this result and the definition \(\beta=(\partial\ln\Omega/\partial E)\) to derive a relation expressing the energy \(E\) of this system as a function of the absolute temperature \(\bar{T}=(k\bar{\beta})^{-1}\).
+</p>
+
+<p>
+(b) Since the total magnetic moment \(M\) of this system is simply related to its total energy \(E\),use the answer to part \((a)\) to find an expression for M as a function of \(T\) and B. Compare this expression with the result derived for \(\bar{M} _0\) in (61) and (59).
+</p>
+<blockquote>
+\begin{equation*}
+\tag{59}
+\overline{\mu}=\mu_0 \tanh \left( \frac{\mu_0B}{kT} \right)
+\end{equation*}
+\begin{equation*}
+\tag{61}
+\overline{M}_0=N_0 \bar{\mu}
+\end{equation*}
+</blockquote>
+
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org69e9b70" class="outline-4">
+<h4 id="org69e9b70"><span class="section-number-4">4.3.1.</span> Express \(E(T)\)</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+From 3.9
+</p>
+\begin{equation*}
+\ln\Omega=N\ln 2N-\frac{1}{2}(N-E')\ln(N-E')-\frac{1}{2}(N+E')\ln(N+E')
+\end{equation*}
+
+\begin{equation*}
+\begin{split}
+\beta
+& := \frac{\partial \ln \Omega}{\partial E} \\
+&= - \frac{\partial \ln \Omega}{\partial E'}\frac{\partial E'}{\partial E}
+= - \frac{\partial E'}{\partial E}\frac{\partial} {\partial E'}\ln \left[ N\ln 2N-\frac{1}{2}(N-E')\ln(N-E')-\frac{1}{2}(N+E')\ln(N+E') \right]\\
+&= \frac{1}{\mu_0B}\frac{1}{2}\left[ \ln(N-E')+1-\ln(N+E')-1 \right]\\
+&= \frac{1}{2\mu_0B}\ln \frac{N-E'}{N+E'}
+= \frac{1}{2\mu_0B}\ln \frac{N-\frac{E}{\mu_0B}}{N+\frac{E}{\mu_0B}}
+\end{split}
+\end{equation*}
+
+\begin{align*}
+T
+= \frac{1}{k\beta}
+= \frac{1}{k}\left(  \frac{2\mu_0B}{\ln\frac{N-\frac{E}{\mu_0B}}{N+\frac{E}{\mu_0B}}} \right)\\
+\Rightarrow E = -\mu_0NB \frac{\mathrm{e}^{\frac{2\mu_0B}{kT}}-1}{\mathrm{e}^{\frac{2\mu_0B}{kT}}+1} \\
+= \boxed{-\mu_0 NB\tanh \left( \frac{\mu_0 B}{kT} \right)}
+\end{align*}
+
+<p>
+\paragraph{解}直接求导也可，状态数表达式是联系宏微观的桥梁，利用 \(1/kT={\partial \ln \Omega}/{\partial E}\) 关联
+</p>
+</div>
+</div>
+<div id="outline-container-org202365b" class="outline-4">
+<h4 id="org202365b"><span class="section-number-4">4.3.2.</span> \(M(T,B)\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-4-3-2">
+\begin{gather*}
+E=-n\mu B \\
+M
+=n\mu=-\frac{E}{B}\\
+=\boxed{\mu_0N \frac{\mathrm{e}^{\frac{2\mu_0B}{kT}}-1}{\mathrm{e}^{\frac{2\mu_0B}{kT}}+1} }
+\end{gather*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org65781bd" class="outline-3">
+<h3 id="org65781bd"><span class="section-number-3">4.4.</span> 5.4 Work done tn an adiabatic process&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="_">功</span></span></h3>
+<div class="outline-text-3" id="text-4-4">
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+
+\begin{align*}
+\overline{p} =&kV^{-\frac{5}{3}}+b\\
+p=32 ,V=1 \quad & p=8,V=4 \Rightarrow  k=32,b=0&\\
+\overline{p}=32V^{-\frac{5}{3}}&
+\end{align*}
+
+\begin{equation*}
+\begin{split}
+W &=-\int_{V_a}^{V_b}p \mathrm{d}V
+= -\int_8^1 32V^{-\frac{5}{3}} \mathrm{d}V\\
+&= \frac{3}{2}\times32V^{-\frac{3}{2}}\bigg|_8^1 =\frac{3}{2}\times32(1-\frac{1}{4}) = \frac{9}{4}\times32 \\
+&= \boxed{36}
+\end{split}
+\end{equation*}
+</div>
+</div>
+
+
+<div id="outline-container-orgb45b9c0" class="outline-3">
+<h3 id="orgb45b9c0"><span class="section-number-3">4.5.</span> 5.14 Thermal interaction between two systems&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="___">热接触</span></span></h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+Consider a system \(A\) (e.g., a copper block) and a system \(B\) (e.g., a container filled with water) which initially are in equilibrium at the temperatures \(T_{A}\) and \(T_{B}\), respectively. In the temperature range of interest, the volumes of the systems remain essentially unchanged and their respective heat capacities \(C_A\) and \(C_B\) are essentially temperature-independent. The systems are now placed in thermal contact with each other and one waits until the systems attain their final equilibrium situation at some temperature \(T\).
+</p>
+
+<p>
+\((a)\) Use the condition of conservation of energy to find the final temperature \(T\).
+Express your answer in terms of \(T_A,T_B,C_A\), and \(C_B\).
+</p>
+
+<p>
+(b) Use Eq.(31) to calculate the entropy change \(\Delta S_A\) of A and the entropy \(\Delta S=\Delta S_A+\Delta S_B\) of the combined system in going from the initial situation are in thermal equilibrium with each other.
+</p>
+<blockquote>
+<p>
+&#x2026;&#x2026;
+If the heat capacity  is independent of temperature in the tempera­
+ture range between Ta and Tb, (30) becomes simply
+</p>
+\begin{equation*}
+\tag{31}
+S_b-S_a=C_x(\ln T_b-\ln T_a)=C_x\ln \frac{T_b}{T_a}
+\end{equation*}
+<p>
+&#x2026;&#x2026;
+</p>
+</blockquote>
+<p>
+\((c)\) Show explicitly that \(\Delta S\) can never be negative, and that it will be zero \(\ln\left(x^{-1}\right)\geq-x+1\) ).
+</p>
+
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+<p>
+热接触
+</p>
+</div>
+<div id="outline-container-org04fac5e" class="outline-4">
+<h4 id="org04fac5e"><span class="section-number-4">4.5.1.</span> Solve \(T(T_A,T_B,C_A,C_B)\)</h4>
+<div class="outline-text-4" id="text-4-5-1">
+\begin{align*}
+Q_A+Q_B=0 \\
+C_A(T-T_A)+C_B(T-T_B)=0\\
+(C_A+C_B)T=C_AT_A+C_BT_{B}\\
+ \boxed{T=\frac{C_AT_A+C_BT_B}{C_A+C_B}}
+\end{align*}
+</div>
+</div>
+
+<div id="outline-container-org1b2fe52" class="outline-4">
+<h4 id="org1b2fe52"><span class="section-number-4">4.5.2.</span> Express \(\Delta S\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-4-5-2">
+\begin{gather*}
+\Delta S=C \ln \frac{T'}{T}
+=\boxed{C_A \ln \frac{T}{T_A}+C_B \ln \frac{T}{T_B}}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-orgcd63a73" class="outline-4">
+<h4 id="orgcd63a73"><span class="section-number-4">4.5.3.</span> Prove \(\Delta S\geq 0\)</h4>
+<div class="outline-text-4" id="text-4-5-3">
+\begin{gather*}
+\ln x\leq x-1 \quad \ln \frac{1}{x}\geq 1-x \\
+\Delta S=C_A \ln \frac{T}{T_A}+C_B \ln \frac{T}{T_B}\\
+\geq C_A(1- \frac{T_A}{T})+C_B (1- \frac{T_B}{T}) 
+=\frac{1}{T}(C_A(T-T_A )+C_B(T-T_B))= 0
+\end{gather*}
+<p>
+equals when \(T_A=T_B\)
+</p>
+<hr />
+<div class="org-center">
+<p>
+<b>第四章</b>
+</p>
+
+<p>
+Thermal Interaction
+</p>
+</div>
+\begin{gather*}
+\frac{1}{kT}\equiv \beta \equiv \frac{\partial \ln \Omega}{\partial E} \\
+S:=k\ln \Omega \\
+\mathrm{d}S=\frac{\bar{d} Q}{T} \quad \\
+P_r(E_r)\propto \mathrm{e}^{-\beta E_r} \\
+\overline{p}=nkT
+\end{gather*}
+
+\begin{gather*}
+\overline{\varepsilon}=-\frac{\partial \ln Z}{\partial \beta}
+\end{gather*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc39daf7" class="outline-3">
+<h3 id="orgc39daf7"><span class="section-number-3">4.6.</span> 第四章幻灯片整理</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+熵（热力学函数，类比统计量）；
+正则分布－配分函数；
+Boltzmann 因子： \(\mathrm{e}^{\beta E}-\);
+</p>
+
+<p>
+平衡：（定义温度－第零定律：If two systems are in thermal equilibrium with a third system, then they must be in thermal equilibrium with each other.）
+</p>
+
+<p>
+Heat reservoir 热库: A sufficiently large macroscopic system so that its temperature remains essentially unchanged in any thermal interaction with other systems.
+</p>
+
+<p>
+关于热接触
+</p>
+
+<p>
+monatomic gas molecule: \(\overline{\epsilon}=\frac{3}{2}kT,\overline{E}=\frac{3}{2}NkT\)
+</p>
+
+<p>
+\paragraph{理想气体关系}不把理想气体关系作为，也可以用正则分布推出\footnote{内容在rev27}
+要得到压强，首先求力，力可以是能量对位移的导数（至此，能量和位移都是基本量）。
+需要用到理想气体 \(Z=b^3\frac V{\beta^{3/2}}\) （根据量子力学得到）
+</p>
+
+\begin{gather*}
+f_r=-\frac{\partial\epsilon_x}{\partial L_x} \\
+\begin{aligned}
+\bar{f}=\sum_rP_rf_r
+&={\sum_r \frac{\mathrm{e}^{-\beta\epsilon_r}}{Z}\left(-\frac{\partial\epsilon_x}{\partial L_x}\right)} 
+=-\frac1Z{\sum_r \frac{\left(\mathrm{e}^{-\beta\epsilon_r}\partial\epsilon_x\right)}{\partial L_x}}=-\frac1Z{ \frac{\left(\sum_r\partial\mathrm{e}^{-\beta\epsilon_r}\right)}{-\beta\partial L_x}}
+\\
+&= \frac{1}{Z}\frac1\beta\frac{\partial Z}{\partial L_x}
+=\frac1\beta\frac{\partial\mathrm{ln}Z}{\partial L_x} \\
+&=\frac1\beta\frac{\partial}{\partial L_x}\left( \ln b^3\frac V{\beta^{3/2}} \right) 
+=\frac1\beta\frac{\partial}{\partial L_x}\left(  3\mathrm{ln}b+\mathrm{ln}L_x+\mathrm{ln}L_y+\mathrm{ln}L_z \right)\\
+&= \frac{1}{\beta L_{\beta}}
+\end{aligned} \\
+\begin{split}
+\overline{p}&=\frac{\overline{F}}{S}=\frac{N \overline{f}_x}{L_yL_z}
+=\frac{N}{L_yL_z}\frac{1}{\beta L_x} \\ 
+&=\frac{N}{\beta V}=\frac{NkT}{V}
+\end{split}\\
+\begin{aligned}
+\overline{p}V&=NkT\\
+\overline{p}&=\left( \frac{N}{V} \right)kT:=nkT \\
+\overline{p}V&=\nu (N_A k)T:=\nu RT \quad \nu:\text{number of moles}
+\end{aligned}
+\end{gather*}
+<p>
+\footnote{感谢ZC提醒改正脚标}
+</p>
+
+<div id="orgec21bb6" class="figure">
+<p><img src="all/DOT:20240627174544.png" alt="DOT:20240627174544.png" />
+</p>
+</div>
+
+
+<hr />
+</div>
+</div>
+</div>
+
+<div id="outline-container-org378e515" class="outline-2">
+<h2 id="org378e515"><span class="section-number-2">5.</span> 5</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org35f6d8d" class="outline-3">
+<h3 id="org35f6d8d"><span class="section-number-3">5.1.</span> 5.7 Heat absorbed by a system at constant pressure&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="__">定义</span></span></h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Consider a system, such as a gas or liquid, whose only external parameter is its volume V. If the volume is kept fixed and an amount of heat \(Q\) is added to the system, then no work gets done and
+</p>
+\begin{equation*}
+\tag{i}Q=\Delta\bar{E}
+\end{equation*}
+<p>
+where \(\Delta E\) denotes the increase in mean enerigy of the system. Suppose, however, that the system is always maintained at a constant pressure \(p_0\) by being enclosed in a cylinder of the type shown in Fig. 5.20. Here the pressure \(p_0\) is always determined by the weight of the piston, but the volume V of the gas is free to adjust itself. If an amount of heat Q is now added to the system, the relation (i) is no longer valid. Show that it must be replaced by the relation
+</p>
+\begin{equation*}
+\tag{ii}Q=\Delta H
+\end{equation*}
+<p>
+where \(\Delta H\) denotes the change in the quantity \(H\equiv E+p_0V\) of the system.
+(The quantity \(H\) is called the enthalpy of the system.)
+</p>
+
+<div id="orgb2f4ae3" class="figure">
+<p><img src="stat_hw5/20240626194312.png" alt="20240626194312.png" />
+</p>
+</div>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+
+\begin{gather*}
+V,Q=\Delta \overline{E} \overset{p_0=C}{\longrightarrow} Q=\Delta H\\
+H\equiv \overline{E}+p_0 V
+\end{gather*}
+
+<p>
+能量守恒 Conservation of energy
+</p>
+\begin{gather*}
+\Delta \overline{E}=\Delta U = Q + W \\
+\begin{split}
+Q&=\Delta \overline{E} - \int_{V_0}^{V'} -p_0 \mathrm{d} V = \Delta \overline{E}+ p_0 \Delta V\\
+&= \Delta \overline{E} + p_0 \Delta V = \Delta (\overline{E} + p_0 V) \\
+&= \boxed{\Delta H}
+\end{split}
+\end{gather*}
+<p>
+\paragraph{注}留意 \(W=-pV\)
+</p>
+</div>
+</div>
+<div id="outline-container-org6eb21c0" class="outline-3">
+<h3 id="org6eb21c0"><span class="section-number-3">5.2.</span> 5.22 Energy fluctuations of a system in contact with a heat reservoir&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Consider an arbitrary system in contact with a heat reservoir at the absolute temperature \(T=\frac{1}{k\beta}\). Using the canonical distribution, it has already been shown in Prob. 4.18 that \(\overline{E}= -\frac{\partial \ln Z}{\partial \beta}\) where
+</p>
+\begin{equation}
+\label{eq:7}\tag{i}
+Z\equiv\sum_{r}e^{-\beta E_{r}}
+\end{equation}
+<p>
+is the sum over all states of the system.
+</p>
+
+<p>
+\noindent(a).  Obtain an expression for \(\overline{E^2}\) in terms of \(Z\) , or preferably \(\ln Z\).
+</p>
+
+<p>
+\noindent(b).  The dispersion of the energy \(\overline{(\Delta E)^2}\equiv\overline{(E-E)^2}\) can be written as \(\overline{E^2}-E^2\) . (See Prob. 2.8.) Use this relation and your answer to part \((a)\) to show that
+</p>
+\begin{equation}
+\tag{ii}
+\overline{(\Delta E)^2}= \frac{\partial^2\ln Z}{\partial\beta^2}=-\frac{\partial E}{\partial\beta} 
+\end{equation}
+
+<p>
+\noindent(c).  Show thus that the standard deviation \(\Delta E\) of the energy can be expressed quite generally in terms of the heat capacity \(C\) of the system (with external parameters kept fixed) by
+</p>
+\begin{equation}
+\tag{iii}
+\underset{\sim}{\Delta} E=T(kC)^{1/2}
+\end{equation}
+
+<p>
+\noindent(d).  Suppose that the system under consideration is an ideal monatomic gas consisting of \(N\) molecules. Use the general result (iii) to fnd an explicit expression for \((\Delta E/E)\) in terms of N.
+</p>
+
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6bdb1ae" class="outline-4">
+<h4 id="org6bdb1ae"><span class="section-number-4">5.2.1.</span> Express \(\overline{E^2}(Z)\)</h4>
+<div class="outline-text-4" id="text-5-2-1">
+\begin{align*}
+\overline{E^2} &= \sum\limits_j P_j E_j^2 =\sum\limits_j \frac{\mathrm{e}^{-\beta E_j}}{Z} E_j^2 
+= \frac{1}{Z}\sum\limits_j {\mathrm{e}^{-\beta E_j}} E_j^2 \\
+&= \frac{1}{Z} \sum\limits_j \frac{ \partial^2 \mathrm{e}^{-\beta E_j} }{\partial \beta^2} 
+= \frac{1}{Z}  \frac{ \partial^2 \sum_j \mathrm{e}^{-\beta E_j} }{\partial \beta^2} \\
+&= \boxed{\frac{1}{Z} \frac{\partial^2 Z}{\partial \beta^2}}
+\end{align*}
+<p>
+\paragraph{析}受 \(\overline{E}={\partial Z}/{\partial \beta}\) 启发，从定义出发，尝试二阶导数得结果。
+</p>
+</div>
+</div>
+<div id="outline-container-orgd80efc7" class="outline-4">
+<h4 id="orgd80efc7"><span class="section-number-4">5.2.2.</span> Prove equation</h4>
+<div class="outline-text-4" id="text-5-2-2">
+\begin{equation*}
+\begin{split}
+\frac{\partial^{2} \ln Z}{\partial\beta^{2}}
+&= \frac{\partial }{\partial \beta} \frac{\partial \ln Z}{\partial \beta}
+= \frac{\partial }{\partial \beta}\left(\frac{1}{Z} \frac{\partial Z}{\partial \beta}\right) \\
+&= \left(\frac{\partial }{\partial \beta}\frac{1}{Z}\right) \frac{\partial Z}{\partial \beta}+\frac{1}{Z}\left(\frac{\partial }{\partial \beta}\frac{\partial Z}{\partial \beta}\right)
+= \left(-\frac{1}{Z}\frac{\partial Z}{\partial \beta}\right)\frac{\partial Z}{\partial \beta} + \frac{1}{Z} \frac{\partial^2 Z}{\partial \beta^2} \\
+&= \frac{1}{Z} \frac{\partial^2 Z}{\partial \beta^2} - \left(\frac{\partial \ln Z}{\partial \beta}\right)^2 \\
+&= \overline{E^2}-\overline{E}^2 
+=\overline{(\Delta E)^2}
+\end{split}
+\end{equation*}
+\begin{equation*}
+\overline{(\Delta E)^2}
+=\frac{\partial^{2}\ln Z}{\partial\beta^{2}}
+= \frac{\partial }{\partial \beta}\frac{\partial \ln Z}{\partial\beta} = -\frac{\partial E}{\partial\beta}
+\end{equation*}
+
+<p>
+\paragraph{析}方差特性，也可倒过来推更加简单
+</p>
+</div>
+</div>
+
+<div id="outline-container-org420584a" class="outline-4">
+<h4 id="org420584a"><span class="section-number-4">5.2.3.</span> Derviation of deviation of energy \(\sigma(E)\)</h4>
+<div class="outline-text-4" id="text-5-2-3">
+\begin{equation*}
+\begin{split}
+\sigma(E)
+&= \sqrt{\overline{(\Delta E)^{2}}}
+= \sqrt{ -\frac{\partial E}{\partial\beta} } \\
+&= \sqrt{-\frac{\partial E}{\partial T} \frac{\partial T}{\partial \beta}} = \sqrt{-\frac{\partial E}{\partial T} \frac{\partial }{\partial \beta}\frac{1}{k\beta}}
+= \sqrt{\frac{\partial E}{\partial T} \frac{1}{k \beta^2} } \\
+&\overset{C = \frac{\partial E}{\partial T}}{=\!=\!=\!=\!=} \frac{1}{\beta}\sqrt{\frac{C}{k}}
+= \frac{1}{\beta k}\sqrt{C \frac{k^2}{k}} \\
+&= \boxed{T \sqrt{kC}}
+\end{split}
+\end{equation*}
+
+<p>
+\paragraph{析}以上不严谨，但遇到做不了的继续求导（加入 T 导数）是一种思路，下面是正确做法，代入第一行即可
+</p>
+\begin{gather*}
+C=\left( \frac{\partial {E}}{\partial T} \right)_x=\frac{\partial {E}}{\partial \beta}\frac{\partial \beta}{\partial T}=\frac{\partial {E}}{\partial \beta}\frac{-1}{kT^2} \\
+\Rightarrow -\frac{\partial E}{\partial \beta}=kCT^2
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org1cdddff" class="outline-4">
+<h4 id="org1cdddff"><span class="section-number-4">5.2.4.</span> Fluctation \(\sigma/\mu\) of ideal gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span>&#xa0;<span class="____">理想气体</span></span></h4>
+<div class="outline-text-4" id="text-5-2-4">
+\begin{equation*}
+\begin{split}
+\frac{\sigma_E}{\overline{E}}
+&\overset{\overline{E}=\frac{3}{2}kNT}{=\!=\!=\!=\!=} \frac{T \sqrt{kC}}{ \frac{3}{2}NkT} = {\frac{2\sqrt{kC}}{3kN}} \\
+&\overset{C_g=\frac{3}{2}kN}{=\!=\!=\!=\!=\!=} \frac{2\sqrt{k \frac{3}{2}kN}}{3kN} \\
+&= \boxed{\sqrt{\frac{2}{3}\frac{1}{N}}}
+\end{split}
+\end{equation*}
+
+<p>
+\paragraph{注}如何得到上面理想气体性质。物理量说明 \(n\) 单位体积粒子数、 \(N\) （在 \(\Delta t\) 范围内碰撞）产生压强粒子数，注意 1/2 表示一般的粒子向这个方向（另一半方向相反） \(PV=nRT\) 为实验定律
+</p>
+\begin{gather*}
+\begin{split}
+P
+&=\frac{F}{S}=\frac{NF_0}{S}=\frac{N}{S}\frac{\Delta p}{\Delta t} \\
+&=\frac{N}{S}\frac{2mv}{\Delta t}
+=n\frac{v\Delta tS}{V}\frac{1}{S}\frac{2mv}{\Delta t}\\
+&=\frac{2nmv^2}{V}\\
+\end{split}
+\\
+P_j=\frac{1}{2}\frac{2nmv^2_j}{V}
+\Rightarrow PV=nmv_j^2 \\
+\begin{split}
+\varepsilon &= \frac{1}{2}mv^2
+=3\times\frac{1}{2}mv_j^2 \\
+&=\frac{3PV}{2n}
+\end{split}
+\\
+PV=nRT \\
+\varepsilon = \frac{3}{2}RT
+\end{gather*}
+</div>
+</div>
+</div>
+<div id="outline-container-org801ad36" class="outline-3">
+<h3 id="org801ad36"><span class="section-number-3">5.3.</span> 6.2 Ideal gas in a gravitational field&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+An ideal gas at the absolute temperature \(T\) is in equilibrium in the presence of a gravitational field described by an acceleration g in the downward (or \(-z\) ) direction. The mass of each molecule is \(m\) .
+</p>
+
+<p>
+\noindent(a). Use the canonical distribution in its classical form to find the probability \(\mathcal{P}(\mathbf{r,p})d^3\mathbf{r}d^3\mathbf{p}\) that a molecule has a position between \(r\) and \(r+\mathrm{d}r\) and a momentum between \(p\) and \(p+d\mathbf{p}\) .
+</p>
+
+<p>
+\noindent(b). Find (to within a trivial constant of proportionality) the probability \(\mathcal{P}'(v)d^3v\) that a molecule has a velocity between v and v$+d$v, irrespective of its position in space. Compare this result with the corresponding probability in the absence of a gravitational feld.
+</p>
+
+<p>
+\noindent(c). Find (to within a trivial constant of proportionality) the probability \(\mathcal{P}^{\prime\prime}(z)dz\) that a molecule is located at a height between \(z\) and \(z+dz\), irrespective of its velocity or its location in any horizontal plane.
+</p>
+
+<hr />
+</div>
+<div id="outline-container-orgd7fa15a" class="outline-4">
+<h4 id="orgd7fa15a"><span class="section-number-4">5.3.1.</span> Find P of r and p</h4>
+<div class="outline-text-4" id="text-5-3-1">
+\begin{gather*}
+E = K + U
+= \frac{p^2}{2m} + mgr_z \\
+P(E)=\frac{1}{Z}\mathrm{e}^{-\beta(\frac{p^2}{2m} + mgr_z)} \\
+\boxed{\mathcal{P}(\mathbf{r,p})\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{p}
+=C\mathrm{e}^{-\beta(\frac{p^2}{2m} + mgr_z)}\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{p}}
+\end{gather*}
+
+<p>
+\paragraph{解}和正则分布得到概率类似， C 由下式解得
+</p>
+\begin{equation*}
+\iiiint \mathcal{P}\mathrm{d}z \mathrm{d}^3p=1 \rightarrow C
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org00605c6" class="outline-4">
+<h4 id="org00605c6"><span class="section-number-4">5.3.2.</span> \(\mathcal{P'}(\mathbf{v})\)</h4>
+<div class="outline-text-4" id="text-5-3-2">
+<p>
+对整个空间积分得到答案，速度空间
+</p>
+\begin{gather*}
+\begin{split}
+\mathcal{P}(\mathbf{p})\mathrm{d}^3\mathbf{p}
+&=\frac{\left(\int \mathcal{P} \mathrm{d}^3\mathbf{r}\right) \mathrm{d}^3\mathbf{p}}{\int \limits_{r,p}\mathcal{P}}
+=\frac{\mathrm{e}^{-\beta\frac{p^2}{2m}}\mathrm{d}^3\mathbf{p}\int_0^{\infty}\mathrm{e}^{ mgr_z}\mathrm{d}{z}}{\iiint\limits_{-\infty}^{\infty}\mathrm{e}^{-\beta\frac{p^2}{2m}}\mathrm{d}^3\mathbf{p} \int_0^{\infty}\mathrm{e}^{ mgr_z}\mathrm{d}{z}}\\
+&=C' \mathrm{e}^{-\beta\frac{p^2}{2m}}\mathrm{d}^3\mathbf{p} \\
+\end{split}
+\\
+p=mv \quad \mathrm{d}^3\mathbf{p}=m^3 \mathrm{d}\mathbf{v} \\
+\mathcal{P}(\mathbf{v})\mathrm{d}^3\mathbf{v}
+=C_1\mathrm{e}^{-\beta\frac{1}{2}mv^2}\mathrm{d}^3\mathbf{v}  \\
+\mathcal{P}'(\mathbf{v})\mathrm{d}^3\mathbf{v} \propto \mathrm{e}^{-\beta\frac{p^2}{2m}}\mathrm{d}^3\mathbf{v} 
+\end{gather*}
+<p>
+\paragraph{析}不准确方法：
+</p>
+\begin{gather*}
+\mathcal{P}(\mathbf{r,p})\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{p}
+\propto
+ \mathrm{e}^{-\beta(\frac{p^2}{2m} + mgr_z)}\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{p} \\
+\overset{p=mv}{=\!=\!=\!\Rightarrow} \mathcal{P}(\mathbf{r,v})\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{v}
+\propto
+ \mathrm{e}^{-\beta(\frac{mv^2}{2} + mgr_z)}\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{v} \\
+\mathcal{P'}(\mathbf{v})\mathrm{d}^3\mathbf{v}
+\propto
+\frac{\mathrm{e}^{-\beta\frac{1}{2}mv^2 }\mathrm{e}^{ mgr_z}
+\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{v}}{\mathrm{d}^3 \mathbf{r}} 
+=C_1\mathrm{e}^{-\beta\frac{1}{2}mv^2}
+\end{gather*}
+
+<p>
+\paragraph{注}与外场无关
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1a8b531" class="outline-4">
+<h4 id="org1a8b531"><span class="section-number-4">5.3.3.</span> \(\mathcal{P}''({z})\mathrm{d}{z}\)</h4>
+<div class="outline-text-4" id="text-5-3-3">
+\begin{gather*}
+\begin{split}
+\mathcal{P}''({z})\mathrm{d}{z}
+&= \left[ \iiint \limits_{x,y,p}\mathrm{e}^{-\beta(\frac{p^2}{2m} + mgr_z)}\mathrm{d}^3\mathbf{p}\mathrm{d}x \mathrm{d}y \right]\mathrm{d}z \\
+&=\mathrm{e}^{mgr_z}\mathrm{d}z \left[\cdots\right] \\
+&=C_2\mathrm{e}^{-\beta mgr_z} \mathrm{d}z
+\end{split}
+\end{gather*}
+<p>
+\paragraph{析}不准确但有效的理解：
+</p>
+\begin{gather*}
+\mathcal{P}(\mathbf{r,p})\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{p}
+\propto
+ \mathrm{e}^{-\beta(\frac{p^2}{2m} + mgr_z)}
+\mathrm{d}{x}\mathrm{d}{y}\mathrm{d}{z}\mathrm{d}^3\mathbf{p} \\
+\mathcal{P}''({z})\mathrm{d}{z}
+\propto
+\frac{ \mathrm{e}^{-\beta(\frac{p^2}{2m} + mgr_z)}\mathrm{d}^3\mathbf{r}\mathrm{d}^3\mathbf{v}}
+{\mathrm{d}{x}\mathrm{d}{y}\mathrm{d}^3 \mathbf{p}} 
+=C_2\mathrm{e}^{-\beta mgr_z}
+\end{gather*}
+
+<p>
+\paragraph{注}对其余项积分得到需要项，类比联合分布
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2aae645" class="outline-3">
+<h3 id="org2aae645"><span class="section-number-3">5.4.</span> 6.5 Determination of large molecular weights by the ultracentrifuge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Consider a macromolecule ( i. e. , a very large molecule with a molecular weight of several millions) immersed in an incompressible fuid of density \(\rho\) at the absolute temperature \(T\) . The volume \(v\) occupied by one such molecule can be considered known since the volume occupied by a mole of macromolecules can be determined by volume measurements on a solution of macromolecules. A dilute solution of this type is now placed in an ultracentrifuge rotating with a high angular velocity \(\omega\) . In the frame of reference rotating with the centrifuge, any particle of mass \(m\) at rest with respect to this frame is then acted upon by an outward centrifugal force \(m\omega^2r\), where \(r\) denotes the distance of the particle from the axis of rotation.
+</p>
+
+<p>
+\noindent(a). What is the net force acting in this frame of reference on a macromolecule of mass \(m\), if the buoyancy effect of the surrounding fluid is taken into account?
+</p>
+
+<p>
+\noindent(b). Suppose that equilibrium has been attained in this frame of reference so that the mean number \(n(r)dr\) (per unit volume) of macromolecules located at a distance from the axis of rotation between \(r\) and \(r+dr\) is independent of time. Apply the canonical distribution to find (to within a constant of proportionality) the number \(n(r)dr\) as a function of \(r\).
+</p>
+
+<p>
+\noindent(c). Measurements of the relative number \(n(r)\) of molecules as a function of \(r\) can be made by measuring the absorption of light by the solution. Show how such measurements can be used to deduce the mass \(m\) of a macromolecule
+</p>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org128fa17" class="outline-4">
+<h4 id="org128fa17"><span class="section-number-4">5.4.1.</span> F</h4>
+<div class="outline-text-4" id="text-5-4-1">
+\begin{equation*}
+\begin{split}
+a &= \omega^2 r , F_B=\rho av\\
+F_{net} &= F_{R}+F_{B}=m\omega^2 r + \rho av \\
+&= m\omega^2 r + \rho v\omega^2r \\
+&= \boxed{\omega^2r(m-\rho v)}
+\end{split}
+\end{equation*}
+
+<p>
+\paragraph{析}等价质量（一部分重力对应的质量因浮力出现相当于消失）：
+</p>
+\begin{gather*}
+m^{*} =m-\rho V \\
+F=m^{*}\omega^2r=\omega^2r(m-\rho v)
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org1a8e336" class="outline-4">
+<h4 id="org1a8e336"><span class="section-number-4">5.4.2.</span> \(n(r)\mathrm{d}r\)</h4>
+<div class="outline-text-4" id="text-5-4-2">
+\begin{gather*}
+n(r)\mathrm{d}r\propto P \mathrm{d}r \\
+E=U=\int F \mathrm{d}r
+=\frac{1}{2}\omega^2r^2(m-\rho v) \\
+P=\frac{1}{Z}\mathrm{e}^{-\beta E}
+=\frac{1}{Z}\mathrm{e}^{-\beta \frac{1}{2}\omega^2r^2(m-\rho v) } \\
+P \mathrm{d}r=\mathrm{e}^{\frac{1}{2}\omega^2r^2(m-\rho v)} \mathrm{d}r \\
+n(r)\mathrm{d}r \propto\mathrm{e}^{\frac{1}{2}\omega^2r^2(m-\rho v)} \mathrm{d}{r} 
+\end{gather*}
+<p>
+\paragraph{析}物理学家写法
+</p>
+\begin{gather*}
+\mathbf{F}=\omega^2r(m-\rho V)\hat{\mathbf{r}} \\
+\mathbf{F}=-\nabla E
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org9120456" class="outline-4">
+<h4 id="org9120456"><span class="section-number-4">5.4.3.</span> Obtain m</h4>
+<div class="outline-text-4" id="text-5-4-3">
+<p>
+We need to measure \(n(r_1),n(r_2)\) and \(r_1\neq r_2\)
+</p>
+\begin{equation*}
+\frac{\mathrm{n(r_1)}}{\mathrm{n(r_2)}}=\mathrm{e}^{\frac{1}{2}\mathrm{\beta(m-\rho V)\omega^2(r_1^2-r_2^2)}}
+\rightarrow
+\mathrm{m}=\mathrm{\rho V-\frac{2ln(\frac{n(r_1)}{n(r_2)})}{\beta\omega^2(r_1^2-r_2^2)}}
+\end{equation*}
+
+<p>
+已知单位体积数量表达式，控制取样位置，
+可以稀释溶液，改变 \(\rho\) 。
+多次实验得到不同数据，连立方程解出 \(m\) 。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfce9e47" class="outline-3">
+<h3 id="orgfce9e47"><span class="section-number-3">5.5.</span> 6.14 Calculation of mean values for a molecule in a gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="____">速度分布</span></span></h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+A gas of molecules, each having mass \(m\),is at rest in thermal equilibrium at the absolute temperature \(T\). Denote the velocity of a molecule by v, its three cartesian components of velocity by \(v_x,v_y\), and \(v_z\), and its speed by \(\upsilon\).
+</p>
+
+<p>
+Find the following mean values:
+</p>
+
+<p>
+(a) \(\overline{v_x}\) \((b)\overline{v_x^2}\) (c) \(\overline{v^2v_x}\) (d) \(\overline{{v_x^2v_y}}\), (e) \(\overline{(v_x+ bv_y)^2}\), where \(b\) is a constant.
+</p>
+
+<p>
+\noindent(Suggestion: Symmetry arguments and the equipartition theorem should suffice to answer all these questions without any significant calculation.)
+</p>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+
+<p>
+Maxwell 分布：
+</p>
+\begin{align*}
+\overline{v_x}
+= \int_{-\infty}^{\infty}C^{\prime }v\mathrm{e}^{- \frac{1}{2}\beta mv^2} \mathrm{d}v
+\end{align*}
+<p>
+奇函数积分，于是
+</p>
+\begin{equation*}
+\boxed{\overline{v_x} =0}
+\end{equation*}
+
+\begin{gather*}
+\overline{v_x}=\overline{v_y}=\overline{v_z} \quad\overline{v_x^2}=\overline{v_y^2}=\overline{v_z^2} \\
+\frac{1}{2}m\overline{v^2}=E=\frac{3}{2}kT \\
+\overline{\frac12mv_x^2}=\frac12kT \\
+\boxed{\overline{{v_x}^2}=\frac{kT}m}
+\end{gather*}
+
+\begin{gather*}
+\overline{v^2v_x} = \overline{v^2}\overline{v_x}=\boxed{0} \\
+\overline{{v_x^2v_y}}=\overline{v_x^2}\overline{v_y}=\boxed{0}
+\end{gather*}
+
+\begin{gather*}
+\overline{({v_x+ bv_y)^2}}
+= \overline{v_x^2+b^2v_y^2+2bv_xv_y}
+= \overline{v_x^2}+\overline{b^2v_y^2} \\
+= \boxed{\frac{kT}{m}(1+b^2)}
+\end{gather*}
+
+<p>
+\paragraph{注} Maxwell 一个方向的分布为：
+</p>
+\begin{align*}
+g(\upsilon_x)\mathrm{d}\upsilon_x &=\int_{(\upsilon_y)}\int_{(\upsilon_z)}f(\mathrm{v})\mathrm{~}d^3\mathrm{v} \\
+&= C\int_{(v_y)}\int_{(v_z)}e^{-(1/2)\beta m(v_x2+v_y2+v_z2)}\:dv_x\:dv_y\:dv_z\\&=Ce^{-(1/2)\beta mv_x2}\:dv_x\int_{-\infty}^\infty\int_{-\infty}^\infty e^{-(1/2)\beta m(v_y2+v_z2)}\:dv_y\:dv_z \\
+&= C^{\prime }\mathrm{e}^{- ( 1/ 2) \beta mv_x^2} \mathrm{d}v_x
+\end{align*}
+<hr />
+<div class="org-center">
+<p>
+<b>第五章</b>
+</p>
+
+<p>
+Microscopic Theory and Macroscopic Measurements
+</p>
+</div>
+\begin{gather*}
+C_V\equiv \left( \frac{\mathrm{d}Q}{\mathrm{d}T} \right)_V \\
+T\to 0,\qquad S\to S_0 \quad C\to 0
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org3a18b37" class="outline-3">
+<h3 id="org3a18b37"><span class="section-number-3">5.6.</span> 5幻灯片整理</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+三相点；温标： Kelvin/Celsuis;
+</p>
+
+<p>
+准静态：每个状态都近似平衡，往往是很慢的变化过程 system under consideration remains at all times arbitrarily close to equilibrium.
+</p>
+
+<p>
+留意有时候说的是 Molar specific heat: The heat capacity per mole of the substance under consideration
+</p>
+
+
+<hr />
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc0b86a2" class="outline-2">
+<h2 id="orgc0b86a2"><span class="section-number-2">6.</span> 6</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-org8222b0b" class="outline-3">
+<h3 id="org8222b0b"><span class="section-number-3">6.1.</span> 6.19 Specific heat of anharmonic oscillators&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="__">气体</span></span></h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Consider a one-dimensional oscillator (not simple harmonic) described by a position coordinate x and by a momentum p and whose energy
+is given by 
+</p>
+\begin{equation}
+\label{eq:1}\tag{i}
+\epsilon=\frac{p^2}{2m}+bx^4
+\end{equation}
+<p>
+where the first term on the right is its kinetic energy and the second term is its potential energy. Here m denotes the mass of the oscillator and b is some constant.
+Suppose that this oscillator is in thermal equilibrium with a heat reservoir at a temperature T high enough so that the approximation of classical mechanics is a good one.
+</p>
+
+<p>
+(a) What is the mean kinetic energy of this oscillator?
+</p>
+
+<p>
+(b) What is its mean potential energy?
+</p>
+
+<p>
+(c) What is its mean total energy?
+</p>
+
+<p>
+(d) Consider an assembly of weakly interacting particles, each vibrating in one dimension so that its energy is given by (i). What is the specific heat at constant volume per mole of these particles?
+</p>
+
+<p>
+(Suggestion: There is no need to evaluate explicitly any integral to answer these questions.)
+</p>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8d733c2" class="outline-4">
+<h4 id="org8d733c2"><span class="section-number-4">6.1.1.</span> Calcualte mean kinetic energy</h4>
+<div class="outline-text-4" id="text-6-1-1">
+\begin{gather*}
+\overline{\epsilon}_k= -\frac{\partial \ln Z}{\partial \beta}=-\frac{\partial }{\partial \beta}\ln \int_{\mathbb{R}}\mathrm{e}^{-\beta \frac{p^2}{2m}}\mathrm{d}p\\
+=\frac{\partial }{\partial \beta}\ln \sqrt{\frac{\beta}{2\pi m}}
+=\frac{1}{2\beta}
+=\boxed{\frac{kT}{2}}
+\end{gather*}
+<p>
+\paragraph{析}据能量均分定理\footnote{上面只是 beta 指数正确，事实上不正确，建议用下面这里记忆更严谨}：
+</p>
+\begin{equation*}
+\overline{\varepsilon_k}=\frac{\overline{p^2}}{2m}=\frac{kT}{2}
+\end{equation*}
+<p>
+课本做法：
+</p>
+\begin{gather*}
+\bar{\epsilon}_i=-\frac{\partial}{\partial\beta}\ln\left(\int_{-\infty}^\infty e^{-\beta\epsilon_i}\:dp_i\right)
+\end{gather*}
+<p>
+(这里面有 \(\hbar\))
+</p>
+</div>
+</div>
+<div id="outline-container-org475b6e7" class="outline-4">
+<h4 id="org475b6e7"><span class="section-number-4">6.1.2.</span> Calculate mean potential energy</h4>
+<div class="outline-text-4" id="text-6-1-2">
+\begin{gather*}
+\overline{\epsilon}_p=\frac{\partial }{\partial \beta}\ln Z
+= \frac{\partial }{\partial \beta}\ln \int\mathrm{e}^{-\beta bx^4}\mathrm{d}x \\
+\text{let } y=\beta^{\frac{1}{4}}x \\
+\begin{split}
+\overline{\epsilon}
+&=\frac{\partial }{\partial \beta}\ln \int\mathrm{e}^{-by^4} \beta^{-\frac{1}{4}}\mathrm{d}y
+= \frac{\partial }{\partial \beta}\left(\ln\beta^{-\frac{1}{4}} \int\mathrm{e}^{-by^4}\mathrm{d}y \right) \\
+&= \frac{\partial }{\partial \beta}\left(\ln\beta^{-\frac{1}{4}}+\ln \int\mathrm{e}^{-by^4}\mathrm{d}y \right)
+=\frac{\partial }{\partial \beta}\ln\beta^{-\frac{1}{4}} \\
+&=\frac{1}{4\beta}=\boxed{\frac{kT}{4}}
+\end{split}
+\end{gather*}
+
+<p>
+\paragraph{析}此处积分技巧可留意
+</p>
+</div>
+</div>
+<div id="outline-container-org58be8ea" class="outline-4">
+<h4 id="org58be8ea"><span class="section-number-4">6.1.3.</span> Calculate mean total energy</h4>
+<div class="outline-text-4" id="text-6-1-3">
+\begin{gather*}
+\overline{\epsilon}=\overline{\epsilon}_k+\overline{\epsilon}_p 
+= \boxed{\frac{3}{4}kT}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org2bf4cef" class="outline-4">
+<h4 id="org2bf4cef"><span class="section-number-4">6.1.4.</span> Calculate specific heat</h4>
+<div class="outline-text-4" id="text-6-1-4">
+\begin{gather*}
+c_V = \frac{\partial E}{\partial T}=\frac{3/4 kT}{T}=\frac{3}{4}kN_A
+=\boxed{\frac{3}{4}R}
+\end{gather*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8eea469" class="outline-3">
+<h3 id="org8eea469"><span class="section-number-3">6.2.</span> 6.21 Quantum theory of the specific heat of solids&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span>&#xa0;<span class="__">热容</span></span></h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+To treat the atomic vibrations in a solid by quantum mechanics, use as a simplifying approximation a model which assumes that each atom of the solid vibrates independently of the other atoms with the same angular frequency \(\omega\) in each of its three directions.
+The solid consisting of \(N\) atoms is then equivalent to an assembly of \(3N\) independent one-dimensional oscillators vibrating with the frequency \(\omega\).
+The possible quantum states of every such oscillator have discrete energies given by
+</p>
+\begin{equation}
+\tag{i}
+\epsilon_n=(n+\frac{1}{2})\hbar\omega
+\end{equation}
+<p>
+where the quantum number \(n\) can assume the possible values \(n = 0, 1, 2, 3 \dots\)
+</p>
+
+<p>
+(a) Suppose that the solid is in equilibrium at the absolute temperature \(T\). By using the energy levels (i) and the canonical distribution, proceed as in Prob. 4.22 to calculate the mean energy \(\overline{\epsilon}\) of an oscillator and thus also the total mean energy \(E=N\overline{\epsilon}\) of the vibrating atoms in the solid.
+</p>
+<hr />
+<blockquote>
+\begin{equation*}
+Z=\frac{\mathrm{e}^{-\frac{1}{2}\beta\hbar\omega}}{1-\mathrm{e}^{-\beta\hbar\omega}}
+\end{equation*}
+<p>
+Solution 4.22 Mean energy of a harmonic oscillator
+</p>
+</blockquote>
+<hr />
+
+<p>
+(b) Using the result of part (a), proceed as in Prob. 5.20 to calculate the molar specific heat \(c_V\) of the solid.
+</p>
+
+<p>
+\((c)\) Show that the result of part \((b)\) can be expressed in the form
+</p>
+\begin{equation*}
+c_{V}=3R\frac{w^2e^w}{(e^w-1)^2}\tag{ii}
+\end{equation*}
+<p>
+where
+</p>
+\begin{equation*}
+w\equiv\frac{\hbar\omega}{kT}=\frac\Theta T\tag{iii}
+\end{equation*}
+<p>
+and where \(\Theta\equiv\hbar\omega/k\) is the temperature parameter previously defined in (70).
+</p>
+<hr />
+<blockquote>
+\begin{equation*}
+kT\gg\hbar\omega\tag{69}
+\end{equation*}
+<p>
+where \(\omega\) is, by (60), the typical (angular) frequency of oscillation of an atom in the solid. Equivalently the criterion (69) for the validity of the classical approximation can be written in the form
+</p>
+\begin{equation*}
+T\gg\Theta,\quad\mathrm{where~}\Theta\equiv\frac{\hbar\omega}k\tag{70}
+\end{equation*}
+<p>
+is a temperature parameter characteristic of the solid under consideration.
+</p>
+</blockquote>
+<hr />
+
+<p>
+(d) Show that, when \(T\gg \Theta\), the result (ii) approaches properly the classical value \(c_V=3R\).
+</p>
+
+<p>
+\((e)\) Show that the expression (ii) for \(c_V\) approaches properly the value zero as \(T\to0\).
+</p>
+
+<p>
+\((f)\) Find an approximate expression for the result (ii) in the limit when \(T\ll\Theta\).
+</p>
+
+<p>
+\((g)\) Make a rough sketch of \(c_V\) as a function of the absolute temperature \(T\).
+</p>
+
+<p>
+(h) Apply the criterion (1) to find below what temperature the classical approximation is not expected to be applicable.
+Compare your result with the condition (69) for the applicability of the classical theory of specific heats.
+</p>
+
+<p>
+[Using the approximations made in this problem, Einstein first derived the expression (ii) in l907. Using the novel quantum ideas, he was thus able to inexplicable on the basis of the classical theory.]
+</p>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb1a2ad3" class="outline-4">
+<h4 id="orgb1a2ad3"><span class="section-number-4">6.2.1.</span> Caculate mean energy &amp; total&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-6-2-1">
+\begin{gather*}
+\begin{split}
+\overline{\epsilon}_j
+&=-\frac{\partial }{\partial \beta}\ln Z
+=-\frac{\partial }{\partial \beta}\ln \frac{\mathrm{e}^{-\frac{1}{2}\beta\hbar\omega}}{1-\mathrm{e}^{-\beta\hbar\omega}} \\
+&=\boxed{\hbar\omega\left(\frac{1}{2}+\frac{1}{\mathrm{e}^{\beta\hbar\omega}-1}\right)}
+\end{split}\\
+\overline{\epsilon}=3\overline{\epsilon}_j \\
+\overline{E}
+=N\overline{\epsilon}
+=\boxed{3N\hbar\omega\left(\frac{1}{2}+\frac{1}{\mathrm{e}^{\beta\hbar\omega}-1}\right)}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org4ae3be5" class="outline-4">
+<h4 id="org4ae3be5"><span class="section-number-4">6.2.2.</span> Caculate \(c_V\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-6-2-2">
+\begin{equation*}
+\begin{split}
+c_V&=\frac{\partial E}{\partial T}
+=  \frac{\partial }{\partial T}\left( \frac{3}{2}N\hbar\omega+\frac{3N\hbar\omega}{\mathrm{e}^{\beta\hbar\omega}-1}\right)
+= \frac{3N\hbar\omega}{(\mathrm{e}^{\beta\hbar\omega}-1)^2}\frac{\hbar\omega}{kT^2}\mathrm{e}^{\beta\hbar\omega}\\
+&= \boxed{\frac{3N}{(\mathrm{e}^{\beta\hbar\omega}-1)^2}\frac{\hbar^2\omega^2}{kT^2}\mathrm{e}^{\beta\hbar\omega}}
+\end{split}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org960c440" class="outline-4">
+<h4 id="org960c440"><span class="section-number-4">6.2.3.</span> Express \(c_V\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-6-2-3">
+\begin{equation*}
+\begin{split}
+c_V
+&= \frac{3N}{(\mathrm{e}^{\frac{\hbar\omega}{kT}}-1)^2}\frac{\hbar^2\omega^2}{kT^2}
+= \frac{3R}{(\mathrm{e}^{\frac{\hbar\omega}{kT}}-1)^2k}\frac{\hbar^2\omega^2}{kT^2} \\
+&\overset{\frac{\hbar\omega}{kT}=w}{=\!=\!=\!=\!=\!=} \boxed{3R\frac{w^2e^w}{(e^w-1)^2}}
+\end{split}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org1bd1ac0" class="outline-4">
+<h4 id="org1bd1ac0"><span class="section-number-4">6.2.4.</span> Prove \(T\gg \Theta\Rightarrow c_V=3R\)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="____">数学近似</span></span></h4>
+<div class="outline-text-4" id="text-6-2-4">
+\begin{gather*}
+T\gg \Theta \Rightarrow w = \frac\Theta T\rightarrow 0 \quad \mathrm{e}^{w} = 1+ w+ o(w)  \\
+\begin{split}
+c_V &= 3R \frac{w^2 \mathrm{e}^w}{(\mathrm{e}^{w}-1)^2} 
+= 3R \frac{w^2 \left( 1+w+o(w) \right)}{(1+w+o(w)-1)^2} \\
+&= 3R \frac{ w^2+w^3+o(w^3) }{w^2+o(w^2)} \to
+\boxed{3R}
+\end{split}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org3e21f17" class="outline-4">
+<h4 id="org3e21f17"><span class="section-number-4">6.2.5.</span> Prove \(T\to0,c_V\to0\)</h4>
+<div class="outline-text-4" id="text-6-2-5">
+\begin{gather*}
+T\rightarrow 0 \Rightarrow w\rightarrow\infty ,\mathrm{e}^{-w}\rightarrow0, \frac{w^2}{\mathrm{e}^w-1} \rightarrow 0\\
+c_{V}= 3R \frac{w^2 }{\mathrm{e}^{w}-1}\frac{1}{1-\mathrm{e}^{-w}} \\
+\lim \limits_{w\to\infty} c_V=3R\cdot 0 \cdot \frac{1}{1}= \boxed{0}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org0f51ec6" class="outline-4">
+<h4 id="org0f51ec6"><span class="section-number-4">6.2.6.</span> Find \(c_V\) when \(T\ll \Theta\)</h4>
+<div class="outline-text-4" id="text-6-2-6">
+\begin{gather*}
+T\ll \Theta \Rightarrow \mathrm{e}^w-1 \sim \mathrm{e}^w , \\
+c_V \approx 3R \frac{w^2\mathrm{e}^w}{\mathrm{e}^w\mathrm{e}^w}
+=\boxed{3R\frac{w^2}{\mathrm{e}^w}}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org08c75c9" class="outline-4">
+<h4 id="org08c75c9"><span class="section-number-4">6.2.7.</span> Sketch \(c_V-T\)</h4>
+<div class="outline-text-4" id="text-6-2-7">
+
+<div id="org22c0673" class="figure">
+<p><img src="stat_hw6/20240626224920.png" alt="20240626224920.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org769a522" class="outline-4">
+<h4 id="org769a522"><span class="section-number-4">6.2.8.</span> Classical limit</h4>
+<div class="outline-text-4" id="text-6-2-8">
+<p>
+condition 69: \(kT\gg \hbar\omega\) 
+condition 1: \(kT\lesssim C\Delta T\)
+</p>
+\begin{gather*}
+kT \lesssim C\Delta T \\
+\frac{\Delta T}{T} \ge \frac{k}{C}
+\end{gather*}
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6279970" class="outline-3">
+<h3 id="org6279970"><span class="section-number-3">6.3.</span> 7.3 Work done on an ideal gas in a quasi-static adiabatic process</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+A thermally insulated ideal gas has a molar specific heat \(c_V\) (at constant volume) independent of temperature.
+Suppose that this gas is compressed quasi-statically from an initial macrostate, where its volume is \(V_i\) and its mean pressure is \(\overline{p}_{i}\) , to a final macrostate, where its volume is \(V_f\) and its mean pressure is \(\overline{p}_f\).
+</p>
+
+<p>
+(a) Calculate directly the work done on the gas in this process, expressing your answer in terms of the initial and final pressures and volumes.
+</p>
+
+<p>
+(b) Express your answer to part (a) in terms of the initial and final absolute temperatures \(T_{i}\) and \(T_f\) of the gas.
+Show that this result would follow immediately from a consideration of the change of internal energy of the gas.
+</p>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0339700" class="outline-4">
+<h4 id="org0339700"><span class="section-number-4">6.3.1.</span> Calculate work&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代换</span></span></h4>
+<div class="outline-text-4" id="text-6-3-1">
+\begin{gather*}
+Q=0 \quad W = \Delta U= c_V\Delta T \\
+\Delta T=T_f-T_i\overset{pV=nRT}{=\!=\!=\!=}\frac{1}{nR}(\overline{p}_fV_f-\overline{p}_iV_i)\\
+W = c_V\frac{1}{nR} (\overline{p}_fV_f-\overline{p}_iV_i)
+\overset{n=1}{=\!=\!=}\boxed{\frac{c_V}{R} (\overline{p}_fV_f-\overline{p}_iV_i)}
+\end{gather*}
+
+<p>
+\paragraph{析}题中 \(c_V\) 是 molar 即单位热容，故最终无 \(n\) 。利用绝热关系做
+Adiabatic process: \(\bar{p}V^{\gamma}=\overline{p}_{i}V_{i}^{\gamma}=\overline{p}_{f}V_{f}^{\gamma}\) 其中 \(\gamma=1+\frac{nR}{c_V}\)
+</p>
+
+\begin{gather*}
+p_{V_x}=\frac{p_{i}V_{i}^{\gamma}}{V_x^{\gamma}}\\
+\begin{split}
+W&=-\int_{V_{i}}^{V_f}p \mathrm{d}V
+=-\int_{V_{i}}^{V_f}\frac{p_{i}V_{i}^{\gamma}}{V^{\gamma}} \mathrm{d} V \\
+&=-p_{i}V_{i}^{\gamma}\int_{V_{i}}^{V_f}V^{-\gamma}\mathrm{d}V
+=-p_{i}V_{i}^{\gamma} \left( \frac{1}{-\gamma+1}V^{-\gamma+1}\bigg|_{V_{i}}^{V_f} \right) \\
+&=-\frac{1}{-\gamma+1}p_{i}V_{i}^{\gamma}\left( V_{f}^{-\gamma+1}-V_{i}^{-\gamma+1} \right)
+=\frac{1}{\gamma-1}
+\left(p_{i}V_{i}^{\gamma}V_{f}^{-\gamma+1}-p_{i}V_{i}^{\gamma}V_{f}^{-\gamma+1} \right) \\
+&=\frac{1}{\gamma-1}
+\left(p_{f}V_{f}^{\gamma}V_{f}^{-\gamma+1}-p_{i}V_{i}^{\gamma}V_{f}^{-\gamma+1} \right) \\
+&=\frac{c_V}{R} (\overline{p}_fV_f-\overline{p}_iV_i)
+\end{split}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org808cac0" class="outline-4">
+<h4 id="org808cac0"><span class="section-number-4">6.3.2.</span> Rewrite</h4>
+<div class="outline-text-4" id="text-6-3-2">
+\begin{gather*}
+\mathrm{d}E = \nu c_V \mathrm{d}T \\
+E = \int_{T_{i}}^{T_f}\nu c_V \mathrm{d}T = \nu c_V (T_f-T_{i})
+\end{gather*}
+</div>
+</div>
+</div>
+<div id="outline-container-org9bcd7a7" class="outline-3">
+<h3 id="org9bcd7a7"><span class="section-number-3">6.4.</span> 7.4 Specific heat difference \(c_p\) — \(c_v\) of an ideal gas&#xa0;&#xa0;&#xa0;<span class="tag"><span class="normal">normal</span></span></h3>
+<div class="outline-text-3" id="text-6-4">
+<p>
+Consider an ideal gas enclosed in a vertical cylinder closed by a piston.
+The piston is free to move and supports a weight; thus the gas is always kept at the same pressure (equal to the weight of the piston divided by its area) irrespective of its volume.
+</p>
+
+<p>
+(a) If the gas is kept at a constant pressure, use (43) to calculate the heat \(\bar{d}Q\) absorbed by it if its temperature is increased by an amount \(dT\). Use this result to show that its molar specific heat \(c_p\), measured at constant pressure, is related to its molar specific heat \(c_V\) , at constant volume, by \(c_p = c_V + R\).
+</p>
+
+<p>
+(b) What is the value of \(c_p\) for a monatomic gas such as helium?
+</p>
+
+<p>
+(c) Show that the ratio \(c_p/c_V\) is equal to the quantity y defined in (57). What is the value of this ratio in the case of a monatomic ideal gas?
+</p>
+<hr />
+<blockquote>
+<p>
+&#x2026;&#x2026;
+</p>
+\begin{equation*}
+dQ=\nu c_{V}dT+\frac{\nu RT}{V}dV\tag{43}
+\end{equation*}
+<p>
+The entropy change of the gas in this infinitesimal process is then, according to (32), given by
+</p>
+\begin{equation*}
+dS=\frac{dQ}{T}=\nu c_{V}\frac{dT}{T}+\:\nu R\:\frac{dV}{V}\tag{44}
+\end{equation*}
+<p>
+&#x2026;&#x2026;
+</p>
+
+<p>
+Raising both sides to the power \((R/c_V)\),we then obtain
+</p>
+\begin{equation*}
+\bar{p}V^\gamma=\text{constant}\tag{56}
+\end{equation*}
+<p>
+where
+</p>
+\begin{equation*}
+\gamma\equiv1+\frac{R}{c_V}=\frac{c_V+R}{c_V}\tag{57}
+\end{equation*}
+</blockquote>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+<p>
+\(\nu\) is \(n\) in ideal gas equation
+</p>
+</div>
+<div id="outline-container-org9458717" class="outline-4">
+<h4 id="org9458717"><span class="section-number-4">6.4.1.</span> Prove specific heat equation&#xa0;&#xa0;&#xa0;<span class="tag"><span class="____">理想气体</span></span></h4>
+<div class="outline-text-4" id="text-6-4-1">
+\begin{gather*}
+\begin{split}
+\mathrm{d}Q
+&=n c_{V}\mathrm{d}T+p \mathrm{d}V
+=n c_{V}\mathrm{d}T+p \mathrm{d}\frac{nRT}{p} \\
+&= n c_V \mathrm{d}T +n R \mathrm{d}T
+= n (c_V  + R) \mathrm{d}T
+\end{split}\\
+n=1 \rightarrow c_p=\frac{\mathrm{d}Q}{\mathrm{d}T }=c_V+R \\ \boxed{c_p-c_V = R}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-orgff3bb53" class="outline-4">
+<h4 id="orgff3bb53"><span class="section-number-4">6.4.2.</span> He \(c_V,c_p\)</h4>
+<div class="outline-text-4" id="text-6-4-2">
+\begin{gather*}
+\epsilon_j = \frac{p_j^2}{2m} \\
+\begin{split}
+\overline{\epsilon} &= \frac{\partial \ln Z}{\partial \beta} 
+= \frac{\partial }{\partial \beta} \ln \sum \mathrm{e}^{-\beta \frac{p^2}{2m}}\\
+&= 3\cdot \frac{1}{2\beta} = \frac{3}{2}kT
+\end{split}\\
+\begin{aligned}
+c_V &= \frac{1}{\nu}\frac{\partial E}{\partial T} = \frac{1}{\nu}\frac{3}{2}\nu RT = \boxed{\frac{3}{2}R} \\
+c_p &= c_V + R = \boxed{\frac{5}{2}R}
+\end{aligned}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-orge2591a7" class="outline-4">
+<h4 id="orge2591a7"><span class="section-number-4">6.4.3.</span> Find ratio&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代入</span></span></h4>
+<div class="outline-text-4" id="text-6-4-3">
+\begin{equation*}
+\frac{c_p}{c_V}=\frac{5/2R}{3/2R}=\frac{5}{3}=\gamma
+\end{equation*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge55af2c" class="outline-3">
+<h3 id="orge55af2c"><span class="section-number-3">6.5.</span> 7.7 Equilibrium conditions for a system of fixed volume when it is in contact with a heat reservoir</h3>
+<div class="outline-text-3" id="text-6-5">
+<p>
+Consider a system A whose only external parameter is its volume \(V\) which remains fixed. The system is in contact with a heat reservoir \(A'\) at the constant temperature \(T'\).
+</p>
+
+<p>
+(a) Use arguments similar to those of Sec. 7.5 to show that the equilibrium of A is characterized by the fact that the function
+</p>
+\begin{equation*}
+F\equiv \overline{E}-T'S
+\end{equation*}
+<p>
+for this system must be a minimum. Here \(\overline{E}\) is the mean energy and \(S\) the entropy of A. The function \(F\) is called its Helmholtz free energy.
+</p>
+
+<p>
+(b) Show that the Gibbs free energy (76) of a system in contact with a reservoir at constant temperature \(T'\) and constant pressure \(p'\) can be expressed in terms of its Helmholtz free energy by the relation
+</p>
+\begin{equation*}
+G=F+p'V
+\end{equation*}
+</div>
+
+<div id="outline-container-orga2937c6" class="outline-4">
+<h4 id="orga2937c6"><span class="section-number-4">6.5.1.</span> Prove equilibrium is at min \(F\)</h4>
+<div class="outline-text-4" id="text-6-5-1">
+\begin{gather*}
+V=C \Rightarrow Q = \Delta E \\
+S^*  = S + S' \\
+\Delta S' = \frac{Q}{T} = \frac{\Delta E}{T} \\
+\begin{split}
+\Delta S^* &= \Delta S - \frac{\Delta E}{T}
+=\frac{T\Delta S-\Delta E}{T} \\
+&= -\frac{F}{T}
+\end{split}
+\end{gather*}
+
+<p>
+S 最小，F最大
+\paragraph{析}总是用熵去找关系，只有这一个不等式
+</p>
+</div>
+</div>
+<div id="outline-container-org9bf9c8b" class="outline-4">
+<h4 id="org9bf9c8b"><span class="section-number-4">6.5.2.</span> Gibbs&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代换</span></span></h4>
+<div class="outline-text-4" id="text-6-5-2">
+\begin{gather*}
+G= \overline{E}-T'S+p'V \\
+F=\overline{E}-T'S \\
+G = F+p'V
+\end{gather*}
+<hr />
+<div class="org-center">
+<p>
+<b>第六章</b>
+</p>
+
+<p>
+Canonical Distribution in the Classical Approximation
+</p>
+</div>
+
+<ul class="org-ul">
+<li><p>
+相空间 phase space ：将速度和位置作为坐标，每个点表示一个位于某坐标和速度的状态。 A cartesian multidimensional space whose axes are labeled by all the coordinates and momenta describing a system in classical mechanics. A point in this space specifies all the coordinates and momenta of the system.
+</p>
+
+<p>
+维度： n+n
+</p>
+
+<p>
+Fundamental assumption: An isolated system in equilibrium will be found in any of its accessible cells with equal probability.
+</p></li>
+
+<li>分布求法 \(\wp(q,p)\mathrm{d}q \mathrm{d}p=Ce^{-\beta\text{E}}\times \mathrm{d}q \mathrm{d}p\)</li>
+
+<li>热容－能量 \(c_V=\frac{\partial E}{\partial T}\)</li>
+</ul>
+
+<p>
+If a system described classically is in equilibrium at the absolute temperature T, every independent quadratic term \(\varepsilon_j\) of its energy has a mean value 二次方能量
+</p>
+\begin{gather*}
+\overline{\varepsilon}_j=\frac{1}{2}kT
+\end{gather*}
+
+<p>
+\paragraph{Maxwell 分布} 速度分布（从正则直接得到） gives the mean number of molecules having a velocity between v and v + d\ in a gas at the absolute temperature T. It is merely a special case of the canonical distribution. 正则分布
+</p>
+\begin{equation*}
+f(\mathbf{v})\mathrm{d}^3\mathbf{v}\propto e^{-(1/2)\beta mv^2}\mathrm{d}^3\mathbf{v}
+\end{equation*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgaa9ee35" class="outline-3">
+<h3 id="orgaa9ee35"><span class="section-number-3">6.6.</span> 第六章幻灯片整理</h3>
+<div class="outline-text-3" id="text-6-6">
+<p>
+相空间，如何归一化计算得到
+</p>
+
+<p>
+利用能量结果计算其它统计物理量：
+首先能量均值
+</p>
+
+<p>
+谐振子： \(\epsilon=\frac{p_x^2}{2m}+\frac12k_sx^2\) 
+</p>
+
+<p>
+理想气体单位摩尔能量 \(\overline{E}=N_A \overline{\epsilon}=\frac{3}{2}(N_Ak)T=\frac{3}{2}RT\)
+\(\to\) 单位热容 \(c_V=\frac{3}{2}R\)
+</p>
+
+<p>
+其它例子：固体谐振子
+<img src="all/20240701195346.png" alt="20240701195346.png" />
+</p>
+
+<p>
+原理相同：写出能量－求平均能量（二次方就是 \(\frac{kT}{2}\)）－求导得到热容
+</p>
+<hr />
+</div>
+</div>
+</div>
+<div id="outline-container-org1fcc511" class="outline-2">
+<h2 id="org1fcc511"><span class="section-number-2">7.</span> 7</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+
+<div id="outline-container-orgbcad92f" class="outline-3">
+<h3 id="orgbcad92f"><span class="section-number-3">7.1.</span> 7.12 Equilibrium between phases discussed in terms of chemical potential&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span>&#xa0;<span class="____">定义代换</span></span></h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Consider a system consisting of two phases 1 and 2 maintained at a constant temperature T and pressure p by being in contact with a suitable reservoir. The total Gibbs free energy G of this system at the given temperature and pressure is then a function of the number Ni of molecules in phase 1 and the
+number \(N_2\) of molecules in phase 2; thus \(G=G(N_1,N_2)\).
+</p>
+
+<p>
+(a) Using very simple mathematics, show that the change AG in the free en­
+ergy resulting from small changes AiVi and AN2 in the number of molecules in
+the two phases can be written in the form
+</p>
+\begin{equation}
+\label{eq:1} \tag{i}
+\Delta G=\mu_1\Delta N_1+\mu_2\Delta N_2
+\end{equation}
+<p>
+if one uses the convenient abbreviation
+</p>
+\begin{equation}
+\label{eq:2}\tag{ii}
+\mu_i\equiv\frac{\partial G}{\partial N_i}
+\end{equation}
+<p>
+The quantity \(\mu_{i}\) is called the <i>chemical potential</i> per molecule of the ith phase.
+</p>
+
+<p>
+(b) Since \(G\) must be a minimum when the phases are in equilibrium, AG must
+then vanish if one molecule of phase 1 is transferred to phase 2.
+Show that the
+relation (i) thus yields the equilibrium condition
+</p>
+\begin{equation}
+\label{eq:3}\tag{iii}
+\mu_1=\mu_2
+\end{equation}
+
+<p>
+(c) Using the relation (86), show that \(\mu_i = g_i\), the (Gibbs free energy per molecule of phase i. The result (iii) agrees thus with (87')
+</p>
+<hr />
+<div class="org-center">
+<p>
+SOLUTION
+</p>
+</div>
+</div>
+<div id="outline-container-orgf95767c" class="outline-4">
+<h4 id="orgf95767c"><span class="section-number-4">7.1.1.</span> G expression&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">代换</span></span></h4>
+<div class="outline-text-4" id="text-7-1-1">
+<p>
+If \(G=(N_1,N_2)\) ,then \(\mathrm{d}G=\frac{\partial G}{\partial N_1}\mathrm{d}N_1+\frac{\partial G}{\partial N_2}\mathrm{d}N_2\)
+</p>
+\begin{gather*}
+\Delta G=\frac{\partial G}{\partial N_1} \Delta N_1+\frac{\partial G}{\partial N_2} \Delta N_2 \\
+ \overset{\mu_{i} \equiv \frac{\partial G}{\partial N_{i}}}{=\!=\!=\!=\!\Rightarrow} \\
+\Delta G = \mu_1 \Delta N_1 +\mu_2\Delta N_2
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-orgee25cc5" class="outline-4">
+<h4 id="orgee25cc5"><span class="section-number-4">7.1.2.</span> Find equation of chemical potential</h4>
+<div class="outline-text-4" id="text-7-1-2">
+<p>
+Conservation of  moleculars
+</p>
+\begin{gather*}
+N=N_1+N_2,\quad\Delta N=0 \Rightarrow \Delta N_1+\Delta N_2=0
+\end{gather*}
+<p>
+G must be a minimum, \(\Delta G=0\)
+</p>
+\begin{equation*}
+\begin{split}
+& \Delta N_1=-\Delta N_2 \\
+\Delta G &= \mu_1 \Delta N_1 +\mu_2 \Delta N_2 \\
+0 &= \mu_1 \Delta N_1 +\mu_2 (-\Delta N_1) \\
+0 &= (\mu_1-\mu_2)\Delta N_1 \\
+\Rightarrow &\mu_1=\mu_2
+\end{split}
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org9e6e605" class="outline-4">
+<h4 id="org9e6e605"><span class="section-number-4">7.1.3.</span> Transformation</h4>
+<div class="outline-text-4" id="text-7-1-3">
+\begin{gather*}
+G=g_1N_1+g_2N_2 \Rightarrow \mathrm{d}G=g_1\mathrm{d}N_1+g_2 \mathrm{d}N_2 \\
+g_{i}=\mu_{i}=\frac{\partial G}{\partial N_{i}} \\
+\mu_1=\mu_2 \Rightarrow g_1=g_2
+\end{gather*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2b427fe" class="outline-3">
+<h3 id="org2b427fe"><span class="section-number-3">7.2.</span> 7.14 Refrigerators</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+A refrigerator is a device which extracts heat from a system A and rejects it to some other system \(A'\) at a higher absolute temperature. Suppose that A is a heat reservoir at the temperature T and \(A'\) is another reservoir at the temperature \(T'\) .
+</p>
+
+<p>
+(a) Show that, if \(T'>T\) , the transfer of heat \(q\) from A to A' involves a net decrease of entropy of the total system and is thus not realizable without auxiliary systems.
+</p>
+
+<div id="orgc2827cc" class="figure">
+<p><img src="stat_hw7/20240627113043.png" alt="20240627113043.png" />
+</p>
+</div>
+
+<p>
+(b) If one wants to extract heat \(q\) from A and thus reduce its entropy, one must increase the entropy of \(A'\) by more than a compensating amount by rejecting to it an amount of heat \(q'\) greater than q. This can be accomplished by letting some system B do an amount of work \(w\) on the refrigerator mechanism M working in a cycle. One thus obtains the schematic diagram shown in Fig. 7.16 and understands why kitchen refrigerators need an external source of power to make them function. Use entropy considerations to show that
+</p>
+\begin{equation*}
+\frac q{q^{\prime}}\leq\frac T{T^{\prime}}.
+\end{equation*}
+
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+<div id="outline-container-orgdeaddac" class="outline-4">
+<h4 id="orgdeaddac"><span class="section-number-4">7.2.1.</span> Prove not spantaneous</h4>
+<div class="outline-text-4" id="text-7-2-1">
+\begin{gather*}
+\Delta S_A=\frac{-q}{T} \quad \Delta S'_A=\frac{q'}{T'} \\
+\Delta \overline{E}_M=0 \quad (q-q')+0=0 \\
+\Rightarrow q=q' \\
+\Delta S^* = \Delta S_A+\Delta S'_A+\Delta S_M 
+\end{gather*}
+<p>
+It's cyclic, so \(\Delta S_M=0\)
+</p>
+\begin{gather*}
+\Delta S^* = \frac{q'}{T'}-\frac{q}{T}=q(\frac{T-T'}{TT'}) \\
+T'>T \Rightarrow \Delta S^*<0
+\end{gather*}
+<p>
+an auxiliary system is needed for entropy compersation!
+</p>
+</div>
+</div>
+
+<div id="outline-container-org45273c5" class="outline-4">
+<h4 id="org45273c5"><span class="section-number-4">7.2.2.</span> Prove inequality</h4>
+<div class="outline-text-4" id="text-7-2-2">
+\begin{gather*}
+\Delta S+\Delta S'\geq 0 \\
+\frac{-q}{T}+\frac{q'}{T'}\geq 0\\
+\Rightarrow \boxed{\frac{q}{q'}\leq \frac{T}{T'}}
+\end{gather*}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org23382f5" class="outline-3">
+<h3 id="org23382f5"><span class="section-number-3">7.3.</span> 7.16 Maximum work obtainable from two identical systems&#xa0;&#xa0;&#xa0;<span class="tag"><span class="intrinsic">intrinsic</span></span></h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+Consider two identical bodies \(A_1\) and \(A_2\) , each characterized by a heat capacity \(C\) which is temperature-independent.
+The bodies are initially at temperatures \(T_1\) and \(T_2\) , respectively, where \(T_1 > T_2\).
+It is desired to operate an engine between \(A_1\) and \(A_2\) so as to convert some of their internal energy into work. As a result of the operation of the engine, the bodies ultimately will attain a common final temperature \(T_f\).
+</p>
+
+<p>
+(a) What is the total amount of work W done by the engine? Express your answer in terms of  \(C,T_1,T_2\), and \(T_f\).
+</p>
+
+<p>
+(b) Use arguments based upon entropy considerations to derive an inequality relating \(T_f\) to the initial temperatures \(T_1\) and \(T_2\).
+</p>
+
+<p>
+(c) For given initial temperatures \(T_1\) and \(T_2\), what is the maximum amount of work obtainable from the engine?
+</p>
+
+<div id="org6c3ba4a" class="figure">
+<p><img src="stat_hw7/20240611224059.png" alt="20240611224059.png" />
+</p>
+</div>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfd5c790" class="outline-4">
+<h4 id="orgfd5c790"><span class="section-number-4">7.3.1.</span> Express \(W\)</h4>
+<div class="outline-text-4" id="text-7-3-1">
+\begin{gather*}
+W=-(q_1+q_2)=-C(\Delta T_1+\Delta T_2)\\
+\boxed{W = C (T_1+T_2-2T_f)}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org28ee777" class="outline-4">
+<h4 id="org28ee777"><span class="section-number-4">7.3.2.</span> Find inequal relation between \(T_f,T_1,T_2\)</h4>
+<div class="outline-text-4" id="text-7-3-2">
+\begin{gather*}
+\mathrm{d}q=C \mathrm{d}T \\
+\Delta S = \int_{T_f}^{T_j} \frac{\mathrm{d}q}{T}=\int_{T_f}^{T_j} \frac{C \mathrm{d}T}{T} = C\ln \frac{T_f}{T_j}
+\end{gather*}
+<p>
+Cyclic: \(\Delta S_M=0\) , then the total entropy is
+</p>
+\begin{equation*}
+\begin{split}
+\Delta S^*
+&=\Delta S_1+\Delta S_2+\Delta S_M \\
+&= C \left[ \ln \frac{T_f}{T_1}+\ln \frac{T_f}{T_2} \right]+0 \\
+&= C \ln \frac{T_f^2}{T_1T_2}
+\end{split}
+\end{equation*}
+<p>
+2nd law of therodynamics: \(\Delta S^*\geq 0\)
+</p>
+\begin{gather*}
+C \ln \frac{T_f^2}{T_1T_2} \geq 0 \\
+\exp \left( \ln \frac{T_f^2}{T_1T_2} \right) \geq \mathrm{e}^0 \rightarrow \frac{T_f^2}{T_1T_2}\geq 1\\
+T_f^2\geq T_1T_2 \\ \boxed{T_f \geq \sqrt{T_1T_2}}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-orgac89c59" class="outline-4">
+<h4 id="orgac89c59"><span class="section-number-4">7.3.3.</span> Find max W</h4>
+<div class="outline-text-4" id="text-7-3-3">
+\begin{gather*}
+\max W = \left[C (T_1+T_2-2T_f) \right]_{\text{max}} \\
+T_f = \sqrt{T_1T_2} \\
+W_{\max} =C (T_1+T_2-2 \sqrt{T_1T_2})=\boxed{C(\sqrt{T_1}-\sqrt{T_2})^2}
+\end{gather*}
+</div>
+</div>
+</div>
+<div id="outline-container-org308c3cf" class="outline-3">
+<h3 id="org308c3cf"><span class="section-number-3">7.4.</span> 7.17 Ideal gas Carnot engine</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+We wish to show explicitly that it is possible to design a highly idealized engine which can, in a cycle, extract heat q from some heat reservoir A at the absolute temperature T, reject heat q' to some heat reservoir A ' at the lower absolute temperature T , and perform useful work w — q — q’ in the process.
+The simplest such engine is one (first considered by Sadi Cam ot in 1824) which operates in a quasi-static manner.
+The cycle consists of four steps which take the engine from its initial macrostate a back to this state after passing through the intermediate macrostates b, c, d. The engine consists of v moles of an ideal gas contained in a cylinder closed by a piston. The volume of the gas is denoted by V, its mean pressure by p. The four steps of the cycle, shown in Fig. 7.17, are then as follows:
+</p>
+
+<p>
+<i>Step 1.</i>
+\(a\to b\): The engine, originally at the temperature T', is thermally in­
+sulated.
+Its volume is now decreased slowly from its initial value Va until
+it reaches a value Vb where the temperature of the engine is T.
+</p>
+
+<p>
+<i>Step 2.</i>
+\(b\to c\): The engine is placed in thermal contact with the heat reservoir A at the temperature T. Its volume is now slowly changed from Vb to Vc, the engine remaining at the temperature T and absorbing some heat q from A.
+</p>
+
+<p>
+<i>Step 3.</i>
+\(c \to d\): The engine is again thermally insulated.
+Its volume is now increased slowly from \(V_c\) until it reaches a value Vd where the temperature of the engine is \(T’\).
+</p>
+
+<p>
+<i>Step 4.</i>
+\(d \to a\): The engine is now placed in thermal contact with the heat reservoir \(A'\) at the temperature \(T'\).
+Its volume is now slowly changed from \(V_d\) back to its original value \(V_a\), the engine remaining at the temperature \(T'\) and rejecting some heat \(q'\) to \(A'\).
+Answer the following questions:
+</p>
+
+<div id="orgd3460d6" class="figure">
+<p><img src="stat_hw7/20240611195958.png" alt="20240611195958.png" />
+</p>
+</div>
+
+<p>
+(a) What is the heat \(q\) absorbed in <i>step 2</i>? Express your answer in terms of \(V_b,V_c\) and \(T\).
+</p>
+
+<p>
+(b) What is the heat \(q'\) rejected in <i>step 4</i>? Express your answer in terms of \(V_d, V_a\), and \(T\).
+</p>
+
+<p>
+(c) Calculate the ratio \(V_b/V_a\) in <i>step 1</i> and the ratio \(V_d/V_c\) in step 3, and show that \(V_d/V_c\) n is related to \(V_d/V_c\).
+</p>
+
+<p>
+(d) Use the preceding answer to calculate the ratio \(q/q'\) in terms of \(T\) and \(T'\).
+</p>
+
+<p>
+(e) Calculate the efficiency \(\eta\) of the engine and show that it agrees with the general result (109) valid for any quasi-static engine.
+</p>
+<hr />
+<blockquote>
+<p>
+&#x2026;&#x2026;
+any engine which operates between these two reservoirs in a quasi-static manner has the same efficiency; i.e.,
+</p>
+\begin{equation*}
+\eta=\frac{T-T^{\prime}}{T}\tag{109}
+\end{equation*}
+<p>
+for any quasi-static engine,
+</p>
+</blockquote>
+<hr />
+<div class="org-center">
+<p>
+<b>SOLUTION</b>
+</p>
+</div>
+<p>
+adiabatic compression; isothermal expansion; adiabatic expansion; isothermal compression.
+绝热压－等温膨－绝热膨－等温压
+</p>
+</div>
+<div id="outline-container-org216dd6e" class="outline-4">
+<h4 id="org216dd6e"><span class="section-number-4">7.4.1.</span> Calculate heat in 2</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<p>
+clockwise: \(W<0\)
+</p>
+
+<p>
+Step 2: b-c isothermal expansion \(\Delta U=0\)
+</p>
+\begin{gather*}
+\Delta \overline{E}_{b-c}=\gamma c_V \Delta T \overset{\Delta T=0}{=\!=\!=\!=}0 =q+W\\
+q=-W=-(-\int_{V_b}^{V_c}p \mathrm{d}V)
+= \int_{V_b}^{V_c} \frac{\nu R T}{V}\mathrm{d}V 
+= \nu RT \ln V \bigg|_{V_b}^{V_c} \\
+\boxed{q=\nu RT\ln \frac{V_c}{V_b}}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org525cd95" class="outline-4">
+<h4 id="org525cd95"><span class="section-number-4">7.4.2.</span> Calculate heat in 4</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<p>
+Step 4: d-a isothermal expansion
+</p>
+\begin{gather*}
+\Delta \overline{E}_{d-a}=\gamma c_V \Delta T \overset{\Delta T=0}{=\!=\!=\!=}0 = -q+W \\
+q=W=-\int_{V_d}^{V_a}p \mathrm{d}V
+= -\int_{V_d}^{V_a} \frac{\nu R T'}{V}\mathrm{d}V 
+= -\nu RT' \ln V \bigg|_{V_d}^{V_a} \\
+\boxed{q'=\nu RT'\ln \frac{V_d}{V_a}}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org6a287c3" class="outline-4">
+<h4 id="org6a287c3"><span class="section-number-4">7.4.3.</span> Calculate ratio relation in 1,3</h4>
+<div class="outline-text-4" id="text-7-4-3">
+<p>
+Step 1: a-b adiabatic compression;
+Step 3: c-d adiabatic expansion
+</p>
+
+\begin{gather*}
+T'V_a^{\gamma-1}=TV_{b}^{\gamma-1} \\
+TV_c^{\gamma-1}=T'V_{d}^{\gamma-1}
+\Rightarrow \left( \frac{V_a}{V_{c}} \right)^{\gamma-1}=
+\left( \frac{V_b}{V_d} \right)^{\gamma-1} \\
+\boxed{\frac{V_a}{V_{c}} = \frac{V_b}{V_d}}
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-orgbc84a24" class="outline-4">
+<h4 id="orgbc84a24"><span class="section-number-4">7.4.4.</span> q ratio</h4>
+<div class="outline-text-4" id="text-7-4-4">
+\begin{gather*}
+\frac{q}{q'}=\frac{\nu RT\ln V_c/V_b}{\nu RT'\ln V_d/V_a} =\boxed{\frac{T}{T'}}\\
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org00f8133" class="outline-4">
+<h4 id="org00f8133"><span class="section-number-4">7.4.5.</span> Find efficiency</h4>
+<div class="outline-text-4" id="text-7-4-5">
+\begin{equation*}
+\eta = \frac{W}{q}=\frac{q-q'}{q}=1-\frac{T}{T'}=\boxed{\frac{T-T'}{T'}}
+\end{equation*}
+<p>
+maximal effeciency
+</p>
+
+<p>
+\paragraph{注}绝热关系总结与推导
+</p>
+\begin{gather*}
+c_VdT+\frac{RT}{V}\:dV=0\\
+\frac{c_V}R\frac{dT}T+\frac{dV}V=0 \\
+T^{(c_V/R)}V=\mathrm{~constant} \\
+\boxed{
+\bar{p}V^\gamma=\mathrm{~constant}} \\
+\gamma\equiv1+\frac{R}{c_{V}}=\frac{c_{V}+R}{c_{V}}
+\end{gather*}
+
+<div class="org-center">
+<p>
+<b>第七章</b>
+</p>
+</div>
+<ol class="org-ol">
+<li>准静态熵变 \(\Delta S=0\) In a quasi-static adiabatic process, the system tends to remain distributed over their original states, while the energies of these states are changed</li>
+<li>广义力 \(X_r=\frac{\partial E_r}{\partial x}\)</li>
+<li>平衡条件</li>
+</ol>
+</div>
+</div>
+</div>
+<div id="outline-container-org4925f87" class="outline-3">
+<h3 id="org4925f87"><span class="section-number-3">7.5.</span> 第七章幻灯片整理</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+关于热力学平衡变化的研究：自由能…
+</p>
+
+<ul class="org-ul">
+<li>准静态 \(\Rightarrow \Delta S =0\) In a quasi-static adiabatic process, the system tends to remain distributed over their original states, while the energies of these states are changed</li>
+</ul>
+
+<p>
+\paragraph{热力学定律}
+</p>
+<ol class="org-ol">
+<li>If A is in thermal equilibrium with C B is in thermal equilibrium with C Then A is in thermal equilibrium with B</li>
+</ol>
+<p>
+If \(T_A=T_C\&T_B=T_{C}\Rightarrow T_A=T_B\) (传递性)
+</p>
+
+<ol class="org-ol">
+<li>能量守恒：孤立系统 \(\Delta E=0,\Delta \bar{E}=Q+W\)</li>
+<li><p>
+熵增不减
+</p>
+
+<div id="org1453ea3" class="figure">
+<p><img src="all/20240701200134.png" alt="20240701200134.png" />
+</p>
+</div></li>
+<li>\(T\rightarrow 0,S\to S_0\)</li>
+</ol>
+
+
+<p>
+以下可能没用（不考）：
+\(S:=k\ln \Omega \Leftrightarrow \Omega =\mathrm{e}^{\frac{S}{k}}\)   
+If an isolated system is in equilibrium, the probability of finding it in a macrostate characterized by an entropy S is given by
+</p>
+\begin{equation*}
+P\propto \mathrm{e}^{\frac{S}{k}}
+\end{equation*}
+<p>
+事实上， \(P=\frac{\Omega}{\Omega_{\text{tot}}}\)
+</p>
+
+<p>
+\paragraph{热接触平衡：自由能最小}
+</p>
+
+<ul class="org-ul">
+<li>无做功： Helmholtz free energy</li>
+</ul>
+
+\begin{gather*}\allowdisplaybreaks[4]  
+\Delta S^{*}=\Delta S-\frac{\Delta\bar{E}}{T^{\prime}}=-\frac{-T^{\prime}\Delta S+\Delta\bar{E}}{T^{\prime}}\\
+F:=\bar{E}-T^{\prime}S \\
+\Delta S^{* } = - \frac{\Delta F}{T'}
+\end{gather*}
+
+<ul class="org-ul">
+<li>有做功： Gibbs free energy</li>
+</ul>
+\begin{gather*}
+\Delta S^*=\Delta S-\frac{\Delta\bar{E}+p^{\prime}\Delta V}{T^{\prime}}=-\frac{-T^{\prime}\Delta S+\Delta\bar{E}+p^{\prime}\Delta V}{T^{\prime}}\\
+G:=\bar{E}-T^{\prime}S+p^{\prime}V\\
+\Delta S=-\frac{\Delta G}{T'}
+\end{gather*}
+
+<p>
+自由能就像“广义”能量
+</p>
+
+<p>
+\paragraph{描述相变}
+</p>
+
+<p>
+定义 \(g_j\) 为相 \(j\) 的 \(T\) 下单粒子 \(G\)
+\[G=N_1g_1+N_2g_2\]
+If the two phase coexist in equilibrium,
+\[dG=g_1dN_1+g_2dN_2=0\quad N_1+N_2=N\\(g_1-g_2)dN_1=0\quad dN_2=-dN_1\]
+So for coexistence in equilibrium,
+\(g_1=g_2\)
+</p>
+
+<p>
+\(g_j\) is also known as chemical potential \(g_j\equiv\mu\)
+</p>
+
+<p>
+进一步，
+</p>
+
+<p>
+Clausius-Clapeyron 方程
+</p>
+\begin{equation*}
+\frac{dp}{dT}=\frac{\Delta s}{\Delta v}\quad\frac{dp}{dT}=\frac{N\Delta s}{N\Delta v}=\frac{\Delta S}{\Delta V}
+\end{equation*}
+
+<p>
+来源\footnote{大概不考}
+</p>
+
+<div id="orge67ed7c" class="figure">
+<p><img src="all/20240701225635.png" alt="20240701225635.png" />
+</p>
+</div>
+
+<p>
+\[dg_i=-s_idT+v_idp\]
+Apply it to each phase
+\[-s_1dT+v_1dp=-s_2dT+v_2dp\]
+So,
+\[(s_2-s_1)dT=(v_2-v_1)dp\]
+得到
+</p>
+\begin{align*}
+\frac{dp}{dT}=\frac{\Delta s}{\Delta v}\\
+\frac{dp}{dT}=\frac{N\Delta s}{N\Delta v}=\frac{\Delta S}{\Delta V}
+\end{align*}
+
+<p>
+\paragraph{热机}
+在两个体系中间有一个 M
+</p>
+
+<p>
+可以导出效率（利用热力学，可能也是物理为数不多的，不等式）\footnote{忘了为什么不用考虑 SM}
+</p>
+
+\begin{gather*}
+\Delta S^*=\Delta S+\Delta S'-\frac qT+\frac{q^{\prime}}{T^{\prime}}\geq0
+\\q^{\prime}=q-w \\
+\quad-\frac qT+\frac{q-w}{T^{\prime}}\geq0
+\end{gather*}
+
+<p>
+\newpage
+</p>
+<div class="org-center">
+<p>
+<i>哲学乱想</i>\footnote{原来这里是/楷体/真好看}
+</p>
+</div>
+
+<p>
+只有两个物体才能谈温度（（热力学）温度是在热接触中定义的）。
+</p>
+
+<p>
+熵和混乱没什么关系，只是系统可能状态多少的度量罢了（隐喻总是误导的）
+</p>
+
+<p>
+其实宏观和微观的关系很像硬凑的，比如状态数绕一个大弯，比如明明可以用 CDF 表示状态、 PDF 表示可及态
+</p>
+
+<p>
+如果你对一样事物（比如温度）的本质不明白，那么就用一种性质（平衡温度相同）来定义它，以掩盖我们对它的一无所知吧…
+</p>
+</div>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<p class="date">Date: 2024-06-24 Mon 21:03</p>
+<p class="author">Author: Justin</p>
+<p class="date">Created: 2024-08-31 Sat 19:01</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2024-09-19 Thu 21:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>如何使用 LaTeX 完成大物实验报告*|</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-07-29 Mon 12:09 | 凝墨: 2024-09-19 Thu 18:51 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">如何使用 LaTeX 完成大物实验报告*|</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8bdc715">附录</a></li>
+</ul>
+</div>
+</div>
+<p>
+我们为什么要是用 \(\LaTeX\) 做 WORD 可以”轻易“ 完成的事情 <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+因为我们 <del>喜欢作妖</del> 这样方便 交 流 思 想 成 果 。
+</p>
+
+<p>
+本质上我们只是排版和画表格中排版。
+</p>
+
+<p>
+<a href="https://github.com/jinqKing/SZU-Physics-Experiment-Report-LaTeX-Module">https://github.com/jinqKing/SZU-Physics-Experiment-Report-LaTeX-Module</a>
+</p>
+
+<p>
+(&#x2026;施工中的介绍&#x2026;)
+</p>
+
+<p>
+主要是 <code>\longLine</code> 进行分割。
+</p>
+
+<p>
+下面是上面网站的 md:
+</p>
+<hr />
+<div id="ccontent">Loading...</div>
+    <script>
+    const url = 'https://raw.githubusercontent.com/jinqKing/SZU-Physics-Experiment-Report-LaTeX-Module/master/ReadMe.md';
+
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.getElementById('ccontent').innerHTML = marked.parse(data);
+        })
+        .catch(error => {
+            document.getElementById('ccontent').innerHTML = 'Failed to load content: ' + error.message;
+        });
+    </script>
+
+
+<hr />
+
+<div id="outline-container-org8bdc715" class="outline-2">
+<h2 id="org8bdc715">附录</h2>
+<div class="outline-text-2" id="text-org8bdc715">
+<p>
+如果不满意可以去看一个更棒的版本：
+</p>
+
+<p>
+<a href="https://github.com/chenyu76/some-SZU-LaTeX-templates">https://github.com/chenyu76/some-SZU-LaTeX-templates</a>
+</p>
+
+<p>
+在我的友善提醒之下，他应该没有再使用 GPL 开源协议 <sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+<p>
+其它那些是怎么实现的，你可以去他的网页探索一下（我在 about 里面分享了网站）
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+我对 latex 看法 <a href="draft/criticize&amp;reflection.html">draft/criticize&amp;reflection.html</a> 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+关于侵权判例的新闻：<a href="https://new.qq.com/rain/a/20240320A0266Q00">https://new.qq.com/rain/a/20240320A0266Q00</a> 另外提到：思科使用了 GPL 开源协议的 Linux 系统，被美国自由软件基金于 2008 年起诉
+</p></div></div>
+
+
+</div>
+</div></main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'><span class='prev-link'>« Pre 上一篇<p>
+<a href="EmacsPostConfig.html">EmacsPostConfig.html</a></p>
+</span><span class='next-link'>下一篇 Nex »<p>
+<a href="将 Windows 截图插入 WSL 中的 Emacs org 中显示.html">将 Windows 截图插入 WSL 中的 Emacs org 中显示.html</a></p>
+</span></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

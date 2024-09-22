@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2024-09-19 Thu 21:52 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>理论分析力学速成*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-09-04 Wed 14:35 | 凝墨: 2024-09-19 Thu 21:52 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">理论分析力学速成*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org4eaf2e7">1. 引入</a>
+<ul>
+<li><a href="#org904c4dd">1.1. <code>直线最短</code></a></li>
+<li><a href="#org1adcd1a">1.2. <code>最速降线</code></a></li>
+</ul>
+</li>
+<li><a href="#org5be1be2">2. 泛函～作用量</a></li>
+<li><a href="#org968431e">3. 最小量原理</a>
+<ul>
+<li><a href="#org1f45fb0">3.1. 直线最短</a></li>
+<li><a href="#org23f6c12">3.2. 最速降线</a></li>
+<li><a href="#org65d00ba">3.3. 物理</a></li>
+</ul>
+</li>
+<li><a href="#org6eaa2ec">4. 对称与守恒</a></li>
+<li><a href="#org72dd958">5. Hamilton 量</a></li>
+<li><a href="#org4f2de36">6. 刘维尔定理</a></li>
+<li><a href="#org386f348">7. Possion 括号</a></li>
+<li><a href="#orgc2c98ea">8. </a></li>
+</ul>
+</div>
+</div>
+<div class="org-center">
+<p>
+这是物理的课，目标说清楚基本泛函量、几个方程的来历意义与简单例子（具体可看目录）
+</p>
+
+<p>
+<i>用 ' 表示对 x 求导（偶尔表示变换后），加点法表示对 t 导数，容易被忽略请留意；另因为一些特殊原因我喜欢用 j (而不是  i )表示指标</i>
+</p>
+
+<p>
+参考：<a href="https://www.bilibili.com/video/BV1g7411P7oT/">B 站：分析力学两小时速成</a>
+</p>
+</div>
+<pre class="example" id="org86dc199">
+当然决定要上这门课，故而提前熟悉一下。
+
+另外相空间 Hamilton 实在像代数结构一样被到处用,不仔细学一下实在不方便
+
+不过老师似乎希望讲得深刻一些分析陀螺（ Landau ），甚至到 Ehrenfest? 量子时代－知道了
+
+尽量简化直白，虽然这样例子也会少。
+</pre>
+<div id="outline-container-org4eaf2e7" class="outline-2">
+<h2 id="org4eaf2e7"><span class="section-number-2">1.</span> 引入</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+两个问题贯穿前几章（会给出解答），我们如何解决
+</p>
+</div>
+<div id="outline-container-org904c4dd" class="outline-3">
+<h3 id="org904c4dd"><span class="section-number-3">1.1.</span> <code>直线最短</code></h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+两点之间最短是什么曲线？
+</p>
+
+<p>
+分析
+</p>
+
+<p>
+1:
+研究长度，则写出表达式，由数学，得到曲线元
+</p>
+\begin{equation}
+\label{eq:1}
+\mathscr{L}_1:=\sqrt{1+y'^2}
+\end{equation}
+
+<p>
+<a href="#org1f45fb0">解答</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org1adcd1a" class="outline-3">
+<h3 id="org1adcd1a"><span class="section-number-3">1.2.</span> <code>最速降线</code></h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+仅靠重力，在指定的始末点后，物体从什么曲线运动最快到达
+</p>
+
+<p>
+分析：
+</p>
+
+<p>
+坐标轴 x,y 找到需要的时间：
+</p>
+\begin{gather*}
+t=\frac{L}{v}\\
+\frac{1}{2}mv^2=mgy\rightarrow v=\sqrt{2gy}\\
+L=\int_{x_0}^{x_1} \sqrt{1+y'^2}\mathrm{d}x\\
+\mathscr{L}_2:=\sqrt{\frac{{1+{y}'^2}}{{2gh}}}
+\end{gather*}
+<p>
+<a href="#org23f6c12">解答 2</a>
+</p>
+
+<p>
+定义了两个 \(\mathscr{L}\) ，之后用到。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5be1be2" class="outline-2">
+<h2 id="org5be1be2"><span class="section-number-2">2.</span> 泛函～作用量</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+首先，略说 <b>泛函</b> 概念，说它因为其与变分法相关（变分需要函数），而变分法是最小作用， Lagrange 最小作用原理。
+</p>
+
+<p>
+泛函是从一个函数给出一个值 \(\mathscr{L}:f\to \mathbb{R}\) 的映射。
+</p>
+
+<p>
+定义作用量
+</p>
+\begin{equation*}
+S:=\int_{x_1}^{x_2}\mathscr{L}(y,{y}',x)\mathrm{d}x
+\end{equation*}
+<p>
+其中，称 \(S\) 为作用量，
+\(\mathscr{L}\) 为拉氏量 Lagrange 量。
+</p>
+
+<p>
+而 \(\mathscr{L}\) 就是一个泛函，输入一个函数（映射），给出一个值。
+</p>
+
+<p>
+所谓（物理）变分法，(?)
+就是取这个作用量最小。
+类比数学求极值用导数为零来做，(考虑到作用对象是泛函，每一个不是数而是函数)这里就令
+</p>
+\begin{equation*}
+\delta S=0
+\end{equation*}
+<p>
+显然，与微分比较的话，从结果形式上 \(\mathrm{d}x\) 可以作积分变量（哑元），但 \(\delta S\) 接近于 \(\Delta S\) 无法做积分。
+</p>
+
+
+<div id="orgdc166e8" class="figure">
+<p><img src="mechanicsPeek/20240904161957.png" alt="20240904161957.png" />
+</p>
+</div>
+
+<p>
+另一个角度上，可以当作是作扰动，所谓扰动就是改变了 y 的形式从这个需要注意到一个我们需要做的规定（为了严谨和下面推公式方便）： <a id="org3b7f915"></a>
+</p>
+\begin{equation}
+\label{eq:4}
+\delta y(x_1)=\delta y(x_2)\equiv 0
+\end{equation}
+<p>
+可以理解为不论如何扰动，我们都不干扰积分上下限，免去不必要的麻烦（难以想象如果积分上下限的改变在这个扰动中被考虑会怎样）。
+</p>
+
+<p>
+代入 \(\mathscr{L}\) 
+</p>
+\begin{gather*}
+\begin{split}
+0=\delta S &=\delta\int_{x_1}^{x_2}\mathscr{L}(y,{y'},x)\mathrm{d}x \\
+&=\int_{x_1}^{x_2} \left( \frac{\partial \mathscr{L}}{\partial y}\delta y+\frac{\partial \mathscr{L}}{\partial {y'}}\delta{y'}+\frac{\partial \mathscr{L}}{\partial x}\delta x \right)\mathrm{d}x
+\end{split}
+\end{gather*}
+<p>
+注意我们认为（理由？） \(\mathscr{L}\) 的自变量是 y， x 的存在就像是数字 <sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup> ，故（即便 \(\mathscr{L}\) 显含 x ）我们不用对 x 求导（对 x 求导就像普通函数对常数求导），更直白定义就是对于 x 是不存在扰动的（ \(\delta x\) ）。然后为了化简（凑答案，这是各种奇怪转换必然的最终方向）用分部积分，使得都变成 y
+</p>
+\begin{gather*}
+\begin{split}
+=& \int_{x_1}^{x_2}\frac{\partial \mathscr{L}}{\partial y}\delta y\mathrm{d}x+\int_{x_1}^{x_2}\frac{\partial \mathscr{L}}{\partial {y'}}\mathrm{d}\delta y \\
+=& \int_{x_1}^{x_2}\frac{\partial \mathscr{L}}{\partial y}\delta y\mathrm{d}x+\frac{\partial \mathscr{L}}{\partial {y'}}\delta y \bigg|_{x_1}^{x_2}
+-\int_{x_1}^{x_2}\left(\frac{\mathrm{d}}{\mathrm{d}x }\frac{\partial \mathscr{L}}{\partial {y'}}\right)\delta y \mathrm{d}x\\
+=& \int_{x_1}^{x_2}\left(\frac{\partial \mathscr{L}}{\partial y}-\frac{\mathrm{d}}{\mathrm{d}x }\frac{\partial \mathscr{L}}{\partial {y'}}\right)\delta y \mathrm{d}x
+\end{split}
+\end{gather*}
+
+<p>
+上面利用了 <a href="#org3b7f915">2</a> 积分项为 0 (\(\delta y(x_1)-\delta y(x_2)=0\))(?)。由前等于 0，
+此处 \(\delta y\) 可是是任意的，任意扰动都不改变可以认为就等于 0<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+于是：
+</p>
+\begin{equation*}
+\frac{\partial \mathscr{L}}{\partial y}-\frac{\mathrm{d}}{\mathrm{d}x }\frac{\partial \mathscr{L}}{\partial {y'}}=0
+\end{equation*}
+</div>
+</div>
+
+<div id="outline-container-org968431e" class="outline-2">
+<h2 id="org968431e"><span class="section-number-2">3.</span> 最小量原理</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+此表达式称为
+Euler-Lagrange 方程。
+</p>
+
+<p>
+不妨应用一下到之前的两个案例。
+</p>
+</div>
+
+<div id="outline-container-org1f45fb0" class="outline-3">
+<h3 id="org1f45fb0"><span class="section-number-3">3.1.</span> 直线最短</h3>
+<div class="outline-text-3" id="text-3-1">
+\begin{gather*}
+\mathscr{L}_1:=\sqrt{1+{y'}^2}\\
+\frac{\mathrm{d}}{\mathrm{d}x }\frac{1}{2}\frac{2{y'}}{\sqrt{1+{y'}^2}}=0\\
+\Rightarrow \frac{{y'}}{\sqrt{1+{y'}^2}}=C\\
+{y'}^2=C^2(1+{y'}^2),{y'}^2=\frac{C^2}{1-C^2}\\
+\Rightarrow {y'}=\sqrt{\frac{C^2}{1-C^2}}=C'
+\end{gather*}
+
+<p>
+对 y 求导因为没有 y 就直接等于 0。导数为常数故为直线（？）
+</p>
+</div>
+</div>
+<div id="outline-container-org23f6c12" class="outline-3">
+<h3 id="org23f6c12"><span class="section-number-3">3.2.</span> 最速降线</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+<a href="#org1adcd1a">1.2</a>
+技巧性较强（凑凑凑，没有答案时不知道他们怎么想到的）
+</p>
+
+<p>
+首先一个（据说经典）代换，并计算对 x 导数
+</p>
+\begin{gather*}
+\mathscr{L}'=\mathscr{L}-{y'} \frac{\partial \mathscr{L}}{\partial {y'}} \\
+\begin{split}
+\frac{\mathrm{d}}{\mathrm{d}x }\left( \mathscr{L}-{y'} \frac{\partial \mathscr{L}}{\partial {y'}} \right)
+&=\frac{\partial \mathscr{L}}{\partial x}+{y'}\frac{\partial \mathscr{L}}{\partial y}+\cancel{{y''}\frac{\partial \mathscr{L}}{\partial {y'}}}
+-\left( \cancel{{y''} \frac{\partial \mathscr{L}}{\partial {y'}}}+{y'}\frac{\mathrm{d}}{\mathrm{d}x }\frac{\partial \mathscr{L}}{\partial {y'}} \right)\\
+&={{\frac{\partial \mathscr{L}}{\partial x}}}+{y'}\frac{\partial \mathscr{L}}{\partial y}-{y'} \boxed{\frac{\mathrm{d}}{\mathrm{d}x }\frac{\partial \mathscr{L}}{\partial {y'}}}\\
+&={{\frac{\partial \mathscr{L}}{\partial x}}}+\cancel{{y'}\frac{\partial \mathscr{L}}{\partial y}-{y'}{\frac{\partial \mathscr{L}}{\partial {y}}}}\\
+&=\frac{\partial \mathscr{L}}{\partial x}=0
+\end{split}
+\end{gather*}
+
+<p>
+于是
+</p>
+\begin{gather*}
+\begin{aligned}
+\mathscr{L}-y' \frac{\partial \mathscr{L}}{\partial y'}&=C\\
+\sqrt{\frac{{1+{y}'^2}}{{2gy}}}- y' \frac{\partial }{\partial y'} \left( \sqrt{\frac{{1+{y}'^2}}{{2gy}}} \right)&=C\\ 
+\sqrt{\frac{{1+{y}'^2}}{{2gy}}}-\frac{y'}{\sqrt{2gy}}\frac{2y'}{2\sqrt{1+y'^2}}&=C \\
+\frac{1+y'^2-y'^2}{\sqrt{2gy}\sqrt{1+y'^2}}&=C\\
+y(1+y'^2)&=\frac{1}{2gC^2}
+\end{aligned}\\
+\end{gather*}
+<p>
+做一个代换（这个代换颇有种已知答案凑过程）
+</p>
+\begin{gather*}
+y'=\sqrt{\frac{2R-y}{y}},2R=2gC^2\\
+y=R(1-\cos\theta),\mathrm{d}y=R\sin\theta \mathrm{d}\theta\\
+\rightarrow R \sin \theta\frac{\mathrm{d}\theta}{\mathrm{d}x }=\sqrt{\frac{1+\cos \theta}{1-\cos \theta}}\\
+\sin\theta\frac{\sqrt{(1-\cos\theta)(1+\cos\theta)}}{1+\cos\theta}=\frac{\sin^2\theta}{1+\cos\theta}=\frac{1-\cos^2\theta}{1+\cos\theta}=1-\cos\theta
+\\
+\mathrm{d}x=R(1-\cos\theta)\mathrm{d}\theta\\
+\begin{cases}
+x&=R(\theta-\sin \theta)+C'\\
+y&=R(1-\cos\theta)
+\end{cases}
+\end{gather*}
+
+<p>
+此即摆线（在圆上标记一个点，记录它在圆转动过程中的位置就构成摆线）。
+</p>
+
+<p>
+下面是物理中的情况。
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-09-05 Thu&gt;</span></span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org65d00ba" class="outline-3">
+<h3 id="org65d00ba"><span class="section-number-3">3.3.</span> 物理</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+(算动能)空间均匀是数值且是
+</p>
+
+<p>
+对于具体问题，一般作用量有自己的形式，这里写 \(q\) 是广义坐标（比如正交笛卡尔是一组坐标，球坐标也可以构成一组坐标）
+</p>
+\begin{equation}
+\label{eq:ELeqP}
+\frac{\partial \mathscr{L}}{\partial q}=\frac{\mathrm{d}}{\mathrm{d}t }\frac{\partial \mathscr{L}}{\partial \dot{q}}
+\end{equation}
+
+<p>
+当然这一点是需要证明的
+</p>
+<div class="collapsible" id="org63dba0f">
+<p>
+证明不同坐标下都成立：
+这部分内容将被折叠。
+&#x2026;&#x2026;
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6eaa2ec" class="outline-2">
+<h2 id="org6eaa2ec"><span class="section-number-2">4.</span> 对称与守恒</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+与坐标系无关
+平移 \(q_j=q_j+\sqrt{m}\varepsilon\)
+旋转 \(x'=x+y\varepsilon;y'=y-x\varepsilon\)
+</p>
+
+\begin{gather*}
+\sum_j
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org72dd958" class="outline-2">
+<h2 id="org72dd958"><span class="section-number-2">5.</span> Hamilton 量</h2>
+<div class="outline-text-2" id="text-5">
+\begin{equation}
+\label{eq:3}
+\begin{cases}
+\frac{\partial H}{\partial p}=\dot{q}\\
+\frac{\partial H}{\partial q}=-\dot{p}
+\end{cases}
+\end{equation}
+</div>
+</div>
+
+
+<div id="outline-container-org4f2de36" class="outline-2">
+<h2 id="org4f2de36"><span class="section-number-2">6.</span> 刘维尔定理</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+相当于在说它如果是一个流体，它不可压缩 &hArr; 不变
+</p>
+
+\begin{gather*}
+\frac{\partial H}{\partial q}=
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org386f348" class="outline-2">
+<h2 id="org386f348"><span class="section-number-2">7.</span> Possion 括号</h2>
+</div>
+
+<div id="outline-container-orgc2c98ea" class="outline-2">
+<h2 id="orgc2c98ea"><span class="section-number-2">8.</span> </h2>
+<div class="outline-text-2" id="text-8">
+<p>
+非常多凑巧的事
+</p>
+
+<p>
+(可惜我们没有时间)
+浸渐不变量
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+让我想到超越数和代数数，数域扩大，万物皆符号，<a href="代数/polynomial.html">一个数学笔记</a> 有些在体系内。这里好比是在，原来的函数 y(x) 数是无作用，上进一步抽象，现在函数是自变量而函数的自变量（x）就像数的存在一样。
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+如何详细的论证可以肆意改变顺序，合并同类的道理我也不清楚，这需要更严格泛函去讨论
+</p></div></div>
+
+
+</div>
+</div></main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

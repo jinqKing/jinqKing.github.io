@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-15 Sun 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>齐振宇 Calculus 笔记重拓扑部分*</title>
+<meta name="author" content="Kintrol" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-03-17 Sun | 凝墨: 2024-08-01 Thu 08:44 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">齐振宇 Calculus 笔记重拓扑部分*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org7a041b1">1. 实数理论</a></li>
+<li><a href="#org3602917">2. 拓扑</a>
+<ul>
+<li><a href="#orgf513646">2.1. 定义度量：</a>
+<ul>
+<li><a href="#org1350da3">2.1.1. 例</a>
+<ul>
+<li><a href="#org28e50ee">2.1.1.1. p 进数：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org4c191be">2.2. 极限</a></li>
+<li><a href="#orgc8c748a">2.3. 开球</a></li>
+<li><a href="#org0e8ace8">2.4. 开集</a></li>
+<li><a href="#orgf55f8d2">2.5. 开覆盖</a></li>
+</ul>
+</li>
+<li><a href="#orgd55d011">3. 我的思路/普林斯顿实分析</a></li>
+<li><a href="#orgfdf8d68">4. 学拓扑的意义</a></li>
+</ul>
+</div>
+</div>
+<p>
+视频： BV15t411c7tC
+</p>
+
+<p>
+Calculus - differentiation &amp; integration (&#x2026;)
+</p>
+
+<p>
+石头的意思数石头拉
+</p>
+
+<p>
+实践想法
+</p>
+
+<p>
+<del>P1</del>
+</p>
+<div id="outline-container-org7a041b1" class="outline-2">
+<h2 id="org7a041b1"><span class="section-number-2">1.</span> 实数理论</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+定义：上下界
+考虑实数子集 \(S\subset \mathbb{R},r\in \mathbb{R}\)
+</p>
+
+<p>
+<del>P2</del>
+</p>
+
+<p>
+<i>P8</i>
+</p>
+</div>
+</div>
+<div id="outline-container-org3602917" class="outline-2">
+<h2 id="org3602917"><span class="section-number-2">2.</span> 拓扑</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在级数部分常常用到绝对值。
+发现绝对值有正定性、对称性、三角不等式。
+在复数域也可以用取模。
+</p>
+
+<p>
+于是考虑抽象这一点，使用度量来考虑。
+</p>
+
+<p>
+例：在 \(\mathbb{R}^{m},x=(x_1,\dots,x_m)\)
+使用一个 distance function 和衍生的 metric space 赋距空间。
+</p>
+</div>
+<div id="outline-container-orgf513646" class="outline-3">
+<h3 id="orgf513646"><span class="section-number-3">2.1.</span> 定义度量：</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+对集合 \(X\) 有映射 \(X\times X\rightarrow \mathbb{R}\) 对元素 \(x,y\in X\) 记作 \(d(x,y)\) 满足
+</p>
+<ol class="org-ol">
+<li>正定性</li>
+<li>对称性</li>
+<li>三角不等式</li>
+</ol>
+</div>
+<div id="outline-container-org1350da3" class="outline-4">
+<h4 id="org1350da3"><span class="section-number-4">2.1.1.</span> 例</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<ul class="org-ul">
+<li>平方开根（ Cauchy 不等式）</li>
+<li>分量差绝对值相加</li>
+<li>分量绝对值取最大</li>
+</ul>
+<p>
+discret metric 离散距离:
+</p>
+
+\begin{equation}
+\label{eq:1}
+d(x,y)=\left\{
+\begin{split}
+&0,x=y\\&1,x\neq y
+\end{split}
+\right.
+\end{equation}
+</div>
+<div id="outline-container-org28e50ee" class="outline-5">
+<h5 id="org28e50ee"><span class="section-number-5">2.1.1.1.</span> p 进数：</h5>
+<div class="outline-text-5" id="text-2-1-1-1">
+<p>
+素数 p 对 \(x,y\in \mathbb{Q},|x|_{p-adic}:=p^{-m}\) if \(x=\frac{a}{b}p^m\) with \(a,b,m\in \mathbb{Z},(a,p)=(b,p)=1\)
+\paragraph{例：}
+\(p=5,\left| \frac{16}{75} \right|_{5-adic}=5^2=25\)
+原因： \(\frac{16}{25}=\frac{16}{3}\times 5^{-2},a=16,b=3,m=-2\)
+\paragraph{p 进距离}
+\(d_{p-adic}(x,y):=\left| x-y \right|_{p-adic}\)
+</p>
+
+<ul class="org-ul">
+<li>三角不等式： \(|x+y|_p\leq \text{max}{|x|_p,|y|_p}\)</li>
+<li>\(|x+y|_p=|x|_p \text{if} |x|_p>|y|_{p}\)</li>
+</ul>
+
+<p>
+\paragraph{练习}两边之差不大于第三边
+</p>
+
+<p>
+将关于极限和连续在度量空间一般化
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org4c191be" class="outline-3">
+<h3 id="org4c191be"><span class="section-number-3">2.2.</span> 极限</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+定义： \((X,d)\)
+\(\forall \varepsilon>0,\exists N \in \mathbb{N} \left[ n \geq N \Rightarrow d(a_n,L)<\varepsilon\right]\)
+</p>
+
+<p>
+极限和运算的关系－是否可以交换呢
+</p>
+</div>
+</div>
+<div id="outline-container-orgc8c748a" class="outline-3">
+<h3 id="orgc8c748a"><span class="section-number-3">2.3.</span> 开球</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+\(B_r(x_0):=\left\{ x\in X |d(x_0,x)<r \right\}\)
+</p>
+</div>
+</div>
+<div id="outline-container-org0e8ace8" class="outline-3">
+<h3 id="org0e8ace8"><span class="section-number-3">2.4.</span> 开集</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+集合内每个点找到一个被包含的邻域
+</p>
+\begin{equation}
+\label{eq:2}
+\forall x\in S,\exists r>0 \left[ B_r(x)\subset S \right]
+\end{equation}
+
+<p>
+有边界不开，平面去掉原点是
+\paragraph{练习}邻域本身是开集； \(\left\{ x\in X|d(x,x_0)>r \right\}=X/ \overline{B_r(x_0)}\) 开
+</p>
+
+<p>
+定义闭球：
+</p>
+\begin{equation}
+\label{eq:3}
+\overline{B_r(x_0)}:=\left\{ x\in X |d(x_0,x)\leq r \right\}
+\end{equation}
+<p>
+含边界
+</p>
+
+<p>
+\paragraph{总结}
+度量
+开球－开集
+</p>
+
+<p>
+<i>P9</i>
+复习
+</p>
+
+<p>
+度量空间 X 子集 \(S\) 对于 X 就 d 是开的定义为：
+</p>
+\begin{equation}
+\label{eq:4}
+\forall x_0 \in S \exists r>0 \left[ B_r(x_0)\subset S \right]
+\end{equation}
+<p>
+?相对开集
+</p>
+
+<p>
+非开即闭是错误的，既开又闭的空集和全集？
+</p>
+
+<p>
+\paragraph{练习}开集的有限交是开的；开集的任意并是开集
+</p>
+</div>
+</div>
+<div id="outline-container-orgf55f8d2" class="outline-3">
+<h3 id="orgf55f8d2"><span class="section-number-3">2.5.</span> 开覆盖</h3>
+</div>
+</div>
+
+<div id="outline-container-orgd55d011" class="outline-2">
+<h2 id="orgd55d011"><span class="section-number-2">3.</span> 我的思路/普林斯顿实分析</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+度量－有界
+邻域 \(\rightarrow\) 聚点 \(\rightarrow\) 闭集
+内点 \(\rightarrow\) 开集 
+开闭相关
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfdf8d68" class="outline-2">
+<h2 id="orgfdf8d68"><span class="section-number-2">4.</span> 学拓扑的意义</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+知道名词；学到紧集；一些现代数学的基础内容集合映射；铺垫一些关于李代数微分流形的普适定理建立一个稳固至少正确的基础。
+发现有趣的证明和探索：应对无限无法分割清楚时的方法～非同寻常的思路，绕路。
+注意到数学对于规则的约束，我们的认识可以到达哪里。看看限制了规则可以的程度以后，能补能把握萌叔西的世界描绘出来，如果仅仅他们就可以描述了，那么说明我们不能描述不能想想的部分式是什么呢，换言之，如果换一个定理命题前提，那么世界会成为怎样。
+以及当我想要具体的研究规则（这是不是就是数学现象）时我有多大的余地。
+再反思，在这样复杂的概念世界，怎样进得去出得来（换一种语言能不能更简洁体会）乃至于我是否可以真的感受理解（数感有没有近视），又是怎样理解的（我们不理解，我们只是习惯——russel）
+</p>
+
+<p>
+数学不关注现象了，而是自我编织，可是具体的研究依然在实在的现象上进行，那么这些内容是怎样呼应的呢。我现在摸到了神隐世界的大门，自己能不能再飞回来呢。
+</p>
+
+<p>
+请白龙保佑 <del><i><b>-</b></i></del>
+</p>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

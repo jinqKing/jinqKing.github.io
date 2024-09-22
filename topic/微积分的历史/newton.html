@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-15 Sun 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>牛顿</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="/css/clear.css">
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-24 20:14 Wed | 凝墨: 2024-07-31 Wed 20:33 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">牛顿</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgbd07752">1. 二项式展开</a>
+<ul>
+<li><a href="#orgbf00e0f">1.1. 组合数</a></li>
+<li><a href="#orgc2f1849">1.2. 递推的广义二项展开</a>
+<ul>
+<li><a href="#org6bd63c0">1.2.1. 计算案例</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgbb8323b">2. 逆级数</a></li>
+<li><a href="#orgcd45622">3. 正弦级数推导（牛顿版）</a></li>
+<li><a href="#orgc1d6698">4. 积分</a></li>
+<li><a href="#org8af4f5a">5. 参考</a></li>
+</ul>
+</div>
+</div>
+<p>
+数学的陈列室
+</p>
+
+<p>
+大名鼎鼎的人物，不同凡响的思维，历史掩盖了曾经的光辉。
+</p>
+
+<blockquote>
+<p>
+尽管本章仅限于讨论牛顿早期的工作，但是需要指出，牛顿“早期的工作”几乎总是超越其它任何人深思熟虑的工作。
+</p>
+</blockquote>
+
+<p>
+师从巴罗（据信已经发现微积分基本公式）
+</p>
+
+<p>
+牛顿（以及前后的数学家）善于从幂级数中发现函数的秘密
+</p>
+
+<p>
+<b>动机：</b> 牛顿如何得到三角函数的级数展开～不直接使用求导（泰勒展开）如何得到幂级数形式的三角函数
+</p>
+<div id="outline-container-orgbd07752" class="outline-2">
+<h2 id="orgbd07752"><span class="section-number-2">1.</span> 二项式展开</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+发明了 \(a^{-1}:=\frac{1}{a};a^{1/2}:=\sqrt{a}\)
+</p>
+
+<p>
+将二项式化简为级数的简单方法。
+</p>
+<ul class="org-ul">
+<li>化简：对于当时而言，可能多项式更容易理解</li>
+<li>简单：牛顿先生自己发明的东西可能自己用格外顺手</li>
+</ul>
+
+<p>
+可能的想法：通过观察帕斯卡三角（杨辉三角）推广
+</p>
+<p class="verse">
+0: 1<br />
+1: 1  1<br />
+2: 1  2  1<br />
+3: 1  3  3  1<br />
+4: 1  4  6  4  1<br />
+5: 1  5 10 10  5  1<br />
+</p>
+\begin{matrix}
+0:& 1& \\
+1:& 1& 1& \\
+2:& 1& 2&  1 \\
+3:& 1& 3&  3&  1 \\
+4:& 1& 4&  6&  4&  1 \\
+5:& 1& 5& 10& 10&  5&  1 \\
+\end{matrix}
+<p>
+加入分数，自然而然的想法是：
+</p>
+<ul class="org-ul">
+<li>第一列是1</li>
+<li>第二列是行数（1,2,3,&#x2026;）</li>
+<li>第三列寻找规律：
+0,1,3,6,10&#x2026;
+\(\frac{1\times(1-1)}{2},\frac{2\times (2-1)}{2},\frac{3\times(3-1)}{2},\frac{4\times(4-1)}{2},\frac{5\times(5-1)}{2}\dots\)
+公式： \(\frac{n\times(n-1)}{2}\)</li>
+<li>之后： 0次，1次，2次…之后应该是高次，再除以某个数：
+找规律： \(\frac{n(n-1)(n-2)}{3!},\frac{n(n-1)(n-2)(n-3)}{4!},\dots,\frac{n(n-1)\cdots(n-m-1)}{m!}\)</li>
+</ul>
+
+\begin{matrix}
+0:& 1& \\
+\frac{1}{2}:&1&\frac{1}{2}&-\frac{1}{8}&\cdots\\
+1:& 1& 1& \\
+\frac{3}{2}:&1&\frac{3}{2}&\frac{3}{8}&\cdots\\
+2:& 1& 2&  1 \\
+\frac{5}{2}:&1&\frac{5}{2}&\frac{5}{8}&\cdots\\
+3:& 1& 3&  3&  1 \\
+\frac{7}{2}:&1&\frac{7}{2}&\frac{7}{8}&\cdots\\
+4:& 1& 4&  6&  4&  1 \\
+\frac{9}{2}:&1&\frac{9}{2}&\frac{9}{8}&\cdots\\
+5:& 1& 5& 10& 10&  5&  1 \\
+\end{matrix}
+
+<p>
+此时可以注意到：非整数的行会无限延伸，总是可以计算出不为0下一项,事实上整数是因为得到了0于是之后地向无法存在。
+</p>
+</div>
+<div id="outline-container-orgbf00e0f" class="outline-3">
+<h3 id="orgbf00e0f"><span class="section-number-3">1.1.</span> 组合数</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+以上和高中数学讲的组合数一致，
+事实上，如果从组合出发可以得到整数的情况就是组合数
+</p>
+
+<p>
+因此可以想见推广浙一结论就是
+</p>
+
+<p>
+以上应当比较简单。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc2f1849" class="outline-3">
+<h3 id="orgc2f1849"><span class="section-number-3">1.2.</span> 递推的广义二项展开</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+在书中给出了广义二项展开和递推的形式
+</p>
+\begin{equation}
+\label{eq:1}
+\begin{split}
+(p+pq)^{\frac{m}{n}}& = p^{\frac{m}{n}}+\frac{m}{n}\overbrace{A}^{p \frac{m}{n}}q+\frac{m-n}{2n}\overbrace{B}^{\frac{m}{n}Aq}q+\frac{m-2n}{3n}\overbrace{C}^{\frac{m-n}{2n}Bq}q+\frac{m-3n}{4n}\overbrace{D}^{\frac{m-2n}{3n}Cq}q+\dots
+\end{split}
+\end{equation}
+<p>
+这里 \(A,B,C,D\dots\) 均表示前一项
+</p>
+</div>
+<div id="outline-container-org6bd63c0" class="outline-4">
+<h4 id="org6bd63c0"><span class="section-number-4">1.2.1.</span> 计算案例</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ol class="org-ol">
+<li>展开 \(\sqrt{c^2+x^2}\)</li>
+</ol>
+<p>
+此处 \(p=c^2,q=\frac{x^2}{c^2},m=1,n=2\)
+</p>
+\begin{equation}
+\label{eq:2}
+\begin{split}
+\sqrt{c^2+x^2}&=(c^2)^{\frac{1}{2}}+\frac{1}{2}A \frac{x^2}{c^2}+\frac{1-2}{2\times 2}B \frac{x^2}{c^2}+\frac{1-2\times 2}{3\times2}C \frac{x^2}{c^2} \\
+&= c+\frac{1}{2}c \frac{x^2}{c^2}-\frac{1}{4}\frac{x^2}{2c}\frac{x^2}{c^2}-\frac{1}{2}\frac{-x^4}{8c^3}\frac{x^2}{c^2}+\cdots \\
+&= c+\frac{x^2}{2c}-\frac{x^4}{8c^3}+\frac{x^6}{16c^5}+\cdots
+\end{split}
+\end{equation}
+<p>
+可能当代人已经习惯了直接使用公式，不过真正计算起时，牛顿给出的递推表示具有不同寻常的吸引力。
+</p>
+<ol class="org-ol">
+<li>展开 \((1-x^2)^{-\frac{1}{2}}\)</li>
+</ol>
+<p>
+此时更简单
+</p>
+\begin{equation}
+\label{eq:3}
+\begin{split}
+\frac{1}{\sqrt{1-x^2}}&=1+\frac{-1}{2}(-x^2)+\frac{\frac{-1}{2}\times \frac{-3}{2}}{2}\frac{x^2}{2}(-x^2)+\frac{\frac{-1}{2}-\frac{-5}{2}}{3}\frac{3x^4}{8}(-x^2)+\cdots\\
+&=1+\frac{1}{2}x^2+\frac{3}{8}x^4+\frac{5}{16}x^6+\frac{35}{128}x^8+\cdots
+\end{split}
+\end{equation}
+<p>
+你甚至可以检验它的平方是等比数列的结果：
+</p>
+\begin{equation}
+\label{eq:4}
+\begin{split}
+&(1+\frac{1}{2}x^2+\frac{3}{8}x^4+\frac{5}{16}x^6+\frac{35}{128}x^8+\cdots)\times\\
+&(1+\frac{1}{2}x^2+\frac{3}{8}x^4+\frac{5}{16}x^6+\frac{35}{128}x^8+\cdots)\\
+&=1+(\frac{1}{2}+\frac{1}{2})x^2+(2\times \frac{3}{8}+\frac{1}{2}\times \frac{1}{2})x^4+(2\times \frac{5}{16}+2\times (\frac{1}{2}\times \frac{3}{8}))x^6\cdots\\
+&=1+x^2+x^4+x^6+x^8+\cdots\\
+&=\frac{1}{1-x^2}
+\end{split}
+\end{equation}
+<p>
+一项一项整齐划一十分神奇
+</p>
+<blockquote>
+<p>
+这样会消除那些其原始形式看起来几乎无法逾越的困难
+</p>
+</blockquote>
+<p>
+我之前也已经习惯了不过事实上我认为我的确并不理解，我只是认同了使用分数根式南至余特殊字母组合表示的
+</p>
+
+<p>
+下面我们哪个特殊字母组合的函数的破解秘密做最后的准备
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgbb8323b" class="outline-2">
+<h2 id="orgbb8323b"><span class="section-number-2">2.</span> 逆级数</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+一次取一个
+</p>
+</div>
+</div>
+<div id="outline-container-orgcd45622" class="outline-2">
+<h2 id="orgcd45622"><span class="section-number-2">3.</span> 正弦级数推导（牛顿版）</h2>
+<div class="outline-text-2" id="text-3">
+<blockquote>
+<p>
+关于正弦和余弦的这些级数第一次出现在了欧洲人的手稿里。
+</p>
+</blockquote>
+<p>
+印度数学家据信更造就已经发现了这个级数。
+</p>
+</div>
+</div>
+<div id="outline-container-orgc1d6698" class="outline-2">
+<h2 id="orgc1d6698"><span class="section-number-2">4.</span> 积分</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+积分 quadrature intergal
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8af4f5a" class="outline-2">
+<h2 id="org8af4f5a"><span class="section-number-2">5.</span> 参考</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+泰勒思路
+</p>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

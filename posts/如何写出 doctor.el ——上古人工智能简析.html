@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-01 Thu 11:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>如何写出 doctor.el*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/pic/king.png"><link rel="shortcut icon" href="/pic/king.png"/>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+</head>
+<body>
+<div id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-07 Sun 23:56 | 凝墨: 2024-04-25 Thu 17:24 </p>
+</div>
+<div id="content" class="content">
+<h1 class="title">如何写出 doctor.el*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd29f567">1. 前置知识</a></li>
+<li><a href="#orgb999172">2. 宏与函数</a></li>
+<li><a href="#org96c2dcd">3. 缓冲准备</a></li>
+<li><a href="#org4cc1493">4. 相关话题列表</a></li>
+<li><a href="#org7a0e412">5. 心理咨询正式开始</a></li>
+<li><a href="#org7dce755">6. 核心分类</a></li>
+<li><a href="#org3380eae">7. 具体函数</a></li>
+<li><a href="#org868c6f6">8. 语法</a></li>
+<li><a href="#org84d5a4e">9. 打出回复</a></li>
+<li><a href="#org5f572ed">10. 百变医生</a></li>
+<li><a href="#org43b6489">11. 研究</a></li>
+<li><a href="#org832d226">12. 设想</a></li>
+</ul>
+</div>
+</div>
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-23 Tue 19:03&gt;</span></span>
+</p>
+
+<p>
+我一定能把它分析做完
+</p>
+<div class="org-center">
+<p>
+目录：
+梳理文档结构
+</p>
+<ul class="org-ul">
+<li>1-28: LISP 文档标准格式
+<ul class="org-ul">
+<li>1-22
+<ul class="org-ul">
+<li>1-2: 简介</li>
+<li>3-4: 版权</li>
+<li>5-7: 维护</li>
+<li>10-22: GNU 协议</li>
+</ul></li>
+<li>23-28 Comm</li>
+</ul></li>
+<li>29-30: Code</li>
+<li>31-113: 初始化变量 (defavr &#x2026;)</li>
+<li>-540</li>
+<li>548-817: (doctor-put-meaning &#x2026; '&#x2026;)</li>
+<li>818-858:</li>
+<li>859-927: [;; Main processing function for sentences that have been read.]</li>
+<li>928-1348: 定义语法词汇函数[;; Things done to process sentences once read.]</li>
+<li>-1348</li>
+<li>1349-1402: 定义合成回复函数 [;; Output of replies.]</li>
+<li>1403-1621: 定义特定话题 [;; Functions that handle specific words or meanings when found.] (defun doctor-zippy ()
+1596-1597 注释</li>
+<li>1624-1626: 结束</li>
+</ul>
+</div>
+
+<p>
+需要认识词汇（有一定话题可聊）
+</p>
+
+<p>
+流程上分析：
+</p>
+<ol class="org-ol">
+<li>标准输出</li>
+<li>接受输入</li>
+<li>处理识别</li>
+<li>分析回复</li>
+<li>循环进行</li>
+</ol>
+
+
+<p>
+打开时显示
+<img src="如何写出 doctor.el ——上古人工智能简析/20240410210009.png" alt="20240410210009.png" />
+</p>
+
+<div class="org-src-container">
+<pre class="src src-doctor">I am the psychotherapist.  Please, describe your problems.  Each time
+you are finished talking, type RET twice.
+
+</pre>
+</div>
+
+<p>
+这是
+</p>
+<div class="org-src-container">
+<pre class="src src-lisp">  (define-derived-mode doctor-mode text-mode "Doctor"
+  "Major mode for running the Doctor (Eliza) program.
+Like Text mode with Auto Fill mode
+except that RET when point is after a newline, or LFD at any time,
+reads the sentence before point, and prints the Doctor's answer."
+  :interactive nil
+  (doctor-make-variables)
+  (turn-on-auto-fill)
+  (doctor-type '(i am the psychotherapist \.
+		 (doc$ doctor--please) (doc$ doctor--describe) your (doc$ doctor--problems) \.
+		 each time you are finished talking\, type \R\E\T twice \.))
+  (insert "\n"))
+</pre>
+</div>
+
+<p>
+生成的
+</p>
+
+<div id="outline-container-orgd29f567" class="outline-2">
+<h2 id="orgd29f567"><span class="section-number-2">1.</span> 前置知识</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+我自己并不了解 Emacs 里面一些函数，这里正好统一收集整理。
+</p>
+
+<ul class="org-ul">
+<li>不加引用（‘）是对象，可能是原子、变量</li>
+
+<li>加引用’是对象的值，比如想要让 C-z 运行 undo 函数</li>
+</ul>
+
+<div class="org-src-container">
+<pre class="src src-elisp">  (global-set-key (kbd "C-z") 'undo)
+</pre>
+</div>
+
+<p>
+'就像是（一个指针）把对象的地址作为参数传了过去。一般这样称为绑定，lisp 所谓表处理，就是在不断地求值，值是一种表示（这理由好比是所有的对象存在一张哈希表，一个对象对应一个值），不过程序代码是无法操作的（不像 C 把列表地址加一就是下一个元素了）。
+</p>
+
+<p>
+当然只有绑定了的符号才有值，比如初始化未指定的变量就没值（nil）。
+大部分定义的对象的值是本身，比如函数就是内部代码的值，列表也是；
+而符号的值是绑定的对象（所谓符号，就是比如字符串 my-list 这样的符号；），
+宏 macro 的值是（代码）展开形式，缓冲区和窗口也不是自身。
+</p>
+
+<p>
+函数
+</p>
+<ul class="org-ul">
+<li>defvar:
+和 setq 区别： defvar 用于全局变量，一般文档开始大量使用，便于阅读（约定俗成的行为），再次定义相同符号不改值（会警告），setq 无条件设置任何值（再次赋值相同符号就会更新）</li>
+
+<li>defun:
+经典 LISP 函数，用来定函数</li>
+<li>defmacro:
+利用已有函数</li>
+<li><p>
+define
+</p>
+
+<p>
+define-derived-mode
+</p></li>
+</ul>
+
+
+<p>
+doc// 函数不明白，难道是换行用？
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb999172" class="outline-2">
+<h2 id="orgb999172"><span class="section-number-2">2.</span> 宏与函数</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+doc$ 和 doctor-$
+</p>
+
+<div class="org-src-container">
+<pre class="src src-elisp">  (defmacro doc$ (what)
+    "Quoted arg form of `doctor-$'."
+    `(doctor-$ ',what))
+
+  (defun doctor-$ (what)
+    "Return the car of a list, rotating the list each time."
+    (let* ((vv (symbol-value what))
+	   (first (car vv))
+	   (ww (append (cdr vv) (list first))))
+      (set what ww)
+      first))
+</pre>
+</div>
+
+<p>
+量我见识短浅，这里的代码还是颇为巧妙。
+核心功能是获得列表的第一个元素，然后将列表这个元素放最后。
+而为了有时候需要不改变表，额外定义了（相当于条件复杂效果更精巧）的 doc$
+这时传入的参数（实际上是表的值）不会被改变
+</p>
+
+<p>
+下面是一个更具体分析：
+这个函数的作用是返回一个列表的第一个元素，并且将列表中的元素循环移动，使得下一次调用时返回的是原列表中的下一个元素。
+</p>
+
+<p>
+doc-$
+</p>
+<ol class="org-ol">
+<li>(defmacro doc$ (what) &#x2026;)：这行代码定义了一个名为 doc$ 的宏，它接受一个参数 what。</li>
+<li>"Quoted arg form of 'doctor-$'."：这是对这个宏的简短文档说明，说明了宏的作用。</li>
+<li>`(doctor-$ ',what))：这是宏的主体部分。在这里，`（反引号）用于引用代码，,（逗号）用于在宏中插入参数值。所以 (doctor-$ ',what) 这部分代码的作用是生成调用 doctor-$ 函数的代码，其中参数 what 被引用了进去，并且在引用时被加上了单引号 '，这样它就成了一个被引用的列表。</li>
+</ol>
+<p>
+总结起来，这个宏的作用就是生成调用 doctor-$ 函数的代码，并且将传入的参数作为引用加入到生成的代码中。
+</p>
+
+<p>
+为什么不能每次直接使用 doctor-$ 呢？
+方便引用，类比 set 与 setq 关系。
+使用宏还可以避免在每次调用时都手动加上引号
+</p>
+</div>
+</div>
+
+<div id="outline-container-org96c2dcd" class="outline-2">
+<h2 id="org96c2dcd"><span class="section-number-2">3.</span> 缓冲准备</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+用了 defvar-keymap 绑定两个函数，
+这里值得注意的是加了＃，GPT说这是约定俗成，一般后面调用是函数或宏就加＃以示区分
+</p>
+
+<p>
+继续定义基本的 buffer 内容
+</p>
+<ol class="org-ol">
+<li>定义了一个 major mode，名为 "Doctor"。</li>
+<li>设置了 mode-line 的显示为 "Doctor"。</li>
+<li>提供了一个简要的描述，说明这个 major mode 是用于运行 Doctor (Eliza) 程序的。</li>
+<li>禁止了用户直接调用这个 mode 的命令（:interactive nil）。</li>
+<li>调用了 doctor-make-variables 函数，用于初始化一些相关的变量。</li>
+<li>打开了自动换行（Auto Fill）模式。</li>
+<li>调用了 doctor-type 函数，这个函数用于模拟用户的输入，每次输入一句话给 Doctor，然后打印 Doctor 的回答。</li>
+<li>最后，在缓冲区中插入一个空行。</li>
+</ol>
+
+<p>
+函数 defun doctor-make-variables
+</p>
+
+<p>
+用了 setq-local 可能只在运行时创建的变量
+</p>
+
+<p>
+这里有一个纠错机制
+</p>
+
+<p>
+问了GPT，给了一个 dolist 写法，据说减少了遍历次数
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  
+在进行纠错和全名部分的处理时，我会建议使用一个更简洁和高效的方法来实现。以下是一个可能的最佳实践：
+
+elisp
+Copy code
+(defvar doctor--typos
+  '((theyll . ("they'll" . "they will"))
+    (don7t . ("don't" . "do not"))
+    (you7re . ("you're" . "i am"))
+    (you7ll . ("you'll" . "i will"))))
+
+(defun doctor-make-variables ()
+  (dolist (typo doctor--typos)
+    (let ((spelltypo (car typo))
+          (correction (car (cdr (cdr typo))))
+          (expansion (cdr (cdr typo))))
+      (put spelltypo 'doctor-correction correction)
+      (put spelltypo 'doctor-expansion expansion)))
+</pre>
+</div>
+
+<p>
+下面是几段套话，具体来说是给了一些话题用词，看到这个不由得让人想起初中口语话题集，现在的 IELTS 话题。看来 AI 也要话题词汇积累嘿
+</p>
+
+<p>
+仔细看还有特别之处，比如
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">    (setq-local doctor--famlst
+              '((tell me (doc$ doctor--something) about (doc// doctor-owner) family \.)
+                (you seem to dwell on (doc// doctor-owner) family \.)
+                ((doc$ doctor--areyou) hung up on (doc// doctor-owner) family \?)))
+</pre>
+</div>
+<p>
+变量定义在 316
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">    (setq-local doctor--something '((something)
+                                  (more)
+                                  (how you feel)))
+</pre>
+</div>
+
+<p>
+这个语言组合游戏于是内部又可以组合（可以找找有没有你中有我我中有你的情况）
+不过还用到了开篇定义的宏 doc$ ,增加语言多样性（我以为多样性可以用概率，可能随机选对纯列表 lisp 压力大一些）
+</p>
+
+<p>
+也不知道怎么保证不会有几个词撞在一起出现不成句子的情况（难道编程序的“语言学家”提前订好了词性结构）
+</p>
+
+<p>
+一路到539
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4cc1493" class="outline-2">
+<h2 id="org4cc1493"><span class="section-number-2">4.</span> 相关话题列表</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-elisp">(defun doctor-meaning (x) (get x 'doctor-meaning))
+
+(defmacro doctor-put-meaning (symb val)
+  "Store the base meaning of a word on the property list."
+  `(put ',symb 'doctor-meaning ,val))
+</pre>
+</div>
+
+<p>
+现在是把那些词对应那些话题给了出来，
+</p>
+
+<p>
+我很不喜欢相似的内容不是相似的格式，如果是我写代码，一定会把上面话题类型的 setq-local 单独领出来
+</p>
+
+<p>
+而且很不好的是似乎他把函数和属性都命名为 doctor-meaning (居然用 meaning)
+</p>
+
+<p>
+一路到达817
+</p>
+
+<p>
+居然在 819 出现，也不知道是不是惯例，淡厮乎这样太不方便吧，这属于基本的内容应该放在定义buffer 附近。
+好的，我宣布上面的话果然是小白的话
+</p>
+
+<p>
+因为这里出现了一个小东西
+</p>
+</div>
+</div>
+
+<div id="outline-container-org7a0e412" class="outline-2">
+<h2 id="org7a0e412"><span class="section-number-2">5.</span> 心理咨询正式开始</h2>
+<div class="outline-text-2" id="text-5">
+<div class="org-src-container">
+<pre class="src src-elisp">    
+  ;;;###autoload
+(defun doctor ()
+  "Switch to *doctor* buffer and start giving psychotherapy."
+  (interactive)
+  (switch-to-buffer "*doctor*")
+  (doctor-mode))
+
+(defun doctor-ret-or-read (arg)
+  "Insert a newline if preceding character is not a newline.
+Otherwise call the Doctor to parse preceding sentence."
+  (interactive "*p" doctor-mode)
+  (if (= (preceding-char) ?\n)
+      (doctor-read-print)
+    (newline arg)))
+</pre>
+</div>
+<p>
+这个818行的代码特别之处
+;###autoload 注释标记某些函数或宏，那么在加载文件时，Emacs 会记住这些标记，并在需要时自动加载相应的函数或宏。
+</p>
+
+<p>
+类比就像之前的代码是医生的基础知识，现在进入正式环节
+</p>
+
+<p>
+首先是819打开 doctor buffer,开启 132 定义的 doctor-mode;
+接着 doctor-ret-or-read 检测前一个字符是否是换行符，是的话就调用下面的
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-read-print ()
+    "Top level loop."
+    (interactive nil doctor-mode)
+    (setq doctor-sent (doctor-readin))
+    (insert "\n")
+    (setq doctor--lincount (1+ doctor--lincount))
+    (doctor-doc)
+    (insert "\n")
+    (setq doctor--bak doctor-sent))
+
+  (defun doctor-readin ()
+    "Read a sentence.  Return it as a list of words."
+    (let (sentence)
+      (backward-sentence 1)
+      (while (not (eobp))
+	(setq sentence (append sentence (list (doctor-read-token)))))
+      sentence))
+
+  (defun doctor-read-token ()
+    "Read one word from buffer."
+    (prog1 (intern (downcase (buffer-substring (point)
+					       (progn
+						 (forward-word 1)
+						 (point)))))
+      (re-search-forward "\\Sw*")))
+  
+</pre>
+</div>
+<p>
+这三个函数可以反过来解释
+</p>
+<ul class="org-ul">
+<li>read-token 很奇怪,功能是:</li>
+</ul>
+<p>
+把前一个词赋予一个变量存下来，
+（用的 intern ：保证原来如果没有就用这个，有了就新建）
+移动到下一个词
+</p>
+
+<ul class="org-ul">
+<li>doctor-readin 利用 -read-token 是一个把前一个句子分解成单词列表的函数，返回列表。</li>
+</ul>
+<p>
+（看起来只能读一个句子）
+</p>
+
+<ul class="org-ul">
+<li>doctor-read-print (被回车触发)调用 -readin 得到列表，
+赋值给变量 doctor-sent，换行加1到行数记录变量 &#x2013;lincount</li>
+</ul>
+<p>
+1449,1454 用到 doctor&#x2013;lincount 不知道作用是什么
+同时还备份一个回复到变量 doctor&#x2013;bak 
+核心部分调用接下来的 doctor-doc
+</p>
+
+
+<div id="org53c79d1" class="figure">
+<p><img src="如何写出 doctor.el ——上古人工智能简析/DOT:20240416165752.png" alt="DOT:20240416165752.png" />
+</p>
+</div>
+
+<p>
+可见，整个 doctoc 就是被 doctor-read-print 调控，它相当于 main 函数了。
+</p>
+</div>
+</div>
+<div id="outline-container-org7dce755" class="outline-2">
+<h2 id="org7dce755"><span class="section-number-2">6.</span> 核心分类</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+下面 doctor-doc 详细给出如何处理接收到的用户输入
+（不能用指针传参只能全局真不爽）
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-doc ()
+  (cond
+   ((equal doctor-sent '(foo))
+    (doctor-type '(bar! (doc$ doctor--please) (doc$ doctor--continue) \.)))
+   ((member doctor-sent doctor--howareyoulst)
+    (doctor-type '(i\'m ok \.  (doc$ doctor--describe) yourself \.)))
+   ((or (member doctor-sent '((good bye) (see you later) (i quit) (so long)
+			      (go away) (get lost)))
+	(memq (car doctor-sent)
+	      '(bye halt break quit done exit goodbye
+		    bye\, stop pause goodbye\, stop pause)))
+    (doctor-type (doc$ doctor--bye)))
+   ((and (eq (car doctor-sent) 'you)
+	 (memq (cadr doctor-sent) doctor--abusewords))
+    (setq doctor-found (cadr doctor-sent))
+    (doctor-type (doc$ doctor--abuselst)))
+   ((eq (car doctor-sent) 'whatmeans)
+    (doctor-def (cadr doctor-sent)))
+   ((equal doctor-sent '(parse))
+    (doctor-type (list  'subj '= doctor-subj ",  "
+			'verb '= doctor-verb "\n"
+			'object 'phrase '= doctor-obj ","
+			'noun 'form '=  doctor-object "\n"
+			'current 'keyword 'is doctor-found
+			", "
+			'most 'recent 'possessive
+			'is doctor-owner "\n"
+			'sentence 'used 'was
+			"..."
+			'(doc// doctor--bak))))
+   ((memq (car doctor-sent) '(are is do has have how when where who why))
+    (doctor-type (doc$ doctor--qlist)))
+   ;;   ((eq (car sent) 'forget)
+   ;;    (set (cadr sent) nil)
+   ;;    (doctor-type '((doc$ doctor--isee) (doc$ doctor--please)
+   ;;     (doc$ doctor--continue)\.)))
+   (t
+    (if (doctor-defq doctor-sent) (doctor-define doctor-sent doctor-found))
+    (if (&gt; (length doctor-sent) 12)
+	(setq doctor-sent (doctor-shorten doctor-sent)))
+    (setq doctor-sent (doctor-correct-spelling
+		       (doctor-replace doctor-sent doctor--replist)))
+    (cond ((and (not (memq 'me doctor-sent)) (not (memq 'i doctor-sent))
+		(memq 'am doctor-sent))
+	   (setq doctor-sent (doctor-replace doctor-sent '((am . (are)))))))
+    (cond ((equal (car doctor-sent) 'yow) (doctor-zippy))
+	  ((&lt; (length doctor-sent) 2)
+	   (cond ((eq (doctor-meaning (car doctor-sent)) 'howdy)
+		  (doctor-howdy))
+		 (t (doctor-short))))
+	  (t
+	   (if (memq 'am doctor-sent)
+	       (setq doctor-sent (doctor-replace doctor-sent '((me . (i))))))
+	   (setq doctor-sent (doctor-fixup doctor-sent))
+	   (if (and (eq (car doctor-sent) 'do) (eq (cadr doctor-sent) 'not))
+	       (cond ((zerop (random 3))
+		      (doctor-type '(are you (doc$ doctor--afraidof) that \?)))
+		     ((zerop (random 2))
+		      (doctor-type '(don\'t tell me what to do \. i am the
+					    doctor here!))
+		      (doctor-rthing))
+		     (t
+		      (doctor-type '((doc$ doctor--whysay) that i shouldn\'t
+				     (cddr doctor-sent)
+				     \?))))
+	     (doctor-go (doctor-wherego doctor-sent))))))))
+
+</pre>
+</div>
+
+<p>
+又是一个结构我看起来十分混乱的函数，不明白为什么不把回复的特定组合存起来，难道节省空间？
+</p>
+
+<p>
+?&#x2013; 表； - 函数、变量
+</p>
+
+<p>
+满足任何一个就回复
+</p>
+<ul class="org-ul">
+<li>foo</li>
+<li>howareyou -&gt;
+回复 我好 &#x2013;describe</li>
+<li>检查告别 -&gt;
+回复 &#x2013;bye</li>
+<li>侮辱 -&gt;
+回复 -abuselst</li>
+<li>whatmean 含义 -&gt;
+回复 -def</li>
+<li>parse</li>
+<li>一般疑问</li>
+<li>t 默认
+<ol class="org-ol">
+<li>看有无可以解答 defq-&gt;define</li>
+<li>缩句</li>
+<li>替换？</li>
+<li>如果没有 i me 将 am 换成 are</li>
+<li>判断；
+<ul class="org-ul">
+<li>以 "yow" 开头 -&gt; zippy</li>
+<li>少于两个词：
+<ul class="org-ul">
+<li>取首词检验 <span class="underline">是</span> howdy -&gt; howdy</li>
+<li>否：短句回应</li>
+</ul></li>
+<li>一般
+<ul class="org-ul">
+<li>有 "am" ：将 me 换成 i</li>
+<li>-fixup</li>
+<li>开头是 "do not"</li>
+<li>-go</li>
+</ul></li>
+</ul></li>
+</ol></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3380eae" class="outline-2">
+<h2 id="org3380eae"><span class="section-number-2">7.</span> 具体函数</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+基本句子操作：拼写、缩短
+[930-954]
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-correct-spelling (sent)
+  "Correct the spelling and expand each word in sentence."
+  (if sent
+      (apply 'append (mapcar (lambda (word)
+				(if (memq word doctor--typos)
+				    (get (get word 'doctor-correction)
+					 'doctor-expansion)
+				  (list word)))
+			     sent))))
+
+(defun doctor-shorten (sent)
+  "Make a sentence manageably short using a few hacks."
+  (let (foo
+	(retval sent)
+	(temp '(because but however besides anyway until
+		    while that except why how)))
+    (while temp
+	   (setq foo (memq (car temp) sent))
+	   (if (and foo
+		    (&gt; (length foo) 3))
+	       (setq retval (doctor-fixup foo)
+		     temp nil)
+	       (setq temp (cdr temp))))
+    retval))
+</pre>
+</div>
+
+<p>
+拼写纠错：
+利用 typo 表
+</p>
+
+<p>
+缩短原理：
+？扔掉连接词
+</p>
+
+<p>
+医生一些行为
+</p>
+
+<p>
+解释含义
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">  (defun doctor-define (sent found)
+  (doctor-svo sent found 1 nil)
+  (and
+   (doctor-nounp doctor-subj)
+   (not (doctor-pronounp doctor-subj))
+   doctor-subj
+   (doctor-meaning doctor-object)
+   (put doctor-subj 'doctor-meaning (doctor-meaning doctor-object))
+   t))
+
+  (defun doctor-defq (sent)
+  "Set global var DOCTOR-FOUND to first keyword found in sentence SENT."
+  (setq doctor-found nil)
+  (let ((temp '(means applies mean refers refer related
+		      similar defined associated linked like same)))
+    (while temp
+	   (if (memq (car temp) sent)
+	       (setq doctor-found (car temp)
+		     temp nil)
+	       (setq temp (cdr temp)))))
+  doctor-found)
+  (defun doctor-def (x)
+  (doctor-type (list 'the 'word x 'means (doctor-meaning x) 'to 'me))
+  nil)
+  (defun doctor-forget ()
+  "Delete the last element of the history list."
+  (setq doctor--history (reverse (cdr (reverse doctor--history)))))
+  (defun doctor-query (x)
+  "Prompt for a line of input from the minibuffer until a noun or verb is seen.
+Put dialogue in buffer."
+  (let (a
+	(prompt (concat (doctor-make-string x)
+			" what ?  "))
+	retval)
+    (while (not retval)
+	   (while (not a)
+	     (insert ?\n
+		     prompt
+		     (read-string prompt)
+		     ?\n)
+	     (setq a (doctor-readin)))
+	   (while (and a (not retval))
+		  (cond ((doctor-nounp (car a))
+			 (setq retval (car a)))
+			((doctor-verbp (car a))
+			 (setq retval (doctor-build
+				       (doctor-build x " ")
+				       (car a))))
+			((setq a (cdr a))))))
+    retval))
+</pre>
+</div>
+
+<p>
+defq 
+是一个查找函数，将全局 DOCTOR-FOUND 作为状态量。
+查找是否有 temp 列表中的词 (means applies mean refers refer related similar defined associated linked like same)
+如果有，就用 define 造句。
+</p>
+
+<p>
+doctor-go 很有意思，假如没有
+</p>
+
+<p>
+遗忘
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org868c6f6" class="outline-2">
+<h2 id="org868c6f6"><span class="section-number-2">8.</span> 语法</h2>
+<div class="outline-text-2" id="text-8">
+<div class="org-src-container">
+<pre class="src src-elisp">    (defun doctor-subjsearch (sent key type)
+    "Search for the subject of a sentence SENT, looking for the noun closest
+  to and preceding KEY by at least TYPE words.  Set global variable `doctor-subj'
+  to the subject noun, and return the portion of the sentence following it."
+    (let ((i (- (length sent) (length (memq key sent)) type)))
+      (while (and (&gt; i -1) (not (doctor-nounp (nth i sent))))
+	(setq i (1- i)))
+      (cond ((&gt; i -1)
+	     (setq doctor-subj (nth i sent))
+	     (nthcdr (1+ i) sent))
+	    (t
+	     (setq doctor-subj 'you)
+	     nil))))
+
+  (defun doctor-nounp (x)
+    "Return non-nil if the symbol argument is a noun."
+	  (or (doctor-pronounp x)
+	      (not (or (doctor-verbp x)
+		       (equal x 'not)
+		       (doctor-prepp x)
+		       (doctor-modifierp x) )) ))
+
+  (defun doctor-pronounp (x)
+    "Return non-nil if the symbol argument is a pronoun."
+    (memq x '(
+	  i me mine myself
+	  we us ours ourselves ourself
+	  you yours yourself yourselves
+	  he him himself she hers herself
+	  it that those this these things thing
+	  they them themselves theirs
+	  anybody everybody somebody
+	  anyone everyone someone
+	  anything something everything)))
+
+
+  (dolist (x
+	   '(abort aborted aborts ask asked asks am
+	     applied applies apply are associate
+	     ...
+	     write writes writing wrote use used uses using))
+    (put x 'doctor-sentence-type 'verb))
+
+  (defun doctor-verbp (x) (if (symbolp x)
+			      (eq (get x 'doctor-sentence-type) 'verb)))
+
+  (defun doctor-plural (x)
+    "Form the plural of the word argument."
+    (let ((foo (doctor-make-string x)))
+      (cond ((string-equal (substring foo -1) "s")
+	     (cond ((string-equal (substring foo -2 -1) "s")
+		    (intern (concat foo "es")))
+		   (t x)))
+	     ((string-equal (substring foo -1) "y")
+	      (intern (concat (substring foo 0 -1)
+			      "ies")))
+	     (t (intern (concat foo "s"))))))
+
+  (defun doctor-setprep (sent key)
+    (let ((val)
+	  (foo (memq key sent)))
+      (cond ((doctor-prepp (cadr foo))
+	     (setq val (doctor-getnoun (cddr foo)))
+	     (cond (val val)
+		   (t 'something)))
+	    ((doctor-articlep (cadr foo))
+	     (setq val (doctor-getnoun (cddr foo)))
+	     (cond (val (doctor-build (doctor-build (cadr foo) " ") val))
+		   (t 'something)))
+	    (t 'something))))
+
+  (defun doctor-getnoun (x)
+    (cond ((null x) (setq doctor-object 'something))
+	  ((atom x) (setq doctor-object x))
+	  ((eq (length x) 1)
+	   (setq doctor-object (cond
+			 ((doctor-nounp (setq doctor-object (car x))) doctor-object)
+			 (t (doctor-query doctor-object)))))
+	  ((eq (car x) 'to)
+	   (doctor-build 'to\  (doctor-getnoun (cdr x))))
+	  ((doctor-prepp (car x))
+	   (doctor-getnoun (cdr x)))
+	  ((not (doctor-nounp (car x)))
+	   (doctor-build (doctor-build (cdr (assq (car x)
+						  (append
+						   '((a . this)
+						     (some . this)
+						     (one . that))
+						   (list
+						    (cons
+						     (car x) (car x))))))
+				       " ")
+			 (doctor-getnoun (cdr x))))
+	  (t (setq doctor-object (car x))
+	     (doctor-build (doctor-build (car x) " ") (doctor-getnoun (cdr x))))
+	  ))
+</pre>
+</div>
+
+
+<p>
+1044 dolist
+</p>
+
+<p>
+下面的函数的确奇怪，
+用 memp 检查是否有检查输入里是否有参考表里面，
+为什么要写一个函数，而不是直接定义一个通用查找函数和各类参考列表呢？
+?电脑内存
+</p>
+
+<p>
+搜索参考表函数有：
+</p>
+<ul class="org-ul">
+<li>articlep: the a an</li>
+<li>nmbrp</li>
+<li>colorp</li>
+<li>sizep</li>
+<li>possesiveprounp</li>
+<li>othermodifierp</li>
+<li>prepp 介词</li>
+<li>[1294] vowlp 元音</li>
+</ul>
+
+<p>
+-remember
+</p>
+
+<p>
+-type
+使用 1351 的
+</p>
+
+<p>
+-fixup
+将反身人称代词
+语气词
+</p>
+
+<p>
+-fix-2
+</p>
+
+
+
+<p>
+doctor-replace: [1297]
+替换表有的换掉没有的保留（可能代码写的复杂了？）
+</p>
+
+<p>
+-wherego
+</p>
+
+
+<p>
+-svo
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org84d5a4e" class="outline-2">
+<h2 id="org84d5a4e"><span class="section-number-2">9.</span> 打出回复</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+-txtype
+</p>
+
+<p>
+-type-symbol
+</p>
+
+
+<p>
+应该将 sent 改为 receive
+</p>
+
+<p>
+另外我以前对于 require 和 provide 也弄错了，我以为的 require 是 load 的功能
+</p>
+
+<p>
+语法和句子结构开始上线了
+构成复数形式
+</p>
+
+<p>
+医生的关键察觉（ attenion !）
+用了 memq
+(应该放后面不要混在语法一起)
+</p>
+
+<p>
+svo!
+</p>
+
+<p>
+注意到一个缩短句子的函数，注释说 hack
+</p>
+
+<p>
+好奇点：
+如何拼成句子，关键在于有多少模板，它的上限在哪？
+记忆是如何实现的？
+假如希望改进，如何让医生诱导交互，让用户输入医生知道的领域的内容，而不是仅仅检查用户在说啥（大部分情况可能医生无从应对）
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5f572ed" class="outline-2">
+<h2 id="org5f572ed"><span class="section-number-2">10.</span> 百变医生</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+奇怪的 defun
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org43b6489" class="outline-2">
+<h2 id="org43b6489"><span class="section-number-2">11.</span> 研究</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+在知道了它能聊这些，针对性问，看是不是有这样的意思。
+</p>
+
+<p>
+分析是否达到一个心理医生的水平：大概没有
+</p>
+
+<p>
+问题：
+重复性太高，所以很无趣，能谈的很少，限制性强；换一当年开发者个就是一个想到一个写一个，这很局限很大没意思，不过给了自生成一个思路。
+</p>
+
+<p>
+提到语句生成和 ELIZA 相像，可以去看看分析一下。
+</p>
+</div>
+</div>
+<div id="outline-container-org832d226" class="outline-2">
+<h2 id="org832d226"><span class="section-number-2">12.</span> 设想</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+首先我们考虑基于英语的对话，能不能让程序是在一个词典上运行的，开始词典内单词很少，比如只有hello，之后和我对话或者我引入一些同义词，使用内部的函数达到认识更多词语，了解更多环境（关于环境可以额外再有一个文档存储想象力部分的资料）比如parents，father。。是family，这和house，living有关系等；于是，建立在一个不断变大的（类似数据库的）词典上的程序可以对话边智能
+</p>
+
+<p>
+我注意到，这个词典可能像是现代的数据库，不同元素之间会有复杂的联系，这一点如何记录比较好。如一个单词，它和什么词常常一起出现甚至前后组词，它和什么词同义可以替换。我可以使用什么样的存储词典呢，如果lisp很难实现，可以用python适合的体系，txt？json，yaml？
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</div>
+</body>
+</html>

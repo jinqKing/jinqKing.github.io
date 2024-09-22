@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找不同——将无尽的宇宙收入掌心</title>
+    <sub>本页面是tapnum.html的副本，是一个demo，用于演示如何使用JavaScript来显示和隐藏元素</sub>
+    <style>
+        body {
+            width: 95%;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 2% auto;
+            font-family: Arial, sans-serif;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #intro,
+        #test,
+        .test {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin-bottom: 20px;
+        }
+
+        .test {
+            display: none;
+        }
+
+        .choose-number {
+            width: 100%;
+            align-items: center;
+            border: 1px dashed #6b6b6b;
+            padding: 20px;
+        }
+
+        .choice_container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .number {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: lightseagreen;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes jump {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .number:hover {
+            background-color: lightgreen;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        .interact {
+            display: none;
+        }
+
+        .text {
+            font-family: 'KaiTi', '楷体', '宋体', 'SongTi,', 'SimSun', '微软雅黑', 'Arial', sans-serif;
+            font-size: large;
+            display: none;
+
+        }
+
+        .congratulation {
+            display: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .display {
+            display: flex;
+        }
+
+        .display_block {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <h1 class="display">找不同——将无尽的宇宙收入掌心</h1>
+        <div id="intro" class="choose-number display" next="intro-resp,1.3.1,">
+            <p>选择正确的数字：100</p>
+            <div class="choice_container" answer="100">
+                <div class="number">1</div>
+                <div class="number">2</div>
+                <div class="number">3</div>
+                <div class="number">4</div>
+                <div class="number">100</div>
+                <div class="number">6</div>
+            </div>
+        </div>
+
+        <div id="intro-resp" class="congratulation">
+            <p>恭喜，你已经学会操作了，下面进入数字的宇宙吧</p>
+        </div>
+
+        <div id="1.3.1" class="text">
+            <div class="en">
+                <p>I spread the notebook on the table and waved to Yuri. She dragged a chair and sat gently on my left.
+                </p>
+                <p>A scent of shampoo floated in the air. Yuri took a pair of resin-framed glasses from her chest pocket
+                    and put them on.</p>
+                <p>“Eh? Is this written by your brother?”</p>
+                <p>Yuri leaned over and looked at the notebook in surprise. It was written by Mirka.</p>
+                <p>“Uh, this is written by my brother’s friend.”</p>
+                <p>“Huh, the handwriting is so beautiful, just like a girl’s.”</p>
+                <p>It was written by a girl in the first place. I thought to myself.</p>
+            </div>
+            <div class="zh">
+                <p>我把笔记本在桌子上摊开，冲尤里招手。她拖着椅子轻轻坐在我左边。</p>
+                <p>瞬间飘来一股洗发水的香气。尤里从胸前口袋中取出一副树脂边框的眼镜戴上。</p>
+                <p>“咦？这是哥哥写的？”</p>
+                <p>尤里探着头，惊讶地看着笔记本。是米尔嘉的笔迹。</p>
+                <p>“呃，这是哥哥的朋友写的。”</p>
+                <p>“诶，字好漂亮，简直跟女生写的一样。”</p>
+                <p>本来就是女生写的嘛。我心想。</p>
+            </div>
+        </div>
+
+        <div id="test1" class="test choose-number display " next="test2,1.3.3,1.3.2">
+            <p>哪个数字与众不同？</p>
+            <div class="choice_container" answer="450">
+                <div class="number">101</div>
+                <div class="number">321</div>
+                <div class="number">681</div>
+                <div class="number">991</div>
+                <div class="number">450</div>
+                <div class="number">811</div>
+            </div>
+        </div>
+        <div id="1.3.2" class="text">
+            <div class="en">
+                <p>“It’s simple, isn’t it? 450, right?”</p>
+                <p>“Yes, correct. The difference is 450. Why?”</p>
+                <p>“Only 450 does not end with the number 1, the other five numbers all end with 1.”</p>
+                <p>“That’s right…… Can you answer the next question? This is also a question from my friend.”</p>
+            </div>
+            <div class="zh">
+                <p>“很简单啊，450对吧？”</p>
+                <p>“嗯，正确。不同的是450。为什么呢？”</p>
+                <p>“只有450不是以数字1结尾，其他五个数字都是以1结尾的。”</p>
+                <p>“没错……那么，你能答对下一道题吗？这也是我朋友出的题。”</p>
+            </div>
+            <div class="ja">
+                <p>「簡単でしょう？450ですね？」</p>
+                <p>「はい、正解です。違うのは450です。なぜですか？」</p>
+                <p>「450だけが1で終わっていない、他の5つの数字はすべて1で終わっている」</p>
+                <p>「そうですね……次の問題に答えられますか？これも友達の出題です」</p>
+            </div>
+        </div>
+        <div id="test2" class="choose-number test" next="1.3.4">
+            <p>哪个数字与众不同？</p>
+            <div class="choice_container" answer="51">
+                <div class="number">11</div>
+                <div class="number">31</div>
+                <div class="number">41</div>
+                <div class="number">51</div>
+                <div class="number">61</div>
+                <div class="number">71</div>
+            </div>
+        </div>
+
+        <div id="1.3.3" class="text">
+            <div class="zh">
+                <p>“诶？全部都以 1 结尾啊。”</p>
+                <p>“嗯，这一题跟上一题的规则不一样，每道题数字间的不同之处都是不一样的。”</p>
+                <p>“我不知道。哥哥你知道吗？”</p>
+            </div>
+        </div>
+
+        <div id="1.3.4" class="text">
+            <div class="zh">
+                <p>“嗯，很明显啊，51是不同的。” </p>
+                <p>“诶？为什么？”</p>
+                <p>“只有51不是质数。因为51=3 x 17可以分解质因数，所以51是合数，而其他都是质数。”</p>
+                <p>“这我怎么可能知道嘛！”</p>
+                <p>“那看看下道题如何？”</p>
+            </div>
+        </div>
+        <div><p>未完待续……</p></div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+
+                const containers = document.querySelectorAll('.choice_container');
+                containers.forEach(container => {
+                    const correctNumber = container.getAttribute('answer');
+                    const numbers = container.querySelectorAll('.number');
+                    numbers.forEach(number => {
+                        number.addEventListener('click', () => {
+                            if (number.textContent.trim() === correctNumber) {
+                                number.classList.add('selected'); number.style.pointerEvents = 'none'; number.style.backgroundColor = 'lightseagreen';
+                                const nextContainerIds = container.parentElement.getAttribute('next');
+                                if (nextContainerIds) {
+                                    const idsArray = nextContainerIds.split(',');
+                                    idsArray.forEach(id => {
+                                        const nextContainer = document.getElementById(id.trim());
+                                        if (nextContainer) {
+                                            nextContainer.classList.remove('hidden');
+                                            nextContainer.style.display = 'block';
+                                        }
+                                    });
+                                }
+                            } else {
+                                number.classList.add('shake');
+                                setTimeout(() => {
+                                    number.classList.remove('shake');
+                                }, 500);
+                            }
+                        });
+                    });
+                });
+
+                const textTemplates = document.querySelectorAll('.text');
+
+                textTemplates.forEach(textTemplate => {
+                    const enContent = textTemplate.querySelector('.en');
+                    const zhContent = textTemplate.querySelector('.zh');
+                    const jaContent = textTemplate.querySelector('.ja');
+
+                    const availableLanguages = [];
+                    if (enContent) availableLanguages.push({ code: 'en', element: enContent });
+                    if (zhContent) availableLanguages.push({ code: 'zh', element: zhContent });
+                    if (jaContent) availableLanguages.push({ code: 'ja', element: jaContent });
+
+                    if (availableLanguages.length === 0) return;
+
+                    const textId = textTemplate.getAttribute('id');
+                    const savedLanguage = localStorage.getItem(`language-${textId}`) || availableLanguages[0].code;
+
+                    const showLanguage = (languageCode) => {
+                        availableLanguages.forEach(({ code, element }) => {
+                            element.style.display = (code === languageCode) ? 'block' : 'none';
+                        });
+                    };
+
+                    showLanguage(savedLanguage);
+
+                    const button = document.createElement('button');
+                    button.classList.add('toggle-button');
+                    button.textContent = savedLanguage;
+
+                    button.addEventListener('click', () => {
+                        const currentIndex = availableLanguages.findIndex(({ code }) => code === button.textContent);
+                        const nextIndex = (currentIndex + 1) % availableLanguages.length;
+                        const nextLanguage = availableLanguages[nextIndex].code;
+                        showLanguage(nextLanguage);
+                        button.textContent = nextLanguage;
+                        localStorage.setItem(`language-${textId}`, nextLanguage);
+                    });
+                    textTemplate.appendChild(button);
+                });
+
+
+
+                const toogleDisplayBut = document.getElementById('toogleDisplayBut');
+                let isHidden = true;
+                toogleDisplayBut.addEventListener('click', () => {
+                    const hiddenContainers = document.querySelectorAll('.hidden');
+                    hiddenContainers.forEach(container => {
+                        if (isHidden) {
+                            container.classList.remove('hidden');
+                        } else {
+                            container.classList.add('hidden');
+                        }
+                    });
+                    isHidden = !isHidden;
+                    toogleDisplayBut.textContent = isHidden ? '显示所有' : '恢复探索';
+                });
+   
+            });
+
+        </script>
+</body>
+
+</html>

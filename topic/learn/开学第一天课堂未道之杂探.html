@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-15 Sun 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>开学第一天课堂未道之杂探|</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-09-02 Mon 15:59 | 凝墨: 2024-09-09 Mon 18:05 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">开学第一天课堂未道之杂探|</h1>
+<p>
+来不及写了关于向量的详细内容，不过看到很多非常好的文章，附链接于后。
+</p>
+<blockquote>
+<p>
+看到路上这么多学生往来，实在是一个陌生景象
+</p>
+</blockquote>
+<p>
+电动力学照旧要谈一个 vector 矢量和向量哪个更好听<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>，点乘叉乘可惜我竟然忘记了叉乘是不满足结合律性质。这是不寻常的，
+毕竟群是建立在结合律上，矩阵也有结合律。下面有一个<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+
+
+<div id="orga902305" class="figure">
+<p><img src="开学第一天课堂未道之杂探/20240902161511.png" alt="20240902161511.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>结合律不成立简单特例</p>
+</div>
+\begin{equation*}
+\mathbf{B}\times(\mathbf{C}\times \mathbf{A}) = \mathbf{0} \neq \mathbf{B}\times\mathbf{C}\times \mathbf{A}
+\end{equation*}
+
+<p>
+也可以用 \(\mathbf{A}\times(\mathbf{A}\times \mathbf{B})\) 说明。
+</p>
+
+<p>
+四元数,所谓曹则贤恍然大悟一文|
+</p>
+
+<p>
+另外忘记了行列式：交换两行变为原来的相反数。
+</p>
+
+<p>
+行列式|
+</p>
+
+<p>
+今天一位同学提出就行列式计算叉乘在其它维度下的情况可以这样拓展
+</p>
+
+\begin{gather*}
+(a,b)\times =
+\begin{vmatrix}
+\mathbf{i}&\mathbf{j}\\
+a&b
+\end{vmatrix}\\
+(a_1,b_1,c_1)\times(a_2,b_2,c_2)=
+\begin{vmatrix}
+\mathbf{i}&\mathbf{j}&\mathbf{k}\\
+a_1&b_1&c_1\\a_2&b_2&c_2
+\end{vmatrix}\\
+(a_1,b_1,c_1,d_1)\times(a_2,b_2,c_2,d_2)\times(a_3,b_3,c_3,d_3)=
+\begin{vmatrix}
+\mathbf{i}&\mathbf{j}&\mathbf{k}&\mathbf{l}\\
+a_1&b_1&c_1&d_1\\a_2&b_2&c_2&d_1\\a_3&b_3&c_3&d_3
+\end{vmatrix}
+\end{gather*}
+
+<p>
+这是一个很有想象力的点子。之后可以让 Mathematica 算一下有什么规律
+</p>
+
+<blockquote>
+<p>
+现在的必修课老师都管这么严？究竟是教务的执念还是老师的疯狂
+</p>
+</blockquote>
+
+<p>
+感谢选修，让我在课上读了 <a href="https://zhuanlan.zhihu.com/p/524664651">知乎－不听大牛言，弯路在眼前</a> 重找到了自己过去看到读学问的思路愿景，再重照自己走偏的路。
+</p>
+
+<p>
+下午查上文资料，对曹则贤再生好感，行文内容已属上品，关于历史和物理结合的探究 <a href="http://www.wuli.ac.cn/article/doi/10.7693/wl20201004">学得浅碎不如无——四元数、矢量分析与线性代数关系剖析</a>。
+</p>
+
+<p>
+另一篇英文关于四元数的历史 <a href="https://www.math.ucdavis.edu/~temple/MAT21D/SUPPLEMENTARY-ARTICLES/Crowe_History-of-Vectors.pdf">https://www.math.ucdavis.edu/~temple/MAT21D/SUPPLEMENTARY-ARTICLES/Crowe_History-of-Vectors.pdf</a>
+</p>
+
+<p>
+其它一些文章： <a href="https://zhuanlan.zhihu.com/p/524664651">不听大牛言，弯路在眼前</a> <a href="https://zhuanlan.zhihu.com/p/447289459">计算机模拟：生化环材研究生的自我救赎之道</a>
+</p>
+<hr />
+
+<p>
+最后一节还有自我介绍，还要谈梦想～我的梦想早已烟散，久被肢解。不过一位同学说的好：
+梦想这个词很远大，你说出来的大概是一个事业，如果你没有为此付出投入，那么在旁人那里显得会多么不自量力和可笑，倘若简单些，谈谈稍小的能够实现的事情，似乎词语里有“目标”这个词去概括它们，再提升为梦想却显人生隘渺。故而问梦想，想要负责的梦想，这样一个回答是个宏愿。
+</p>
+
+<p>
+最后她还说了自己的梦想：在所热爱的领域留下一些值得纪念的痕迹
+</p>
+
+<p>
+在想为什么自己没有想到这一点，可能斜月三星洞里不见长生的菩提了。
+</p>
+
+<p>
+对了，热爱什么领域呢？
+</p>
+
+<blockquote>
+<p>
+老师,论能力也许我只能爬上村后的小土坡,可我依然希望  你能带我去看珠穆朗玛。
+</p>
+
+<p>
+曹则贤. 学得浅碎不如无——四元数、矢量分析与线性代数关系剖析[J]. 物理, 2020, 49(10): 680-687. DOI: 10.7693/wl20201004
+</p>
+</blockquote>
+
+<p>
+<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>
+</p>
+
+
+
+<p>
+<a href="周报/mathInArt249.html">开学第一周</a>
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+随意用时等价当然好，不过数学用向量以暗含自原点出发，物理用矢量强调箭头方向岂不美哉。另外 C++ 这个又变成数组了哈哈 <a href="https://zhuanlan.zhihu.com/p/550776643"><code>知乎</code> 再谈 vector 的翻译</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+下面图涉及视错觉，看起来一样长，实际上，（为了看起来一样把）竖线短一些
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+另外一位学长说得倒也有些想法，讲希望学得深一些，能够有一些掌握一些自己有竞争力。我一直如是想，不过未曾如他那般坚定说出来过，又心中思虑，我做到不到未必是外人不教我，父母局限，这些都是外在，讲它只现我无能也。
+</p></div></div>
+
+
+</div>
+</div></main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

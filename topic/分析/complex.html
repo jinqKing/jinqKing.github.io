@@ -1,0 +1,1522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2024-09-22 Sun 22:14 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>复分析笔记*|</title>
+<meta name="author" content="Kintrol" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-11 21:11 Thu | 凝墨: 2024-09-22 Sun 22:06 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">复分析笔记*|</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgf13f579">1. 资源缘起简介</a></li>
+<li><a href="#orgc3c8dd8">2. 复分析简介－齐震宇</a>
+<ul>
+<li><a href="#orgb65246e">2.1. 1</a></li>
+<li><a href="#orgc1219fb">2.2. 2</a>
+<ul>
+<li><a href="#org640ff48">2.2.1. 傅里叶变换计算案例</a></li>
+<li><a href="#org686aaae">2.2.2. Cauchy 积分公式</a></li>
+</ul>
+</li>
+<li><a href="#org288951a">2.3. 3</a>
+<ul>
+<li><a href="#org4f7142c">2.3.1. 极大模原理</a></li>
+<li><a href="#orgdb748d5">2.3.2. 孤立奇点洛朗展开</a>
+<ul>
+<li><a href="#org78ab1ab">2.3.2.1. Laurent 级数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org2de15ca">2.4. 4 孤立奇点分类</a></li>
+<li><a href="#org6649de9">2.5. 5 极大模原理应用</a></li>
+<li><a href="#orgd2f868c">2.6. 6. 辐角原理</a></li>
+</ul>
+</li>
+<li><a href="#org88d3a8a">3. 黎曼曲面导论－齐震宇</a>
+<ul>
+<li><a href="#org345bef9">3.1. 历史发展</a></li>
+</ul>
+</li>
+<li><a href="#orgf8658d1">4. 黎曼曲面与代数曲线</a>
+<ul>
+<li><a href="#org7a028da">4.1. 黎曼曲面内涵</a>
+<ul>
+<li><a href="#orgaa32742">4.1.1. recap</a>
+<ul>
+<li><a href="#orga7985c2">4.1.1.1. recall 1</a></li>
+<li><a href="#org352751d">4.1.1.2. recall 2</a></li>
+<li><a href="#org49d6099">4.1.1.3. recall 3</a></li>
+</ul>
+</li>
+<li><a href="#org00e74f0">4.1.2. idea</a></li>
+<li><a href="#orgf77c598">4.1.3. preliminary definition</a></li>
+<li><a href="#org1ff8db5">4.1.4. 笔记习题</a></li>
+</ul>
+</li>
+<li><a href="#org8744b11">4.2. 黎曼曲面简例</a>
+<ul>
+<li><a href="#org102bd34">4.2.1. 复习</a></li>
+<li><a href="#org844576f">4.2.2. 地图册 atlas</a></li>
+<li><a href="#org6db3631">4.2.3. \(X=\mathbb{R}^2\)</a></li>
+<li><a href="#org016eb9b">4.2.4. 改变映射</a></li>
+<li><a href="#org5897068">4.2.5. 定理</a></li>
+<li><a href="#org0c864fe">4.2.6. 例三球面</a></li>
+<li><a href="#org084d619">4.2.7. 笔记习题</a></li>
+</ul>
+</li>
+<li><a href="#org3a0131d">4.3. 最大地图册与黎曼面全纯映射</a>
+<ul>
+<li><a href="#org30c6668">4.3.1. 复习</a></li>
+<li><a href="#orgc246b97">4.3.2. 等价性定义</a></li>
+<li><a href="#org699d7a8">4.3.3. 同构</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf904d4a">5. 未整理</a></li>
+<li><a href="#org4321f2e">6. 复分析选讲－课</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf13f579" class="outline-2">
+<h2 id="orgf13f579"><span class="section-number-2">1.</span> 资源缘起简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+被同学介绍去听讲黎曼面的复分析选讲，这里看几门课预热一下。
+</p>
+
+<p>
+笔记关注基本的定理性质，和黎曼面有关的内容。主要记录形式是抄板书和评点。
+</p>
+
+<p>
+印度的课很不错
+</p>
+</div>
+</div>
+<div id="outline-container-orgc3c8dd8" class="outline-2">
+<h2 id="orgc3c8dd8"><span class="section-number-2">2.</span> 复分析简介－齐震宇</h2>
+<div class="outline-text-2" id="text-2">
+<div class="org-center">
+<p>
+<a href="https://www.bilibili.com/video/BV1T441117iw/">【【神齐学校】分析】</a>
+</p>
+
+<p>
+特点快速看到结果
+</p>
+</div>
+</div>
+<div id="outline-container-orgb65246e" class="outline-3">
+<h3 id="orgb65246e"><span class="section-number-3">2.1.</span> 1</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+定义可微
+<img src="complex/20240414191202.png" alt="20240414191202.png" />
+</p>
+
+<p>
+全纯的定义：区间可微，导数连续
+<img src="complex/20240414191324.png" alt="20240414191324.png" />
+</p>
+
+<p>
+一阶逼近－链式法则
+<img src="complex/20240414191419.png" alt="20240414191419.png" />
+</p>
+
+<p>
+复平面和二维空间同构，可以建立双射，可微等价于二维平面可微和 RC 条件
+<img src="complex/20240414191949.png" alt="20240414191949.png" />
+</p>
+
+<p>
+解释 RC 条件：其实是 Jacobi 矩阵
+<img src="complex/20240414191854.png" alt="20240414191854.png" />
+</p>
+
+<p>
+不可微函数举例： \(\overline{z}\)
+<img src="complex/20240414192120.png" alt="20240414192120.png" />
+</p>
+
+<p>
+复数可微也是线性的， \(z\) 是全纯的，多项式都是
+</p>
+
+
+<div id="org4a12ee4" class="figure">
+<p><img src="complex/20240414192217.png" alt="20240414192217.png" />
+</p>
+</div>
+
+<p>
+考虑级数，在在收敛半径内，它是否存在微分的极限（问可微）
+</p>
+
+
+<div id="orge482cba" class="figure">
+<p><img src="complex/20240414192349.png" alt="20240414192349.png" />
+</p>
+</div>
+
+<p>
+比较距离
+</p>
+
+<p>
+m test 可知收敛
+</p>
+
+<p>
+得到微分后级数一致收敛到连续函数
+</p>
+
+<p>
+<img src="complex/20240414192720.png" alt="20240414192720.png" />
+(上面应当是从1开始)
+</p>
+
+<p>
+所以微分后有收敛结果
+<img src="complex/20240414192830.png" alt="20240414192830.png" />
+</p>
+
+<p>
+一些常见基本函数结果与实数一样而且全平面全纯（整函数）
+<img src="complex/20240414192941.png" alt="20240414192941.png" />
+注意到上面指数函数相当于周期是 \(2\pi \mathrm{i}\)
+</p>
+
+<ol class="org-ol">
+<li>在复数上沿着曲线路径积分</li>
+</ol>
+<p>
+定义曲线 \(I\supset[a,b]\) 积分本身是 \(\mathbb{C}\rightarrow \overline{C}\)
+</p>
+
+<p>
+展开线积分
+</p>
+
+<p>
+\(\int f |\mathrm{d}z|\) 表示对弧长积分
+<img src="complex/20240414193456.png" alt="20240414193456.png" />
+</p>
+
+<p>
+利用三角不等式说明积分不等式：
+<img src="complex/20240414193615.png" alt="20240414193615.png" />
+</p>
+
+<p>
+类比线积分 Green 定理～ Cauchy 积分定理
+这里是把所有边界加起来，可以把多个加起来
+<img src="complex/20240414194011.png" alt="20240414194011.png" />
+</p>
+
+<p>
+Green domain 表示 Green 成立的区域
+这可以直接
+<img src="complex/20240414194033.png" alt="20240414194033.png" />
+加上 RC 得到。
+有很多计算上的应用。
+</p>
+
+
+<p>
+线的合成是成立的
+<img src="complex/20240414194253.png" alt="20240414194253.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgc1219fb" class="outline-3">
+<h3 id="orgc1219fb"><span class="section-number-3">2.2.</span> 2</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+之前是作为 Green 定理的推论
+二维线性积分
+<img src="complex/20240414194600.png" alt="20240414194600.png" />
+</p>
+
+<p>
+一个椭圆，可以容易参数化，希望沿着 \(\gamma\) 线积分
+<img src="complex/20240414194907.png" alt="20240414194907.png" />
+例子：瑕积分
+<img src="complex/20240414195153.png" alt="20240414195153.png" />
+</p>
+
+<p>
+<img src="complex/20240414195312.png" alt="20240414195312.png" />
+于是就是
+</p>
+
+<p>
+<img src="complex/20240414195328.png" alt="20240414195328.png" />
+<img src="complex/20240414195405.png" alt="20240414195405.png" />
+(1):
+<img src="complex/20240414195701.png" alt="20240414195701.png" />
+这里 \(\mathrm{e}^{-R\sin\theta}\) 无法计算
+</p>
+
+<p>
+(2)
+<img src="complex/20240414195955.png" alt="20240414195955.png" />
+\(\pi\) 后面 \(\mathrm{i} \rightarrow 0\)
+f 一定有界，有界乘以小量
+</p>
+
+
+<div id="org3c73a78" class="figure">
+<p><img src="complex/20240414200056.png" alt="20240414200056.png" />
+</p>
+</div>
+
+<p>
+例子
+<img src="complex/20240414200429.png" alt="20240414200429.png" />
+在实数上会积分，但现在多一个 \(\mathrm{i}\) 于是开平方
+</p>
+
+<p>
+现在取 \(\sigma_{R}\) 方向做积分，原来是横着积分圆半径积分。
+?没懂思路什么意思
+<img src="complex/20240414200931.png" alt="20240414200931.png" />
+遇到指数积分看实部即可（虚部只旋转）
+</p>
+
+<p>
+结论：
+<img src="complex/20240414201006.png" alt="20240414201006.png" />
+两者相等
+</p>
+
+<p>
+纠错：
+<img src="complex/20240414201108.png" alt="20240414201108.png" />
+</p>
+
+<p>
+体验总结：改变路径，取极限。没有统一的方法，但某一类函数是相似的
+</p>
+</div>
+<div id="outline-container-org640ff48" class="outline-4">
+<h4 id="org640ff48"><span class="section-number-4">2.2.1.</span> 傅里叶变换计算案例</h4>
+<div class="outline-text-4" id="text-2-2-1">
+
+<div id="orgf36d8ad" class="figure">
+<p><img src="complex/20240414201308.png" alt="20240414201308.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org686aaae" class="outline-4">
+<h4 id="org686aaae"><span class="section-number-4">2.2.2.</span> Cauchy 积分公式</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+全纯函数的特性。
+</p>
+
+<p>
+<img src="complex/20240414201458.png" alt="20240414201458.png" />
+积分公式：一个结果用积分表达出来
+</p>
+
+<p>
+把它用这样复杂写出来的功能是什么，积分的性质非常好，它可微；积分估计比微分简单（三角不等式）；甚至可以写出微分形式。
+</p>
+
+<p>
+同样也可以算是以后公式的特例
+</p>
+
+<p>
+\(\frac{F}{z-a}\) 有了分母不一定全纯，那么就是考虑 a 附近。于是再次用之前定理
+</p>
+
+<p>
+<img src="complex/20240414202036.png" alt="20240414202036.png" />
+和 \(\varepsilon\) 无关有极限，是一个平均值
+</p>
+
+<p>
+可以估计这个平均值。 F 连续，只要够近，就可以限制在很小范围内
+<img src="complex/20240414202212.png" alt="20240414202212.png" />
+<img src="complex/20240414202228.png" alt="20240414202228.png" />
+</p>
+
+<p>
+有机会看？没讲
+</p>
+
+<p>
+这给之后非全纯、偏微分方程有启发。
+</p>
+
+<p>
+选 a 点，的值和边界积分
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org288951a" class="outline-3">
+<h3 id="org288951a"><span class="section-number-3">2.3.</span> 3</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org4f7142c" class="outline-4">
+<h4 id="org4f7142c"><span class="section-number-4">2.3.1.</span> 极大模原理</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+应用积分定理
+连通（可以用连续的参数曲线连起任意的起点末端）的开集
+<img src="complex/20240414202929.png" alt="20240414202929.png" />
+</p>
+
+<p>
+连通区域上面全纯是常值函数。
+证明：…
+<img src="complex/20240414203050.png" alt="20240414203050.png" />
+</p>
+
+
+<p>
+<img src="complex/20240415152824.png" alt="20240415152824.png" />
+<img src="complex/20240420215805.png" alt="20240420215805.png" />
+</p>
+
+<p>
+既开又闭证明它就是全集。
+</p>
+
+<p>
+<img src="complex/20240420220013.png" alt="20240420220013.png" />
+<img src="complex/20240420220111.png" alt="20240420220111.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdb748d5" class="outline-4">
+<h4 id="orgdb748d5"><span class="section-number-4">2.3.2.</span> 孤立奇点洛朗展开</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+isolated singularity and 
+</p>
+
+<p>
+约定定义：
+定义域
+<img src="complex/20240420220321.png" alt="20240420220321.png" />
+</p>
+
+<p>
+奇点：
+<img src="complex/20240420220444.png" alt="20240420220444.png" />
+孤立奇点被定义域包围
+</p>
+
+<p>
+乱写一个例子，非全纯（不满足 CR 条件）
+</p>
+
+
+<p>
+<img src="complex/20240420221543.png" alt="20240420221543.png" />
+研究靠近孤立奇点的情况
+</p>
+</div>
+
+<div id="outline-container-org78ab1ab" class="outline-5">
+<h5 id="org78ab1ab"><span class="section-number-5">2.3.2.1.</span> Laurent 级数</h5>
+<div class="outline-text-5" id="text-2-3-2-1">
+<p>
+<img src="complex/20240420221852.png" alt="20240420221852.png" />
+加 formal 表示不考虑敛散性，形式就是形式没有特定含义。
+收敛时指，正指数和负指数部分都收敛。
+</p>
+
+<p>
+放宽
+</p>
+
+
+<div id="orgc1bdff3" class="figure">
+<p><img src="complex/20240420222253.png" alt="20240420222253.png" />
+</p>
+</div>
+
+
+<p>
+找红大一圈，蓝小一圈
+\(D\) 是环状区域 annulus 开集减闭集
+</p>
+
+<p>
+f 是有定义的，可以使用柯西积分公式。
+特殊区域上考虑边界积分，分成内外两部分。
+</p>
+
+<p>
+古典的方法？
+<img src="complex/20240420222730.png" alt="20240420222730.png" />
+</p>
+
+<p>
+I:
+绝对值小于1,变成几何级数；
+…想象做参数化，？看出，原因连续有界函数
+</p>
+
+
+<div id="orgdf14ee2" class="figure">
+<p><img src="complex/20240420223113.png" alt="20240420223113.png" />
+</p>
+</div>
+
+<p>
+II:
+分母分子倒过来。之前证明关键凑出几何级数，比一小
+<img src="complex/20240420223753.png" alt="20240420223753.png" />
+看起来像 Laurent 级数。注意到和 w 无关。只有在 c 出问题。红色只有在大圈内就成立。
+完全被 c 决定
+</p>
+
+<p>
+统一；故意阻隔。如果在 c 有定义，第二项不存在，柯西积分定理得到0
+<img src="complex/20240420224146.png" alt="20240420224146.png" />
+</p>
+
+<p>
+幂级数中间小于某个部分
+<img src="complex/20240420224511.png" alt="20240420224511.png" />
+</p>
+
+<p>
+如果只知道对一个点收敛能知道
+<img src="complex/20240420224734.png" alt="20240420224734.png" />
+</p>
+
+
+<p>
+在孤立奇点附近可以把函数写成收敛 Laurent 级数形式
+</p>
+
+<p>
+引入定义：将负一次系数叫留数
+<img src="complex/20240420224900.png" alt="20240420224900.png" />
+</p>
+
+<p>
+Laurent 级数形式具有唯一性：
+<img src="complex/20240420225129.png" alt="20240420225129.png" />
+</p>
+
+<p>
+证明：
+收敛，因此在整个圆盘上收敛
+<img src="complex/20240420230338.png" alt="20240420230338.png" />
+均匀收敛
+<img src="complex/20240420230416.png" alt="20240420230416.png" />
+将它们变成负一
+</p>
+
+<p>
+更一般：
+<img src="complex/20240420225756.png" alt="20240420225756.png" /> 
+</p>
+
+<p>
+积分结果是中心点的留数
+</p>
+
+
+<p>
+加上边界点就有界闭于是紧
+<img src="complex/20240420230455.png" alt="20240420230455.png" />
+红色是去掉的没有定义的部分
+</p>
+
+<p>
+沿着正定向。不是红点没有项是0.
+红点有限多
+<img src="complex/20240420231245.png" alt="20240420231245.png" />
+</p>
+
+<p>
+证明概要：每个奇点选圆盘，可以互斥（有限），绕D 边界，合在一起，在白色全纯
+存在互不相交的圆盘，对一起使用柯西积分定理
+</p>
+
+<p>
+似乎是在格林区域上考虑问题，有更简单的积分方法。
+</p>
+
+<p>
+不要未战先败
+<img src="complex/20240420231853.png" alt="20240420231853.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2de15ca" class="outline-3">
+<h3 id="org2de15ca"><span class="section-number-3">2.4.</span> 4 孤立奇点分类</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+复习：孤立奇点的洛朗展开，现在把 z 当作变量
+<img src="complex/20240420232408.png" alt="20240420232408.png" />
+</p>
+
+<p>
+引入重数
+定义：最大下界，可能是无限大。
+<img src="complex/20240420233029.png" alt="20240420233029.png" />
+约定
+</p>
+<ol class="org-ol">
+<li>(多项式叫做根)</li>
+<li>极点（南北），更小的都是零</li>
+<li>本性奇点：无限多非零</li>
+</ol>
+
+<p>
+需要理解这些情况是什么：指的是哪里是0
+</p>
+
+<p>
+性质梳理   
+<img src="complex/20240427101514.png" alt="20240427101514.png" />
+</p>
+
+<p>
+自然的是否（唯一的）等价
+答案：是的。
+</p>
+
+<p>
+1没有负的项非零，可以定义值
+<img src="complex/20240427101930.png" alt="20240427101930.png" />
+</p>
+
+
+
+<div id="org9d5fef1" class="figure">
+<p><img src="complex/20240427102504.png" alt="20240427102504.png" />
+</p>
+</div>
+
+<p>
+可去奇点：可以定义（变为全纯）
+极点：靠近无限大
+本质奇点：可能各种情况－太奇异
+</p>
+
+<p>
+3对应既不也不，可以从极限定义出发，思考3的含义。
+取一个点列，得到各种情况。可以得到任意值
+</p>
+
+<p>
+可以查 Picard great theorom.
+本质奇点，它的函数值可以是整个复数平面（最多漏掉一个点 \(\mathrm{e}^{-\frac{1}{z}}\) 没有0）
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org6649de9" class="outline-3">
+<h3 id="org6649de9"><span class="section-number-3">2.5.</span> 5 极大模原理应用</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Schwarz's Lemma:
+开圆盘上的全纯函数，从圆盘到圆盘，0到0。
+(有保角性，此处不谈相关几何)
+</p>
+
+<p>
+<img src="complex/20240427103245.png" alt="20240427103245.png" />
+它只能是旋转，没有其他可能。
+</p>
+
+<p>
+快速证明：
+造一个全纯函数，它满足极大模，找最大值。
+分析极大值的位置，假设极大值在里面
+<img src="complex/20240427103956.png" alt="20240427103956.png" />
+</p>
+
+
+<div id="orgabb6704" class="figure">
+<p><img src="complex/20240427104952.png" alt="20240427104952.png" />
+</p>
+</div>
+
+
+<p>
+双射
+<img src="complex/20240427105229.png" alt="20240427105229.png" />
+</p>
+
+
+<p>
+微分相乘得到1?
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd2f868c" class="outline-3">
+<h3 id="orgd2f868c"><span class="section-number-3">2.6.</span> 6. 辐角原理</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+简单小讨论：用一个构造去研究原函数（和奇点相关）
+<img src="complex/20240427105621.png" alt="20240427105621.png" />
+</p>
+
+
+<div id="orgcfb1793" class="figure">
+<p><img src="complex/20240427110456.png" alt="20240427110456.png" />
+</p>
+</div>
+
+<p>
+用对数更方便，显示处着留数体现了原函数的
+</p>
+
+<p>
+亚纯：不纯的只有极点
+</p>
+
+<p>
+结合留数定理
+</p>
+
+
+<p>
+简单梳理：
+微分－全纯
+展开幂级数－洛朗级数；可以分析奇点
+</p>
+
+<p>
+说 Green 区域时，在说什么。这是可判断得吗
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org88d3a8a" class="outline-2">
+<h2 id="org88d3a8a"><span class="section-number-2">3.</span> 黎曼曲面导论－齐震宇</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org345bef9" class="outline-3">
+<h3 id="org345bef9"><span class="section-number-3">3.1.</span> 历史发展</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+复变的观点，继续延伸（到几何和一般的拓扑）。
+</p>
+
+<ul class="org-ul">
+<li><b>Cauchy-Riemann equation</b></li>
+<li>早在1752就在 D'Alembert 描述流体（ fluid flow ）出现；</li>
+<li>Euler, Langrange 也在工作中用到。</li>
+<li>1814， Cauchy 希望在复数上引用微积分（ complex differential）。</li>
+<li>Riemann 则是1847年用这个条件描述了一类特殊函数－全纯函数・</li>
+
+<li><b>Intergal representation</b></li>
+</ul>
+<p>
+Cauchy
+</p>
+<ul class="org-ul">
+<li>1825 integral theoren</li>
+<li>1831 integral formula</li>
+</ul>
+
+<p>
+Laplace 方程和关联（没听清）  
+</p>
+
+<ul class="org-ul">
+<li><b>power series 幂级数</b></li>
+<li>Cauchy 1821 收敛半径 radius of convergence</li>
+<li>Abel 1826 normal convergence in the disc of convergence radius</li>
+<li><p>
+Weierstrass 1842 analytic function
+</p>
+
+<p>
+黎曼面的发轫
+</p></li>
+<li><p>
+Riemann 1857 Riemann surface, to make 'analytic functions' univalent
+</p>
+
+<p>
+解析的含义原来特殊，原来是多值但有全纯特性的函数
+</p></li>
+</ul>
+
+<p>
+3种观点
+</p>
+<ol class="org-ol">
+<li>Weierstrass 幂级数观点</li>
+</ol>
+<p>
+\(\sum a_n(z-a)^n\)
+以 a 为中心（假设）收敛半径 \(r(a)\) 研究范围内一点，可以使用 Talyor 展开
+<img src="complex/20240411225716.png" alt="20240411225716.png" />
+</p>
+
+<p>
+s 点本身可以 Talyor 展开，这个点的收敛范围可能超出原来的。
+</p>
+
+<p>
+两者取并集，得到 immediate analytic continuation 直接？延拓
+</p>
+
+<p>
+比如说， \(\sqrt{z}\) 在一点绕一圈？
+</p>
+
+
+<p>
+一段线 \(\gamma: [0,1]\rightarrow \mathbb{C}\)
+</p>
+
+
+<div id="org43c4d6e" class="figure">
+<p><img src="complex/20240411230101.png" alt="20240411230101.png" />
+</p>
+</div>
+
+<p>
+分段，任何一段是原来的直接延拓
+</p>
+
+<p>
+以上只是给出一些起源（现在不理解很正常），之后学习可以回想这里的含义
+</p>
+
+<p>
+总之，可能从外围绕一圈不一样
+</p>
+
+<ol class="org-ol">
+<li>Riemann</li>
+</ol>
+<p>
+在一个平面上，利用上面延拓
+</p>
+
+<p>
+所有的集合的并集，看能不能包住另一个点。这相当于是集合论的定义
+<img src="complex/20240411231247.png" alt="20240411231247.png" />
+而可以把这些集合全部练习在一起，？想象成曲面
+</p>
+
+<p>
+此时从集合到，需要定义拓扑
+</p>
+
+<p>
+另一个看同一个幂级数定义解析函数，可以形成邻域。
+</p>
+
+<p>
+这
+????
+</p>
+
+
+<p>
+\(S\rightarrow \mathbb{C}\)
+</p>
+<ul class="org-ul">
+<li>1882 Klein compact Riemann surface</li>
+<li>1908 Koebe general Rs</li>
+<li>1913 Weyl 现代流形语言定义</li>
+</ul>
+
+<p>
+elliptic abelian function
+</p>
+
+<p>
+椭圆函数： Legrendre,Gauss,Abel,Jacobi,Weiestrass,Riemann（许多研究是为了揭示椭圆函数里面特性）
+数学家接力
+</p>
+
+<p>
+定义
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf8658d1" class="outline-2">
+<h2 id="orgf8658d1"><span class="section-number-2">4.</span> 黎曼曲面与代数曲线</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+An Introduction to Riemann Surfaces and Algebraic Curves: Complex 1-Tori and Elliptic Curves by Dr. T.E. Venkata Balaji, Department of Mathematics, IIT Madras.
+</p>
+
+<p>
+<a href="https://www.bilibili.com/video/BV14t4y1k7ua/?p=2&amp;share_source=copy_web&amp;vd_source=07427ec03ed6d94974209a5d089d2f9e">https://www.bilibili.com/video/BV14t4y1k7ua/?p=2&amp;share_source=copy_web&amp;vd_source=07427ec03ed6d94974209a5d089d2f9e</a>
+</p>
+</div>
+
+<div id="outline-container-org7a028da" class="outline-3">
+<h3 id="org7a028da"><span class="section-number-3">4.1.</span> 黎曼曲面内涵</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Ideas of Riemann surface
+</p>
+<ul class="org-ul">
+<li>Goal: idea &amp; example of Riemann surface</li>
+</ul>
+</div>
+<div id="outline-container-orgaa32742" class="outline-4">
+<h4 id="orgaa32742"><span class="section-number-4">4.1.1.</span> recap</h4>
+<div class="outline-text-4" id="text-4-1-1">
+</div>
+<div id="outline-container-orga7985c2" class="outline-5">
+<h5 id="orga7985c2"><span class="section-number-5">4.1.1.1.</span> recall 1</h5>
+<div class="outline-text-5" id="text-4-1-1-1">
+<p>
+复函数 \(\omega=f(z)\) 形象上，可以如图表示表示为复平面之间的映射
+<img src="complex/20240411213946.png" alt="20240411213946.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org352751d" class="outline-5">
+<h5 id="org352751d"><span class="section-number-5">4.1.1.2.</span> recall 2</h5>
+<div class="outline-text-5" id="text-4-1-1-2">
+<p>
+复函数特性：
+在 \(z_0\) 解析、全纯（两者可互推），有三个等价条件：
+</p>
+
+<ol class="org-ol">
+<li>[一般作为定义] 记 \(\omega=u+\mathrm{i}v\)
+要求 \(u_x=\frac{\partial u}{\partial x},u_y,v_x,v_y\) 存在 \(\vee\) (邻域内点)满足 Cauchy-Riemann 条件，即 \(\forall z \in B(z_0),u_x=v_y,u_y=-v_x\)</li>
+<li>邻域内可导：
+\(\forall z\in B(z_0),\exists\lim_{\Delta z \rightarrow 0}\frac{f(z+\Delta z)-f(z)}{\Delta z}\)</li>
+<li>有幂级数表示：
+\(\forall z\in B(z_0),\exists \sum a_n(z-z_0)^n\rightarrow f(z),n\geq 0\)</li>
+</ol>
+
+<p>
+1 与 2 联系：
+</p>
+\begin{equation}
+\label{eq:1}
+\frac{\mathrm{d}f}{\mathrm{d}z }=\frac{\partial f}{\partial x}=u_x+\mathrm{i}v_x
+\end{equation}
+
+<p>
+一阶可导推出无穷可导（多项式）
+数列通项： \(a_n=\frac{f^{(n)}(z_0)}{L^n}\)
+\(f^{(n)}(z)=\frac{\mathrm{d}^nf}{\mathrm{d}z^n}\)
+</p>
+
+<p>
+也就是上面的幂级数 \(\sum a_n(z-z_0)^n\) 就是（ \(z_0\) 附近的） Talyor 展开
+</p>
+</div>
+</div>
+<div id="outline-container-org49d6099" class="outline-5">
+<h5 id="org49d6099"><span class="section-number-5">4.1.1.3.</span> recall 3</h5>
+<div class="outline-text-5" id="text-4-1-1-3">
+<p>
+injection holomorphic map is a holomorphic isomorphism
+换言之，若 f 是全纯单射，可得 \(f(v)\) 是开集且 \(f^{-1}:f(v)\mapsto v\) 全纯。
+</p>
+
+<p>
+全纯+单射得到同构（域的同构是保持加法和乘法的双射）。
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org00e74f0" class="outline-4">
+<h4 id="org00e74f0"><span class="section-number-4">4.1.2.</span> idea</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<p>
+从像球、环、柱面，可以想象
+start with a surface, say just like the sphere or tortus or eqduides that can visualise in \(\mathbb{R}^3\)
+</p>
+
+
+<div id="org03cbe3e" class="figure">
+<p><img src="complex/20240411233956.png" alt="20240411233956.png" />
+</p>
+</div>
+
+<p>
+上面都可以作（开？）圆盘
+</p>
+
+<p>
+有映射 \(D\overset{f}{\rightarrow}\mathbb{C}\)  ，现在希望定义
+We want to "define" when f is holomorphic at \(x_0\). One way to do it is to topologically identify D with open subset, say the unit? set
+</p>
+
+<p>
+\(\Delta=\left\{ z\in \mathbb{C}\mid \left| z \right| <1\right\}\)
+</p>
+
+<p>
+by choosing a holo. \(\phi:D\rightarrow \Delta\) 并要求 \(f\circ\phi^{-1}\) 在 \(\phi(x_0)\) 全纯
+</p>
+
+
+<div id="orga7ad39f" class="figure">
+<p><img src="complex/20240411234915.png" alt="20240411234915.png" />
+</p>
+</div>
+
+
+
+<p>
+without any arbuarty
+希望像在平面上一样定义映射。 Riemann 曲面的设想是用在其它平面上使用复分析
+</p>
+
+<p>
+D 相当于一个邻域（complex chart）
+</p>
+
+<p>
+In the same way, we say that f is holo. in D if \(f\circ\phi^{-1}\) is holo. on \(\Delta\) . The pair \((D,\Delta)\) is called a complex cordinate chart.
+同样，…，将对称作复坐标图册？
+<img src="complex/20240412000348.png" alt="20240412000348.png" />
+</p>
+
+<p>
+给了坐标，于是相当于 \(\Delta\rightarrow \mathbb{C}\)
+，直观上就是球面上一个开区域？直接到复数域
+</p>
+
+<p>
+More genrally, a complex chart is a pair \((V,)\) where V is an ioen subset of X, \(\phi\) is a holo. if 
+更一般
+</p>
+
+<p>
+这就是图册。一种把曲面变成平面复函数的思路。而这是在 R 上面做，于是是时候给定义了。
+</p>
+</div>
+</div>
+<div id="outline-container-orgf77c598" class="outline-4">
+<h4 id="orgf77c598"><span class="section-number-4">4.1.3.</span> preliminary definition</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<p>
+任意的黎曼平面上的点都在一个图册里面，这样就可以做分析了（ this is a working definition）
+</p>
+
+<p>
+<b>Def</b>: A surface covered by a collection of charts \(\left\{ V_{\alpha},\phi_{\alpha} |\alpha\in I\right\}(X=\bigcup V_{\alpha})\)
+</p>
+
+<p>
+但可能一点在多个图册里面（想到了多值函数），这是需要考虑的
+</p>
+
+<p>
+But we into pr follow? Suppose \(V_{\alpha_1}\) and V ? certain the point
+<img src="complex/20240414215513.png" alt="20240414215513.png" />
+<img src="complex/20240414220654.png" alt="20240414220654.png" />
+</p>
+
+<p>
+严格写出：
+<img src="complex/20240414215554.png" alt="20240414215554.png" />
+</p>
+
+<p>
+得到两个有定义的结果。那么也可能有无穷多的，应当不依赖于取的情况，因为全纯应该是内在属性。
+</p>
+
+<p>
+于是有以下要求，对于相交部分 \(U\cap U\)
+相交部分在不同图册有全纯映射
+<img src="complex/20240414220712.png" alt="20240414220712.png" />
+</p>
+
+<p>
+\(g_{12}=(\phi_{\alpha|u_1\cap u_2})\circ(\phi_{\alpha_2|V_{\alpha_{21}}}):V_{21}\rightarrow V_{\alpha_{12}}\)
+</p>
+
+<p>
+于是这使得 g 称为同构
+<img src="complex/20240414221019.png" alt="20240414221019.png" />
+</p>
+
+<p>
+cocrete defe
+</p>
+
+<p>
+将转移函数（映射） \(g_{12}\)
+<img src="complex/20240414221220.png" alt="20240414221220.png" />
+</p>
+
+<p>
+给我们一个曲面到复平面的映射。
+上述论述像是为了严格化（防止两个不同）
+</p>
+</div>
+</div>
+<div id="outline-container-org1ff8db5" class="outline-4">
+<h4 id="org1ff8db5"><span class="section-number-4">4.1.4.</span> 笔记习题</h4>
+<div class="outline-text-4" id="text-4-1-4">
+<p>
+<img src="complex/20240414221443.png" alt="20240414221443.png" />
+<img src="complex/20240414221514.png" alt="20240414221514.png" />
+<img src="complex/20240414221532.png" alt="20240414221532.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org8744b11" class="outline-3">
+<h3 id="org8744b11"><span class="section-number-3">4.2.</span> 黎曼曲面简例</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Simple example of Riemann surfaces
+目标
+</p>
+<ul class="org-ul">
+<li>实平面如何与复平面结合</li>
+<li>实2维球和复平面结合</li>
+</ul>
+</div>
+<div id="outline-container-org102bd34" class="outline-4">
+<h4 id="org102bd34"><span class="section-number-4">4.2.1.</span> 复习</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<p>
+利用复数分析处理曲面问题
+</p>
+
+<p>
+X 上具有以下结构被称为黎曼曲面：
+有 X 上的图册 \(\left\{ (U_{\alpha},\phi_{\alpha}|\alpha\in I) \right\}\) 满足下面三个条件：
+</p>
+<ul class="org-ul">
+<li>\(U_{\alpha}\) 覆盖 X</li>
+<li>\(\phi_{\alpha}:U_{\alpha}\rightarrow \mathbb{C}\) 是同胚映射，
+将 \(U_{\alpha}\) 送到 \(\mathbb{C}\) 上的开子集 \(V_{\alpha}\)</li>
+<li>对于任意相交部分 \(U_{\alpha}\cap U_{\beta}\) , \((U_{\alpha},\phi_{\alpha}),(U_{\beta},\phi_{\beta})\) 相容（compatiable）</li>
+</ul>
+<p>
+is unambiguous
+</p>
+
+
+<div id="org3ca8267" class="figure">
+<p><img src="complex/20240414225110.png" alt="20240414225110.png" />
+</p>
+</div>
+
+<p>
+相容此处表示：
+</p>
+<ul class="org-ul">
+<li>转移映射 \(g\) 全纯 \(\Rightarrow g^{-1}_{\alpha\beta}=g_{\beta\alpha}\)</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org844576f" class="outline-4">
+<h4 id="org844576f"><span class="section-number-4">4.2.2.</span> 地图册 atlas</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<p>
+将相容的图册称为地图册 (complex) atlas.
+之后的工作就是找地图册。
+</p>
+
+<p>
+对于抽象的曲面，自然黎曼曲面也要在抽象上定义，目前先讨论2D
+</p>
+</div>
+</div>
+<div id="outline-container-org6db3631" class="outline-4">
+<h4 id="org6db3631"><span class="section-number-4">4.2.3.</span> \(X=\mathbb{R}^2\)</h4>
+<div class="outline-text-4" id="text-4-2-3">
+<p>
+使用地图册 \(U=X,\phi:U\rightarrow \mathbb{C} \quad (x,y)\mapsto x+\mathrm{i}y\)
+此处不需要检查相容性。黎曼曲面自动成立，它就是复平面（平面）
+</p>
+
+<p>
+hence the complex plane is a Riemann surface structure on \(\mathbb{R}^2\) by the standard identification of \(\mathbb{R}^2\) with \(\mathbb{C}\) 
+</p>
+
+
+<div id="org40f8cf9" class="figure">
+<p><img src="complex/20240414224314.png" alt="20240414224314.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org016eb9b" class="outline-4">
+<h4 id="org016eb9b"><span class="section-number-4">4.2.4.</span> 改变映射</h4>
+<div class="outline-text-4" id="text-4-2-4">
+<p>
+\(\phi:(x,y)\mapsto \frac{z}{1+|z|}\)
+</p>
+
+<p>
+此时 \(\phi\) 的值域是单位圆的子集，甚至可以写出逆 \(\phi^{-1}:\Delta\rightarrow U \quad (x,y)\mapsto \frac{z}{1-|z|}\)
+<img src="complex/20240414224818.png" alt="20240414224818.png" />
+</p>
+
+<p>
+于是 \(\phi\) 是 \(\mathbb{R}^2\rightarrow \Delta\) 的同胚
+</p>
+
+<p>
+<img src="complex/20240414225625.png" alt="20240414225625.png" />
+<img src="complex/20240414230342.png" alt="20240414230342.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org5897068" class="outline-4">
+<h4 id="org5897068"><span class="section-number-4">4.2.5.</span> 定理</h4>
+<div class="outline-text-4" id="text-4-2-5">
+<p>
+任何单连通非紧黎曼曲面与单位元或复平面同构
+</p>
+
+<p>
+证明较为深奥。之后会给处正确结构的感觉。
+</p>
+
+<p>
+没有洞、有界闭。
+</p>
+
+<p>
+这个定理事实上说明不存在其它的映射做出复数平面上（？好的）黎曼曲面
+</p>
+</div>
+</div>
+<div id="outline-container-org0c864fe" class="outline-4">
+<h4 id="org0c864fe"><span class="section-number-4">4.2.6.</span> 例三球面</h4>
+<div class="outline-text-4" id="text-4-2-6">
+<p>
+将 \(\mathbb{S}^2\) 赋予黎曼曲面结构 Making into a RS
+</p>
+
+<p>
+?球极投影
+<img src="complex/20240414231224.png" alt="20240414231224.png" />
+</p>
+
+<p>
+放在三维空间中，定义南北极为 S,N ,
+地图册是两个元素 \(\left\{ (U_1:=\mathbb{S}/N,\phi_1),(U_2:=\mathbb{S}^2/S,\phi_2) \right\}\) ,
+\(\phi\) 都是 stero. 投影
+</p>
+
+<p>
+检查相容性， \(\cap=S^2/\left\{ N,S \right\}\)
+两者一样 \(\mathbb{C}/\{0\}\)
+</p>
+
+<p>
+检查转移函数是 \(g=z\mapsto \frac{1}{z}\) 是全纯（多项式？）
+</p>
+
+<p>
+此称为黎曼球。
+</p>
+
+<p>
+那么能不能再给出一种，比如映到单位圆。
+</p>
+
+<p>
+定理：任何单连通紧黎曼面和黎曼圆同构。
+</p>
+
+<blockquote>
+<p>
+don't have any freedom
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-org084d619" class="outline-4">
+<h4 id="org084d619"><span class="section-number-4">4.2.7.</span> 笔记习题</h4>
+<div class="outline-text-4" id="text-4-2-7">
+<p>
+<img src="complex/20240414231919.png" alt="20240414231919.png" />
+<img src="complex/20240414231934.png" alt="20240414231934.png" />
+<img src="complex/20240414231948.png" alt="20240414231948.png" />
+<img src="complex/20240414232004.png" alt="20240414232004.png" />
+<img src="complex/20240414232029.png" alt="20240414232029.png" />
+<img src="complex/20240414232041.png" alt="20240414232041.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org3a0131d" class="outline-3">
+<h3 id="org3a0131d"><span class="section-number-3">4.3.</span> 最大地图册与黎曼面全纯映射</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+目标：等价地图册定义黎曼曲面；黎曼曲面之间的全纯或同构映射
+</p>
+
+<p>
+之前翻译不好，以下 chart 一律作图卡（不用三个字的坐标卡与 atlas 图册（也不用三个字）呼应）
+</p>
+</div>
+<div id="outline-container-org30c6668" class="outline-4">
+<h4 id="org30c6668"><span class="section-number-4">4.3.1.</span> 复习</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<p>
+从实曲面出发：想在上面复分析，进一步的分析全纯函数等－于是使用图册覆盖曲面。
+之后希望保证定义在上面的函数全纯性质是内在（不变的），这是就要求图卡（paiswise?）相容，
+这就意味着相交图卡中的转移函数 \(g_{ab}=\phi_a\circ\phi_b^{-1}\) 全纯
+</p>
+
+<p>
+相容的图卡就称为图册。
+X 和其上的地图册组成黎曼曲面结构。
+</p>
+
+<p>
+见到过 \(\mathbb{R}^2,\mathbb{S}^2\) 上的黎曼曲面
+\(\{(R^2,\phi_{\alpha})|\phi:\mathbb{R}^2\rightarrow \mathbb{C} \quad (x,y)\mapsto x+\mathrm{i}y\}\)
+</p>
+</div>
+</div>
+<div id="outline-container-orgc246b97" class="outline-4">
+<h4 id="orgc246b97"><span class="section-number-4">4.3.2.</span> 等价性定义</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<p>
+也可以给出 \(\{(U,\phi_U)|U\overset{\text{open}}{\subset} \mathbb{R}^2\}\)
+它与上面的应当是同一个
+</p>
+
+<p>
+就此找 <b>等价性</b> 。
+定义两个图册等价：若每个图卡与另一个图册每个图卡相容。
+&gt;解决了部分和整体的问题，可以进一步让黎曼曲面有特殊唯一性。
+</p>
+
+<p>
+这样，等价的图册并仍然是图册。利用 Zorn 引理（选择？）可证：
+</p>
+<div class="org-center">
+<p>
+定理：给定图册，有唯一最大图册包含它。
+</p>
+</div>
+<p>
+?上界…
+对了有的称极大图册都可吧
+</p>
+
+<p>
+总之，这样讨论时更方便，将之前两个集合当作同一个讨论。
+</p>
+
+<p>
+再定义黎曼曲面：实曲面上最大图册。
+</p>
+</div>
+</div>
+<div id="outline-container-org699d7a8" class="outline-4">
+<h4 id="org699d7a8"><span class="section-number-4">4.3.3.</span> 同构</h4>
+<div class="outline-text-4" id="text-4-3-3">
+<div class="org-center">
+<p>
+uns?定理：连通不紧黎曼曲面同构于复平面或单位圆（可能上半球）。
+</p>
+</div>
+<p>
+\(\mathbb{R}^2\rightarrow \mathbb{C}\)
+</p>
+<div class="org-center">
+<p>
+定理：单连通紧黎曼面与黎曼球同构
+</p>
+</div>
+<p>
+因此所有曲面到球的都是相互同构（球之间同构）
+</p>
+
+<p>
+不过，这里的同构需要准确说明：
+黎曼面 X,Y,映射 \(f:U\rightarrow V,U\overset{\text{open}}{\subset} X\, V\overset{\text{open}}{\subset} Y\)
+</p>
+
+<p>
+<img src="complex/20240415151738.png" alt="20240415151738.png" />
+反复套映射
+</p>
+
+<p>
+说
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgf904d4a" class="outline-2">
+<h2 id="orgf904d4a"><span class="section-number-2">5.</span> 未整理</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+从实数推广的视角|
+抽象代数出发描述：
+主理想
+</p>
+
+<p>
+取极限的难度在于复数没有（在运算下合理）序
+</p>
+
+<p>
+证明极限的特例： \((1+\frac{z}{n})^n\)
+</p>
+
+<p>
+i. z 实数
+</p>
+
+<p>
+ii. z 纯虚数
+</p>
+
+<p>
+iii. 幂性质 \(f(a+b)=f(a)f(b)\)
+</p>
+
+
+<p>
+拓扑概念：
+拓扑就是建立在一般的开与闭基础之上，拓扑空间就是一个在集合上指定了开集。
+</p>
+
+<p>
+这里直接使用度量建立拓扑（划分开闭）
+绝对值
+开集
+紧集
+</p>
+</div>
+</div>
+
+<div id="outline-container-org4321f2e" class="outline-2">
+<h2 id="org4321f2e"><span class="section-number-2">6.</span> 复分析选讲－课</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+从感受到思路是:我们为了在复数上的多值函数单值化，于是将值域进行划分，使得每个值域点仅仅落在一个特定的区域。这是可以（拓扑）几何上把复平面重新连接起来，得到一个新的曲面，RS.
+</p>
+
+<p>
+之后反过来（黎曼曲面多有意思）给一个曲面看如何在上面定义函数（是合适的）
+</p>
+
+<p>
+研究函数生成的黎曼面案例
+</p>
+<ul class="org-ul">
+<li>log</li>
+<li>e</li>
+<li>\(\sqrt{p(z)}\)</li>
+</ul>
+
+<p>
+接下来是
+</p>
+
+<p>
+2 branches
+</p>
+
+<p>
+发现如何构造
+</p>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

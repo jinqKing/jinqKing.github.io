@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-15 Sun 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>历史物理：黑体辐射*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-07-24 Wed 15:36 | 凝墨: 2024-09-09 Mon 18:20 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">历史物理：黑体辐射*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orga667436">1. 参考</a></li>
+<li><a href="#orga46608e">2. 基尔霍夫提出</a></li>
+<li><a href="#org69ad158">3. 斯特藩－玻耳兹曼定律</a></li>
+<li><a href="#org43e1fe2">4. 维恩位移定律</a></li>
+<li><a href="#org491db20">5. 普朗克的内插法</a></li>
+</ul>
+</div>
+</div>
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-07-28 Sun 20:04&gt; </span></span> 目前不适合看发布以调试
+</p>
+
+<p>
+按照历史顺序介绍黑体辐射
+</p>
+
+<div id="outline-container-orga667436" class="outline-2">
+<h2 id="orga667436"><span class="section-number-2">1.</span> 参考</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>曹则贤. 黑体辐射公式的多种推导及其在近代物理构建中的意义(Ⅹ)[J]. 物理, 2022, 51(8): 559-565. DOI: 10.7693/wl20220808</li>
+<li><a href="https://space.bilibili.com/11008987/channel/collectiondetail?sid=1643054">泰勒猫爱丽丝：黑体辐射的故事</a></li>
+</ul>
+
+<p>
+前置知识：
+</p>
+<ul class="org-ul">
+<li>热力统计－熵、麦克斯韦</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga46608e" class="outline-2">
+<h2 id="orga46608e"><span class="section-number-2">2.</span> 基尔霍夫提出</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+基尔霍夫 Kirchhoff 和本生 Bunsen
+</p>
+
+<p>
+对于物质升温后发出不同颜色光感兴趣——研究物质辐射能量的规律。
+</p>
+
+<p>
+\(M\) 辐射出射度：每平方米多大功率能量
+</p>
+
+<p>
+辐射强度依赖什么？
+自然认为与温度相关，不同频率上辐射能量（分配）应当也不同。
+</p>
+
+<p>
+即写成 \(M(\nu,T)\)
+</p>
+
+<p>
+下面进一步展开与其它物理量可能的关系
+</p>
+
+<p>
+辐射和吸收
+</p>
+
+<p>
+辐射的过程——吸收率的定义
+<img src="历史物理：黑体辐射/20240724192653.png" alt="20240724192653.png" />
+</p>
+\begin{equation}
+\label{eq:3}
+\alpha = \frac{I_{a}}{I_i}\leq 1
+\end{equation}
+<p>
+当 \(\alpha=1\) 所有外界输出都吸收——变成黑体。
+</p>
+
+<p>
+(当考虑完全吸收，即黑体时，这相当于创造了一个理想模型，简化思路——不需要考虑特定物质对于不同吸收不同的规律——所有的黑体吸收率是相同的)
+</p>
+
+<p>
+在实验和理论上给出了
+\(M(\nu,T)=\alpha(\nu,T) B(\nu,T)\)
+\(\alpha\) 为吸收率。
+</p>
+
+<p>
+理论推导
+</p>
+
+<p>
+对于热平衡，辐射的能量就等于吸收的能量 \(E_{i}=E_{o}\)
+</p>
+
+<p>
+将入射能量写成分配在频率上的函数 \(\mathrm{d}E =B \mathrm{d}\nu\) ，那么辐射
+</p>
+\begin{gather*}
+M \mathrm{d}\nu = \alpha \mathrm{d}E \\
+M = \alpha B
+\end{gather*}
+
+<p>
+这里并没有给出什么，只是引入一些字母，（在黑体模型中）将辐射强度和吸收率关联。
+</p>
+
+<p>
+白炽灯灯丝、未漆的房子、太阳都近似黑体，其中未漆墙的房子含义是你从外面看里面是黑色的，光进入而难以出来。于是之后简化材料（也可以认为是专门为黑体给了一个符号），将这种困住外来能量的容器当作黑体
+</p>
+
+<p>
+(这时并不要求内部材料吸收，只要入口极小（如光）进入之后难以出来，就等价于黑体)
+</p>
+
+<p>
+但腔内有温度和辐射场，从小口会有辐射自发散出，这就是黑体辐射。
+</p>
+
+<p>
+不过当时并不能做出均匀温度、高分辨率的温度计，然而可以想到这个模型应当有一个普世“简单”的规律
+</p>
+</div>
+</div>
+
+<div id="outline-container-org69ad158" class="outline-2">
+<h2 id="org69ad158"><span class="section-number-2">3.</span> 斯特藩－玻耳兹曼定律</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+斯特藩 Stefan 与杜隆
+利用沸腾金属完成黑体实验。
+</p>
+
+<p>
+实验归纳出：辐射强度与温度四次方成正比
+</p>
+\begin{equation*}
+J=\sigma T^{4}\quad\sigma=5.67\times 10^{-8} \text{W/(m$^2\cdot$K$^{4}$)}
+\end{equation*}
+
+<p>
+此处 \(J\) 相当于对所有频率光积分得到了每平米辐射的功率
+\(J(T)=\int M(\nu,T) \mathrm{d}\nu\)
+</p>
+
+<p>
+Bolzmann 给出了理论解释
+</p>
+
+<p>
+利用辐射压
+</p>
+
+<p>
+假设辐射强度为 \(u(T)\) ，取辐射能量密度为 \(u\) ,体积 \(V\)，则总能量 \(U=uV\)
+</p>
+
+<p>
+?由电动力学，光压为
+</p>
+\begin{equation*}
+p=\frac{1}{3}u
+\end{equation*}
+
+
+<p>
+正确做法：
+</p>
+\begin{gather*}
+U=uV\\
+\mathrm{d}U=u \mathrm{d}V\\
+\cdots
+\end{gather*}
+
+
+<p>
+<i>我没用标准方法</i>
+</p>
+
+<p>
+已知有 Maxwell 关系
+</p>
+\begin{equation}
+\label{eq:4}
+\left( \frac{\partial S}{\partial V} \right)_T = \left( \frac{\partial P}{\partial T} \right)_V
+\end{equation}
+<p>
+利用 \(\mathrm{d} U=T \mathrm{d}S-p \mathrm{d}V\) 的
+?
+\(S = (U+pV)/T\)
+</p>
+
+\begin{gather*}
+\frac{1}{T}\frac{\partial U+pV}{\partial V}=\frac{1}{3}\frac{\partial u}{\partial T}\\
+\frac{\partial uV}{\partial V}+p=\frac{T}{3}\frac{\partial u}{\partial T}
+\end{gather*}
+
+
+<p>
+<i>下面在数学上不严谨</i>
+</p>
+
+\begin{gather*}
+U=uV\\
+U=Q+W\\
+\mathrm{d} U=T \mathrm{d}S-p \mathrm{d}V \\
+\frac{\partial uV}{\partial V}=T\frac{\partial S}{\partial V}-p \\
+u=T \frac{\partial p}{\partial T}-p \\
+u=T \frac{1}{3}\frac{\partial u}{\partial T}-\frac{1}{3}u
+\end{gather*}
+
+<p>
+总之得到
+</p>
+\begin{gather*}
+\frac{\mathrm{d}T}{T}=\frac{\mathrm{d}u}{4u} \\
+\ln T = C\frac{1}{4}\ln u \\
+u=CT^4 \quad\blacksquare
+\end{gather*}
+
+
+<p>
+得到了能量密度，现在找出辐射的能量 \(M\) 和能量密度 \(u\) 关系
+</p>
+
+<p>
+(单位上， M: J/m<sup>2</sup> u: J/m<sup>3</sup>)
+</p>
+
+
+
+
+<p>
+不过依然没有得到和频率的关系
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org43e1fe2" class="outline-2">
+<h2 id="org43e1fe2"><span class="section-number-2">4.</span> 维恩位移定律</h2>
+</div>
+
+<div id="outline-container-org491db20" class="outline-2">
+<h2 id="org491db20"><span class="section-number-2">5.</span> 普朗克的内插法</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+在准备其它了
+</p>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

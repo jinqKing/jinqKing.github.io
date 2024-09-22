@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-01 Thu 11:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>我如何开始使用Emacs*-</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/pic/king.png"><link rel="shortcut icon" href="/pic/king.png"/>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-07-05 Fri 12:51 | 凝墨: 2024-07-31 Wed 20:55 </p>
+</div>
+<div id="content" class="content">
+<h1 class="title">我如何开始使用Emacs*-</h1>
+<blockquote>
+<p>
+每次我看Emacs 相关内容，都感到人类的智慧与创造力无穷无尽
+</p>
+</blockquote>
+
+<p>
+我是一个小白，但我想记录一下使用的经历过程，试图总结一个便于他人也可以上手（bootstrap 式）
+</p>
+
+<p>
+我原来的结构不好，其实我使用这个上古应用就是为了 ORG 因此之后我就将围绕实现 org
+ 的功能来谈。
+</p>
+
+<p>
+暂时想到两方面
+</p>
+<ul class="org-ul">
+<li>利用 \(\LaTeX\) 引擎输出 PDF</li>
+
+<li>自动输出为网页 (org-publish) HTML</li>
+</ul>
+
+
+
+<div id="outline-container-org2c86364" class="outline-2">
+<h2 id="org2c86364"><span class="section-number-2">1.</span> 安装编译</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+自己编译
+</p>
+</div>
+</div>
+<div id="outline-container-org9790053" class="outline-2">
+<h2 id="org9790053"><span class="section-number-2">2.</span> 必备插件</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>ivy</li>
+</ul>
+
+<p>
+输入法
+</p>
+<ul class="org-ul">
+<li>pyim</li>
+</ul>
+
+<p>
+美观
+</p>
+<ul class="org-ul">
+<li>doom-modeline</li>
+</ul>
+
+<p>
+测试
+</p>
+<ul class="org-ul">
+<li>usep</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgc1314fc" class="outline-2">
+<h2 id="orgc1314fc"><span class="section-number-2">3.</span> 定制功能</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+autosave
+</p>
+
+<p>
+我专门写了一个 <span class="underline">fun.el</span> 储存
+</p>
+
+<p>
+年表功能
+</p>
+
+<p>
+我一直在想如何可以把 Emacs 源码研究明白，这样想要什么就直接在底层上写入，即完美（没有任何中间和不必要的资源浪费）
+毕竟主要使用它是功能驱动的，
+</p>
+
+<p>
+但是细枝末节太多。
+</p>
+
+<p>
+我不知道如何用最简单的方式去了解掌握。总是会做重复功。
+</p>
+
+<p>
+提到<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>一个有意思的事情:应当显示在同一侧还是真棒
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<a href="https://honmaple.me/articles/2018/01/helm%E4%B8%8Eivy%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94.html">https://honmaple.me/articles/2018/01/helm%E4%B8%8Eivy%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94.html</a> 
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</div>
+</body>
+</html>

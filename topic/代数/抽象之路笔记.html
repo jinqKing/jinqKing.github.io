@@ -1,0 +1,1990 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-15 Sun 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>抽象之路笔记-</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-02-02 Fri 18:02 | 凝墨: 2024-08-02 Fri 10:32 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">抽象之路笔记-</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgdeae182">1. 内容介绍</a></li>
+<li><a href="#org4f9ec30">2. 代数</a>
+<ul>
+<li><a href="#orgfc521e3">2.1. 古巴比伦</a></li>
+<li><a href="#org6851125">2.2. 欧几里德</a>
+<ul>
+<li><a href="#orgacf28c8">2.2.1. 《几何原本》 Elements</a></li>
+</ul>
+</li>
+<li><a href="#org2089647">2.3. 丢番图 Diophantus</a>
+<ul>
+<li><a href="#orgda593b4">2.3.1. 《算数》</a></li>
+</ul>
+</li>
+<li><a href="#org2897542">2.4. 阿拉伯数学</a>
+<ul>
+<li><a href="#org2e19f41">2.4.1. 花剌子模</a></li>
+<li><a href="#org508e189">2.4.2. al Karaji</a></li>
+</ul>
+</li>
+<li><a href="#orgae09f65">2.5. 三次四次方程的求根方程</a>
+<ul>
+<li><a href="#orgc230d0c">2.5.1. del Ferro(1465-1526)</a></li>
+<li><a href="#orgf4d8154">2.5.2. Tartaglia 塔塔利亚（1500-1557）</a></li>
+<li><a href="#orgf1e7187">2.5.3. 决斗：互相出题</a></li>
+<li><a href="#org0d7263f">2.5.4. Cardano/Cardan 卡尔丹诺（1501-1576）</a></li>
+<li><a href="#orge462051">2.5.5. Ferrari (1522-1565)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org34a15b5">3. 2</a>
+<ul>
+<li><a href="#org3f622f9">3.1. 韦达</a></li>
+<li><a href="#org148aeb4">3.2. Fermat(1601-1665) 费马 数论之父</a></li>
+<li><a href="#orga646425">3.3. Euler(1701-1783) 欧拉 最多产数学家</a></li>
+<li><a href="#org2acae75">3.4. 法国3L</a>
+<ul>
+<li><a href="#orga2a8cb1">3.4.1. Lagrange</a></li>
+<li><a href="#orgb8d0705">3.4.2. Legendre</a></li>
+</ul>
+</li>
+<li><a href="#org61428ab">3.5. Gauss</a></li>
+<li><a href="#org33d9a48">3.6. Abel(1802-1829) Galois(1811-1832)</a></li>
+<li><a href="#org6695397">3.7. Abel</a></li>
+<li><a href="#orgee90d3b">3.8. Galois</a></li>
+</ul>
+</li>
+<li><a href="#org471e680">4. 数学理论</a>
+<ul>
+<li><a href="#org9b67057">4.1. 群论基础</a>
+<ul>
+<li><a href="#org55ee3d8">4.1.1. 群公理</a></li>
+<li><a href="#orgd8cacff">4.1.2. 例子</a></li>
+<li><a href="#orga6d8b80">4.1.3. 有限生成交换群定理</a></li>
+<li><a href="#orgd4e00d3">4.1.4. 对称群</a>
+<ul>
+<li><a href="#org77fdf51">4.1.4.1. 置换</a></li>
+<li><a href="#org0a79e11">4.1.4.2. 对称群 \(S_n\) 上的乘法</a></li>
+<li><a href="#orgc26f5de">4.1.4.3. 对换</a></li>
+</ul>
+</li>
+<li><a href="#org4f26c8f">4.1.5. 矩阵群</a></li>
+</ul>
+</li>
+<li><a href="#org6b25816">4.2. 子群</a></li>
+<li><a href="#org97a1b03">4.3. Lagrange 定理</a>
+<ul>
+<li><a href="#orgff6f388">4.3.1. Fermat 小定理</a></li>
+<li><a href="#orga5be1de">4.3.2. Euler 定理</a></li>
+<li><a href="#org7a54bf8">4.3.3. 素数阶群</a></li>
+</ul>
+</li>
+<li><a href="#orgbf65889">4.4. 正规子群和商群</a>
+<ul>
+<li><a href="#org5e88003">4.4.1. 如何比较两个群</a></li>
+<li><a href="#org192d3c7">4.4.2. 如何研究两个群</a>
+<ul>
+<li><a href="#org5b1c066">4.4.2.1. 可解群—— Galois</a></li>
+<li><a href="#org51a594a">4.4.2.2. 单群</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org47dc7f6">5. 域的理论</a>
+<ul>
+<li><a href="#orgbaa7ac1">5.1. 域扩张</a></li>
+<li><a href="#org52d430c">5.2. 尺规作图问题</a></li>
+<li><a href="#org594c225">5.3. Gal 扩张</a></li>
+</ul>
+</li>
+<li><a href="#org9a3a249">6. 环</a></li>
+</ul>
+</div>
+</div>
+<p class="verse">
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-07-28 Sun 20:04&gt; </span></span> 目前不适合看发布以调试<br />
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-07-28 Sun 12:44&gt; </span></span> 修订<br />
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-07-30 Tue 08:26&gt; </span></span> 着重补齐<br />
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-07-31 Wed 09:40&gt; </span></span> 太震撼，进展到第五讲感到很不简单可能要歇歇（结成浩你能不能写点这些代数的内容）<br />
+</p>
+
+<div class="org-center">
+<p>
+代数与数论
+抽象之路
+</p>
+
+<p>
+西安交通大学
+</p>
+
+<p>
+欧阳毅
+短课<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+
+<p>
+BV1zS4y1b7es
+</p>
+</div>
+
+<div id="outline-container-orgdeae182" class="outline-2">
+<h2 id="orgdeae182"><span class="section-number-2">1.</span> 内容介绍</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+梳理：
+以人物串联的发展史
+</p>
+<ol class="org-ol">
+<li>解方程历史</li>
+<li>高斯之前</li>
+<li>第三讲群论初步</li>
+<li>第四讲尺规作图出发：域扩张、 Galois</li>
+<li>第五讲环内容</li>
+<li>Kummer 的工作</li>
+<li>青春理想</li>
+<li>类域论</li>
+</ol>
+
+
+<ul class="org-ul">
+<li><p>
+简介：
+</p>
+<ul class="org-ul">
+<li>官方：</li>
+</ul>
+
+<p>
+讲代数的历史，包括很多人文性内容如时代背景、历史变迁、横向对应
+</p>
+
+<p class="verse">
+本短课程的主要目的是从数学发展史的观点，对代数和数论抽象化的历程，包括代数思想/概念/方法的发展史作一个简单介绍。<br />
+课程内容包括：<br />
+I. 从古巴比伦人求解一元二次方程开始，介绍求根公式的发展历程，包括意大利人的戏剧故事和阿贝尔、伽罗瓦的传奇。<br />
+2 ，介绍群论和伽罗瓦理论的基本思想和简单应用。<br />
+3 ，介绍数论从欧几里得到高斯的发展史。<br />
+4 ，介绍 Kummer 之前费马大定理的探索历程。<br />
+5 ， Kummer 对于费马大定理的探索如何促成理想概念的引入、交换环论和代数数论的诞生。<br />
+6 ，类域论和抽象代数的建立。<br />
+</p></li>
+</ul>
+
+<p>
+一次笔记尝试、算是看过一些基本代数包括数学女孩后的兴之所至吧。
+</p>
+</div>
+</div>
+<div id="outline-container-org4f9ec30" class="outline-2">
+<h2 id="org4f9ec30"><span class="section-number-2">2.</span> 代数</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+讲座说一说数学家从会算到不会算的历程：对数字理解不断加深、发现更多关于数的秘密（无穷无尽定理）的过程。
+</p>
+</div>
+
+<div id="outline-container-orgfc521e3" class="outline-3">
+<h3 id="orgfc521e3"><span class="section-number-3">2.1.</span> 古巴比伦</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+这是两河(幼发拉底河与底格里斯河)流域的文明，
+公元前1900-前1600，汉谟拉比法典诞生之地方；对应夏朝。
+楔形文字 cuneiform 写在泥板上；
+</p>
+
+<p>
+数学能力：
+</p>
+<ol class="org-ol">
+<li>二次方程的求解 \(ax^2+bx+c=0\)</li>
+</ol>
+
+<p>
+使用60进制，1-60 60-80 80-99
+4*20+10+9
+</p>
+
+<p>
+归功于
+Francois thureau-Danigin 法国人 和 Otto Neugebauer
+破解 BM13901 大英博物馆 BM 藏品
+</p>
+
+<ol class="org-ol">
+<li>勾股数组</li>
+</ol>
+<p>
+在中国商高定理、勾三股四弦五
+</p>
+
+<p>
+考古发现泥板上记载了巨大的勾股数，如 \((12709,13500,18541)\quad (2291,2700,3541)\)
+哥伦比亚大学 Plimpton 322  (Plimpton赠与的322号) ，Otto 和 Sachs 破译
+</p>
+
+<p>
+如此巨大的数推测当时人应当知道公式。
+</p>
+
+<p>
+中国已知证明：可从古代图像看出
+</p>
+
+<p>
+例子
+13901 问题2:
+正方形面积-边长＝1430,求边长
+此处
+等价于问
+\(x^2-x=870\)
+</p>
+
+<p>
+解答：
+\(x^2-bx=c\)
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">步骤</th>
+<th scope="col" class="org-left">说明</th>
+<th scope="col" class="org-left">字母表示</th>
+<th scope="col" class="org-right">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">写下系数1</td>
+<td class="org-left">b</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">取一半</td>
+<td class="org-left">\(\frac{b}{2}\)</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">取平方</td>
+<td class="org-left">\(\left( \frac{b}{2} \right)^2\)</td>
+<td class="org-right">1</td>
+</tr>
+
+<tr>
+<td class="org-right">4</td>
+<td class="org-left">加上870(c)</td>
+<td class="org-left">\(\left( \frac{b}{2} \right)^2+c\)</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">这是 \(29 \frac{1}{2}\) 的平方（开根号）</td>
+<td class="org-left">\(\sqrt{\left( \frac{b}{2} \right)^2+c}\)</td>
+<td class="org-right">\(29 \frac{1}{2}\)</td>
+</tr>
+
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">加上0.30</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-right">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+一步一步教过程
+</p>
+
+
+<p>
+322
+\(a^2+b^2=c^2 \Rightarrow \left( \frac{a}{c} \right)^2+\left( \frac{b}{c} \right)^2=1\)
+取单位元 \(x^2+y^2=1\)
+交点坐标
+</p>
+
+<p>
+\(k\rightarrow (\frac{k^2-1}{k^2+1},\frac{2k}{k^2+1})\)
+取 \(k=\frac{m}{n}\) 得到 \((\frac{m^2-n^2}{m^2+n^2},\frac{2mn}{m^2+n^2})\)
+于是得到勾股数组： \((m^2-n^2,2mn,m^2+n^2)\)
+得到本原的解
+</p>
+
+<p>
+\(k=\{\frac{12}{5},\frac{64}{27},\frac{125}{54},\frac{9}{5},\dots\}\)
+对注意到 \(m,n=2^i3^j5^k\) 原因：60进制
+</p>
+
+
+<p>
+失传空白
+</p>
+
+<p>
+Otto Neugebauer
+只与数论波尔（尼耳斯波尔弟弟）发表一篇纯数学论文，主要是
+创立 Zentrablatt Math(1931),
+哥廷根。
+希特勒上台在美国创立 Math Reviews(1939)
+</p>
+
+<p>
+数学评论：
+</p>
+
+<p>
+数学评论不应当和文章质量成正比。
+</p>
+
+<p>
+好文章：大家都去读吧；
+</p>
+
+<p>
+伟大数学家犯错误比末流数学家发现概率大。不应当忽视小数学家的贡献
+</p>
+
+<p>
+张载（1020-1077）长安：为…
+数学应当为往圣继绝学，传承。
+</p>
+
+<p>
+<i>我想更应该取理解发掘，因为传承下来总是存在前人的删减，而可能删去了一些非凡之处</i>
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6851125" class="outline-3">
+<h3 id="org6851125"><span class="section-number-3">2.2.</span> 欧几里德</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Ευκλειδης 几何学之父
+</p>
+
+<p>
+生平： 约公元前330年—公元前275年
+——长平之战赵襄王，秦始皇之前
+</p>
+</div>
+
+<div id="outline-container-orgacf28c8" class="outline-4">
+<h4 id="orgacf28c8"><span class="section-number-4">2.2.1.</span> 《几何原本》 Elements</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+(应当就叫原本)
+西方科学数学基础
+</p>
+
+<p>
+<i>不赞同降低小学难度，需要建立好良好的逻辑体系</i>
+</p>
+
+<p>
+几何为主的世界缘故：
+<i>我认为这是因为古希腊人对数的观念有关</i>
+</p>
+
+<p>
+《几何原本》同时是数论的起源：
+</p>
+
+<p>
+13章 7-9章自然数整数的理论。
+</p>
+
+<ol class="org-ol">
+<li>欧几里德引理
+若素数 p|ab
+素性（定义素理想等等的根源）可以直接推得 算数基本定义 高斯最先证明
+整数的唯一分解性质</li>
+<li>欧几里德第二定理：素数有无穷多
+证明：假设素数哥舒有限，有 \(p_1,\dots, p_n\)
+令 \(N=p_1\cdots p_n+1\)
+则N 与\(p_1,\dots, p_n\) 互素，矛盾。反证成立。</li>
+</ol>
+
+<p>
+<b>历史上第一个关于无穷的结果</b>
+</p>
+
+<p>
+关注几何，于是对测量天文观测感兴趣，有
+古典几何的三大难题
+</p>
+<ol class="org-ol">
+<li>化圆为方</li>
+<li>三等分角</li>
+<li>立方倍体</li>
+</ol>
+
+<p>
+归化为代数问题，如果有
+在范围内的解就可以做
+</p>
+
+<p>
+1837 1,3 1882 -2
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2089647" class="outline-3">
+<h3 id="org2089647"><span class="section-number-3">2.3.</span> 丢番图 Diophantus</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+被称为代数学之父 I
+(总共有3个人都获得此称号)
+</p>
+
+<p>
+生平为200-284
+——三国时代～
+对应中国（可谓成就最大）数学家刘徽（225-295） 
+</p>
+</div>
+
+<div id="outline-container-orgda593b4" class="outline-4">
+<h4 id="orgda593b4"><span class="section-number-4">2.3.1.</span> 《算数》</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+著作： Arithmetica 130个问题
+他的年龄是根据数
+6 12  7
+</p>
+
+<p>
+当时著作往往是问题集，例如《海岛算经》、《孙子算经》
+</p>
+
+<p>
+丢番图方程/不定方程进行广泛研究，
+研究称为丢番图分析
+</p>
+
+<p>
+例如
+A=2a+1,求 \(x,y\in \mathbb{Q}\)
+\(x^2+y^2=A,\quad x^2,y^2>a\)
+</p>
+
+<p>
+圆上作直线
+</p>
+
+<ul class="org-ul">
+<li>研究三类二次方程</li>
+</ul>
+\begin{align*}
+ax^2+bx =c \\
+ax^2 =bx +c \\
+ax^2+c=bx
+\end{align*}
+
+<p>
+当时没有0，负数用的很少因此这样书写（才符合当时可以接受的形式）
+</p>
+
+<p>
+（对应几何的思维方式）
+</p>
+
+<p>
+可以想到如今我们感到负数自然便捷，而它本身恰恰也是一种符号的发明创造：
+</p>
+<blockquote>
+<p>
+应用合适的概念有时候可促使研究更方便
+</p>
+</blockquote>
+
+<p>
+中世纪
+古希腊失掉
+此时没有完全失传
+重新连上
+</p>
+
+<p>
+线性同余数方程
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org2897542" class="outline-3">
+<h3 id="org2897542"><span class="section-number-3">2.4.</span> 阿拉伯数学</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-org2e19f41" class="outline-4">
+<h4 id="org2e19f41"><span class="section-number-4">2.4.1.</span> 花剌子模</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+Mohammad ibnmussa al-khwarizmi
+(780-850)(成吉思汗屠城)
+</p>
+
+<p>
+唐朝晚期
+波斯人
+</p>
+
+<p>
+首都巴格达智慧宫，研究数学、航海
+</p>
+
+<p>
+文艺复兴从阿拉伯文成新翻译回来
+</p>
+
+<p>
+著作： al-Jabar
+代数
+</p>
+
+<pre class="example" id="orgc94920b">
+这个词的含义是一步一步的操作
+</pre>
+
+<p>
+12世纪中叶
+</p>
+
+<ul class="org-ul">
+<li>引入印度数字（即阿拉伯数字）</li>
+
+<li>拉丁写法： algorism,algoritmi=algrothm</li>
+</ul>
+
+<p>
+2500年前的事情重做一遍
+</p>
+</div>
+</div>
+<div id="outline-container-org508e189" class="outline-4">
+<h4 id="org508e189"><span class="section-number-4">2.4.2.</span> al Karaji</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<ul class="org-ul">
+<li>将代数从几何图形运算操作中解决出来，出现四则运算</li>
+<li>同余数问题
+有有理直角三角形（边长是有理数）边长 \(a,b,c\in \mathbb{Q}\) ，面积 \(n=\frac{1}{2}ab\)
+找出所有整数 n.
+等价于
+对于怎样 n 有 \(\exists a\in Q\) 使得 \(a^2\pm n\) 也是有理平方数  
+\((a,b,c)\rightarrow (\left( \frac{c}{2} \right)^2-n, \left(  \frac{c}{2} \right)^2, \left( \frac{c}{2} \right)^2+n)=(\left( \frac{a-b}{2} \right)^2, \left( \frac{c}{2} \right)^2,\left( \frac{a-b}{2} \right)^2)\)
+等价于（现代数学研究）
+\(y^2=x^3-n^2x\) 椭圆曲线
+有 \((x,y) \quad x,y\in \mathbb{Q}\quad y\neq 0\)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae09f65" class="outline-3">
+<h3 id="orgae09f65"><span class="section-number-3">2.5.</span> 三次四次方程的求根方程</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+16世纪（文艺复兴全盛期，后三杰活跃时期）意大利人的成就
+</p>
+
+<p>
+历史背景：
+城邦国家：米兰公国、威尼斯共和国、佛罗伦萨共和国（文艺复兴的中心）
+</p>
+
+<p>
+在意大利北部
+(1870现代意大利的国家
+世界第一所大学： Bologue 大学1088 世界大学之母（校训）
+12世纪 巴黎大学、帕洛瓦大学（意大利）
+王安石去世两年后
+</p>
+</div>
+
+<div id="outline-container-orgc230d0c" class="outline-4">
+<h4 id="orgc230d0c"><span class="section-number-4">2.5.1.</span> del Ferro(1465-1526)</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<p>
+Bologue 大学教授
+1515 发现三次方程公式，未发表
+1525 告诉学生 Fior 菲奥尔, 
+dello Nave(女婿+学生) 给了一本笔记本记录了求解思路过程
+针对方程：
+</p>
+\begin{align*}
+\label{eq:1}
+\text{I} \quad&x^3+px=q\\
+\text{II} \quad &x^3=px+q \quad p,q\neq 0
+\end{align*}
+
+<p>
+fior 会 I
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf4d8154" class="outline-4">
+<h4 id="orgf4d8154"><span class="section-number-4">2.5.2.</span> Tartaglia 塔塔利亚（1500-1557）</h4>
+<div class="outline-text-4" id="text-2-5-2">
+<p>
+威尼斯共和国 Brescia 人
+</p>
+
+<p>
+名字是一个蔑称，表示口吃。1512 与法国交战负伤所致。
+自学成才，教学为生
+一生潦倒，有钱就投入自己喜欢的军事研究，尤其大炮
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgf1e7187" class="outline-4">
+<h4 id="orgf1e7187"><span class="section-number-4">2.5.3.</span> 决斗：互相出题</h4>
+<div class="outline-text-4" id="text-2-5-3">
+<p>
+Fior 自得为唯一传人，认为塔塔利亚虚名不实或者剽窃，发起挑战：
+</p>
+
+<div class="org-center">
+<p>
+1535.2.22开始，双方各出30题，两个月时间求解
+</p>
+</div>
+
+<p>
+1535.2.13凌晨 塔塔利亚钻研出两种方程的解法。随后自己出题类型包含 I 和 II 。
+而 Fior 只出他会的 I ，于是塔塔利亚一小时解出所有题，大获全胜。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0d7263f" class="outline-4">
+<h4 id="org0d7263f"><span class="section-number-4">2.5.4.</span> Cardano/Cardan 卡尔丹诺（1501-1576）</h4>
+<div class="outline-text-4" id="text-2-5-4">
+<p>
+米兰大公国
+医生、星象学家。在社交中
+长袖善舞。
+治好苏格兰大主教
+大逆不道上帝星座被赦免
+</p>
+
+<p>
+赌博（出千的技术），作家
+</p>
+
+<p>
+自己写信给塔塔利亚，承诺将对方介绍给米兰的西班牙总督，资助他继续军事研究。同时自己永不发表结果。
+</p>
+
+<p>
+唯一在场是 Cardano 学生： Ferrari
+</p>
+
+<p>
+5 Ferrari 1540 发现四次方程的解法
+Ferriari 天才聪颖
+Cardano 写书 Ars Magna (The Great Art)
+1543  della Navr 邀请
+1545 出版，记录了
+</p>
+
+<p>
+文艺复兴最重要的数学著作
+1546 塔塔利亚自己出版
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge462051" class="outline-4">
+<h4 id="orge462051"><span class="section-number-4">2.5.5.</span> Ferrari (1522-1565)</h4>
+<div class="outline-text-4" id="text-2-5-5">
+<p>
+14岁作为Cardano学徒
+之后作Bologue 大学教授
+早逝
+Cardano 生命短暂不要期望他们取悦你
+</p>
+
+<p>
+塔塔利亚
+\(x=u+v\)
+</p>
+\begin{equation}
+\label{eq:2}
+\begin{split}
+u^3+v^3=-q \\
+uv=-\frac{p}{3}
+\end{split}
+\end{equation}
+
+<p>
+四次方程：
+</p>
+
+\begin{equation}
+\label{eq:3}
+x^4+px^2+qx+r=0
+\end{equation}
+<p>
+令 \(z=x^2+y\)
+</p>
+\begin{equation}
+\label{eq:4}
+\Delta = q^2-4()()
+\end{equation}
+<p>
+三次方程
+</p>
+
+<p>
+副产物：虚数的诞生
+</p>
+\begin{equation}
+\label{eq:5}
+\Delta=\frac{q^2}{4}+\frac{p^3}{27}
+\end{equation}
+<p>
+\(\Delta<0\) 三次求根无意义
+例： \(x^3-15x-4=0\)
+Ars Magna 引入复数
+Ra
+Algrbra(使用拉丁文引入代数)
+包含：丢番图、
+介绍复数的运算法则
+</p>
+
+<blockquote>
+<p>
+复分析：可视化
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org34a15b5" class="outline-2">
+<h2 id="org34a15b5"><span class="section-number-2">3.</span> 2</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+文艺复兴结束的人物：
+</p>
+</div>
+<div id="outline-container-org3f622f9" class="outline-3">
+<h3 id="org3f622f9"><span class="section-number-3">3.1.</span> 韦达</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+（1540-）
+</p>
+
+<p>
+1591《解析艺术引论》，使用现代的数学符号 xyz abc 符号运算
+韦达定理：总结三次四次根与系数的关系
+</p>
+
+\begin{equation}
+\label{eq:6}
+\begin{split}
+x^n+a_1x^{n-1}+\cdots+a_{n-1}x+a_n \\
+=(x-x_1)\cdots(x-x_n)\\
+\end{split}
+\end{equation}
+
+\begin{equation}
+\label{eq:7}
+a_k=(-1)^k \sum\limits_{1<i_1<\cdots<i_k<=n}x_{i_1}\cdotsx_{i_k}
+\end{equation}
+
+<p>
+关于 x&#x2026; 第 k 次初等对称多项式
+</p>
+
+<p>
+过来知道系数如何知道根（伽罗瓦）
+</p>
+
+<p>
+传奇人生：
+</p>
+<ul class="org-ul">
+<li>破译密码：帮助法国国王赢得对西班牙的战争
+代数与数论的应用</li>
+<li>芬兰数学家挑战，要求法国国王解45次方程。韦达给出答案。</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org148aeb4" class="outline-3">
+<h3 id="org148aeb4"><span class="section-number-3">3.2.</span> Fermat(1601-1665) 费马 数论之父</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+最高刑事法官
+业余数学之王
+</p>
+
+<ul class="org-ul">
+<li>解析几何（同笛卡尔）
+代数用几何表达
+几何用代数表达</li>
+<li>概率论（与帕斯卡通信）</li>
+</ul>
+<p>
+费马挚爱：数论
+当时是小众学科，（帕斯卡不愿意）写信告诉法国科学家
+无人感兴趣
+额外贡献：光学费马原理
+</p>
+<ul class="org-ul">
+<li>费马小定理： \(a^{p}\equiv a \mod p \quad p| \forall a \in \mathbb{Z}\)</li>
+<li>p 是平方和 \(\Leftrightarrow\)  \(p=2, p=\equiv1\mod 4\)</li>
+<li>大定理： 大于等于三没有整数解
+只需要考虑 \(n=4,n=p\)
+猜测他对于自己无穷递降法太自信于是写出“地方太小写不下”</li>
+</ul>
+<p>
+证明 \(n=4\) 无非平凡解
+</p>
+<ol class="org-ol">
+<li>不妨设 xy 互素</li>
+<li>回顾勾股方程的本原解</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orga646425" class="outline-3">
+<h3 id="orga646425"><span class="section-number-3">3.3.</span> Euler(1701-1783) 欧拉 最多产数学家</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+庞德丽亚金（双目失明）
+算数的巅峰
+伯努利的学生
+</p>
+
+<p>
+圣彼得堡、柏林
+</p>
+
+<p>
+分析进入数论
+\(\zeta(s)=\sum\limits_{n>=1}\frac{1}{n^s}=\Pi_p \frac{1}{1-p^{-s}}\)
+欧拉乘积
+借此证明素数有无穷多
+(有限乘积收敛，左边调和级数在1发散)
+</p>
+<ul class="org-ul">
+<li>\(\zeta(2)=1+=\frac{\pi^2}{6}\) 巴塞尔问题
+\(\zeta(2n)=C_n\Pi^{2n}\)</li>
+</ul>
+
+<p>
+黎曼将它变成复函数，解析开拓
+3,5
+</p>
+
+<ul class="org-ul">
+<li>(数论的)欧拉定理： \(\phi(n)=\left\{ 0<a<n,(a,n)=1 \right\}\)
+\(a^{\varphi(n)}\equiv\)</li>
+</ul>
+
+<p>
+模n的缩系
+</p>
+
+<p>
+20岁干了很多事
+</p>
+</div>
+</div>
+<div id="outline-container-org2acae75" class="outline-3">
+<h3 id="org2acae75"><span class="section-number-3">3.4.</span> 法国3L</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Lagrange(1736-1813),Laplace,Legendre(1752-1833)
+</p>
+
+<p>
+年纪轻轻的天才
+</p>
+</div>
+<div id="outline-container-orga2a8cb1" class="outline-4">
+<h4 id="orga2a8cb1"><span class="section-number-4">3.4.1.</span> Lagrange</h4>
+<div class="outline-text-4" id="text-3-4-1">
+<p>
+自学数学成才
+19 都灵教授
+柏林科学院院士
+拜伦普希金
+</p>
+<ul class="org-ul">
+<li>1770:4平方定理
+分析为什么次数小于4有根
+分析求根公式
+研究置换（为之后）</li>
+</ul>
+<p>
+拉格朗日预解式
+定理
+\(\left| H \right|\left| \left| G \right| \right\)
+元素的阶整除群的阶
+</p>
+</div>
+</div>
+<div id="outline-container-orgb8d0705" class="outline-4">
+<h4 id="orgb8d0705"><span class="section-number-4">3.4.2.</span> Legendre</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+符号
+</p>
+
+\begin{equation}
+\label{eq:8}
+\left( \frac{a}{p} \right)=
+\begin{cases}
+0 & p|a \\
+1 & a\equiv b^2 \mod p\\
+-1& \text{else}
+\end{cases}
+\end{equation}
+<p>
+后来被高斯重新做了
+猜测：
+</p>
+<ul class="org-ul">
+<li>二次互反律</li>
+</ul>
+\begin{equation}
+\label{eq:10}
+\left( \frac{q}{p} \right)\left( \frac{p}{q} \right)=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+\end{equation}
+<p>
+一直苦恼于自己证明存在瑕疵
+</p>
+<ul class="org-ul">
+<li>素数定理：</li>
+</ul>
+\begin{equation}
+\label{eq:11}
+\Pi(x)=\left\{ p:p<x \right\}=\frac{x}{\log x}
+\end{equation}
+</div>
+</div>
+</div>
+<div id="outline-container-org61428ab" class="outline-3">
+<h3 id="org61428ab"><span class="section-number-3">3.5.</span> Gauss</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+(1777-1855) 数学王子
+</p>
+
+<p>
+不世出的天才高斯登场了，可惜的是他基本只在25岁（1793）前研究数论，之后唯一关注的数论问题是上文素数定理
+1801 《算数研究》 Disquisitiones Arithmeticae（基本是拉丁文写的最后学术专著）
+</p>
+<ul class="org-ul">
+<li>第一本数论专著/教科书</li>
+<li>先总结欧拉欧几里德中国算数，也就是初等数论到此总结完了</li>
+<li>发明同余符号 \(a\equiv b \mod m \Leftrightarrow m|a-b\) 后一种是以前的写法</li>
+<li>现代数论的开始（可以二次互反律）</li>
+<li>证明二次互反律</li>
+</ul>
+<p>
+二次型三次型－类数猜想～群（把之后概念拿过来就发现完美符合）
+尺规正17边－费马素数
+代数基本定理
+复数引入数论
+</p>
+<ul class="org-ul">
+<li>三平方和，从此可以立即推导出拉格朗日四次</li>
+</ul>
+
+<p>
+184x
+</p>
+
+<p>
+提升了数论的地位
+</p>
+
+<p>
+费马无人问津，欧拉分析，因为高斯提升了数学家对数论的品味
+</p>
+</div>
+</div>
+<div id="outline-container-org33d9a48" class="outline-3">
+<h3 id="org33d9a48"><span class="section-number-3">3.6.</span> Abel(1802-1829) Galois(1811-1832)</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+挪威 法国
+</p>
+
+<p>
+受到时代巨大影响，他们的人生处在风雨飘摇岁月。。
+拿破仑垮台（1814第一次下台）挪威丹麦，
+丹麦支持拿破仑，之后将挪威让给瑞典。
+</p>
+
+<p>
+当年很穷（之后因为发现石油富裕），
+政治动荡。
+</p>
+</div>
+</div>
+<div id="outline-container-org6695397" class="outline-3">
+<h3 id="org6695397"><span class="section-number-3">3.7.</span> Abel</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+穷苦家庭 15岁开始学数学，之后进展飞快。
+</p>
+
+<p>
+良师指导 Holmboe ，
+发现才能很高，看欧拉拉格朗日拉普拉斯等等。
+1820父亲去世，帮助继续读高中
+深入唯一的大学当时是克里斯蒂安娜（首都，现在是奥斯陆）。
+挪威政府资助游学
+</p>
+
+<p>
+Crelle 柏林：1825 爱好者办杂志 6篇Abel
+纯粹与应用数学
+</p>
+
+<p>
+之前印刷
+现存最古老杂质
+19
+德文 
+美国 anlysa of math
+</p>
+
+<p>
+老师评价极高
+</p>
+
+<p>
+研究五次方程；
+主流数学椭圆函数。
+</p>
+
+<p>
+雅可比
+贫病
+1828柏林给教授
+病逝
+Abel 积分范畴群引理判别
+2002 Abel prize 挪威
+百万
+李 Lie
+解析数论
+近世代数C罗定理
+身前身后名
+</p>
+
+<p>
+高斯没看过
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgee90d3b" class="outline-3">
+<h3 id="orgee90d3b"><span class="section-number-3">3.8.</span> Galois</h3>
+<div class="outline-text-3" id="text-3-8">
+<p>
+等刘维尔发掘的悲情人物
+</p>
+
+<p>
+法国
+路易18
+共和党和保皇党斗争
+王后镇 Banorg-la-Reine
+一家是共和党人
+父亲是市长。
+</p>
+
+<p>
+12岁前母亲教导
+路易大帝中学，最好的中学另一个是亨利四世中学
+当时未学数学
+人大附中
+</p>
+
+<p>
+1823
+</p>
+
+<p>
+1827学数学
+一入侯门深似海，
+参加考试
+几个大学校 brand
+巴黎高师、巴黎综合理工
+当年politic
+未考上
+</p>
+
+<p>
+1829完成主要数学成功，发表连分数（已经蕴涵思想）。
+</p>
+
+<p>
+5月提交五次方程：
+柯西审稿退回，因为Abel,希望修改后重新。
+</p>
+
+<p>
+7月父亲自杀因为他人羞辱。
+</p>
+
+<p>
+12月通过会考录取高师（高师就在路易里面的几间房子）
+数学认为表达不清但聪明其余科目不认可
+再次提交傅里叶作为秘书1830.5.16去世，稿件丢失
+奖给了Abel jacobi 椭圆函数
+</p>
+
+<p>
+29 30
+</p>
+
+<p>
+1831.1.17 泊松看不懂，认为没有完全展开
+</p>
+
+<p>
+1815路易18上台24去世弟弟查理1937 七月革命推翻波旁王朝
+菲利普国王上台
+</p>
+
+<p>
+1831期间从事政治活动，被关监狱，长达10月
+</p>
+
+<p>
+1832.5.30决斗31去世
+写了一晚上信，总结自己贡献，寄给好朋友Chevalier,可以评价自己的成果
+同其弟Alfred Galois 寄
+写信给数学家，没有回信
+</p>
+
+<p>
+1843.9.4 Liouville 报告提到伽罗瓦完全正确
+原封不动发表自己杂志（法语的纯粹与应用杂志（第二古老数学杂志））
+</p>
+
+<hr />
+<p>
+<a href="https://www.bilibili.com/video/BV1zS4y1b7es">《抽象之路》| 代数与数论系列短课程III</a>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org471e680" class="outline-2">
+<h2 id="org471e680"><span class="section-number-2">4.</span> 数学理论</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Galois 创立群论，同时在群论和域建立联系
+</p>
+</div>
+<div id="outline-container-org9b67057" class="outline-3">
+<h3 id="org9b67057"><span class="section-number-3">4.1.</span> 群论基础</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+群：一个数学结构——集合和运算（集合配上一个运算） \((G,\cdot)\)
+</p>
+
+
+<div id="orgad95095" class="figure">
+<p><img src="抽象之路笔记/DOT:20240729113328.png" alt="DOT:20240729113328.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-org55ee3d8" class="outline-4">
+<h4 id="org55ee3d8"><span class="section-number-4">4.1.1.</span> 群公理</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+<i>即群的定义</i>
+</p>
+
+<ol class="org-ol">
+<li>结合律 \((ab)c=a(bc)\)</li>
+<li>单位元 \(e\) \(ex=xe=x\)</li>
+<li>逆元 \(ab=ba=e\)</li>
+</ol>
+
+<p>
+<i>满足上述公理为结构群</i>
+</p>
+
+
+<p>
+特别的，为什么是 <b>结合</b>
+</p>
+<pre class="example" id="orge8ea668">
+以前算得是数——需要交换
+
+之后研究项…使用置换，置换的过程需要考虑次序——交换就不满足了
+
+采用更（弱）一般的结合（结合在映射中也更普遍，讨论像对称置换更方便）
+</pre>
+
+<p>
+进一步定义：
+</p>
+<ul class="org-ul">
+<li>满足交换律的群： <b>交换群＝阿贝尔群（abelian group）</b> 这个是小写</li>
+<li><p>
+<b>有限群</b> :元素个数有限
+</p>
+
+<p>
+这里可以定义阶：
+</p>
+<ul class="org-ul">
+<li>群的阶： \(|G|\) 元素个数</li>
+
+<li>元素的阶： 满足 \(g^n=e\) 的最小整数 \(n\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgd8cacff" class="outline-4">
+<h4 id="orgd8cacff"><span class="section-number-4">4.1.2.</span> 例子</h4>
+<div class="outline-text-4" id="text-4-1-2">
+<ol class="org-ol">
+<li>正整数加群 \((\mathbb{Z},+)\)</li>
+<li>同余（将所有数除之后n得到的余数） \(\mathbb{Z}/n \mathbb{Z}=\{\bar{0},\bar{1},\cdots,\overline{n-1}\}\) 在加法下 \(\bar{a}+\bar{b}=\overline{a+b}\)</li>
+</ol>
+
+<p>
+例子 1,2 是循环群。
+</p>
+
+<ol class="org-ol">
+<li>正整数加群相等于 1 生成的无穷阶群 \(\left\langle 1 \right\rangle=\{\bar{1},\overline{1+1},\cdots\}\)</li>
+</ol>
+
+<p>
+在乘法下（ \(\bar{a}\cdot \bar{b}=\overline{ab}\) ）
+去掉 \(\bar{0}\) 的子集 \((\mathbb{Z}/n \mathbb{Z})^{\times}\) 构成乘法下的群
+</p>
+
+<p>
+首先，
+</p>
+
+\begin{gather*}
+(a,n)=1,(b,n)=1 \Rightarrow (ab,n)=1
+\end{gather*}
+
+<p>
+集合在乘法下是封闭的（也就是用教科书的话：乘法是其中的二元运算）
+</p>
+
+<p>
+结合律；
+单位元；
+逆元：
+</p>
+\begin{gather*}
+(a,n)=1 \Leftrightarrow ua+vn=1, ua=1-vn \\
+\Rightarrow \bar{u}\bar{a}=\bar{1} ,\bar{u}=\bar{a}^{-1}
+\end{gather*}
+<p>
+使用了裴蜀定理对互素展开第一步
+</p>
+
+<p>
+上述简单说明了它是群。
+</p>
+
+<p>
+大小 \(|(\mathbb{Z}/ n \mathbb{Z})^{\times}|=\phi(n)\) ，其中 \(\phi\) 为 Euler 函数（给出了 1-n 素数的个数）
+</p>
+
+<p>
+进一步，特殊情况
+\(n=p\) 为素数
+</p>
+\begin{gather*}
+(\mathbb{Z}/p \mathbb{Z})^{\times}
+=\{a:0\leq a \leq p ,(a,p)=1\}\\
+=\{a:0<a<p\}
+\end{gather*}
+
+<p>
+构成了 p-1 阶循环群
+</p>
+
+<p>
+\((\mathbb{Z}/p \mathbb{Z},+,\cdot)\) 构成（有限）域
+</p>
+</div>
+</div>
+<div id="outline-container-orga6d8b80" class="outline-4">
+<h4 id="orga6d8b80"><span class="section-number-4">4.1.3.</span> 有限生成交换群定理</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<p>
+?类似高等代数中（史密斯标准型定理）
+</p>
+
+<p>
+有限生成交换群的结构定理
+</p>
+
+<p>
+交换群 G
+</p>
+\begin{equation*}
+G\equiv \mathbb{Z}^r \oplus \mathbb{Z}/m_1 \mathbb{Z} \oplus \cdots \oplus \mathbb{Z}/m_s \mathbb{Z} , m_1|m_2|\cdots|m_s
+\end{equation*}
+
+<p>
+?初等因子不变因子
+</p>
+
+<p>
+?中国剩余定理将它们分开
+</p>
+</div>
+</div>
+<div id="outline-container-orgd4e00d3" class="outline-4">
+<h4 id="orgd4e00d3"><span class="section-number-4">4.1.4.</span> 对称群</h4>
+<div class="outline-text-4" id="text-4-1-4">
+<p>
+什么样的是对称群： n 个元素的置换群
+</p>
+
+<p>
+(从运算表上可以轻易看出对称)
+</p>
+
+<p>
+从 Lagragrane 开始 Galios 非常重要
+</p>
+
+<p>
+大小－阶： \(|S_n|=n!\)
+</p>
+
+<p>
+不再是初等数论同余的群，
+和行列式（需要）相关的群。
+</p>
+</div>
+<div id="outline-container-org77fdf51" class="outline-5">
+<h5 id="org77fdf51"><span class="section-number-5">4.1.4.1.</span> 置换</h5>
+<div class="outline-text-5" id="text-4-1-4-1">
+<p>
+表达置换
+</p>
+\begin{gather*}
+\sigma =
+\begin{pmatrix}
+1&2&3&4&5&6&7&8\\
+8&3&4&2&6&5&1&7
+\end{pmatrix}
+\\
+\neq (8 3 4 2 6 5 1 7)
+\\
+= (187)(234)(56)
+\end{gather*}
+
+<p>
+两行式写成一行
+轮换式
+</p>
+
+
+<div id="org5df8b50" class="figure">
+<p><img src="抽象之路笔记/20240729110553.png" alt="20240729110553.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>举例 S<sub>3</sub></p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0a79e11" class="outline-5">
+<h5 id="org0a79e11"><span class="section-number-5">4.1.4.2.</span> 对称群 \(S_n\) 上的乘法</h5>
+<div class="outline-text-5" id="text-4-1-4-2">
+<p>
+为映射的集合（置换相当于一个操作——映射）
+</p>
+
+<p>
+查看结合
+</p>
+\begin{gather*}
+x_n={1,\cdots,n}\\
+\sigma: x_n\rightarrow x_n ,\sigma \in S_n\\
+\tau\sigma: x\overset{\sigma}{\rightarrow} x \overset{\tau}{\rightarrow} x\\
+\sigma\tau: x\overset{\tau}{\rightarrow} x \overset{\sigma}{\rightarrow} x
+\end{gather*}
+
+<p>
+(\(\sigma\) 为双射)
+</p>
+
+<p>
+映射的复合满足结合律，但不必然满足交换律
+如： \((13)(12)=(123)\neq(132)=(12)(13)\)
+</p>
+
+<p>
+只有1,2是交换群
+</p>
+</div>
+</div>
+<div id="outline-container-orgc26f5de" class="outline-5">
+<h5 id="orgc26f5de"><span class="section-number-5">4.1.4.3.</span> 对换</h5>
+<div class="outline-text-5" id="text-4-1-4-3">
+<p>
+\((ij)\) 表示对换： \(i\) 到 \(j\), \(j\) 到 \(i\)
+</p>
+
+<p>
+轮换变成对换：
+</p>
+\begin{equation*}
+(1\ 2\ 3\ \cdots\ n) = (1\ n)(1\ n-1)\cdots(1\ 2)
+\end{equation*}
+<p>
+变为了 \(n-1\) 对换的乘积
+</p>
+
+<p>
+任何一个置换是若干对换的乘积，组合的次数的奇偶性不变
+</p>
+
+<p>
+(关联行列式的奇偶交错定义)
+</p>
+
+<p>
+<span class="underline">所有偶置换集合</span> \(A_n\subset S_n\)
+称为 <b>交错群</b>
+</p>
+
+<p>
+大小 \(1/2 n!\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4f26c8f" class="outline-4">
+<h4 id="org4f26c8f"><span class="section-number-4">4.1.5.</span> 矩阵群</h4>
+<div class="outline-text-4" id="text-4-1-5">
+<p>
+称为典型群～一般线性群（行列式不为0,即可逆）、特殊线性群（行列式为1）；正交群、酉群、辛群
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org6b25816" class="outline-3">
+<h3 id="org6b25816"><span class="section-number-3">4.2.</span> 子群</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+符号表达： \(H\leq G\) (H 依然是个群) 对乘法和求逆封闭
+</p>
+
+<p>
+研究 \(g\in G\) 包含 g 的最小子群是 \(\{ 1,g,\cdots,g^{k-1}\}\)
+</p>
+
+<p>
+包含 g 也写作 a\(\left\langle g \right\rangle\) (g生成的群)。
+此时， 原来 g 的阶就是群 \(\left\langle g \right\rangle\) 的阶
+</p>
+
+<p>
+事实上，循环群只有两种（同构意义下），分别对应上面有限无限的整数和模剩余
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org97a1b03" class="outline-3">
+<h3 id="org97a1b03"><span class="section-number-3">4.3.</span> Lagrange 定理</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+子群的阶一定整除大群的阶
+(是大群阶的因子)
+\(\Rightarrow\) 元素的阶整除 G 的阶
+</p>
+
+<p>
+陪集（元素平移）说明
+</p>
+
+<div class="prove" id="org1ba4b3b">
+<p>
+证明思路：
+</p>
+
+<p>
+构造陪集证明——
+要么重合要么不相交
+</p>
+
+\begin{gather*}
+G=\bigcup_{a\in G}aH\\
+=a_1H \cdots a_s H
+\end{gather*}
+
+<p>
+\(|G|=s|H|\)
+</p>
+
+</div>
+
+
+<p>
+特殊情况
+</p>
+</div>
+
+<div id="outline-container-orgff6f388" class="outline-4">
+<h4 id="orgff6f388"><span class="section-number-4">4.3.1.</span> Fermat 小定理</h4>
+<div class="outline-text-4" id="text-4-3-1">
+\begin{gather*}
+a^p\equiv a \mod p \forall a\in \mathbb{Z}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-orga5be1de" class="outline-4">
+<h4 id="orga5be1de"><span class="section-number-4">4.3.2.</span> Euler 定理</h4>
+<div class="outline-text-4" id="text-4-3-2">
+\begin{gather*}
+a^{\phi(n)}
+\end{gather*}
+</div>
+</div>
+
+<div id="outline-container-org7a54bf8" class="outline-4">
+<h4 id="org7a54bf8"><span class="section-number-4">4.3.3.</span> 素数阶群</h4>
+<div class="outline-text-4" id="text-4-3-3">
+<p>
+素数阶群都是循环群（只有一种结构）
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbf65889" class="outline-3">
+<h3 id="orgbf65889"><span class="section-number-3">4.4.</span> 正规子群和商群</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+首先明确有陪集，陪集可以分左右
+</p>
+
+<p>
+何时，对所有 g 左右陪集相等？相等就是正规子群。
+</p>
+
+\begin{gather*}
+gH=Hg\\
+gN=Ng\\
+\forall a
+g^{-1}ag\in N
+\end{gather*}
+
+
+
+
+<p>
+商群
+利用正规子群划分大群
+</p>
+\begin{gather*}
+G/N =\left\{ gN:g\in G \right\}\\
+\bar{g}_1\bar{g}_2=\overline{g_1g_2}\\
+g_1Ng_1N=g_1g_2N
+\end{gather*}
+</div>
+
+
+<div id="outline-container-org5e88003" class="outline-4">
+<h4 id="org5e88003"><span class="section-number-4">4.4.1.</span> 如何比较两个群</h4>
+<div class="outline-text-4" id="text-4-4-1">
+<p>
+给出两者之间的映射，看这个映射的特点
+</p>
+
+
+<div id="orgc64af3f" class="figure">
+<p><img src="抽象之路笔记/20240729160652.png" alt="20240729160652.png" />
+</p>
+</div>
+
+<p>
+同态且是双射（既单又满）
+</p>
+
+<p>
+(略)同态基本定理
+</p>
+</div>
+</div>
+
+<div id="outline-container-org192d3c7" class="outline-4">
+<h4 id="org192d3c7"><span class="section-number-4">4.4.2.</span> 如何研究两个群</h4>
+<div class="outline-text-4" id="text-4-4-2">
+<p>
+有限群情况：
+</p>
+</div>
+
+<div id="outline-container-org5b1c066" class="outline-5">
+<h5 id="org5b1c066"><span class="section-number-5">4.4.2.1.</span> 可解群—— Galois</h5>
+<div class="outline-text-5" id="text-4-4-2-1">
+<p>
+如果可以拆出一串子列
+</p>
+\begin{equation*}
+1=G_0 \triangleleft G_1 \triangleleft \cdots \triangleleft G_n =G
+\end{equation*}
+<p>
+使得 \(G_{i+1}\triangleleft G_{i}\) 是 p 阶循环群
+称 G 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org51a594a" class="outline-5">
+<h5 id="org51a594a"><span class="section-number-5">4.4.2.2.</span> 单群</h5>
+<div class="outline-text-5" id="text-4-4-2-2">
+<p>
+(类似素数在数中)
+</p>
+
+<p>
+若 G 是 e 和 G 他唯一的正规子群。
+</p>
+
+<p>
+定理：
+\(n\geq 5\) \(A_n\) 是非交换单群
+</p>
+
+<p>
+又 \(A_n\triangleleft S_n\) 交错群是对称群子群
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org5db89c3"></a>有限单群分类定理<br />
+<div class="outline-text-6" id="text-4-4-2-2-1">
+<p>
+最重要发现在 60 年代取得
+</p>
+<ol class="org-ol">
+<li>\(\mathbb{Z}/p \mathbb{Z}\)</li>
+<li>交错群 \(A_n(n\geq5)\)</li>
+<li>典型群 4类</li>
+<li>散在单群 (1960-1980) 最大即魔群</li>
+</ol>
+
+<p>
+定理证明了有限定理只有这些
+</p>
+
+<p>
+约2004/2005 出版最后的书，可是全部论文没有完全整理出来，老人之后没有新鲜血液
+</p>
+
+<hr />
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org47dc7f6" class="outline-2">
+<h2 id="org47dc7f6"><span class="section-number-2">5.</span> 域的理论</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+field
+</p>
+
+<p>
+一个更熟悉的结构——更完整限制更好的存在
+</p>
+
+<p>
+\((F,+,-,\times,|)\)
+</p>
+
+<p>
+正统数论基于有理数域讨论
+</p>
+
+<p>
+域至少两个元素 0,1
+(一个元素的域)
+</p>
+
+<p>
+线性代数是基于域的
+（有理数的有限扩域）
+</p>
+</div>
+
+<div id="outline-container-orgbaa7ac1" class="outline-3">
+<h3 id="orgbaa7ac1"><span class="section-number-3">5.1.</span> 域扩张</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+\(F\subset E\) 中间 0,1 是同样的
+， E 是 F 的扩域。
+可以有乘法…
+定义
+\([E:F]:= \text{dim}_{F}E\)
+</p>
+
+<p>
+定理
+\(F\subset E\subset K\Rightarrow [K:F]=[K:E][E:F]\)
+</p>
+
+<p>
+证明思路：
+<img src="抽象之路笔记/20240729162241.png" alt="20240729162241.png" />
+</p>
+
+<p>
+<del>有趣的例子：</del>
+</p>
+
+<p>
+化零多项式
+</p>
+
+
+<div id="orgf6c12ab" class="figure">
+<p><img src="抽象之路笔记/20240729162614.png" alt="20240729162614.png" />
+</p>
+</div>
+
+<hr />
+<p>
+<a href="https://www.bilibili.com/video/BV1zS4y1b7es">《抽象之路》| 代数与数论系列短课程IV</a>
+</p>
+
+<p>
+代数数、超越数
+</p>
+</div>
+</div>
+
+<div id="outline-container-org52d430c" class="outline-3">
+<h3 id="org52d430c"><span class="section-number-3">5.2.</span> 尺规作图问题</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+直尺：没有刻度；
+圆规。
+</p>
+
+<p>
+给定原点和另一点 相当于 (1,0) 可以得到哪些点
+</p>
+
+<p>
+光从几何上分析是困难的，不过首先要明白可以实现什么样的操作：
+</p>
+
+<p>
+可以操作
+</p>
+
+<p>
+做出的点集合
+F 是一个域，
+且 \(\mathbb{Q}\subset F \subset \mathbb{R}\)
+新的点如何来
+</p>
+
+<p>
+有限步－每一步得到一个（新的）域
+</p>
+
+<p>
+画圆：开根号
+</p>
+
+<p>
+新的域
+</p>
+\begin{equation*}
+L'=
+\begin{cases}
+L\\
+L(\sqrt{\Delta})
+\end{cases}
+\end{equation*}
+
+<p>
+当且仅当必要条件
+</p>
+
+<p>
+2
+</p>
+
+<p>
+三大问题
+</p>
+
+<p>
+高斯定理
+</p>
+
+<p>
+费马素数
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org594c225" class="outline-3">
+<h3 id="org594c225"><span class="section-number-3">5.3.</span> Gal 扩张</h3>
+</div>
+</div>
+
+<div id="outline-container-org9a3a249" class="outline-2">
+<h2 id="org9a3a249"><span class="section-number-2">6.</span> 环</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+内容包含平方和、 Gauss 素数
+</p>
+
+\begin{equation*}
+n=a^2+b^2=(a+b \mathrm{i})(a-b \mathrm{i})
+\end{equation*}
+
+<ol class="org-ol">
+<li>可逆元</li>
+<li>素元</li>
+<li>不可约元</li>
+</ol>
+
+<p>
+定义一个绝对值、模
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+老师讲的时候直接手写，很清晰，这里希望文档把这个作成一个近乎讲义可以直接看得学的内容
+</p></div></div>
+
+
+</div>
+</div></main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

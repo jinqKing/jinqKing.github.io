@@ -1,0 +1,48 @@
+body {
+    color: #000;
+    background-color: #fff
+    
+    
+    font-size: 14px;
+    line-height: 1.4em;
+    font-family: Georgia,serif;
+    color: #333; 
+
+    margin: 2% auto;
+    width: 95%;
+
+}
+#content {
+    margin-left: 15%;
+    width: 90%;
+    /* margin:auto; */
+    
+    max-width: 1000px;
+    z-index: 2;
+    
+}
+.rotating-background {
+            position: fixed;
+            top: 20%;
+            left: 25%;
+        /* margin: auto; */
+            width: 40%;
+	    max-width=750px;min-width=100px;
+            height: 50%;
+	    max-height=750px;min-height=100px;
+            background-image: url('/pic/sunbird.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            opacity: 0.2;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
