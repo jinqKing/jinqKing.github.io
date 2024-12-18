@@ -55,7 +55,8 @@ nav {
     width: 18%;
     right: 1%;
     top: 2%;
-    max-height: 90%;
+    /* max-height: 90%; */
+    /* resize:both; */
     overflow: auto;
     transform: scale(80%);
     background: #e5e5e5;
@@ -243,7 +244,24 @@ label.footref {
     max-height: 500px; /* 展开时的最大高度，设置为适合内容的值 */	    
 }
 
-
+.exercise{
+    border: 1px dashed #ed3434;
+    /* font-weight: bold; */
+    padding: 10px;
+    background-color: #fff0f0;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    margin: 5px 0;
+}
+.solution{
+    border: 1px dashed #d9f1ff;
+    /* font-weight: bold; */
+    padding: 10px;
+    background-color: #f0f8ff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    margin: 5px 0;
+}
 /* article,aside,details,figcaption,figure,footer,header,main,menu,section,summary { */
 /*     display: block */
 /* } */
