@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-18 Wed 14:13 -->
+<!-- 2024-12-18 Wed 17:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>原子物理整理*</title>
@@ -55,7 +55,7 @@
 </head>
 <body>
 <header id="preamble" class="status">
-<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-17 Tue 14:40 | 凝墨 Modified: 2024-12-17 Tue 15:54 </p>
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-17 Tue 14:40 | 凝墨 Modified: 2024-12-18 Wed 17:19 </p>
 </header>
 <main id="content" class="content">
 <h1 class="title">原子物理整理*
@@ -83,7 +83,7 @@
 <li><a href="#orgb879e97">1.1.2. 有限位能井</a></li>
 </ul>
 </li>
-<li><a href="#org446a5fb">1.2. </a>
+<li><a href="#org190df35">1.2. 多电子</a>
 <ul>
 <li><a href="#org66cdd0e">1.2.1. 隧道传</a></li>
 <li><a href="#org73bdd7b">1.2.2. 自旋</a></li>
@@ -98,6 +98,8 @@
 <ul>
 <li><a href="#org3e96bf2">2.1. comloub rutherford 代入</a></li>
 <li><a href="#org0a47c19">2.2. 光电、Bohr 、光谱</a></li>
+<li><a href="#orgcbc62cd">2.3. 自旋</a></li>
+<li><a href="#org8a4111c">2.4. LSJ</a></li>
 </ul>
 </li>
 </ul>
@@ -105,9 +107,11 @@
 </div>
 <div class="org-center">
 <p>
-<b>31日考试</b>
+<b>31日考试</b> L1-311
 </p>
 </div>
+<div class="ExamCountdown" data-target="2024-12-31T14:30:00">00天 00小时 00分钟 00秒</div>
+
 \begin{gather*}
 \lambda=\frac{h}{p}\\
 \hbar=\frac{h}{2\pi}
@@ -166,6 +170,7 @@ b=\frac{a}{2}\cot \frac{\theta}{2},a=\frac{1}{4\pi\epsilon_0}\frac{Z_1Z_2e^2}{E_
 </p>
 </div>
 </div>
+
 <div id="outline-container-org2a630b0" class="outline-4">
 <h4 id="org2a630b0"><span class="section-number-4">1.0.4.</span> 光谱公式</h4>
 <div class="outline-text-4" id="text-1-0-4">
@@ -235,8 +240,8 @@ E_n=\frac{n^2h^2}{8md^2}
 </div>
 </div>
 </div>
-<div id="outline-container-org446a5fb" class="outline-3">
-<h3 id="org446a5fb"><span class="section-number-3">1.2.</span> </h3>
+<div id="outline-container-org190df35" class="outline-3">
+<h3 id="org190df35"><span class="section-number-3">1.2.</span> 多电子</h3>
 <div class="outline-text-3" id="text-1-2">
 </div>
 <div id="outline-container-org66cdd0e" class="outline-4">
@@ -245,6 +250,7 @@ E_n=\frac{n^2h^2}{8md^2}
 <div id="outline-container-org73bdd7b" class="outline-4">
 <h4 id="org73bdd7b"><span class="section-number-4">1.2.2.</span> 自旋</h4>
 </div>
+
 <div id="outline-container-org94e48dd" class="outline-4">
 <h4 id="org94e48dd"><span class="section-number-4">1.2.3.</span> SG 实验</h4>
 <div class="outline-text-4" id="text-1-2-3">
@@ -257,7 +263,8 @@ z=\mu_z \frac{\partial B_z}{\partial z}\frac{\mathrm{d}D}{3kT}
 <h4 id="orgdb796fe"><span class="section-number-4">1.2.4.</span> 角动量</h4>
 <div class="outline-text-4" id="text-1-2-4">
 \begin{gather*}
-L=\sqrt{l(l+1)}h
+L=\sqrt{l(l+1)}\hbar;S=\sqrt{s(s+1)}\hbar;J=\sqrt{j(j+1)}\hbar\\
+g=
 \end{gather*}
 </div>
 </div>
@@ -309,6 +316,31 @@ Frank hertz
 </div>
 <div id="outline-container-org0a47c19" class="outline-3">
 <h3 id="org0a47c19"><span class="section-number-3">2.2.</span> 光电、Bohr 、光谱</h3>
+</div>
+<div id="outline-container-orgcbc62cd" class="outline-3">
+<h3 id="orgcbc62cd"><span class="section-number-3">2.3.</span> 自旋</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="exercise" id="orgb255209">
+<blockquote>
+<p>
+4.5
+</p>
+</blockquote>
+<p>
+在施特恩-格拉赫实验中（图19.1），不均匀横向磁场梯度为 \(\frac{\partial B_z}{\partial z}=5.0 \, \text{T/cm}\)，磁极的纵向范围 \(d=10 \, \text{cm}\)，磁极中心到屏的距离 \(D=30 \, \text{cm}\)，使用的原子束是处于基态 \(^{4}\text{F}_{3/2}\) 的钒原子，原子的动能 \(E_k=50 \, \text{MeV}\)。试求屏上线束边缘成分之间的距离。
+</p>
+
+</div>
+<div class="solution" id="org1522d09">
+<p>
+
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org8a4111c" class="outline-3">
+<h3 id="org8a4111c"><span class="section-number-3">2.4.</span> LSJ</h3>
 </div>
 </div>
 </main>

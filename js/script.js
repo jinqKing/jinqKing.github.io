@@ -67,6 +67,30 @@ function collapsePreAddHead(){
         });
 }
 
+function updateCountdown() {
+    // 获取目标日期（从data-target属性中读取）
+    const countdownElement = document.querySelector('.ExamCountdown');
+    const targetDate = new Date(countdownElement.getAttribute('data-target')).getTime();
+    const now = new Date().getTime();
+    const timeLeft = targetDate - now;
+    // 计算剩余时间的天数、小时、分钟、秒
+    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+    // 格式化时间，确保为两位数显示
+    const formattedTime = `倒计时${days}天 ${String(hours).padStart(2, '0')}小时 ${String(minutes).padStart(2, '0')}分钟 ${String(seconds).padStart(2, '0')}秒`;
+    countdownElement.textContent = formattedTime;
+    // 如果时间结束，停止更新
+    if (timeLeft <= 0) {
+        clearInterval(countdownInterval);
+        countdownElement.textContent = "倒计时结束";
+    }
+}
+// 每秒更新一次倒计时
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+
 document.addEventListener("DOMContentLoaded", function() {
     tocBasicDisplay();
     collapsePreAddHead();
