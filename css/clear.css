@@ -55,24 +55,25 @@ nav {
     width: 18%;
     right: 1%;
     top: 2%;
-    /* max-height: 90%; */
-    /* resize:both; */
-    overflow: auto;
-    transform: scale(80%);
+    max-height: 90%; /* Ensure it has a max height */
+    overflow-y: auto; /* Vertical scrolling */
     background: #e5e5e5;
     transition: width 0.4s ease-in-out, text-align 0.4s ease-in-out;
     white-space: nowrap;
     z-index: 100;
 }
+
 #text-table-of-contents {
     display: none;
 }
+
 @media screen and (min-width: 780px) {
-    #text-table-of-contents{
-	display: block;
+    #text-table-of-contents {
+        display: block;
     }
+
     .toc-marker {
-	display: block;
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
@@ -80,48 +81,128 @@ nav {
         height: 100%;
         z-index: -1;
     }
-  #table-of-contents {
-      h2 {
-	  display: none;         
-      }
-      ul {
-	  list-style: none;
-      }
-      ul ul {
-	  padding-inline-start: 20px;
-      }
-      li a {
-	  padding: 1px;
-	  display: inline-block;
-	  color: #1f2328;
-	  text-decoration: none;
-	  transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000);
-      }
-      li.visible > a {
-	  color: #111;
-	  transform: translate( 5px );
-      }
-  }
-  path {
-      transition: all 0.3s ease;
-  }
+
+    #table-of-contents {
+        h2 {
+            display: none;         
+        }
+
+        /* ul { */
+        /*     list-style: none; */
+        /* } */
+
+        ul ul {
+            padding-inline-start: 20px;
+        }
+
+        li a {
+            padding: 1px;
+            display: inline-block;
+            color: #1f2328;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000);
+        }
+
+        li.visible > a {
+            color: #111;
+            transform: translate(5px);
+        }
+
+	a:hover {
+	    background-color: #a2d7f6;
+	}
+    }
+
+    path {
+        transition: all 0.3s ease;
+    }
 }
-/* 在媒体查询中简化样式 */
+
 @media (max-width: 768px) {
     #table-of-contents {
         width: 10%;
         left: 1%;
-        /* top: 0; */
-        right: auto;
-        /* max-height: 100%; */
-        /* transform: scale(100%); */
         font-size: 8pt;
-	h2{
-            white-space: normal;
-	}
     }
 
+    h2 {
+        white-space: normal;
+    }
 }
+
+/* #table-of-contents { */
+/*     font-size: 16pt; */
+/*     position: fixed; */
+/*     width: 18%; */
+/*     right: 1%; */
+/*     top: 2%; */
+/*     /\* max-height: 90%; *\/ */
+/*     /\* resize:both; *\/ */
+/*     overflow: auto; */
+/*     transform: scale(80%); */
+/*     background: #e5e5e5; */
+/*     transition: width 0.4s ease-in-out, text-align 0.4s ease-in-out; */
+/*     white-space: nowrap; */
+/*     z-index: 100; */
+/* } */
+/* #text-table-of-contents { */
+/*     display: none; */
+/* } */
+/* @media screen and (min-width: 780px) { */
+/*     #text-table-of-contents{ */
+/* 	display: block; */
+/*     } */
+/*     .toc-marker { */
+/* 	display: block; */
+/*         position: absolute; */
+/*         top: 0; */
+/*         left: 0; */
+/*         width: 100%; */
+/*         height: 100%; */
+/*         z-index: -1; */
+/*     } */
+/*   #table-of-contents { */
+/*       h2 { */
+/* 	  display: none;          */
+/*       } */
+/*       ul { */
+/* 	  list-style: none; */
+/*       } */
+/*       ul ul { */
+/* 	  padding-inline-start: 20px; */
+/*       } */
+/*       li a { */
+/* 	  padding: 1px; */
+/* 	  display: inline-block; */
+/* 	  color: #1f2328; */
+/* 	  text-decoration: none; */
+/* 	  transition: all 0.3s cubic-bezier(0.230, 1.000, 0.320, 1.000); */
+/*       } */
+/*       li.visible > a { */
+/* 	  color: #111; */
+/* 	  transform: translate( 5px ); */
+/*       } */
+/*   } */
+/*   path { */
+/*       transition: all 0.3s ease; */
+/*   } */
+/* } */
+/* /\* 在媒体查询中简化样式 *\/ */
+/* @media (max-width: 768px) { */
+/*     #table-of-contents { */
+/*         width: 10%; */
+/*         left: 1%; */
+/*         /\* top: 0; *\/ */
+/*         right: auto; */
+/*         /\* max-height: 100%; *\/ */
+/*         /\* transform: scale(100%); *\/ */
+/*         font-size: 8pt; */
+/* 	h2{ */
+/*             white-space: normal; */
+/* 	} */
+/*     } */
+/* } */
+
 /* <2024-08-27 19:51 Tue> about.org */
 @keyframes flip {
     0% { transform: scaleX(1); }
@@ -149,11 +230,11 @@ pre.example {
 
 /* <2024-08-27 19:51 Tue> */
 img {
-    vertical-align: middle
-    border-style: none
+    vertical-align: middle;
+    box-shadow: 1px 1px 5px rgb(0,0,0,.5);
     display:block;
     margin:auto;
-    max-width: 100%;
+    max-width: 100%;   
 }
 
 /* <2024-09-09 22:35 Mon> */
@@ -216,15 +297,44 @@ label.footref {
     font-family: fangsong, sans-serif; 
 }
 
-.collapsible-container {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
+.ExamCountdown{
+    position:sticky;top:0;
+    font-weight:bold;
+    text-align: center;
+    border: 3px dotted #97c79782;
+    background-color:blanchedalmond;
+    
+    /* display: inline-block; */
+    font-size: 1.5rem;  
+    color: #444;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.ExamCountdown:hover {
+    background-color:palevioletred;
+    color: lightyellow;
+    transform: scale(1.1);
+    box-shadow: 100px 60px 80px rgba(0, 0, 0, 0.2);
+    animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
 .collapsible-header {
-    position: sticky;top:0;
+    position: sticky; /* 或 static，根据需求调整 */
+    top: 0;
     background-color: #f1f1f1;
     padding: 8px;
     cursor: pointer;
@@ -235,13 +345,28 @@ label.footref {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
-    max-height: 5em; /* 初始状态折叠 */
-    overflow: auto;
+    overflow: visible;
+    transition: max-height 0.3s ease; /* 平滑过渡动画 */
+}
+
+.collapsible-content {
+    max-height: 5em; /* 初始折叠状态 */
+    overflow: hidden;
     transition: max-height 0.3s ease;
 }
 
+.collapsible.show .collapsible-content {
+    max-height: 1000px; /* 设置一个足够大的值或动态调整 */
+}
+.collapsible-header:hover {
+    background-color: #e1e1e1;
+}
+.collapsible-header:active {
+    background-color: #d1d1d1;
+}
+
 .collapsible.show {
-    max-height: 500px; /* 展开时的最大高度，设置为适合内容的值 */	    
+    max-height: none; /* 展开时的最大高度 */	 
 }
 
 .exercise{

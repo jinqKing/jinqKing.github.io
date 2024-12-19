@@ -37,7 +37,6 @@ function tocBasicDisplay(){
     if (window.matchMedia("(max-width: 780px)").matches) {
     const toc = document.getElementById('table-of-contents');
     const textToc = document.getElementById('text-table-of-contents');
-
     toc.addEventListener('click', function() {
         if (textToc.style.display === 'block') {
             textToc.style.display = 'none';
@@ -51,21 +50,55 @@ function tocBasicDisplay(){
     })}
 }
 
-function collapsePreAddHead(){
+function collapsePreAddHead() {
     const containers = document.querySelectorAll('.collapsible');
-        containers.forEach(container => {
+    containers.forEach(container => {
+        // 检查是否已添加 header，避免重复添加
+        if (!container.querySelector('.collapsible-header')) {
             // 创建并添加折叠按钮
             const header = document.createElement('div');
             header.className = 'collapsible-header';
-            header.textContent = '点击展开/折叠 Expand/Collapse';            
+            header.textContent = '点击展开/折叠 Expand/Collapse';
             container.insertBefore(header, container.firstChild);
-            // 处理按钮点击事件
-            header.addEventListener('click', function() {
-                const content = container.querySelector('.collapsible-content');
-                container.classList.toggle('show');
-            });
+        }
+        // 确保内容被包裹在 .collapsible-content 中
+        let content = container.querySelector('.collapsible-content');
+        if (!content) {
+            content = document.createElement('div');
+            content.className = 'collapsible-content';
+            while (container.childNodes.length > 1) {
+                content.appendChild(container.childNodes[1]); // 移动所有子节点到 content 中
+            }
+            container.appendChild(content);
+        }
+        // 设置点击事件
+        const header = container.querySelector('.collapsible-header');
+        header.addEventListener('click', function () {
+            const isOpen = container.classList.toggle('show');
+            if (isOpen) {
+                content.style.maxHeight = content.scrollHeight + 'px'; // 展开
+            } else {
+                content.style.maxHeight = null; // 折叠
+            }
         });
+    });
 }
+
+//  function collapsePreAddHead(){
+//     const containers = document.querySelectorAll('.collapsible');
+//         containers.forEach(container => {
+//             // 创建并添加折叠按钮
+//             const header = document.createElement('div');
+//             header.className = 'collapsible-header';
+//             header.textContent = '点击展开/折叠 Expand/Collapse';            
+//             container.insertBefore(header, container.firstChild);
+//             // 处理按钮点击事件
+//             header.addEventListener('click', function() {
+//                 const content = container.querySelector('.collapsible-content');
+//                 container.classList.toggle('show');
+//             });
+//         });
+// }
 
 function updateCountdown() {
     // 获取目标日期（从data-target属性中读取）
@@ -92,13 +125,13 @@ const countdownInterval = setInterval(updateCountdown, 1000);
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    tocBasicDisplay();
+    // tocBasicDisplay();
     collapsePreAddHead();
     
-    var typed = new Typed('.title', {
-	stringsElement: '#typed-strings',
-	typeSpeed: 60
-    });
+    // var typed = new Typed('.title', {
+    // 	stringsElement: '#typed-strings',
+    // 	typeSpeed: 60
+    // });
 
     addSidenotes();
 });
