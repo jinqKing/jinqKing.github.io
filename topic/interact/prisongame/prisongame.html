@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反复囚徒困境模拟小游戏</title>
+    <link rel="stylesheet" href="prisongame.css">
+    <link rel="stylesheet" href="node_modules/codemirror6/lib/codemirror.css">
+    <script src="node_modules/codemirror6/lib/codemirror.js"></script>
+</head>
+
+<body>
+    
+    <div class="header-filter">
+        <h1>反复囚徒困境模拟小游戏</h1>
+    </div>
+
+    <div id="introduction">
+        <p>囚徒困境是经典的博弈案例，用这个简单模型反复玩会发生什么呢？</p>
+        <p>这是一个简单的模拟小游戏，你可以选择合作或者背叛，看看你的选择会带来什么结果。</p>
+
+    </div>
+    <div id="setting-scores">
+        <p>共有4个参数值得注意：</p>
+        <div>
+            <label for="CooperateCooperate">合作合作：</label>
+            <input type="number" id="CooperateCooperate" value="3">
+        </div>
+        <div>
+            <label>背叛|合作：</label>
+            <input type="number" id="DefectCooperate" value="5">
+            <input type="number" id="CooperateDefect" value="1">
+        </div>
+        <div>
+            <label for="DefectDefect">同时背叛：</label>
+            <input type="number" id="DefectDefect" value="0">
+        </div>
+        <button id="loadParamsBut">载入</button><button id="restoreParamsBut">重置</button>
+    </div>
+    <div>
+        <p>得分结果规则如下表格所示</p>
+        <table id="scoreTable">
+            <thead>
+                <tr>
+                    <th>甲/乙</th>
+                    <th>合作</th>
+                    <th>背叛</th>
+                </tr>
+            </thead>
+            <tbody id="score-table">
+                <tr>
+                    <td>合作</td>
+                    <td>(3,3)</td>
+                    <td>(0,5)</td>
+                </tr>
+                <tr>
+                    <td>背叛</td>
+                    <td>(5,0)</td>
+                    <td>(1,1)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button id="showSingleGameBut">展开</button>
+    <div id="single-game-fun" class="hidden">
+        <div id="player1">
+            <p>A</p>
+            <button id="player1-cooperate" class="input-choose">合作</button>
+            <button id="player1-defect" class="input-choose">背叛</button>
+        </div>
+        <div id="player2">
+            <p>B</p>
+            <input type="checkbox" name="player2" id="player2Bcomputer" checked="checked">
+            <label for="player2Bcomputer">电脑控制</label>
+            <div>
+                <button id="player2-cooperate">合作</button>
+                <button id="player2-defect">背叛</button>
+            </div>
+        </div>
+        <div id="result">
+            <p>结果</p>
+            <p id="result-text"></p>
+        </div>
+    </div>
+
+    <!-- 多轮 -->
+    <div id="block-multi-game">
+        <div id="multi-game-intro-text" class="text">
+            <h2>反复多轮囚徒困境</h2>
+            <p>在这个模式下，你可以选择多轮游戏，看看你的选择会带来什么结果。之前的结果将作为考虑的一部分</p>
+        </div>
+
+        <input type="number" id="multi-game-rounds" value="20"><label for="multi-game-rounds">轮</label>
+
+        <div id="multi-game-strategies" data-drop="move">
+            <div id="block-of-AlwaysCooperate" data-effect="copy" draggable="true" class="strategy"
+                ondragstart="handleDragStart(event)" strategy="AlwaysCooperate">
+                <p>永远合作 Always Cooperate</p>
+                <p>介绍：永远选择合作</p>
+                <p>代码逻辑：永远合作</p>
+            </div>
+            <div id="block-of-AlwaysDefect" data-effect="copy" draggable="true" class="strategy"
+                strategy="AlwaysDefect">
+                <p>永远背叛 Always Defect</p>
+                <p>介绍：永远选择背叛</p>
+                <p>代码逻辑：永远背叛</p>
+            </div>
+            <div id="block-of-Random" data-effect="copy" draggable="true" class="strategy" strategy="RandomChoice">
+                <p>随机 Random</p>
+                <p>介绍：随机选择合作/背叛</p>
+                <p>代码逻辑：随机选择合作/背叛，默认0.5</p>
+            </div>
+            <div id="block-of-TFT" data-effect="copy" draggable="true" class="strategy" strategy="TitForTat">
+                <p>一报还一报 Tit For Tat</p>
+                <p>介绍：
+                    首先选择合作；若对方合作，将继续合作
+                    当对方背叛，下一次也将背叛。
+                </p>
+                <p>代码逻辑：首先合作；之后同步对方上一次行为</p>
+            </div>
+            <div id="block-of-selfdefine" data-effect="copy" draggable="true" class="strategy" strategy="selfdefine">
+                <label for="input-strategy-name">自定义策略/暂未开通</label><input type="text" id="input-strategy-name" name="name">
+                <!-- <label for="input-strategy-code">策略代码</label> -->
+                <!-- <input id="input-strategy-code" -->
+                <textarea id="input-strategy-code" rows="10" cols="20" placeholder="if (historyActions.length === 0) {
+                    return 1;
+                } else {
+                    return historyActions[historyActions.length - 1][1 - myindex];
+                }"></textarea>
+                <script>
+                    var editor = CodeMirror.fromTextArea(document.getElementById('input-strategy-code'), {
+                        mode: "text/javascript",
+                        lineNumbers: true
+                    });
+                </script>
+            </div>
+        </div>
+        <div><button id="refresh-strategies">刷新</button></div>
+        <!-- 下面是选择双方策略，给两个框，可以拖拽上面的策略 -->
+        <div id="playground">
+            <div id="strategies-choosen-div">
+                <div id="multi-player1-strategy" class="strategy-inputbox" data-drop="copy">
+                        <p><strong>甲的策略</strong></p>
+                        <select id="select-multi-player1-strategy">
+                        </select>
+                </div>
+                <div id="multi-player2-strategy" class="strategy-inputbox" data-drop="copy">
+                    <p><strong>乙的策略</strong></p>
+                    <select id="select-multi-player2-strategy">
+                    </select>
+                </div>
+            </div>
+            <button id="multi-game-start">开始</button>
+            <div id="multi-game-results">
+                <p>结果：</p>
+                <div id="displayArea"></div>
+                <div id="buttonArea"></div>
+                <!-- <div -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="prisongame.js"></script>
+
+</body>
+
+</html>

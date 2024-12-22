@@ -1,0 +1,2072 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-12-23 Mon 00:00 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>电动力学整理*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-16 Mon 11:44 | 凝墨 Modified: 2024-12-22 Sun 23:54 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">电动力学整理*
+<br />
+<span class="subtitle">迎战小恶魔</span>
+</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgc333de6">考试预判</a>
+<ul>
+<li><a href="#org4086398">可能不给但考的公式</a></li>
+</ul>
+</li>
+<li><a href="#orgecd809b">矢量分析</a>
+<ul>
+<li><a href="#org9b52461">场论微积分公式——换开为闭</a></li>
+<li><a href="#orgd590629"><span class="done DONE">DONE</span> 曲线坐标系——换系</a></li>
+<li><a href="#org40b114d">Dirac 函数——描述奇点积分工具</a></li>
+<li><a href="#org85c422f">公式表手册</a></li>
+<li><a href="#org5d7e6ee">中文书简单题</a></li>
+</ul>
+</li>
+<li><a href="#orgc902290">电磁基本量</a>
+<ul>
+<li><a href="#orgd8a08b2">中文书</a></li>
+</ul>
+</li>
+<li><a href="#orgf2b9e3f">Laplace 方程解法</a>
+<ul>
+<li><a href="#org2445f68">案例试炼</a></li>
+<li><a href="#orgab1b738">一些形式</a></li>
+</ul>
+</li>
+<li><a href="#org3d8b323"><span class="todo TODO">TODO</span> 光波传导</a>
+<ul>
+<li><a href="#org3a1b4af">电动力学中的波传播</a>
+<ul>
+<li><a href="#orgf39d42d">波动方程</a></li>
+<li><a href="#orgfca4090">跨介质边界条件</a></li>
+<li><a href="#org89a11d0">折射率虚部</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org765a2ce">相对论</a>
+<ul>
+<li><a href="#orgdd83bdb">变化（38/54）</a></li>
+</ul>
+</li>
+<li><a href="#org22c6957">作业解析</a>
+<ul>
+<li><a href="#orgcccdb7d">Hw1</a>
+<ul>
+<li><a href="#orgef9b0da">1.13</a></li>
+<li><a href="#org3905d34">1.49</a></li>
+<li><a href="#org1b76b28">1.53</a></li>
+<li><a href="#org5d0bc75">1.54</a></li>
+<li><a href="#org31a54cc">1.60</a></li>
+<li><a href="#orgdc7fcf5">1.61</a></li>
+<li><a href="#org9eeea0d">1.62</a></li>
+</ul>
+</li>
+<li><a href="#orgd789e83">Hw2</a>
+<ul>
+<li><a href="#orge3e0133">Problem 1: Electric Field in Spherical Coordinates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#orgde0fe97">Problem 2: Vector Potential and Magnetic Field in Cylindrical Coordinates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#orgd945ddd">? Problem 3: Electric Field in the Overlapping Region of Two Spheres</a></li>
+<li><a href="#orge6e6fbf">Problem 4: Electric Field, Charge Density, and Total Charge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
+<li><a href="#org4812e89"><span class="todo TODO">TODO</span> Problem 5: Magnetic Field of a Circular Current Loop</a></li>
+<li><a href="#org2230b11"><span class="todo TODO">TODO</span> Problem 6: Magnetic Field from a Finite Straight Current-Carrying Wire</a></li>
+</ul>
+</li>
+<li><a href="#org10e9e45">Hw3</a>
+<ul>
+<li><a href="#org1e7462b">Problem 1: Prove the Mean Value Theorem for the 2D Laplace Equation:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></a></li>
+<li><a href="#org56267b1">Problem 2: Image Charge Problem for a Point Charge Inside a Spherical Conducting Shell:</a></li>
+<li><a href="#org3f672bb">Problem 3: Fourier Transform of Dirac Delta Function and Heaviside Step Function:</a></li>
+<li><a href="#orgdd5ad43">Problem 4: Potential Distribution Inside a Cube:</a></li>
+<li><a href="#org81ad138">Problem 5: Potential and Surface Charge Distribution for a Sphere with Surface Potential:</a></li>
+<li><a href="#org291a994">Problem 6: Dipole Moment of a Sphere with Surface Charge Density:</a></li>
+</ul>
+</li>
+<li><a href="#orgdd9438b">Hw4</a>
+<ul>
+<li><a href="#org0a440aa">Problem 1: Electric Dipole Moment of a Charge Configuration</a></li>
+<li><a href="#orgb5c3809">Problem 2: Magnetic Dipole Moment of a Surface Current on a Sphere</a></li>
+<li><a href="#org4a4fd57">Problem 3: Energy Stored in a Spherical Capacitor</a></li>
+<li><a href="#org8b923bf"><span class="todo TODO">TODO</span> Problem 4: Dielectric Sphere in a Uniform External Electric Field</a></li>
+</ul>
+</li>
+<li><a href="#orgffe0912">Hw5</a>
+<ul>
+<li><a href="#org264cf08">Problem 1: Magnetic Flux and Induced EMF in a Rectangular Loop Near a Long Straight Current-Carrying Wire</a></li>
+<li><a href="#orgb1a0207">Problem 2: Mutual Inductance of a Small Loop Above a Large Loop</a></li>
+<li><a href="#org6a3ba57">Problem 3: RLC Circuit</a></li>
+<li><a href="#orgd84a4a7">Problem 4: Poynting Vector in a Vibrating Parallel Plate Capacitor</a></li>
+<li><a href="#orga4b9ade">Problem 5: Reflection and Transmission of a Plane Wave on a Dielectric Film</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="ExamCountdown" data-target="2025-01-07T09:00:00">00天 00小时 00分钟 00秒</div>
+<div class="org-center">
+<p class="verse">
+…持续更新中…<br />
+<i>发现错误请私我，会非常感谢你</i><br />
+PDF: <a href="electrodynamicSummary.pdf">文件不一定最新</a><br />
+答案还在校对，部分是AI直出<br />
+目录很方便 -&gt;<br />
+</p>
+</div>
+
+<div id="outline-container-orgc333de6" class="outline-2">
+<h2 id="orgc333de6">考试预判</h2>
+<div class="outline-text-2" id="text-orgc333de6">
+<ul class="org-ul">
+<li>电场</li>
+<li>磁场</li>
+<li>Laplace</li>
+<li>(传播)</li>
+<li>能量能流</li>
+<li>相对论</li>
+</ul>
+</div>
+
+<div id="outline-container-org4086398" class="outline-3">
+<h3 id="org4086398">可能不给但考的公式</h3>
+<div class="outline-text-3" id="text-org4086398">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Maxwell</td>
+<td class="org-left"><i>无需多言</i></td>
+<td class="org-left">\(\nabla\cdot E=\frac{\rho}{\epsilon}\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">\(\nabla\times E=-\frac{\partial B}{\partial t}\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">\(\nabla\cdot B=0\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">\(\nabla\times B=\mu J+\epsilon \frac{\partial E}{\partial t}\)</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="org-left">BS 公式</td>
+<td class="org-left">位置电流算磁场</td>
+<td class="org-left">\(\mathrm{d}\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I \mathrm{d}\mathbf{l} \times \hat{\mathbf{r}}}{r^2}\)</td>
+<td class="org-left"><a href="#org4812e89">作业</a></td>
+</tr>
+
+<tr>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+
+\begin{gather*}
+p:=qr\\
+p=\int \sigma r \mathrm{d}S\\
+\sigma = -\epsilon \left( \frac{\phi_{e}}{r}-\frac{\partial \phi_{i}}{\partial r} \right)_{r=R}
+\end{gather*}
+</div>
+</div>
+</div>
+<div id="outline-container-orgecd809b" class="outline-2">
+<h2 id="orgecd809b">矢量分析</h2>
+<div class="outline-text-2" id="text-orgecd809b">
+<p>
+矢量运算：加减法略、点乘对应乘（在直角坐标系下）、叉乘行列式算
+</p>
+
+<p>
+微分算符号 \(\nabla\) 与名词辨析：
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">梯度</td>
+<td class="org-left">gradient</td>
+<td class="org-left">\(\nabla f\)</td>
+<td class="org-left">作用标量得矢量</td>
+<td class="org-left">\(=(\partial_{x}f_x,\partial_{y}f'_y,\partial_{z}f'_z)\)</td>
+</tr>
+
+<tr>
+<td class="org-left">散度</td>
+<td class="org-left">divergence</td>
+<td class="org-left">\(\nabla \cdot \vec{A}\)</td>
+<td class="org-left">作用矢量得标量</td>
+<td class="org-left">\(=\partial_{x}A_x+\partial_{y}A'_{y}+\partial_{z}A'_{y}\)</td>
+</tr>
+
+<tr>
+<td class="org-left">旋度</td>
+<td class="org-left">curl</td>
+<td class="org-left">\(\nabla \times \vec{A}\)</td>
+<td class="org-left">作用矢量得矢量</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+\begin{gather*}
+\begin{vmatrix}
+\hat{i}&\hat{j}&\hat{k}\\\partial_x&\partial_y&\partial_z\\A_x&A_y&A_z
+\end{vmatrix}
+\end{gather*}
+
+<p>
+多次运算
+</p>
+</div>
+
+<div id="outline-container-org9b52461" class="outline-3">
+<h3 id="org9b52461">场论微积分公式——换开为闭</h3>
+<div class="outline-text-3" id="text-org9b52461">
+<p>
+基本公式－可类比微积分基本公式
+</p>
+\begin{equation}
+\label{eq:fund}
+\int_{\mathscr{P}_a}^{\mathscr{P}_b}\nabla f \cdot \mathrm{d} \mathbf{l}=f(b)-f(a)
+\end{equation}
+<p>
+上式a b 重合（或闭合线积分 \(\oint_\mathscr{P}\nabla f=0\)）
+</p>
+
+<p>
+体上散度为闭合面积分—— Gauss 公式
+面上旋度为闭合线积分—— Stokes 公式
+</p>
+</div>
+</div>
+<div id="outline-container-orgd590629" class="outline-3">
+<h3 id="orgd590629"><span class="done DONE">DONE</span> 曲线坐标系——换系</h3>
+<div class="outline-text-3" id="text-orgd590629">
+<pre class="example" id="org76bb408">
+可记可不记属于数学补完，放公式表里
+</pre>
+</div>
+</div>
+<div id="outline-container-org40b114d" class="outline-3">
+<h3 id="org40b114d">Dirac 函数——描述奇点积分工具</h3>
+<div class="outline-text-3" id="text-org40b114d">
+<p>
+重要公式：
+</p>
+\begin{equation}
+\label{eq:2}
+\nabla\cdot \left( \frac{\hat{\mathbf{r}}}{r^2} \right) \overset{\text{换系}}{=}\frac{1}{r^2}\frac{\partial }{\partial r}\left( r^2 \frac{1}{r^2} \right)=4\pi \delta(r)
+\end{equation}
+
+<p>
+特色
+</p>
+\begin{gather*}
+\cos \theta_1 \cos \theta_2 + \sin \theta_1 \sin \theta_2 \rightarrow \vec{A} \cdot \vec{B}\\
+\cos \theta_1 \sin \theta_2 − \sin \theta_1 \cos \theta_2 \rightarrow \vec{A} \times \vec{B} = ... = (0,0,x_1y_2-x_2y_1)
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org85c422f" class="outline-3">
+<h3 id="org85c422f">公式表手册</h3>
+<div class="outline-text-3" id="text-org85c422f">
+\begin{gather*}
+\nabla f(\vec{u})=?=\frac{\partial f}{\partial u}\nabla \vec{u}\\
+\nabla\cdot \vec{A}(\vec{u})=?=\nabla \vec{u} \cdot \frac{\mathrm{d} \vec{A}}{\mathrm{d} \vec{u}}\\
+\nabla\times \vec{A}(\vec{u})=?=\nabla \vec{u}\times \frac{\mathrm{d}\vec{A}}{\mathrm{d}\vec{u} }
+\end{gather*}
+<p>
+应当会给一些公式
+<code>Cartesian (直角坐标系)</code>
+</p>
+\begin{equation}
+\label{eq:Cartesian1}
+\nabla = \hat{\mathbf{x}} \frac{\partial}{\partial x} + \hat{\mathbf{y}} \frac{\partial}{\partial y} + \hat{\mathbf{z}} \frac{\partial}{\partial z}
+\end{equation}
+
+<p>
+<code>Cylindrical</code> (柱坐标系, r, &phi;, z)
+</p>
+\begin{equation}
+\label{eq:Cylindrical3}
+\nabla = \hat{\mathbf{r}} \frac{\partial}{\partial r} 
+       + \hat{\boldsymbol{\phi}} \frac{1}{r} \frac{\partial}{\partial \phi}
+       + \hat{\mathbf{z}} \frac{\partial}{\partial z}
+\end{equation}
+
+<p>
+<code>Spherical</code> (球坐标系, r, &theta;, &phi;)
+</p>
+\begin{equation}
+\label{eq:Spherical}
+\nabla = \hat{\mathbf{r}} \frac{\partial}{\partial r}
+       + \hat{\boldsymbol{\theta}} \frac{1}{r} \frac{\partial}{\partial \theta}
+       + \hat{\boldsymbol{\phi}} \frac{1}{r \sin\theta} \frac{\partial}{\partial \phi}
+\end{equation}
+
+<p>
+柱坐标系
+</p>
+\begin{gather*}
+\frac{\partial }{\partial r}\left[ r^2 \frac{\partial V}{\partial r} \right]+\frac{1}{\sin \theta}\frac{\partial }{\partial \theta}\left[ \sin\theta \frac{\partial V}{\partial \theta} \right]=0\\
+\end{gather*}
+</div>
+</div>
+<div id="outline-container-org5d7e6ee" class="outline-3">
+<h3 id="org5d7e6ee">中文书简单题</h3>
+<div class="outline-text-3" id="text-org5d7e6ee">
+<p>
+<img src="electrodynamicSummary/20241218090209.png" alt="20241218090209.png" />
+<img src="electrodynamicSummary/20241218090248.png" alt="20241218090248.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc902290" class="outline-2">
+<h2 id="orgc902290">电磁基本量</h2>
+<div class="outline-text-2" id="text-orgc902290">
+\begin{gather*}
+\rho=\epsilon\nabla\cdot \mathbf{E}\\
+\rho=\nabla \cdot \vec{P}
+\sigma=
+p=qr, \text{dipole}
+P=\sum qr
+\end{gather*}
+
+<p>
+<img src="electrodynamicSummary/20241218090630.png" alt="20241218090630.png" />
+<img src="electrodynamicSummary/20241218090707.png" alt="20241218090707.png" />
+<img src="electrodynamicSummary/20241218090732.png" alt="20241218090732.png" />
+</p>
+</div>
+
+
+<div id="outline-container-orgd8a08b2" class="outline-3">
+<h3 id="orgd8a08b2">中文书</h3>
+<div class="outline-text-3" id="text-orgd8a08b2">
+
+<div id="org9cc7cc9" class="figure">
+<p><img src="electrodynamicSummary/20241218090333.png" alt="20241218090333.png" />
+</p>
+</div>
+
+
+<div id="orgbcd411c" class="figure">
+<p><img src="electrodynamicSummary/20241218090407.png" alt="20241218090407.png" />
+</p>
+</div>
+
+
+<div id="org2ca3749" class="figure">
+<p><img src="electrodynamicSummary/20241218090527.png" alt="20241218090527.png" />
+</p>
+</div>
+
+<p>
+边界条件：
+<img src="electrodynamicSummary/20241218090554.png" alt="20241218090554.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf2b9e3f" class="outline-2">
+<h2 id="orgf2b9e3f">Laplace 方程解法</h2>
+<div class="outline-text-2" id="text-orgf2b9e3f">
+<pre class="example" id="org39f7204">
+更一般的讲法应当是 Possion 方程，区别是 Laplace
+这是一定要掌握方法流程的
+</pre>
+<p>
+方程不忘：
+</p>
+\begin{gather*}
+\nabla^2\phi=0
+\end{gather*}
+<p>
+何时右侧有 \(\rho/\epsilon\) 区域内有电荷，如果是点电荷 -&gt;
+</p>
+</div>
+<div id="outline-container-org2445f68" class="outline-3">
+<h3 id="org2445f68">案例试炼</h3>
+<div class="outline-text-3" id="text-org2445f68">
+<p>
+<img src="electrodynamicSummary/20241218090824.png" alt="20241218090824.png" />
+解题结构：
+</p>
+<ol class="org-ol">
+<li>写方程：注意有几个区域，有电荷的方程右边有 &rho; 项</li>
+<li>写解：根据对称性，一般是二元柱坐标系，更简单的球坐标。把 Legrendre 多项式写出来</li>
+<li>边界条件：连续、无穷远</li>
+<li>代入得到参数值</li>
+</ol>
+
+<p>
+有电荷：
+<img src="electrodynamicSummary/20241218090945.png" alt="20241218090945.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgab1b738" class="outline-3">
+<h3 id="orgab1b738">一些形式</h3>
+<div class="outline-text-3" id="text-orgab1b738">
+<p>
+Legrendre 应用
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org3d8b323" class="outline-2">
+<h2 id="org3d8b323"><span class="todo TODO">TODO</span> 光波传导</h2>
+<div class="outline-text-2" id="text-org3d8b323">
+<p>
+介质变化。主要用边界条件
+</p>
+</div>
+
+<div id="outline-container-org3a1b4af" class="outline-3">
+<h3 id="org3a1b4af">电动力学中的波传播</h3>
+<div class="outline-text-3" id="text-org3a1b4af">
+</div>
+<div id="outline-container-orgf39d42d" class="outline-4">
+<h4 id="orgf39d42d">波动方程</h4>
+<div class="outline-text-4" id="text-orgf39d42d">
+<p>
+波动方程描述了电磁波在介质中的传播。对于电场 \( \mathbf{E} \) 和磁场 \( \mathbf{B} \)，它们满足以下波动方程：
+</p>
+
+<p>
+\[
+\nabla^2 \mathbf{E} - \frac{1}{c^2} \frac{\partial^2 \mathbf{E}}{\partial t^2} = 0
+\]
+\[
+\nabla^2 \mathbf{B} - \frac{1}{c^2} \frac{\partial^2 \mathbf{B}}{\partial t^2} = 0
+\]
+其中，\( \nabla^2 \) 是拉普拉斯算符，\( c \) 是光速。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfca4090" class="outline-4">
+<h4 id="orgfca4090">跨介质边界条件</h4>
+<div class="outline-text-4" id="text-orgfca4090">
+<p>
+当电磁波在两种不同的介质之间传播时，跨介质的边界条件如下：
+</p>
+
+<ul class="org-ul">
+<li>电场的切向分量在边界处是连续的：
+\[
+  \mathbf{E}_1^{\parallel} = \mathbf{E}_2^{\parallel}
+  \]</li>
+
+<li>磁场的切向分量在边界处是连续的：
+\[
+  \mathbf{B}_1^{\parallel} = \mathbf{B}_2^{\parallel}
+  \]</li>
+
+<li>电场的法向分量的跳跃与自由电荷密度成正比：
+\[
+  \hat{n} \cdot (\mathbf{D}_2 - \mathbf{D}_1) = \sigma_{\text{free}}
+  \]</li>
+
+<li>磁场的法向分量的跳跃与自由电流密度成正比：
+\[
+  \hat{n} \cdot (\mathbf{B}_2 - \mathbf{B}_1) = 0
+  \]</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org89a11d0" class="outline-4">
+<h4 id="org89a11d0">折射率虚部</h4>
+<div class="outline-text-4" id="text-org89a11d0">
+<p>
+介质的折射率 \( n \) 可能具有虚部 \( k \)，当波在介质中传播时，会出现衰减现象。折射率虚部表示波的衰减程度：
+\[
+n = n' + i k
+\]
+其中，\( n' \) 是折射率的实部，\( k \) 是虚部。虚部的存在导致波的幅度随距离的增加而衰减，因此在吸收介质中，波的传播速度减慢且波的强度逐渐减小。
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org765a2ce" class="outline-2">
+<h2 id="org765a2ce">相对论</h2>
+<div class="outline-text-2" id="text-org765a2ce">
+<p>
+变换
+</p>
+</div>
+<div id="outline-container-orgdd83bdb" class="outline-3">
+<h3 id="orgdd83bdb">变化（38/54）</h3>
+<div class="outline-text-3" id="text-orgdd83bdb">
+<div class="exercise" id="orgc81e646">
+<p>
+A particle of mass \(m\) whose total energy is twice its rest energy collides with an identical particle at rest. If they stick together, what is the mass of the resulting composite particle? What is its velocity?
+</p>
+
+</div>
+
+<div class="collapsible" id="orged6982e">
+<div class="solution" id="org000b35d">
+<ol class="org-ol">
+<li>Total energy of the moving particle:
+<ul class="org-ul">
+<li>The total energy \( E \) is given by:
+\[
+     E = \gamma mc^2
+     \]
+where \( \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} \) is the Lorentz factor.</li>
+<li>Given \( E = 2mc^2 \), we solve for \( v \):
+\[
+     \gamma = 2 \implies \frac{1}{\sqrt{1 - v^2/c^2}} = 2 \implies 1 - v^2/c^2 = \frac{1}{4}
+     \]
+\[
+     v^2 = \frac{3}{4}c^2 \implies v = \frac{\sqrt{3}}{2}c
+     \]</li>
+</ul></li>
+
+<li>Momentum of the moving particle:
+<ul class="org-ul">
+<li>The relativistic momentum \( p \) is:
+\[
+     p = \gamma mv = 2m \cdot \frac{\sqrt{3}}{2}c = \sqrt{3}mc
+     \]</li>
+</ul></li>
+
+<li>Total momentum of the system before collision:
+<ul class="org-ul">
+<li>The stationary particle has no momentum, so the total momentum is:
+\[
+     p_{\text{total}} = \sqrt{3}mc
+     \]</li>
+</ul></li>
+
+<li>Total energy of the system before collision:
+<ul class="org-ul">
+<li>Energy of the moving particle: \( 2mc^2 \)</li>
+<li>Energy of the stationary particle: \( mc^2 \)</li>
+<li>Total energy:
+\[
+     E_{\text{total}} = 2mc^2 + mc^2 = 3mc^2
+     \]</li>
+</ul></li>
+
+<li>Mass of the composite particle:
+<ul class="org-ul">
+<li>Using the invariant mass relation:
+\[
+     E_{\text{total}} = M c^2 \implies M = \frac{E_{\text{total}}}{c^2} = \frac{3mc^2}{c^2} = 3m
+     \]</li>
+</ul></li>
+
+<li>Velocity of the composite particle:
+<ul class="org-ul">
+<li>Using the momentum-energy relation:
+\[
+     p_{\text{total}} = M v_{\text{composite}} \implies v_{\text{composite}} = \frac{p_{\text{total}}}{M} = \frac{\sqrt{3}mc}{3m} = \frac{\sqrt{3}}{3}c
+     \]</li>
+</ul></li>
+<li>Mass of the composite particle: \( M = 3m \)</li>
+<li>Velocity of the composite particle: \( v_{\text{composite}} = \frac{\sqrt{3}}{3}c \)</li>
+</ol>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org22c6957" class="outline-2">
+<h2 id="org22c6957">作业解析</h2>
+<div class="outline-text-2" id="text-org22c6957">
+</div>
+<div id="outline-container-orgcccdb7d" class="outline-3">
+<h3 id="orgcccdb7d">Hw1</h3>
+<div class="outline-text-3" id="text-orgcccdb7d">
+<p>
+许多题方法太难（在回想当时自己简单的方法中）
+</p>
+
+<p>
+(Textbook) Problem 1.13, 1.49, 1.53, 1.54, 1.60, 1.61, 1.62
+Optional Problems: Derive the curl \(\nabla\times A\) in cylindrical coordinates.
+</p>
+</div>
+<div id="outline-container-orgef9b0da" class="outline-4">
+<h4 id="orgef9b0da">1.13</h4>
+<div class="outline-text-4" id="text-orgef9b0da">
+<div class="exercise" id="org35dc24c">
+<p>
+Problem 1.13 Let \( \mathbf{r} \) be the separation vector from a fixed point \( (x', y', z') \) to the point \( (x, y, z) \), and let \( z \) be its length. Show that
+</p>
+
+<p>
+(a) \( \nabla(r^2) = 2\mathbf{r} \).
+</p>
+
+<p>
+(b) \( \nabla(1/r) = -\mathbf{\hat{r}}/r^2 \).
+</p>
+
+<p>
+(c) What is the general formula for \( \nabla(r^n) \)?
+</p>
+
+</div>
+
+<div class="solution" id="org46fac26">
+\begin{gather*}
+\mathbf{r}=(x-x',y-y',z-z'),r=\sqrt{(x-x')^2 +(y-y')^2 +(z-z')^2}\\
+\begin{split}
+\nabla(r^2)&=\nabla \left( (x-x')^2 +(y-y')^2 +(z-z')^2\right)\\
+&=(\partial_x,\partial_y,\partial_z)\\
+&=2(x-x',y-y',z-z')\\
+&=\boxed{ 2\mathbf{r} }
+\end{split}\\
+\begin{split}
+\nabla \frac{1}{r}&=(\partial_x , \partial_y , \partial_z) \frac{1}{\sqrt{(x-x')^2 +(y-y')^2 +(z-z')^2}}\\
+&=\left( -\frac{1}{2}\frac{2(x-x')}{\left((x-x')^2 +(y-y')^2 +(z-z')^2\right)^{\frac{3}{2}}} ,...,... \right) \\
+&=-\frac{1}{r^3}\mathbf{r}
+\end{split}
+\end{gather*}
+\begin{gather*}
+\partial_x r^n=nr^{n-1}\frac{\partial r}{\partial x}=nr^{n-1}\frac{1}{2}\frac{2(x-x')}{r}
+=nr^{n-2}(x-x') \\
+\rightarrow \nabla(\mathbf{r}^n)=\boxed{nr^{n-2}\mathbf{r}}
+\end{gather*}
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3905d34" class="outline-4">
+<h4 id="org3905d34">1.49</h4>
+<div class="outline-text-4" id="text-org3905d34">
+<div class="exercise" id="org261e64e">
+<p>
+(a) Let \( F_{1} = x^{2}\hat{z} \) and \( F_{2} = x\hat{\mathbf{x}} + y\hat{\mathbf{y}} + z\hat{\mathbf{z}} \). Calculate the divergence and curl of \( F_{1} \) and \( F_{2} \). Which one can be written as the gradient of a scalar? Find a scalar potential that does the job. Which one can be written as the curl of a vector? Find a suitable vector potential.
+</p>
+
+<p>
+(b) Show that \( F_{3} = yz\hat{\mathbf{x}} + zx\hat{\mathbf{y}} + xy\hat{\mathbf{z}} \) can be written both as the gradient of a scalar and as the curl of a vector. Find scalar and vector potentials for this function.
+</p>
+
+</div>
+
+<div class="collapsible" id="orgc50f78a">
+<div class="solution" id="orga7f93f7">
+\begin{gather*}
+\nabla\cdot F_1=0;\nabla\times F_1=(0,-2x,0)\\
+\nabla\cdot F_2=1+1+1=3;\nabla\times F_2=0\\
+\end{gather*}
+<p>
+找 F<sub>1</sub> 的标量势， F<sub>2</sub> 矢量势。可以各种令为0
+</p>
+\begin{gather*}
+\nabla\phi=F_1 \rightarrow \\
+\begin{cases}
+\partial_x\phi=0\\
+\partial_y\phi=0\\ 
+\partial_z\phi=x^2\\
+\end{cases}
+\phi=x^2z+? \rightarrow \partial_x \phi=2xz, \text{let } \partial_y\phi=-2xz\\
+\phi=x^2z-2xzy
+\end{gather*}
+\begin{gather*}
+\nabla \times A =F_2 \Rightarrow\\
+\begin{vmatrix}
+\hat{x}&\hat{y}&\hat{z}\\
+\partial_x&\partial_y&\partial_z\\
+A_x&A_y&A_z
+\end{vmatrix}=\\
+\begin{cases}
+\partial_yA_z-\partial_zA_y=x\\
+\partial_zA_x-\partial_xA_z=y\\
+\partial_xA_y-\partial_yA_x=z
+\end{cases}
+\text{let } A_z =0,A=(yz+a,-xz+b,0)\rightarrow-z+\partial_xb-y-\partial_z a=z
+\end{gather*}
+
+</div>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org1b76b28" class="outline-4">
+<h4 id="org1b76b28">1.53</h4>
+<div class="outline-text-4" id="text-org1b76b28">
+<div class="exercise" id="orgf227a15">
+<p>
+Check the divergence theorem for the function
+\[
+\mathbf{v} = r^{2}\cos\theta \hat{\mathbf{r}} + r^{2}\cos\phi \hat{\boldsymbol{\theta}} - r^{2}\cos\theta\sin\phi \hat{\boldsymbol{\phi}},
+\]
+using as your volume one octant of the sphere of radius \( R \) (Fig. 1.48). Make sure you include the entire surface.
+</p>
+
+<div id="org4a2e962" class="figure">
+<p><img src="electrodynamicSummary/20241216201336.png" alt="20241216201336.png" />
+</p>
+</div>
+
+</div>
+<p>
+[Answer: \( \pi R^{4}/4 \)]
+太难了，最多直角坐标
+Divergence theorem:
+</p>
+\begin{equation*}
+\oint_{\mathscr{S}}E \mathrm{d}S=\int_{\mathscr{V}}\nabla\cdot E \mathrm{d}V
+\end{equation*}
+
+<p>
+<img src="electrodynamicSummary/20241216220442.png" alt="20241216220442.png" />
+<img src="electrodynamicSummary/20241216220457.png" alt="20241216220457.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org5d0bc75" class="outline-4">
+<h4 id="org5d0bc75">1.54</h4>
+<div class="outline-text-4" id="text-org5d0bc75">
+<div class="exercise" id="orgc65b2fe">
+<p>
+Check Stokes' theorem using the function
+\[
+\mathbf{v} = a y \hat{\mathbf{x}} + b x \hat{\mathbf{y}}
+\]
+(where \(a\) and \(b\) are constants) and the circular path of radius \( R \), centered at the origin in the \(xy\) plane. [Answer: \(\pi R^2 (b - a)\)]
+</p>
+
+</div>
+
+<div id="org50b2e4a" class="figure">
+<p><img src="electrodynamicSummary/20241216230251.png" alt="20241216230251.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org31a54cc" class="outline-4">
+<h4 id="org31a54cc">1.60</h4>
+<div class="outline-text-4" id="text-org31a54cc">
+<p>
+<img src="electrodynamicSummary/20241216230346.png" alt="20241216230346.png" />
+<img src="electrodynamicSummary/20241216230325.png" alt="20241216230325.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-orgdc7fcf5" class="outline-4">
+<h4 id="orgdc7fcf5">1.61</h4>
+<div class="outline-text-4" id="text-orgdc7fcf5">
+<p>
+<img src="electrodynamicSummary/20241216230359.png" alt="20241216230359.png" />
+<img src="electrodynamicSummary/20241216230438.png" alt="20241216230438.png" />
+<img src="electrodynamicSummary/20241216230451.png" alt="20241216230451.png" />
+</p>
+</div>
+</div>
+<div id="outline-container-org9eeea0d" class="outline-4">
+<h4 id="org9eeea0d">1.62</h4>
+<div class="outline-text-4" id="text-org9eeea0d">
+
+<div id="org6a72dee" class="figure">
+<p><img src="electrodynamicSummary/20241216230410.png" alt="20241216230410.png" />
+</p>
+</div>
+<div class="solution" id="org5a92ae5">
+
+<div id="orga87bf17" class="figure">
+<p><img src="electrodynamicSummary/20241216230425.png" alt="20241216230425.png" />
+</p>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgd789e83" class="outline-3">
+<h3 id="orgd789e83">Hw2</h3>
+<div class="outline-text-3" id="text-orgd789e83">
+</div>
+<div id="outline-container-orge3e0133" class="outline-4">
+<h4 id="orge3e0133">Problem 1: Electric Field in Spherical Coordinates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h4>
+<div class="outline-text-4" id="text-orge3e0133">
+<div class="exercise" id="org72fd518">
+<p>
+Suppose the electric field in a region is given by \(E=kr^2\hat{r}\) in spherical coordinates, where \(k\) is a constant. Find the charge density \(\rho(r)\) in this region.
+</p>
+
+</div>
+<div class="solution" id="org3bf317c">
+\begin{gather*}
+\nabla \cdot \mathbf{E} =\frac{\rho}{\epsilon_0}\\
+\nabla \cdot \mathbf{A} = \frac{1}{r^2}\frac{\partial }{\partial r} \left( r^2 \cdot \mathbf{A} \right)
+\end{gather*}
+
+<div class="org-center">
+<p>
+给定电场，求电荷密度
+</p>
+</div>
+
+\begin{gather*}
+\begin{split}
+\rho &= \epsilon_0 \nabla \cdot \mathbf{E} = \epsilon_0 \nabla \cdot kr^2\hat{r}\\
+&= \epsilon_0\frac{1}{r^2}\frac{\partial }{\partial r} \left( r^2 kr^2 \right) =\epsilon_0\frac{1}{r^2} \cdot 4k r^3\\
+&= \boxed{4k\epsilon_0r}
+\end{split}
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgde0fe97" class="outline-4">
+<h4 id="orgde0fe97">Problem 2: Vector Potential and Magnetic Field in Cylindrical Coordinates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h4>
+<div class="outline-text-4" id="text-orgde0fe97">
+<div class="exercise" id="org59ba895">
+<p>
+The vector potential in cylindrical coordinates is given by \(\mathbf{A}=kr^2\hat{\mathbf{r}}\), where \(k\) is a constant. Find the magnetic field \(B\) generated by this vector potential.
+</p>
+
+</div>
+
+<div class="solution" id="org2738aa0">
+\begin{gather*}
+\mathbf{B}= \nabla\times \mathbf{A}\\
+\nabla \times \mathbf{A} = \frac{1}{r} \left[ \frac{\partial (r A_\phi)}{\partial r} \hat{\mathbf{z}} - \frac{\partial A_z}{\partial \phi} \hat{\mathbf{r}} + \frac{\partial A_r}{\partial z} \hat{\mathbf{\phi}} \right]
+\end{gather*}
+
+<div class="org-center">
+<p>
+求由矢势生成的磁场
+</p>
+</div>
+
+\begin{gather*}
+\begin{split}
+\mathbf{B} &= \nabla\times \mathbf{A}
+=  \frac{1}{r} \left[  \frac{\partial A_r}{\partial z} \hat{\mathbf{\phi}} \right] \\
+&= \frac{1}{r} \left[  \frac{\partial kr^2\hat{\mathbf{r}}}{\partial z}  \right]= \frac{1}{r} \cdot 0\\
+&= \boxed{0}
+\end{split}
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd945ddd" class="outline-4">
+<h4 id="orgd945ddd">? Problem 3: Electric Field in the Overlapping Region of Two Spheres</h4>
+<div class="outline-text-4" id="text-orgd945ddd">
+<div class="exercise" id="org42f2898">
+<p>
+Two spheres, each of radius \(R\) and carrying uniform charge densities \(+\rho\) and \(-\rho\), respectively, are placed so that they partially overlap. Let \(d\) be the vector from the center of the positive sphere to the center of the negative sphere. Show that the electric field in the region of overlap is constant, and find its value.
+</p>
+
+</div>
+<div class="solution" id="org7ff8c63">
+<p>
+两球体问题
+</p>
+
+
+<div id="org009e2e5" class="figure">
+<p><img src="electrodynamicSummary/20241221115515.png" alt="20241221115515.png" />
+</p>
+</div>
+
+<p>
+考虑两个半径为 \( R \) 的球体，分别携带均匀的电荷密度 \( +\rho \) 和 \( -\rho \)，它们部分重叠，且 \( d \) 为从正电荷球体的中心到负电荷球体的中心的矢量。要求证明在重叠区域内的电场是恒定的，并找出其值。
+</p>
+
+<p>
+首先，考虑每个球体的电场。对于球体内部的任意一点，电场的计算可以通过高斯定律来实现。高斯定律表明，对于一个带电的球体，内部的电场由其球心的电荷分布决定。由于球体的电荷密度是均匀的，可以通过高斯面来简化计算。
+</p>
+
+<p>
+在每个球体内，电场的大小与距离球心的距离 \( r \) 有关，且电场的方向指向球体的电荷分布。根据高斯定律，电场 \( E_{\text{sphere}} \) 可以表示为：
+</p>
+
+<p>
+\[
+E_{\text{sphere}} = \frac{1}{\epsilon_0} \frac{q_{\text{enclosed}}}{r^2}
+\]
+</p>
+
+<p>
+其中 \( q_{\text{enclosed}} \) 是包围在高斯面内的电荷量。由于电荷分布是均匀的，电场在球内是从球心到外部的径向电场。
+</p>
+
+<p>
+接下来，考虑两个球体的重叠区域。因为电荷分布均匀且大小相等（一个是正电荷，另一个是负电荷），我们可以通过叠加法则来求解电场。在重叠区域，由于两个球体的电场在每一点的方向相反，且大小相等，因此它们的电场将相互抵消。通过叠加法则，两个球体的电场在重叠区域内的结果是常数。
+</p>
+
+<p>
+最终，通过计算，得到重叠区域内的电场是恒定的，且其值为：
+</p>
+
+\begin{equation*}
+E = \frac{2\rho d}{\epsilon_0}
+\end{equation*}
+
+<p>
+其中 \( \rho \) 是电荷密度，\( d \) 是从正电荷球体中心到负电荷球体中心的距离，\( \epsilon_0 \) 是真空介电常数。
+</p>
+
+<p>
+因此，在重叠区域内，电场的大小是恒定的，并且其值为 \( \frac{2\rho d}{\epsilon_0} \)。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orge6e6fbf" class="outline-4">
+<h4 id="orge6e6fbf">Problem 4: Electric Field, Charge Density, and Total Charge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h4>
+<div class="outline-text-4" id="text-orge6e6fbf">
+<div class="exercise" id="orge664a71">
+<p>
+For the electric potential
+</p>
+\begin{equation*}
+V(r)=A \frac{\mathrm{e}^{-\lambda r}}{r}
+\end{equation*}
+<p>
+find the corresponding electric field E(r), charge density &rho;(r), and total charge Q.
+</p>
+
+</div>
+\begin{gather*}
+\mathbf{E}=-\nabla V;\rho= \epsilon_0 \nabla\cdot \mathbf{E};Q=\int \rho \mathrm{d}V
+\end{gather*}
+
+<div id="orgbeacf8d" class="figure">
+<p><img src="electrodynamicSummary/20241218100156.png" alt="20241218100156.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org4812e89" class="outline-4">
+<h4 id="org4812e89"><span class="todo TODO">TODO</span> Problem 5: Magnetic Field of a Circular Current Loop</h4>
+<div class="outline-text-4" id="text-org4812e89">
+<div class="exercise" id="org1cb8ed0">
+<p>
+A circular loop of radius \(R\) carries a steady current \(I\). Calculate the magnetic field at a point on the axis of the loop, a distance \(z\) from the center of the loop.
+</p>
+
+</div>
+<div class="solution" id="org7317361">
+<p>
+
+</p>
+
+
+\begin{gather*}
+d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I d\mathbf{l} \times \hat{\mathbf{r}}}{r^2}\\
+B= \frac{\mu}{4\pi} \frac{I 2\pi R}{r^2}\cos \theta =\frac{\mu I}{2r^2}\frac{z}{r}
+=\frac{\mu_0 I z^2}{2 \left( R^2 + z^2 \right)^{3/2}}
+\end{gather*}
+
+
+
+<div id="org313286a" class="figure">
+<p><img src="electrodynamicSummary/20241221122435.png" alt="20241221122435.png" />
+</p>
+</div>
+
+<div class="org-center">
+<p>
+计算圆形环路的磁场： <b>BS 公式</b>
+</p>
+</div>
+<div class="collapsible" id="orgd43ddf6">
+<p>
+考虑一个半径为 \( R \) 的圆形电流环，携带恒定电流 \( I \)，要求计算位于环轴线上，距离环中心为 \( z \) 的点的磁场。
+</p>
+
+<p>
+根据安培环路定理，磁场可以通过计算电流元对磁场的贡献来求得。对于圆形电流环，使用比奥-萨伐尔定律来计算磁场。比奥-萨伐尔定律给出小电流元 \( I d\mathbf{l} \) 在空间中某点产生的磁场 \( d\mathbf{B} \)：
+</p>
+
+\begin{gather*}
+d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I d\mathbf{l} \times \hat{\mathbf{r}}}{r^2}
+\end{gather*}
+
+<p>
+其中 \( \mu_0 \) 是磁场常数，\( d\mathbf{l} \) 是电流元，\( \hat{\mathbf{r}} \) 是从电流元指向磁场计算点的单位向量，\( r \) 是从电流元到观察点的距离。
+</p>
+
+<ol class="org-ol">
+<li><b><b>设置坐标系</b></b></li>
+</ol>
+
+<p>
+设定圆形环路位于 \( xy \)-平面内，圆心在原点，电流沿着环路方向流动。我们需要计算位于轴上 \( z \)-轴，距离原点 \( z \) 的点的磁场。由于对称性，磁场将在 \( z \)-轴方向，并且每个电流元对磁场的贡献在 \( xy \)-平面上有一定的对称性，最终磁场只有沿 \( z \)-轴的分量。
+</p>
+
+<ol class="org-ol">
+<li><b><b>计算磁场</b></b></li>
+</ol>
+
+<p>
+对于一个圆形电流环，磁场的大小可以通过积分得到。设定圆环上任意一点的电流元 \( d\mathbf{l} \) 形成的磁场贡献为 \( d\mathbf{B} \)，并且对所有电流元积分以得到总磁场。考虑到对称性，所有电流元的垂直分量相加，水平分量则相互抵消。最终，沿着 \( z \)-轴的磁场分量为：
+</p>
+
+\begin{gather*}
+B_z = \frac{\mu_0 I R^2}{2 \left( R^2 + z^2 \right)^{3/2}}
+\end{gather*}
+
+<p>
+其中 \( R \) 是圆形电流环的半径，\( I \) 是电流，\( z \) 是观察点到环心的距离。
+</p>
+
+<p>
+<b><b>最终结果</b></b>
+</p>
+
+<p>
+因此，在轴上距离圆形电流环中心 \( z \) 的点的磁场大小为：
+</p>
+
+\begin{gather*}
+B_z = \frac{\mu_0 I R^2}{2 \left( R^2 + z^2 \right)^{3/2}}
+\end{gather*}
+
+</div>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org2230b11" class="outline-4">
+<h4 id="org2230b11"><span class="todo TODO">TODO</span> Problem 6: Magnetic Field from a Finite Straight Current-Carrying Wire</h4>
+<div class="outline-text-4" id="text-org2230b11">
+<div class="exercise" id="org1a9845e">
+<p>
+A straight wire of finite length \(L\) carries a steady current \(I\). Calculate the magnetic field at a point located a distance \(d\) directly above the center of the wire.
+</p>
+
+</div>
+
+<div class="solution" id="org628b7f4">
+\begin{gather*}
+d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I d\mathbf{l} \times \hat{\mathbf{r}}}{r^2}
+\end{gather*}
+
+<p>
+考虑一根有限长的直导线，携带恒定电流 \( I \)，要求计算位于导线中心正上方距离为 \( d \) 的点的磁场。
+</p>
+
+
+<div id="org341bab8" class="figure">
+<p><img src="electrodynamicSummary/20241221123202.png" alt="20241221123202.png" />
+</p>
+<p><span class="figure-number">Figure 1: </span>赵凯华・电磁学</p>
+</div>
+<div class="collapsiable" id="org7fd7280">
+<p>
+
+</p>
+
+<p>
+<i>解答</i>
+</p>
+
+<p>
+假设导线的长度为 \( L \)，电流 \( I \) 恒定，计算磁场时可以使用比奥-萨伐尔定律。比奥-萨伐尔定律表达了由于一个小电流元 \( I \, d\mathbf{l} \) 在空间中产生的磁场 \( d\mathbf{B} \)：
+</p>
+
+\begin{gather*}
+d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I \, d\mathbf{l} \times \hat{\mathbf{r}}}{r^2}
+\end{gather*}
+
+<p>
+其中 \( \mu_0 \) 是磁场常数，\( d\mathbf{l} \) 是电流元，\( \hat{\mathbf{r}} \) 是从电流元指向磁场计算点的单位向量，\( r \) 是从电流元到观察点的距离。
+</p>
+
+<ol class="org-ol">
+<li><b><b>设置坐标系与符号</b></b>
+
+<ul class="org-ul">
+<li>设导线位于 \( x \)-轴上，从 \( x = -L/2 \) 到 \( x = L/2 \)，观察点位于 \( x = 0 \) 轴上方 \( y = d \) 处。</li>
+<li>对于一个小电流元 \( d\mathbf{l} \)，在 \( x \)-轴上指向 \( x \) 方向，电流元的长度为 \( dx \)，因此 \( d\mathbf{l} = dx \hat{\mathbf{x}} \)。</li>
+</ul></li>
+
+<li><p>
+<b><b>磁场的计算</b></b>
+</p>
+
+<ul class="org-ul">
+<li>从比奥-萨伐尔定律得到磁场的表达式。电流元到观察点的距离 \( r \) 为：</li>
+</ul>
+
+\begin{gather*}
+r = \sqrt{x^2 + d^2}
+\end{gather*}
+
+<ul class="org-ul">
+<li>小电流元 \( d\mathbf{l} = dx \hat{\mathbf{x}} \) 和单位向量 \( \hat{\mathbf{r}} \) 的叉积 \( d\mathbf{l} \times \hat{\mathbf{r}} \) 为：</li>
+</ul>
+
+\begin{gather*}
+d\mathbf{l} \times \hat{\mathbf{r}} = dx \hat{\mathbf{x}} \times \frac{1}{\sqrt{x^2 + d^2}} \left( -\frac{x}{\sqrt{x^2 + d^2}} \hat{\mathbf{x}} + \frac{d}{\sqrt{x^2 + d^2}} \hat{\mathbf{y}} \right)
+\end{gather*}
+
+<p>
+计算叉积得到的结果为：
+</p>
+
+\begin{gather*}
+d\mathbf{l} \times \hat{\mathbf{r}} = \frac{d \, dx}{(x^2 + d^2)^{3/2}} \hat{\mathbf{y}}
+\end{gather*}
+
+<p>
+因此，磁场的增量为：
+</p>
+
+\begin{gather*}
+dB = \frac{\mu_0 I}{4\pi} \frac{d \, dx}{(x^2 + d^2)^{3/2}}
+\end{gather*}</li>
+
+<li><p>
+<b><b>积分计算磁场</b></b>
+</p>
+
+<p>
+对于 \( x \) 从 \( -L/2 \) 到 \( L/2 \) 的积分，得到总磁场：
+</p>
+
+\begin{gather*}
+B = \frac{\mu_0 I d}{4\pi} \int_{-L/2}^{L/2} \frac{dx}{(x^2 + d^2)^{3/2}}
+\end{gather*}
+
+<p>
+这个积分可以通过标准积分公式求解，结果为：
+</p>
+
+\begin{gather*}
+B = \frac{\mu_0 I}{4\pi d} \left[ \frac{x}{d \sqrt{x^2 + d^2}} \right]_{-L/2}^{L/2}
+\end{gather*}
+
+<p>
+代入边界条件，最终结果为：
+</p>
+
+\begin{gather*}
+B = \frac{\mu_0 I}{4\pi d} \left( \frac{L/2}{d \sqrt{(L/2)^2 + d^2}} - \left( -\frac{L/2}{d \sqrt{(L/2)^2 + d^2}} \right) \right)
+\end{gather*}
+
+<p>
+进一步简化后得到磁场表达式：
+</p>
+
+\begin{gather*}
+B = \frac{\mu_0 I}{2\pi d} \cdot \frac{L/2}{\sqrt{(L/2)^2 + d^2}}
+\end{gather*}</li>
+</ol>
+
+<p>
+<i>最终结果</i>
+</p>
+
+<p>
+磁场在距离导线中心正上方 \( d \) 的点的大小为：
+</p>
+
+\begin{gather*}
+B = \frac{\mu_0 I L}{2\pi d \sqrt{(L/2)^2 + d^2}}
+\end{gather*}
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org10e9e45" class="outline-3">
+<h3 id="org10e9e45">Hw3</h3>
+<div class="outline-text-3" id="text-org10e9e45">
+</div>
+<div id="outline-container-org1e7462b" class="outline-4">
+<h4 id="org1e7462b">Problem 1: Prove the Mean Value Theorem for the 2D Laplace Equation:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></h4>
+<div class="outline-text-4" id="text-org1e7462b">
+<div class="exercise" id="org11d5e33">
+<p>
+Prove that for any harmonic function \(\phi(x, y)\) that satisfies the 2D Laplace equation \(\nabla^2\phi = 0\), the value of \(\phi\) at any point is equal to the average of its values over a circle centered at that point.
+</p>
+
+</div>
+
+<div class="solution" id="orgffc4869">
+<p>
+
+</p>
+
+<div class="org-center">
+<p>
+<i>乱凑法</i>
+</p>
+</div>
+\begin{gather*}
+\Phi=\int_0^{2\pi} \phi \mathrm{d}\theta\\
+\phi(x_0+r\sin\theta,y_0+r\cos\theta)=\phi(x_0,y_0)+r(\phi_x \cos \theta+\phi_{y}\sin\theta)+o(R^2)\\
+\Phi = \int_0^{2\pi} \phi_0+r(\phi_x \cos \theta+\phi_{y}\sin\theta) \mathrm{d}\theta\\
+=\int_0^{2\pi}\phi_0 \mathrm{d}\theta
+\end{gather*}
+<p>
+Taylor 展开：结果中积分为0,只剩下 \(\phi_0\) 项。
+</p>
+
+<div class="org-center">
+<p>
+<i>天才做法</i>
+</p>
+</div>
+<div class="collapsible" id="orgf98adfb">
+<p>
+To prove the Mean Value Theorem for the 2D Laplace equation, we proceed as follows:
+</p>
+
+<ol class="org-ol">
+<li><b>Laplace Equation:</b> In two dimensions, the Laplace equation is given by:</li>
+</ol>
+\begin{equation*}
+\nabla^2 \phi(x,y) = \frac{\partial^2 \phi}{\partial x^2} + \frac{\partial^2 \phi}{\partial y^2} = 0
+\end{equation*}
+
+<ol class="org-ol">
+<li><b>Introduce Green's Function:</b> We use the Green's function \( G(\mathbf{r}, \mathbf{r}_0) \), which satisfies:</li>
+</ol>
+\begin{equation*}
+\nabla^2 G(\mathbf{r}, \mathbf{r}_0) = -\delta(\mathbf{r} - \mathbf{r}_0)
+\end{equation*}
+
+<p>
+In 2D, the Green's function is:
+</p>
+\begin{equation*}
+G(\mathbf{r}, \mathbf{r}_0) = \frac{1}{2\pi} \ln \frac{1}{|\mathbf{r} - \mathbf{r}_0|}
+\end{equation*}
+
+<ol class="org-ol">
+<li><b>Green's First Identity:</b> Applying Green's first identity, we have:</li>
+</ol>
+\begin{equation*}
+\int_V \left( \phi \nabla^2 G + G \nabla^2 \phi \right) dA = \oint_{\partial V} \left( \phi \frac{\partial G}{\partial n} - G \frac{\partial \phi}{\partial n} \right) ds
+\end{equation*}
+
+<p>
+Since \( \nabla^2 \phi = 0 \), this simplifies to:
+</p>
+\begin{equation*}
+\int_V \phi \nabla^2 G \, dA = \oint_{\partial V} \left( \phi \frac{\partial G}{\partial n} \right) ds
+\end{equation*}
+
+<ol class="org-ol">
+<li><b>Left Side Simplification:</b> Using \( \nabla^2 G = -\delta(\mathbf{r} - \mathbf{r}_0) \), the left side becomes \( \phi(\mathbf{r}_0) \).</li>
+
+<li><b>Boundary Integral:</b> Since \( G = \frac{1}{2\pi} \ln \frac{1}{R} \) on the boundary, the normal derivative \( \frac{\partial G}{\partial n} = -\frac{1}{2\pi R} \), and the boundary integral becomes:</li>
+</ol>
+\begin{equation*}
+\oint_{\partial V} \phi \frac{\partial G}{\partial n} \, ds = -\frac{1}{2\pi R} \oint_{\partial V} \phi \, ds
+\end{equation*}
+
+<ol class="org-ol">
+<li><b>Conclusion:</b> Thus, we find that:</li>
+</ol>
+\begin{equation*}
+\phi(\mathbf{r}_0) = \frac{1}{2\pi R} \oint_{\partial V} \phi \, ds
+\end{equation*}
+
+<p>
+This proves that the value of \( \phi \) at \( \mathbf{r}_0 \) is the average of its values on the circle.
+</p>
+
+</div>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org56267b1" class="outline-4">
+<h4 id="org56267b1">Problem 2: Image Charge Problem for a Point Charge Inside a Spherical Conducting Shell:</h4>
+<div class="outline-text-4" id="text-org56267b1">
+<div class="exercise" id="org29ac334">
+<p>
+Consider a conducting spherical shell with radius \(R\). A point charge \(q\) is placed inside the shell at a distance \(d\) from the center. Find the image charge configuration and determine the potential distribution inside the shell.
+</p>
+
+</div>
+
+<div class="solution" id="org98fa486">
+<p>
+球内任意位置场强
+</p>
+<ol class="org-ol">
+<li>Setup: Consider a spherical conducting shell with radius R, and a point charge q located at a distance d from the center.</li>
+<li>Image Charge: To satisfy the boundary condition that the potential on the conducting shell’s surface is zero, we place an image charge q' = −q R d at a distance R<sup>2</sup>/d from the center, on the same axis as the real charge.</li>
+<li>Potential Distribution: The potential at a point r inside the shell is given by the superposition of the potentials due to the real and image charges:</li>
+</ol>
+\begin{equation*}
+\phi(\vec{r})=\frac{q}{|\vec{r}-\vec{r}_q|}+\frac{q'}{|\vec{r}-\vec{r}'_q|}
+\end{equation*}
+<p>
+where \(r_q = (0, 0, d)\) and \(r_q' = (0, 0, R^2/d)\) .
+</p>
+<ol class="org-ol">
+<li>Result: This configuration ensures that the potential on the surface of the shell is zero and provides the correct potential inside the shell.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org3f672bb" class="outline-4">
+<h4 id="org3f672bb">Problem 3: Fourier Transform of Dirac Delta Function and Heaviside Step Function:</h4>
+<div class="outline-text-4" id="text-org3f672bb">
+<div class="exercise" id="org1902918">
+<p>
+Find the Fourier transforms of the Dirac delta function \(\delta(x)\) the Heaviside step function H(x).
+</p>
+
+</div>
+
+<div class="solution" id="org8a059ce">
+<p>
+傅里叶
+</p>
+\begin{gather*}
+\mathscr{F}(\delta(x))=\int_{-\infty}^{\infty}\delta(x)\mathrm{e}^{-\mathrm{i}\omega x}\mathrm{d}x=\boxed{1}\\
+\mathscr{F}(H)=\int_{-\infty}^{\infty}H(x)\exp(-\mathrm{i}\omega x)\mathrm{d}x=\int_0^{\infty}\exp(-\mathrm{i}\omega x)\mathrm{d}x \\
+=\frac{-1}{\mathrm{i}\omega}\exp(-\mathrm{i}\omega x)\bigg|_0^{\infty}=\boxed{\frac{1}{\mathrm{i}\omega}(+\pi\delta(k))}
+\end{gather*}
+<pre class="example" id="org96bcfb0">
+()里的项是答案没有但，前面积分不收敛专门去查的
+第一项： 它表示阶梯函数 H(x) 对于非零频率 k 的贡献，反映了它的非平滑性质。
+第二项：这是由于阶梯函数在x=0 处的不连续跳跃，产生了在k=0 处的 delta 函数贡献。
+——GPT
+</pre>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdd5ad43" class="outline-4">
+<h4 id="orgdd5ad43">Problem 4: Potential Distribution Inside a Cube:</h4>
+<div class="outline-text-4" id="text-orgdd5ad43">
+<div class="exercise" id="orgee7c806">
+<p>
+A cube with conducting walls has one face at a constant potential \(V_0\) while all other faces are grounded (at zero potential). Find the potential distribution inside the cube.
+</p>
+
+</div>
+
+<div class="solution" id="org6818149">
+<div class="org-center">
+<p>
+解 Laplace 方程:分离变量：对 xyz；方块的边界条件
+</p>
+</div>
+
+\begin{gather*}
+\nabla^2 \phi = \frac{\partial^2 \phi}{\partial x^2} + \frac{\partial^2 \phi}{\partial y^2} + \frac{\partial^2 \phi}{\partial z^2} = 0 \\
+\phi(x, y, z) = X(x)Y(y)Z(z) \rightarrow\\
+\frac{X''(x)}{X(x)} = -k_x^2, \quad \frac{Y''(y)}{Y(y)} = -k_y^2, \quad \frac{Z''(z)}{Z(z)} = k_x^2 + k_y^2\\
+\Rightarrow
+\begin{cases}
+X(x) = \sin\left(\frac{n\pi x}{a}\right), \\
+Y(y) = \sin\left(\frac{m\pi y}{a}\right) \\
+Z(z) =  e^{\sqrt{k_x^2 + k_y^2}z/a} - e^{-\sqrt{k_x^2 + k_y^2}z/a} = 2\sinh(\frac{\sqrt{k_x^2 + k_y^2}}{a}z)
+\end{cases}
+\end{gather*}
+\begin{gather*}
+\phi= \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} A_{nm} \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{a}\right) 
+ \left( e^{\sqrt{n^2 + m^2}\pi z/a} - e^{-\sqrt{n^2 + m^2}\pi z/a} \right) \\
+\begin{cases}
+\bigg[\phi(x, y, 0) = V_0,\\
+\phi(x, y, z = a) = \phi(x = a, y, z) = \phi(x, y = 0, z) = \phi(x, y = a, z) = 0 \bigg]
+\end{cases}
+\end{gather*}
+\begin{gather*}
+V_0 = \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} A_{nm} \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{a}\right)\\
+A_{nm} = \frac{4V_0}{nm\pi^2}
+\end{gather*}
+<p>
+?
+</p>
+\begin{gather*}
+\phi(x, y, z) = \frac{4V_0}{\pi^2} \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} \frac{\sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{a}\right)}{nm}
+\left( e^{\sqrt{n^2 + m^2}\pi z/a} - e^{-\sqrt{n^2 + m^2}\pi z/a} \right)
+\end{gather*}
+<div class="collapsible" id="orgc98d0e4">
+<p>
+Boundary Conditions
+\[
+\phi(x, y, 0) = V_0,\\
+\phi(x, y, z = a) = \phi(x = a, y, z) = \phi(x, y = 0, z) = \phi(x, y = a, z) = 0
+\]
+</p>
+
+<p>
+Separation of Variables Assumption
+\[
+\phi(x, y, z) = X(x)Y(y)Z(z)
+\]
+</p>
+
+<p>
+Separated Equations
+\[
+\frac{X''(x)}{X(x)} = -k_x^2, \quad \frac{Y''(y)}{Y(y)} = -k_y^2, \quad \frac{Z''(z)}{Z(z)} = k_x^2 + k_y^2
+\]
+</p>
+
+<p>
+Solutions for X(x) and Y(y)
+\[
+X(x) = \sin\left(\frac{n\pi x}{a}\right), \quad Y(y) = \sin\left(\frac{m\pi y}{a}\right)
+\]
+n, m are positive integers
+</p>
+
+<p>
+Solution for Z(z)
+\[
+Z(z) = A_{nm} \left( e^{\sqrt{k_x^2 + k_y^2}z/a} - e^{-\sqrt{k_x^2 + k_y^2}z/a} \right)
+\]
+</p>
+
+<p>
+Complete Solution
+\[
+\phi(x, y, z) = \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} A_{nm} \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{a}\right)
+\left( e^{\sqrt{n^2 + m^2}\pi z/a} - e^{-\sqrt{n^2 + m^2}\pi z/a} \right)
+\]
+</p>
+
+<p>
+Boundary Condition to Determine Coefficients \(A_{nm}\)
+\[
+V_0 = \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} A_{nm} \sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{a}\right)
+\]
+</p>
+
+<p>
+Coefficients \(A_{nm}\)
+\[
+A_{nm} = \frac{4V_0}{nm\pi^2}
+\]
+</p>
+
+<p>
+Final Result
+\[
+\phi(x, y, z) = \frac{4V_0}{\pi^2} \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} \frac{\sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{a}\right)}{nm}
+\left( e^{\sqrt{n^2 + m^2}\pi z/a} - e^{-\sqrt{n^2 + m^2}\pi z/a} \right)
+\]
+</p>
+
+</div>
+
+</div>
+</div>
+</div>
+<div id="outline-container-org81ad138" class="outline-4">
+<h4 id="org81ad138">Problem 5: Potential and Surface Charge Distribution for a Sphere with Surface Potential:</h4>
+<div class="outline-text-4" id="text-org81ad138">
+<div class="exercise" id="org2c61e07">
+<p>
+A spherical shell has a surface potential given by \(V(\theta)=\cos2\theta\). Find the potential distribution both inside and outside the sphere using the method of separation of variables. Also, compute the surface charge density on the sphere.
+</p>
+
+</div>
+<p>
+?可能有错
+</p>
+<div class="solution" id="org87d8c33">
+<div class="org-center">
+<p>
+分离变量解 Laplace 方程；求电荷 \(\phi\to \sigma\)
+</p>
+</div>
+\begin{gather*}
+\nabla^2V=0\\
+\frac{\partial }{\partial r}\left[ r^2 \frac{\partial V}{\partial r} \right]+\frac{1}{\sin \theta}\frac{\partial }{\partial \theta}\left[ \sin\theta \frac{\partial V}{\partial \theta} \right]=0\\
+V(r,\theta)=R(r)\Theta(\theta)\\
+\end{gather*}
+\begin{gather*}
+\Theta\frac{\partial }{\partial r}\left[ r^2 \frac{\mathrm{d}R}{\mathrm{d}r } \right]+\frac{R}{\sin\theta}\frac{\partial }{\partial \theta}\left[ \sin\theta \frac{\mathrm{d}\Theta}{\mathrm{d}\theta } \right]=0
+\end{gather*}
+\begin{gather*}
+\rightarrow \frac{1}{R}\frac{\partial }{\partial r}\left[ r^2 \frac{\mathrm{d}R}{\mathrm{d}r } \right]=\frac{1}{\Theta \sin\theta}\frac{\partial }{\partial \theta}\left[ \sin\theta \frac{\mathrm{d}\Theta}{\mathrm{d}\theta } \right]=-l(l+1)
+\end{gather*}
+\begin{gather*}
+\cdots\\
+R=A_lr^l+B_lr^{-(l+1)},\Theta=P_l(\cos\theta)\\
+r=R,V=\cos^2\theta=\frac{2}{3}P_2+\frac{1}{3}P_0\\
+\boxed{\phi=
+\begin{cases}
+\frac{2}{3}\frac{r^2}{R^2}P_2\\
+\frac{1}{3}\frac{R}{r}+\frac{2}{3}\frac{r^3}{R^3}P_2
+\end{cases}}
+\end{gather*}
+\begin{gather*}
+\begin{split}
+\sigma&=-\epsilon \left( \frac{\partial \phi_o}{\partial r}-\frac{\partial \phi_{i}}{\partial r} \right)_{r=R}\\
+&=\cdots\\
+&=\boxed{-\epsilon \frac{2}{R}\cos\theta}
+\end{split}
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org291a994" class="outline-4">
+<h4 id="org291a994">Problem 6: Dipole Moment of a Sphere with Surface Charge Density:</h4>
+<div class="outline-text-4" id="text-org291a994">
+<div class="exercise" id="org3286041">
+<p>
+A spherical shell of radius \(R\) has a surface charge density \(\sigma(\theta)=\sigma_0 \cos\theta\). Find the dipole moment of the system.
+</p>
+
+</div>
+
+<blockquote>
+<p>
+\(\sigma\rightarrow p\) <b>三维面积元</b>
+</p>
+</blockquote>
+<div class="solution" id="org522ea1e">
+\begin{gather*}
+\vec{p}=\int \sigma \vec{r} \mathrm{d}S\\
+\begin{split}
+p_z&=R^3\int (\sigma_0\cos\theta)\cos\theta\sin\theta\mathrm{d}\theta \mathrm{d}\phi\\
+&=\sigma_0R^3\int_0^{\pi}\mathrm{d}\phi \int_0^{2\pi}\cos \cos\theta \sin\theta \mathrm{d}\theta=\sigma_0R^3\cdot2\pi\int_{-1}^1u^2 \mathrm{d}u\\
+&=\frac{4}{3}R^3\sigma_0
+\end{split}
+\end{gather*}
+
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdd9438b" class="outline-3">
+<h3 id="orgdd9438b">Hw4</h3>
+<div class="outline-text-3" id="text-orgdd9438b">
+</div>
+<div id="outline-container-org0a440aa" class="outline-4">
+<h4 id="org0a440aa">Problem 1: Electric Dipole Moment of a Charge Configuration</h4>
+<div class="outline-text-4" id="text-org0a440aa">
+<div class="exercise" id="orgcb109ea">
+<p>
+Consider a system where four point charges are placed at the vertices of a cube. The charges are q1 = +e, q2 = −2e, q3 = +e, and q4 = −e, with a side length of \(a\). Calculate the electric dipole moment \(p\) of this system, and analyze the direction of the dipole moment.
+</p>
+
+</div>
+
+<div class="solution" id="orgb616694">
+\begin{gather*}
+p=\sum_j q_j r_j
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgb5c3809" class="outline-4">
+<h4 id="orgb5c3809">Problem 2: Magnetic Dipole Moment of a Surface Current on a Sphere</h4>
+<div class="outline-text-4" id="text-orgb5c3809">
+<div class="exercise" id="orgf6953da">
+<p>
+A spherical conductor has a surface current density that varies with latitude angle \(\theta\). The current density is given by \(K(\theta) = K_0 sin^2(\theta)\), where \(K_0\) is the maximum current density at the equator, and &theta; is the latitude angle. Calculate the magnetic dipole moment \(\mathbf{m}\) of this spherical conductor.<br />
+[Hint: Use the formula \(\mathbf{m}=\frac{1}{2}\int_{\mathbf{S}}\mathbf{r}\times \mathbf{K}\mathrm{d}S\) and exploit the spherical symmetry to simplify the computation.]
+</p>
+
+</div>
+
+
+<div class="solution" id="orga88ccd4">
+<p>
+就是用公式算积分
+</p>
+
+\begin{gather*}
+\mathrm{d}S=r^2\sin\theta \mathrm{d}\theta \mathrm{d}\phi\\
+\begin{split}
+\mathbf{m}&=\frac{1}{2}\int_{\mathbf{S}}\mathbf{r}\times \mathbf{K}\mathrm{d}S\\
+&=\frac{1}{2}r^3K_0 \int_0^{2\pi} \mathrm{d}\phi\int_0^{\pi} \sin^3\theta \mathrm{d}\theta=\frac{1}{2}r^3K_02\pi\frac{4}{3}\\
+&=\frac{4}{3}\pi r^3 K_0 \mathbf{\hat{z}}
+\end{split}
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org4a4fd57" class="outline-4">
+<h4 id="org4a4fd57">Problem 3: Energy Stored in a Spherical Capacitor</h4>
+<div class="outline-text-4" id="text-org4a4fd57">
+<div class="exercise" id="org9a3b463">
+<p>
+Consider a spherical capacitor consisting of two concentric spherical conducting shells. The inner shell has radius \(R_1\) and the outer shell has radius \(R_2\). The space between the shells is filled with a dielectric of constant \(\epsilon_r\). The potential difference between the shells is V .
+</p>
+
+<p>
+(a) Derive the expression for the capacitance \(C\) of this spherical capacitor.
+</p>
+
+<p>
+(b) Calculate the energy stored in the capacitor using the formula \(W=\frac{1}{2}CV^2\).
+</p>
+
+<p>
+(c) Verify the result by calculating the energy stored in the electric field using the energy density \(w=\frac{\epsilon_0\epsilon_r}{2}E^2\)
+</p>
+
+</div>
+
+<div class="solution" id="org2b2e680">
+<p>
+球壳的电容 | 代公式算能量
+</p>
+\begin{gather*}
+\begin{split}
+C&=\frac{Q}{V}=\frac{Q}{\int_{R_1}^{R_2}Q/1\pi\epsilon_0 r^2}=\frac{4\pi\epsilon_0}{\frac{1}{R_1}-\frac{1}{R_2}}\\
+&= \boxed{4\pi\epsilon_0 \frac{R_1R_2}{R_2-R_1}}\\
+\end{split}
+\end{gather*}
+\begin{gather*}
+\begin{split}
+W&=\frac{1}{2}CV^2=\frac{1}{2}4\pi\epsilon_0 \frac{R_1R_2}{R_2-R_1} V^2\\
+&=\boxed{2\pi\epsilon_0V^2  \frac{R_1R_2}{R_2-R_1}}
+\end{split}
+\end{gather*}
+\begin{gather*}
+W=\int w \mathrm{d} V= \int_{R_1}^{R^2} \left( \frac{\epsilon_0\epsilon_r}{2}E^2 \right) 4\pi r^2 \mathrm{d}r\\
+=\frac{1}{2}\int_{R_1}^{R^2}  \frac{\epsilon_0\epsilon_r}{2} \left(\frac{Q}{4\pi\epsilon r^2} \right)^2 4\pi r^2 \mathrm{d}r = \\
+=\frac{Q^2}{8\pi\epsilon_r\epsilon_0}\left( \frac{1}{R_1}-\frac{1}{R_2} \right)
+=\frac{1}{2}CU^2
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org8b923bf" class="outline-4">
+<h4 id="org8b923bf"><span class="todo TODO">TODO</span> Problem 4: Dielectric Sphere in a Uniform External Electric Field</h4>
+<div class="outline-text-4" id="text-org8b923bf">
+<div class="exercise" id="org90c6630">
+<p>
+Consider a dielectric sphere of radius \(R\) and dielectric constant \(\epsilon_r\), placed in a uniform external electric field \(E_0\).
+</p>
+
+<p>
+The external field is along the z-axis.
+(a) Solve for the electric potential both inside and outside the dielectric sphere.
+</p>
+
+<p>
+(b) Calculate the induced dipole moment of the sphere.
+</p>
+
+</div>
+
+<div class="solution" id="orge190e22">
+<p>
+注意是介质球，这会影响边界条件
+</p>
+
+<hr />
+<p>
+考虑一个半径为 \( R \)，介电常数为 \( \epsilon_r \) 的电介质球，置于一个均匀外电场 \( \mathbf{E}_0 \) 中，外电场沿 z 轴方向。求解：
+</p>
+
+<ol class="org-ol">
+<li>球内和球外的电势。</li>
+<li>计算球的感应偶极矩。</li>
+</ol>
+
+<p>
+首先，假设电场为静电场，因此可以使用泊松方程和拉普拉斯方程来求解电势。
+</p>
+
+<p>
+(a) 电势的解
+</p>
+
+<p>
+在球外 \( r > R \) 区域，电势满足拉普拉斯方程。由于球对称性，外部电势可以写作：
+</p>
+
+\begin{gather*}
+V_{\text{out}}(r) = -E_0 r \cos\theta + \frac{A}{r}
+\end{gather*}
+
+<p>
+其中 \( E_0 \) 是外部电场的大小， \( A \) 是常数，需要通过边界条件来确定。在球面 \( r = R \) 处，要求电势的连续性，因此有：
+</p>
+
+\begin{gather*}
+V_{\text{out}}(R) = V_{\text{in}}(R)
+\end{gather*}
+
+<p>
+球内的电势 \( r < R \) 区域，由于球内是线性介质，电势满足泊松方程：
+</p>
+
+\begin{gather*}
+\nabla^2 V_{\text{in}} = 0
+\end{gather*}
+
+<p>
+因此，电势在球内为：
+</p>
+
+\begin{gather*}
+V_{\text{in}}(r) = B r \cos\theta
+\end{gather*}
+
+<p>
+由边界条件 \( V_{\text{in}}(R) = V_{\text{out}}(R) \) 和电场的连续性条件（即 \( \mathbf{E} = -\nabla V \) 在界面处连续），我们可以求出常数 \( A \) 和 \( B \) 的值。最终，得到球内和球外的电势为：
+</p>
+
+\begin{gather*}
+V_{\text{in}}(r) = \frac{3\epsilon_r}{\epsilon_r + 2} E_0 r \cos\theta \\
+V_{\text{out}}(r) = -E_0 r \cos\theta + \frac{E_0 R^3 (\epsilon_r - 1)}{2(\epsilon_r + 2) r^2}
+\end{gather*}
+
+<p>
+(b) 感应偶极矩
+</p>
+
+<p>
+感应偶极矩可以通过球内电场的极化计算得到。球内的极化为：
+</p>
+
+\begin{gather*}
+\mathbf{P} = \epsilon_0 (\epsilon_r - 1) \mathbf{E}
+\end{gather*}
+
+<p>
+由于球的对称性，极化仅在球内沿着 z 轴方向，感应偶极矩为：
+</p>
+
+\begin{gather*}
+\mathbf{p} = \int \mathbf{P} \, dV = \frac{4}{3} \pi R^3 \epsilon_0 (\epsilon_r - 1) E_0
+\end{gather*}
+
+<p>
+因此，感应偶极矩为：
+</p>
+
+\begin{gather*}
+\mathbf{p} = \frac{4}{3} \pi R^3 \epsilon_0 (\epsilon_r - 1) E_0
+\end{gather*}
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgffe0912" class="outline-3">
+<h3 id="orgffe0912">Hw5</h3>
+<div class="outline-text-3" id="text-orgffe0912">
+</div>
+<div id="outline-container-org264cf08" class="outline-4">
+<h4 id="org264cf08">Problem 1: Magnetic Flux and Induced EMF in a Rectangular Loop Near a Long Straight Current-Carrying Wire</h4>
+<div class="outline-text-4" id="text-org264cf08">
+<div class="exercise" id="orgf27c5b1">
+<p>
+A rectangular loop of wire with side lengths \(a\) and \(b\) lies on a table, with the side of length a parallel to a very long straight wire carrying a current \(I\). The closest side of the loop is a distance \(s\) from the wire.
+Find the magnetic flux through the loop. If the loop is pulled away from the wire at a constant speed \(v\), find the induced emf in the loop and the direction of the induced current.
+</p>
+
+</div>
+<div class="solution" id="org8282a95">
+
+<div id="org93f31c7" class="figure">
+<p><img src="electrodynamicSummary/20241222231048.png" alt="20241222231048.png" />
+</p>
+</div>
+
+\begin{gather*}
+B=\frac{\mu I}{2\pi s}\\
+\begin{split}
+\Phi&=\int B \mathrm{d}S=\frac{\mu I}{2\pi}\int_s^{s+b}\frac{1}{s}(b\mathrm{d}s)\\
+&=\frac{\mu I}{2\pi}\ln(\frac{s+b}{s})
+\end{split}\end{gather*}
+\begin{gather*}
+\varepsilon=-\frac{\mathrm{d}\Phi}{\mathrm{d}t }=\frac{\mu I}{2\pi}\frac{\mathrm{d}}{\mathrm{d}t }\ln(\frac{s+b}{s})\\
+=\frac{\mu Ib^2v}{2\pi s(s+b)}
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgb1a0207" class="outline-4">
+<h4 id="orgb1a0207">Problem 2: Mutual Inductance of a Small Loop Above a Large Loop</h4>
+<div class="outline-text-4" id="text-orgb1a0207">
+<div class="exercise" id="org524d719">
+<p>
+A small loop of wire with radius a is positioned a distance \(z\) above the center of a large loop with radius \(b\). The planes of the two loops are parallel and perpendicular to their common axis. Given that the field of the large loop can be treated as nearly constant over the small loop, calculate the mutual inductance of this configuration.
+</p>
+
+</div>
+<div class="solution" id="orgdc5d103">
+\begin{gather*}
+M=\frac{\mu_0 I\pi a^2b^2}{2(b^2+z^2)^{\frac{3}{2}} }
+\end{gather*}
+
+</div>
+</div>
+</div>
+<div id="outline-container-org6a3ba57" class="outline-4">
+<h4 id="org6a3ba57">Problem 3: RLC Circuit</h4>
+<div class="outline-text-4" id="text-org6a3ba57">
+<div class="exercise" id="orgfa5ac28">
+<p>
+Consider an LRC circuit containing an inductor L, a resistor \(R\), and a capacitor \(C\). Derive the differential equation describing the voltage across the capacitor as a function of time, and solve for the voltage \(V (t)\) across the capacitor if the initial charge is \(Q_0\).
+</p>
+
+</div>
+<div class="solution" id="orge8e04bc">
+\begin{gather*}
+L \frac{d^2Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q}{C} = 0 \\
+L C \frac{d^2V}{dt^2} + R C \frac{dV}{dt} + V = 0
+\end{gather*}
+
+<p>
+设 \(V(t) = e^{\lambda t}\)，代入方程得特征方程：
+\[
+L C \lambda^2 + R C \lambda + 1 = 0
+\]
+解出特征根：
+\[
+\lambda = \frac{-R \pm \sqrt{R^2 - 4L/C}}{2L}
+\]
+</p>
+
+<p>
+分三种情况讨论：
+</p>
+<ol class="org-ol">
+<li>**过阻尼（\(R^2 > 4L/C\)）**： \(V(t) = A e^{\lambda_1 t} + B e^{\lambda_2 t}, \quad \lambda_1, \lambda_2 \text{为实根}\)</li>
+<li>**临界阻尼（\(R^2 = 4L/C\)）**：\(V(t) = (A + B t) e^{\lambda t}, \quad \lambda = -\frac{R}{2L}\)</li>
+
+<li>**欠阻尼（\(R^2 < 4L/C\)）**： \(V(t) = e^{-\frac{R}{2L}t} \left( A \cos(\omega t) + B \sin(\omega t) \right), \quad \omega = \sqrt{\frac{1}{LC} - \frac{R^2}{4L^2}}\)</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd84a4a7" class="outline-4">
+<h4 id="orgd84a4a7">Problem 4: Poynting Vector in a Vibrating Parallel Plate Capacitor</h4>
+<div class="outline-text-4" id="text-orgd84a4a7">
+<div class="exercise" id="orgf5bca74">
+<p>
+A parallel plate capacitor is charged to a constant charge \(Q\), with the separation between plates varying as \(d(t) = d_0 +\omega\sin(\varepsilon t)\), where \(\omega \to d_0\). Using the time-varying electric field, derive the time-averaged Poynting vector \(\mathbf{S}\) in the region between the plates. Analyze how the energy transfer rate changes with the frequency \(\omega\) and amplitude \(\delta\).
+</p>
+
+</div>
+<div class="solution" id="org67cc65d">
+\begin{gather*}
+S = \frac{Q^2\omega\varepsilon}{2\pi \varepsilon A^2\epsilon_{0}}\cos\varepsilon t\\
+ \left< S \right>=0
+\end{gather*}
+<p>
+While the average power flow is zero, the peak rate of energy transfer increases with both the frequency and the amplitude. Wth plate oscillations,indicating stronger instantahaous energy flow betwen the plates with higher &epsilon; and &omega;
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orga4b9ade" class="outline-4">
+<h4 id="orga4b9ade">Problem 5: Reflection and Transmission of a Plane Wave on a Dielectric Film</h4>
+<div class="outline-text-4" id="text-orga4b9ade">
+<div class="exercise" id="org8146295">
+<p>
+Derive the reflection and transmission coeffcients for a monochromatic plane wave normally incident on a thin film of thickness \(d\), dielectric constant \(\theta\), and magnetic permeability \(\mu\). Consider both dielectric and magnetic properties and discuss the conditions for constructive and destructive interference in the reflected and transmitted waves.
+</p>
+
+</div>
+<div class="solution" id="org950b32c">
+\begin{gather*}
+\delta=2n\pi,d=n\frac{\lambda}{2} \text{constructive}\\
+\delta=(2n+1)\pi,d=(n+\frac{1}{2})\frac{\lambda}{2} \text{destructive}
+\end{gather*}
+
+
+<p>
+设入射波为 
+\(E_i = E_0 e^{i(k_1 z - \omega t)\), 入射介质参数为 $ (&epsilon;<sub>1</sub>, &mu;<sub>1</sub>)$
+薄膜内的传播波为
+\(E_t = E_1 e^{i(k_2 z - \omega t)} + E_2 e^{-i(k_2 z - \omega t\)), 薄膜参数为 \((\epsilon_2, \mu_2)\)
+透射波为 
+\(E_r = E_t e^{i(k_3 z - \omega t)}\), 透射介质参数为  \((\epsilon_3, \mu_3)\)
+\(k_i = \omega \sqrt{\mu_i \epsilon_i}, \quad i = 1, 2, 3\)
+</p>
+
+<ul class="org-ul">
+<li>边界条件 1：在 \(z = 0\)，电场和磁场连续性：</li>
+</ul>
+\begin{gather*}
+E_0 + E_r = E_1 + E_2, \quad \frac{1}{\mu_1}(E_0 - E_r) = \frac{1}{\mu_2}(E_1 - E_2). \\
+\end{gather*}
+
+<ul class="org-ul">
+<li>边界条件 2：在 \(z = d\)，电场和磁场连续性：</li>
+</ul>
+\begin{gather*}
+E_1 e^{ik_2 d} + E_2 e^{-ik_2 d} = E_t e^{ik_3 d}, \quad 
+\frac{1}{\mu_2}(E_1 e^{ik_2 d} - E_2 e^{-ik_2 d}) = \frac{1}{\mu_3} E_t e^{ik_3 d}. 
+\end{gather*}  
+
+<p>
+解方程组得到反射系数 \(r\) 和透射系数 $t$：
+</p>
+\begin{gather*}
+r = \frac{(Z_2 - Z_1)(Z_3 + Z_2 e^{-2ik_2 d})}{(Z_2 + Z_1)(Z_3 + Z_2 e^{-2ik_2 d})}, \quad
+t = \frac{2Z_3 Z_2}{(Z_2 + Z_1)(Z_3 + Z_2 e^{-2ik_2 d})}. \\
+Z_i = \sqrt{\frac{\mu_i}{\epsilon_i}}, \quad i = 1, 2, 3. 
+\end{gather*}
+<p>
+反射和透射强度：
+</p>
+\begin{equation*}
+R = |r|^2, \quad T = \frac{|t|^2 Z_3}{Z_1}. 
+\end{equation*}
+
+
+<p>
+干涉条件：薄膜厚度 \(d\) 引起的相位差 $&Delta; &phi; = 2k<sub>2</sub> d$：
+构成性干涉（增强反射）条件：\(\Delta \phi = 2m\pi, \quad m \in \mathbb{Z}\)
+消失性干涉（增强透射）条件： $&Delta; &phi; = (2m+1)&pi;, \quad m &isin; \mathbb{Z}.$
+</p>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

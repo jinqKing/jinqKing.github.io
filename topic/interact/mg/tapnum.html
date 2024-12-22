@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找不同——将无尽的宇宙收入掌心</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script type="text/javascript" src="main.js"></script> -->
+</head>
+
+<body>
+    <div>
+        <button id="toogleDisplayBut">显示所有内容</button>
+        <button id="restoreDisplayBut">重置本地进度</button>
+    </div>
+
+    <div id="content">
+        <h1 class="display">找不同——将无尽的宇宙收入掌心</h1>
+        <div id="intro" class="choose-number display" next="intro-resp,1.3.1,">
+            <p>选择正确的数字：100</p>
+            <div class="choice_container" answer="100">
+                <div class="number">1</div>
+                <div class="number">2</div>
+                <div class="number">3</div>
+                <div class="number">4</div>
+                <div class="number">100</div>
+                <div class="number">6</div>
+            </div>
+        </div>
+
+        <div id="intro-resp" class="congratulation">
+            <p>恭喜，你已经学会操作了，下面进入数字的宇宙吧</p>
+        </div>
+        <div id="1.3.1" class="text">
+
+            <div class="en">
+                <p>I spread the notebook on the table and waved to Yuri. She dragged a chair and sat gently on my left.
+                </p>
+                <p>A scent of shampoo floated in the air. Yuri took a pair of resin-framed glasses from her chest pocket
+                    and put them on.</p>
+                <p>“Eh? Is this written by your brother?”</p>
+                <p>Yuri leaned over and looked at the notebook in surprise. It was written by Mirka.</p>
+                <p>“Uh, this is written by my brother’s friend.”</p>
+                <p>“Huh, the handwriting is so beautiful, just like a girl’s.”</p>
+                <p>It was written by a girl in the first place. I thought to myself.</p>
+            </div>
+            <div class="zh">
+                <p>我把笔记本在桌子上摊开，冲尤里招手。她拖着椅子轻轻坐在我左边。</p>
+                <p>瞬间飘来一股洗发水的香气。尤里从胸前口袋中取出一副树脂边框的眼镜戴上。</p>
+                <p>“咦？这是哥哥写的？”</p>
+                <p>尤里探着头，惊讶地看着笔记本。是米尔嘉的笔迹。</p>
+                <p>“呃，这是哥哥的朋友写的。”</p>
+                <p>“诶，字好漂亮，简直跟女生写的一样。”</p>
+                <p>本来就是女生写的嘛。我心想。</p>
+            </div>
+        </div>
+
+        <div id="test1" class="test choose-number display " next="test2,1.3.3,1.3.2">
+            <p>哪个数字与众不同？</p>
+            <div class="choice_container" answer="450">
+                <div class="number">101</div>
+                <div class="number">321</div>
+                <div class="number">681</div>
+                <div class="number">991</div>
+                <div class="number">450</div>
+                <div class="number">811</div>
+            </div>
+        </div>
+        <div id="1.3.2" class="text">
+            <div class="en">
+                <p>“It’s simple, isn’t it? 450, right?”</p>
+                <p>“Yes, correct. The difference is 450. Why?”</p>
+                <p>“Only 450 does not end with the number 1, the other five numbers all end with 1.”</p>
+                <p>“That’s right…… Can you answer the next question? This is also a question from my friend.”</p>
+            </div>
+            <div class="zh">
+                <p>“很简单啊，450对吧？”</p>
+                <p>“嗯，正确。不同的是450。为什么呢？”</p>
+                <p>“只有450不是以数字1结尾，其他五个数字都是以1结尾的。”</p>
+                <p>“没错……那么，你能答对下一道题吗？这也是我朋友出的题。”</p>
+            </div>
+            <div class="ja">
+                <p>「簡単でしょう？450ですね？」</p>
+                <p>「はい、正解です。違うのは450です。なぜですか？」</p>
+                <p>「450だけが1で終わっていない、他の5つの数字はすべて1で終わっている」</p>
+                <p>「そうですね……次の問題に答えられますか？これも友達の出題です」</p>
+            </div>
+        </div>
+        <div id="test2" class="choose-number test" next="1.3.4,test3,1.3.5">
+            <p>哪个数字与众不同？</p>
+            <div class="choice_container" answer="51">
+                <div class="number">11</div>
+                <div class="number">31</div>
+                <div class="number">41</div>
+                <div class="number">51</div>
+                <div class="number">61</div>
+                <div class="number">71</div>
+            </div>
+            <!-- </div> -->
+        </div>
+
+        <div id="1.3.3" class="text">
+            <div class="en">
+                <p>“Eh? All of them end with 1.”</p>
+                <p>“Yes, this question is different from the previous one. The difference between the numbers in each question is different.”</p>
+                <p>“I don’t know. Do you know, brother?”</p>
+            </div>
+            <div class="zh">
+                <p>“诶？全部都以 1 结尾啊。”</p>
+                <p>“嗯，这一题跟上一题的规则不一样，每道题数字间的不同之处都是不一样的。”</p>
+                <p>“我不知道。哥哥你知道吗？”</p>
+            </div>
+        </div>
+
+        <div id="1.3.4" class="text">
+            <div class="en">
+                <p>“Well, it’s obvious, 51 is different.”</p>
+                <p>“Eh? Why?”</p>
+                <p>“Only 51 is not a prime number. Because 51 = 3 x 17 can be decomposed into prime factors, so 51 is a composite number, while the others are prime numbers.”</p>
+                <p>“How could I know that!”</p>
+                <p>“Then let’s see the next question.”</p>
+            </div>
+            <div class="zh">
+                <p>“嗯，很明显啊，51是不同的。” </p>
+                <p>“诶？为什么？”</p>
+                <p>“只有51不是质数。因为51=3 x 17可以分解质因数，所以51是合数，而其他都是质数。”</p>
+                <p>“这我怎么可能知道嘛！”</p>
+                <p>“那看看下道题如何？”</p>
+            </div>
+        </div>
+
+        <div id="test3" class="test choose-number" next="test4,1.3.6,1.3.7,1.3.8">
+            <p>哪个数字与众不同？</p>
+            <div class="choice_container" answer="288">
+                <div class="number">100</div>
+                <div class="number">225</div>
+                <div class="number">121</div>
+                <div class="number">256</div>
+                <div class="number">288</div>
+                <div class="number">361</div>
+            </div>
+        </div>
+        <div id="1.3.5" class="text">
+            <div class="en">
+                <p>“Hmm…… 256, right? Other numbers all have two consecutive identical numbers. 100 has 00, 225 has 22, 288 has 88…… right?”</p>
+                <p>“But 121 is not consecutive?”</p>
+                <p>“Hmm…… there are two 1s, so it counts.”</p>
+                <p>“Then how about 361?”</p>
+                <p>“Hmm……”</p>
+            </div>
+            <div class="zh">
+                <p>
+                    “嗯……哥哥，是 256 吧？其他数字中都有两个连续相同的数。100 的 00，225 的 22，288 的 88……对吧？”
+                </p>
+                <p>“但是 121 不连续啊？”</p>
+                <p>“唔……有两个 1 相同，所以也算是啦。”</p>
+                <p>“那 361 又怎么算呢？”</p>
+                <p>“唔……”</p>
+            </div>
+        </div>
+        <div id="1.3.6" class="text">
+            <div class="en">
+                <p>“In this question, the difference is 288.”</p>
+                <p>“Why why?”</p>
+                <p>“Only 288 is not a square number. That is to say, only 288 cannot be transformed into the form of a square of an integer.”</p>
+            </div>
+            <div class="zh">
+                <p>“这道题里，不同的是 288。”</p>
+                <p>“为什么为什么？”</p>
+                <p>“只有 288 不是平方数。也就是说，只有 288 不能变成某个整数的平方的形式。”</p>
+            </div>
+        </div>
+        <div id="1.3.7" class="text">
+            <div class="en">
+                <p>“I can know this, it’s too strange.”</p>
+                <p>“Then how about the next question? I spent a whole day to solve this question.”</p>
+            </div>
+            <div class="zh">
+                <p>“我说哥哥，我能知道这个才怪呢。”</p>
+                <p>“那下面这道题如何？哥哥我可是花了一整天才解开这道题的。”</p>
+            </div>
+        </div>
+        <div id="test4" class="test choose-number" next="">
+            <p>哪个数字与众不同？</p>
+            <div class="choice_container" answer="257">
+                <div class="number">239</div>
+                <div class="number">251</div>
+                <div class="number">257</div>
+                <div class="number">263</div>
+                <div class="number">271</div>
+                <div class="number">283</div>
+            </div>
+        </div>
+        <div id="1.3.8" class="text">
+            <div class="en">
+                <p>“Can you think all day? It’s too scary.” Yuri said.</p>
+                <p>At this time, my mother brought cocoa.</p>
+                <!-- <p>“Ah, sorry, thank you.”</p>
+                    <p>“Is your foot okay?” My mother asked Yuri.
+                    “Mm.”
+                    “What’s wrong with her foot?” I asked.
+                    “The heel area will occasionally be very painful.” Yuri said. -->
+                    <p>To be continued……</p>
+            <div class="zh">
+                <p>“你能想一整天？太吓人了。”尤里说。</p>
+                <p>这时，我妈拿来了可可。</p>
+                <!-- “啊，不好意思，谢谢您。”
+                    “脚不要紧吧？”我妈问尤里。
+                    “嗯。”
+                    “她脚怎么了？”我问道。
+                    “脚跟附近偶尔会非常痛。”尤里说。 -->
+                    <p>未完待续……</p>
+            </div>
+            <a href="tapnum.html">返回</a>
+        </div>
+        <script src="main.js"></script>
+</body>
+
+</html>

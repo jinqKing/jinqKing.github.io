@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-15 Sun 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>多项式*-|</title>
+<meta name="author" content="Kintrol" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Kintrol（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 22:08 Sat | 凝墨: 2024-08-25 Sun 10:39 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">多项式*-|</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org192c811">1. 定义</a></li>
+<li><a href="#org9b06a75">2. 参数</a></li>
+<li><a href="#orga4a5ecd">3. 诱导多项式函数</a></li>
+<li><a href="#orgdaad83c">4. 意义</a>
+<ul>
+<li><a href="#org9ccee37">4.1. 一元多项式通用性质</a></li>
+<li><a href="#orge992818">4.2. 超越元</a></li>
+</ul>
+</li>
+<li><a href="#orge6fe5ce">5. 性质</a></li>
+<li><a href="#org959f43f">6. 多项式分解</a>
+<ul>
+<li><a href="#org527bc0a">6.1. 互素分解</a></li>
+<li><a href="#org9312c3c">6.2. 不可约分解</a></li>
+<li><a href="#org0856a3b">6.3. 方幂和展开</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<i>本文对我影响很深 <span class="timestamp-wrapper"><span class="timestamp">&lt;2024-08-25 Sun 10:39&gt;</span></span></i>
+</p>
+
+<p>
+这个文档是对下面两个视频的笔记——原视频效果非常好
+</p>
+
+<p>
+复习（高等）代数中的多项式
+</p>
+<div class="org-center">
+<p>
+BV1jg411e7qy|
+</p>
+
+<p>
+非常棒：BV1tQ4y1c7A3|
+</p>
+</div>
+
+<div id="outline-container-org192c811" class="outline-2">
+<h2 id="org192c811"><span class="section-number-2">1.</span> 定义</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+非映射（不存在定义域和），是一个形式，可以没有取值。
+使用形式幂级数定义这个形式。
+</p>
+
+<p>
+有了加法乘法，得到环。
+未定元 indeterminate
+和未知量 unknown 不同，后者是方程。没有任何含义。
+</p>
+
+<p>
+<b>定义</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-定义">形式表达式 $$a_nx_n+a_{n-1}x_{n-1}+\cdots+a_1x+a_0$$
+称为不定元多项式或整式， x 称为不定元。
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org9b06a75" class="outline-2">
+<h2 id="org9b06a75"><span class="section-number-2">2.</span> 参数</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+最重要参数：次数
+</p>
+
+<p>
+参数：系数、不定元、次数
+</p>
+<ul class="org-ul">
+<li>系数：（一般限定于）指定数域</li>
+<li>不定元：数域之外，任意取（即不能取代数元）</li>
+<li>次数：自然数</li>
+</ul>
+
+<blockquote>
+<p>
+国内都把x叫做未定元，关于x的形式表达式定义成多项式蛮容易让人困惑的。
+其实柯斯特利金卷一的多项式讲得就那蛮清楚的，
+定义成仅含有限非零项的无穷序列，乘积定义成离散序列卷积，然后再给出形式表达式。
+</p>
+</blockquote>
+
+<p>
+加法是有差异的，特殊的，但不做区分
+</p>
+
+<p>
+考虑所有这样的集合：组成环 \(F(+,\cdot)\)。
+对加法交换群，乘法是幺半群
+</p>
+
+<p>
+定义：
+域 \(F\) 上一元多项式组成的集合记作 \(F[x]\)
+称作一元多项式环。
+</p>
+</div>
+</div>
+<div id="outline-container-orga4a5ecd" class="outline-2">
+<h2 id="orga4a5ecd"><span class="section-number-2">3.</span> 诱导多项式函数</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+构造一个代入多项式的映射：
+将数域的值代入
+？同时涉及代入运算
+</p>
+
+<p>
+多项式函数
+\[f:F\to F\]
+\[t\mapsto a_nt^n+\cdots+a_1t+a_0\]
+</p>
+
+<p>
+这是一个函数，判定条件不同：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">&#xa0;</th>
+<th scope="col" class="org-left">类型</th>
+<th scope="col" class="org-left">判定相等条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">多项式</td>
+<td class="org-left">形式表达式</td>
+<td class="org-left">完全相同</td>
+</tr>
+
+<tr>
+<td class="org-left">多项式函数</td>
+<td class="org-left">映射</td>
+<td class="org-left">定义域、值域、对应规则</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+合同：两个多项式诱导相通的多项式函数
+</p>
+
+<p>
+相同 \(\Rightarrow\) 合同
+</p>
+
+<p>
+数域上成立（实数复数），一般的
+<img src="polynomial/20240427222200.png" alt="20240427222200.png" />
+</p>
+
+<p>
+<b>例</b>:
+\(\mathbb{F}_3[x]\) \(f(x)=x^3+2x^2+2,g(x)=2x^2+x+2\)
+</p>
+
+<p>
+012 模3
+</p>
+
+<p>
+有限域不成立，需要无穷多元素
+</p>
+
+<p>
+合同与相同：相等强于合同，本质上是两个纬度一个是形式，一个是映射
+</p>
+</div>
+</div>
+<div id="outline-container-orgdaad83c" class="outline-2">
+<h2 id="orgdaad83c"><span class="section-number-2">4.</span> 意义</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+明明多项式函数更有意思，可以分析，
+没有【意义】的多项式更具体的定义有什么【形式】意义？
+</p>
+
+<blockquote>
+<p>
+正是因为多项式没有意义，就意味着它的意义没有受到限制，
+我们可以自由地赋予意义。
+</p>
+</blockquote>
+
+<p>
+强大之处在于，它不仅可以代入系数域中的元素，
+还可以代入更一般的元素，进行拓展的运算，进而发现普世的规律
+</p>
+</div>
+
+<div id="outline-container-org9ccee37" class="outline-3">
+<h3 id="org9ccee37"><span class="section-number-3">4.1.</span> 一元多项式通用性质</h3>
+<div class="outline-text-3" id="text-4-1">
+
+<div id="org55b060b" class="figure">
+<p><img src="polynomial/20240428201220.png" alt="20240428201220.png" />
+</p>
+</div>
+
+<p>
+将所有 x 换成 t ,数变成
+</p>
+
+<p>
+域 \(F\) 相当于是环 \(F[x]\) 的子环，是系数为零的多项式集合
+</p>
+
+<p>
+它们在运算性质上完全一样，保持运算『同态』。
+如，研究矩阵多项式
+</p>
+
+<p>
+使用环论语言描述：
+交换环 \(R\) 是域 \(F\) 上的扩环，意为有 \(\tau:F\to R_1\overset{\text{ring}}{\subset} R\)
+环中任意元素 \(t\) 可以诱导出环同态 \(\sigma(t):F[x]\to R\)
+</p>
+<p>
+称 \(\sigma(t)\) 为把 t 代入 x ，同态像称为 t 的定元多项式
+</p>
+
+
+<p>
+举例：矩阵运算的定元多项式 \(2A=2EA\)
+</p>
+
+<p>
+把多项式送到多项式：
+</p>
+<ul class="org-ul">
+<li>系数 \(a\mapsto \tau(a)\) 映到</li>
+</ul>
+
+<p>
+多项式中的带余除法、裴蜀定理、整除
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge992818" class="outline-3">
+<h3 id="orge992818"><span class="section-number-3">4.2.</span> 超越元</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+代数元：是域上多项式的根；否则是超越元
+</p>
+
+<p>
+E 是 F 的扩环（域）， E 中元素 a 是 \(F[x]\) 中多项式的根，称 a 为代数元。
+</p>
+
+<p>
+例： \(\sqrt{2},\mathrm{i}\) 是 \(\mathbb{Q}\) 代数元； \(\pi\) 是超越元
+实多项式函数的集合，可以有代数函数和超越函数
+</p>
+
+<p>
+超越元具有特殊性，比如分析学取极限构造。
+它们在原集合中像是无意义的符号，地位等同于不定元。同样定元就一定是代数元
+</p>
+
+<p>
+只要系数域足够大，超越元迟早成为代数元
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">定元</td>
+<td class="org-left">代数元</td>
+<td class="org-left">代入多项式结果在扩环中</td>
+</tr>
+
+<tr>
+<td class="org-left">不定元</td>
+<td class="org-left">超越元</td>
+<td class="org-left">多项式结果是新元素</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+多元多项式：多项式上的多项式 \(F[x,y]\to F[x][y]\) 关于 y 的，系数是关于 x 多项式
+？柯里化
+</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orge6fe5ce" class="outline-2">
+<h2 id="orge6fe5ce"><span class="section-number-2">5.</span> 性质</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+重要性质：是否可约
+</p>
+
+<p>
+隐形定义可交换
+</p>
+
+<p>
+添加性质更好－扩域
+</p>
+
+<p>
+多元多项式环 \(F[x,y]=F[x][y]\) 依次添加
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org959f43f" class="outline-2">
+<h2 id="org959f43f"><span class="section-number-2">6.</span> 多项式分解</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+有一个次数大于1
+可约： \(f=f_1f_2=f_{11}f_{12}f_{2}\)
+将多项式分解为一系列不可约多项式的乘积。
+</p>
+
+<p>
+不可约多项式与其他多项式要么整除，要么互素
+</p>
+</div>
+
+<div id="outline-container-org527bc0a" class="outline-3">
+<h3 id="org527bc0a"><span class="section-number-3">6.1.</span> 互素分解</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+拆成互素多项式，这至少两个互素因子。
+</p>
+</div>
+</div>
+<div id="outline-container-org9312c3c" class="outline-3">
+<h3 id="org9312c3c"><span class="section-number-3">6.2.</span> 不可约分解</h3>
+<div class="outline-text-3" id="text-6-2">
+<p>
+：一定存在，相伴时唯一（相差常数倍）
+唯一的体现：
+分解是： \(f=p\cdots p_t=q\cdots q_s\)
+</p>
+<ol class="org-ol">
+<li>s = t</li>
+<li>可以重排得到 \(p_j\sim q'_j\)</li>
+</ol>
+<p>
+证明使用数学归纳法
+</p>
+
+<p>
+素元、不可约元
+</p>
+
+<p>
+使用不可约元是素元
+</p>
+</div>
+</div>
+<div id="outline-container-org0856a3b" class="outline-3">
+<h3 id="org0856a3b"><span class="section-number-3">6.3.</span> 方幂和展开</h3>
+<div class="outline-text-3" id="text-6-3">
+<p>
+想到进制数位表示倍数
+使用一个表示另一个（完全是除法）
+\(f(x)\) 的 \(g(x)\) 表示
+</p>
+
+<p>
+部分分式分解定理
+</p>
+</div>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

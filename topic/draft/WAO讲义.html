@@ -1,0 +1,2886 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-09-15 Sun 21:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WAO 讲义</title>
+<meta name="author" content="J" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：J（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔:  | 凝墨: 2024-09-15 Sun 21:09 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">WAO 讲义</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org21554a7">1. 引入</a></li>
+<li><a href="#orgc72ba1d">2. 弹簧振子的故事</a>
+<ul>
+<li><a href="#orgbe51585">2.1. 单振子：二阶常系数线性微分方程的通解及性质</a>
+<ul>
+<li><a href="#org876b4b5">2.1.1. 求解通解：包含一切的形式</a></li>
+<li><a href="#orgc248598">2.1.2. 精巧的驱动，同声相应的共振</a></li>
+<li><a href="#org73591ad">2.1.3. 相似系统</a></li>
+</ul>
+</li>
+<li><a href="#org0fe0bbf">2.2. 多振子：求解微分方程组的方法</a>
+<ul>
+<li><a href="#org137486f">2.2.1. 一般方程</a></li>
+<li><a href="#org2e06887">2.2.2. 二生三：模式</a></li>
+<li><a href="#org9d0a3e8">2.2.3. N = N</a></li>
+<li><a href="#org609526f">2.2.4. 边界条件：约束带来的变</a></li>
+<li><a href="#orge261f0a">2.2.5. 一种思路</a></li>
+<li><a href="#org6037711">2.2.6. 推广和等价系统</a></li>
+<li><a href="#org98e8e28">2.2.7. 纵波推导波动方程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9b4d6e3">3. 波动</a>
+<ul>
+<li><a href="#org2458764">3.1. 有限到无限的连续</a>
+<ul>
+<li><a href="#org180370e">3.1.1. 三角函数正交性：傅里叶变换为什么可以</a></li>
+<li><a href="#org342ab6b">3.1.2. Fourier 级数到变换</a></li>
+<li><a href="#org9ad48d9">3.1.3. 时间频率</a></li>
+</ul>
+</li>
+<li><a href="#org59c4978">3.2. 横波的流动</a>
+<ul>
+<li><a href="#org12c81a7">3.2.1. 推导</a></li>
+<li><a href="#orge5719c4">3.2.2. 反射透射</a></li>
+<li><a href="#org56310f2">3.2.3. 驻波？</a></li>
+</ul>
+</li>
+<li><a href="#orgb998b61">3.3. 电动力学－电磁波</a>
+<ul>
+<li><a href="#orgccde772">3.3.1. 电磁波的推导</a></li>
+<li><a href="#orgea6f822">3.3.2. 偏振</a></li>
+</ul>
+</li>
+<li><a href="#org3c4297a">3.4. 量子力学－波函数</a>
+<ul>
+<li><a href="#org09a6e2d">3.4.1. 基本形式</a></li>
+<li><a href="#org137fc49">3.4.2. 简谐振子</a></li>
+<li><a href="#org8fdf153">3.4.3. 径向氢原子</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org9f59a66">4. 弦</a>
+<ul>
+<li><a href="#org759ee71">4.1. 推导波动方程</a>
+<ul>
+<li><a href="#orgf3730f6">4.1.1. 近似</a></li>
+<li><a href="#orge7676cc">4.1.2. 通解：</a></li>
+<li><a href="#org1cfafdc">4.1.3. 关联</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org164a014">5. 色散：步伐不再一致</a></li>
+<li><a href="#org862b21e">6. <span class="todo TODO">TODO</span> 干涉？</a></li>
+<li><a href="#orgb5e285e">7. 需要的数学知识</a>
+<ul>
+<li><a href="#orgdafb498">7.1. 线性代数</a></li>
+<li><a href="#org368c552">7.2. 微积分</a></li>
+<li><a href="#org4fd7d2b">7.3. 级数</a></li>
+</ul>
+</li>
+<li><a href="#org10ed075">8. 结束</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="#org10ed075">结束语</a>
+</p>
+
+<div id="outline-container-org21554a7" class="outline-2">
+<h2 id="org21554a7"><span class="section-number-2">1.</span> 引入</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<b>[提要]:</b>
+</p>
+<p class="verse">
+<b>释 WAO</b><br />
+<b>波自振始</b><br />
+<b>所云所思<br />
+试看振子</b><br />
+</p>
+
+<p>
+WAO 是什么，是对生活中的巧妙的惊呼，如果举一个生活中值得玩味的现象，波一定是个不错的话题。
+倘若你以为它十分简单，那么你可能还对它缺乏了解，你以为它只是偶然一见，其实物理中从经典到量子到处是它的翩跹身影。
+</p>
+
+<p>
+我们都见过波，对它们有一定数学物理的认识，要是你感兴趣不妨想想这几个问题：
+</p>
+
+<p>
+我们通常用三角函数描述波，为什么？是因为某个方程解出来是（为什么解出来是呢），还是形状像，还是说存在更一般的本质（前两点对物理来说完全足够， <del>毕竟光是想明白有些波的合成就已经令人抓狂</del> ）；
+</p>
+
+<p>
+用二阶微分方程作为一个研究波动的主要课题，它的通用性如何体现（总不能就为了解一个波我专门学一个麻烦的方程，又不是准备期末考）；
+</p>
+
+<p>
+傅里叶变换可以很好的简化问题，如何做到（我也还不知道），它的意义在哪……
+</p>
+
+<p>
+考试更可能的问题：<br />
+干涉的条件是什么<br />
+波的叠加是怎样的
+</p>
+
+<p>
+如果知道了答案你是否也会 WAO 一声呢 :P
+</p>
+
+<p>
+<del>废话少说，先解方程</del>
+</p>
+
+<p>
+为了研究波，我们从振动的假设开始。
+</p>
+
+<p>
+等一下，为什么波与振动在一起学。这个问题初看很显然，我们一般都接受波是由振动产生（真的完全是这样吗，或者说你可以理解所有的振动，比如电磁波吗），可是直接看波难道不可以吗，先学振动是否必然呢。这是一个鼓励思考的讲义，其中的每一部分应当有充足的理由和动机，如果不时因为对自然纯粹的好奇，那么物理只是一种求生的职业罢了
+</p>
+
+<p>
+直接从波开始探索无疑是可行的，
+在 ref 可以直接推导出波动方程，不借助除受力分析以外的物理，
+但是这将会使我们错过很多内容，慢慢发现自己走不了更远，乃至于需要再回到简单的振动才能明白到一些更复杂的概念（我想可能有模式、量子力学振子拟合的合理性），至少这里有一个相当核心的（高）观点，我无法想象不从简单振动出发如何得到：
+</p>
+
+<blockquote>
+<p>
+? 波是振动，但振动不一定是波<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>
+</p>
+</blockquote>
+
+<p>
+当然，还有的原因是起初振子的数学模型相当清晰比较简单，向后推广时这些方程也可以继续作为基础，这样在不会傅里叶变换之前我们就可以借助线性代数玩转很多东西了。
+</p>
+
+<p>
+假如你什么都不知道（但上过中国高中物理课），我们可以先举一个平凡的例子。
+</p>
+
+<p>
+我希望开始的部分（最好是全文）采用统一的模型：（这里至少开篇用的是）弹簧振子。这样我们就不用每次费力理解新的物理场景（比如摆、弦），而可以把更多的思考放在挖掘规律的探索上，毕竟最重要的是产生物理直觉抓住统一的线索（不会傅里叶有什么关系，你感受到你需要的时候自然就会了），许多技术上的细节只是让我们的直觉得到证明（而非物理为了严谨存在）<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+。当然为保持多样性（和启发性以及与别的书同步性）会尽量在适当时候提示其他模型也符合几乎同样的规律。
+</p>
+
+<p>
+于是我们从弹簧振子模型开始，它会怎么动呢，如何从这个振动看出波呢？
+</p>
+
+<p>
+\paragraph{符号说明}
+为了避免歧义，此处将后文所有常用物理量说明。以后本文都将遵守这个统一的约定：
+</p>
+
+<p>
+所有导数非说明，都是对时间的导数。
+对于函数的导数，采用上方加点表示对时间的导数；加撇表示对空间（x,&#x2026;）的导数
+</p>
+
+<p>
+具体符号：
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">物理量</td>
+<td class="org-left">符号</td>
+</tr>
+
+<tr>
+<td class="org-left">位移</td>
+<td class="org-left">\(x\)</td>
+</tr>
+
+<tr>
+<td class="org-left">力</td>
+<td class="org-left">\(F\) orce</td>
+</tr>
+
+<tr>
+<td class="org-left">能量</td>
+<td class="org-left">\(E\) nerygy</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+方程 \(f(t,q,p)=0\)
+方程左端(left hand side)是，右段(right hand side)是零（有事会把常数/特殊项移过去）
+&#x2026;&#x2026;.
+</p>
+
+<p>
+\paragraph{符号表演}
+<del>其实我不喜欢质点振动的说法，（尽管我承认说法合理并且自己也用）因为我认为本质上是在研究波 +，只是它原形未现尚在萌芽</del> 。
+</p>
+
+<p>
+有没有波的出现有时候取决于你的视角观念（可以认为方波也是波），比如现在，把弹簧振子的运动轨迹随时间变换画出来，得到的图像，我们对它的样子很熟悉，这个上下波动的图案(patten)。
+</p>
+
+<p>
+高中学圆周运动时，部分老师可能就做过圆周运动与振子的比较，告诉你除了降维，我们也可以利用升维（一维振动变成二维圆周）简化问题，让你大大震撼一下（考试可以这么难吗）。让圆滚动起来我们又一次看到了三角函数的图像。
+</p>
+
+<p>
+现在考虑振子的运动，它到底是怎么画出 \(\sin t \,\cos t\) 的呢？
+[回到振动的假设]换而言之，它运动的原理和规律是什么（物理为何），一般来说（一般往往指的是符合后面这个条件的理想情况）我们喜欢简单的情况，比如如果物质的抵抗力（弹力）与位移大小成正比 \(F=-kx\)，这听起来自然又简单，再使用牛顿的力第一定律（如果发明一个一次那么就不用解二阶方程啦）力的大小与加速度和质量乘积成正比 \(F=m\ddot{x}\)
+就可以得到下式。
+</p>
+
+<p>
+往后我们少用 \(a,v\) 都使用位移 \(x\) 的导数表示，以简化字母形式。
+</p>
+\begin{equation}
+\label{eq:Hookma}
+m\ddot{x}=-kx
+\end{equation}
+<p>
+这是我们得到的第一个二阶微分方程，也是往后最本质的内核，如果加上一些入摩擦，外力，得到更复杂的表达式
+那么对于一个质点的振动可以这样写
+</p>
+\begin{equation}
+\label{eq:2}
+m\ddot{x}=-kx-b\dot{x}+F
+\end{equation}
+<p>
+简单解释一下， \(-b\dot{x}\) 是阻尼项，也就是阻尼，考虑你在水中划动沙手臂，移动速度越快，阻力越大， \(F\) 是外力，好比拉着弹簧动，它可以取各种形式（但我们将局限与研究和振动相关的形式）。
+</p>
+
+<p>
+（[由此数学的表演开始]）【TBA】
+</p>
+
+<p>
+当然从简单入手，我们可以想见，虽然加入阻尼，但是振子的轨迹应当总体是不变的，不妨我们解一下简单但是最为核心的式 (\ref{eq:1})
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc72ba1d" class="outline-2">
+<h2 id="orgc72ba1d"><span class="section-number-2">2.</span> 弹簧振子的故事</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgbe51585" class="outline-3">
+<h3 id="orgbe51585"><span class="section-number-3">2.1.</span> 单振子：二阶常系数线性微分方程的通解及性质</h3>
+<div class="outline-text-3" id="text-2-1">
+<p class="verse">
+<b>代数微分，方程得解<br />
+指数三角，判别可分</b><br />
+<b>阻尼郁滞，振频谐增<br />
+功之来去，程式尽书</b><br />
+</p>
+<blockquote>
+<p>
+数学，从简单到复杂。
+物理，从复杂到简单。
+</p>
+</blockquote>
+*微分方程、齐次非齐次通解*
+<p>
+\[\ddot{x}+\omega^{2}x=0,\quad\omega=\sqrt{\frac{k}{m}}\]
+若对二阶方程不熟悉，甚至于希望借由波动方程学习解微分方程者，这里给出一个从简单到复杂的案例，望读者自主思考其中一以贯之的思想。
+</p>
+
+<p>
+自然的，方程即约束（反过来约束条件就是方程）约束的存在使得我们感兴趣的对象（譬如波的 x）有决定性唯一性的表象，这就是我们要尝试得到方程的解。像代数方程将未知数组合升幂，它的解是数，微分方程用求导数给出未知函数的关系，它的解是函数。我们有二次高次代数方程，而区分微分方程时，还会使用阶，这里的阶就是求导次数，比如
+(\ref{eq:2})都是是二阶微分方程，因为最高次导数都是\(\ddot{x}\)，同时还可以称它为常系数（因变量 x 前面的系数是常数 \(\gamma \omega\)）一次（ x,t 因变量自变量都是当读出现，没有次方斗士一次）线性（下面解释）， [to be added]
+</p>
+
+<p>
+这个振子的约束条件，或者说方程就是在问一个函数 \(x(t)\) 它的二阶导数与它自己符号相反差常量解 \(m\ddot{x}=-kx\) 是“简单”的，仅仅（乃至于只能，故“我们”说简单）凭数学洞见可以猜测它的解
+可能是三角函数 \(\sin ? t\) ，因为 \(\sin\omega t\) 求导是 \(-\omega\cos t\) 在求导得到 \(-\omega^2\sin \omega t\) 。同样 \(\cos \omega t\) 也满足。
+于是仔细求一下得到
+</p>
+\begin{equation}
+\label{eq:57}
+x_1=\sin \sqrt{\frac{k}{m}}t,x_2=\cos \sqrt{\frac{k}{m}}t
+\end{equation}
+
+<p>
+发现三角函数作为解满足方程。
+我们发现了矿个函数是这个方程的解
+这是否是所有情况呢？
+</p>
+
+<p>
+(不知道解可以反退，假如有解，那么可以有深么性质)
+进一步的我们知道这个方程是线性的。
+</p>
+
+<p>
+所谓线性，可以类比说明。如 \(F=-kx\) 是线性的，如果有位移 a 和位移 b ，那么位置 a+b 的效果等同于位移 a 和位移 b ，都满足这个等式。换而言之，在解 a,b 满足方程（是解）的条件下， a+b 乃至于它们的线性组合 \(c_1a+c_2b\) 也满足方程，这样的方程为线性的。我们总是可以轻松地用线性组合验证方程是否是线性的。
+</p>
+
+<p>
+拓展一下，从胡克定律出发，我们可以加入摩擦，外力，得到更复杂的表达式，本质上在数学中而言，都是常系数线性二阶微分方程。
+</p>
+\begin{equation}
+\label{eq2}
+m\ddot{x}=-kx,\quad m\ddot{x}=-kx-b\dot{x},\quad m\ddot{x}=-kx-b\dot{x}+F
+\end{equation}
+<p>
+由于我们更关心位移，质量不是我们主要考虑的部分（同时为了把方程变得好看，在数学中我们喜欢二阶导数项的系数为 1，因此会除去二阶的系数，这里可以注意到，(在振子的例子里)因为 Newton 的缘故，总是质量 m ），我们换一个更通用的表达
+</p>
+\begin{equation}
+\label{eq:39}
+\ddot{x}+\gamma \dot{x}+\omega^{2} x=F
+\end{equation}
+
+<p>
+\(\gamma=\frac{b}{m}\) 被称为阻尼系数（它可以是摩擦，也可以在其他系统中，表现为辐射能量）
+</p>
+
+<p>
+\(\omega_0=\sqrt{\frac{k}{m}}\) 是固有频率（其它模型中，同样用 \(\omega\) 但就不一定存在一个 m，如 RLC 谐振电路)
+</p>
+
+<p>
+可以想到，如果知道
+(\ref{eq:39})的形式，就求解了所有弹簧振子的问题（考虑了振动、摩擦、外力也就没有其他因素（我们现在阶段能解的）了（空气阻尼可以放在摩擦项里面用与速度乘一次一起考虑，二次而情况后面再说））
+刚刚已经凭借数学洞见知道，最核心性 Hook 定律的部分，现在我们可以结合微分方程的知识，把这个问题漂亮地
+解决。
+</p>
+</div>
+
+<div id="outline-container-org876b4b5" class="outline-4">
+<h4 id="org876b4b5"><span class="section-number-4">2.1.1.</span> 求解通解：包含一切的形式</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<p>
+复杂的问题从简单入手。
+已知无阻尼无外力，尝试发现三角函数符合。这样可以等价的使用自然指数表示。
+Euler 等式
+</p>
+\begin{equation}
+\label{eq:58}
+\mathrm{i}\sin(\omega t)+\cos(\omega t)=\mathrm{e}^{\mathrm{i}\omega t}
+\end{equation}
+
+<p>
+即式子
+(\ref{eq:1})
+中的解
+(\ref{eq:57})可以表示为
+</p>
+\begin{equation}
+\label{eq:59}
+\begin{split}
+x_1=\sin \sqrt{\frac{k}{m}}t=\\
+x_2=\cos \sqrt{\frac{k}{m}}t=
+\end{split}
+\end{equation}
+
+<p>
+刚刚知道三角函数是成立的，也就是正弦函数成立
+余弦函数成立，那么它们的线性组合是否也成立。
+\[x=A\sin \sqrt{\frac{k}{m}}t+B\cos \sqrt{\frac{k}{m}}t=C_1\mathrm{e}^{\mathrm{i}\sqrt{\frac{k}{m}}t}+C_2\mathrm{e}^{-\mathrm{i}\sqrt{\frac{k}{m}}t}\]
+</p>
+
+<p>
+之前已经验证果它是线性的了，但也不方代入尝试一下。
+equ
+equ
+</p>
+
+<p>
+<del>哎怎么……</del>
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orgd5376cc"></a>微分方程的求解<br />
+<div class="outline-text-5" id="text-2-1-1-1">
+<p>
+一个微分方程，它与代数方程很相似的（数学家绞尽脑汁让它们看起来用起来相似）
+几阶方程就会有（最多）有几个解（并且这里我们认为只有这么多）
+数看起来是稳定的，唯一的，函数则是在一个无限的空间中表达这各不相同的对应关系的映射。下面我们采取一种形式上直观但忽略证明细节的方式说明它们的相似以及为什么我们使用 \(\mathrm{e}^{\lambda t}\) 解微分方程。
+</p>
+
+<p>
+代数基本定理告诉我们 n 次多项式，可以被因式分解为多项式
+</p>
+
+<p>
+\(a_nz^n+\cdots+a_1z+a_0=a_n(z-r_1)\cdots(z-r_n)\)
+对于 n 解微分方程，可以得到
+</p>
+\begin{align}
+\label{eq:41}
+a_n \frac{\mathrm{d}^nx}{\mathrm{d}t^n}+\cdots+a_1 \frac{\mathrm{d}x}{\mathrm{d}t}+a_0&=0\\
+a_n(\frac{\mathrm{d}}{\mathrm{d}t}-r_1)\cdots(\frac{\mathrm{d}}{\mathrm{d}t}-r_n)x &= 0
+\end{align}
+<p>
+事实上， \(\frac{\mathrm{d}}{\mathrm{d}t}\) 与代数方程 z 是同样的，它们也是可以交换的
+，于是解 n 解微分方程可以不断交换得到这样的形式，然后像代数方程得到 \((\frac{\mathrm{d}}{\mathrm{d}t}-r_i)x=0\)
+也就是 \(\frac{\mathrm{d}x}{\mathrm{d}t}=r_ix\)
+</p>
+
+<p>
+这个方程的解是指数形式，这可以解释三角函数成立原因（结合 Euler 公式）
+同时也是我们使用 \(\mathrm{e}^{\lambda t}\) 方法的有效性的原因。
+</p>
+
+<p>
+同时代数方程是有限解一样
+对于线性方程
+我们接受齐次二阶方程使用两个线性无关的解就可以线性组合处所有的通解。<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>
+</p>
+
+
+<p>
+因此我们又一次得到方程是，好的这给了后面的解提供的思考，从物理上讲，加阻尼后，变化基本是不变的，仅仅有一些细节的差异。
+我么可以不妨使用
+尝试方程的解
+</p>
+
+<p>
+，
+</p>
+
+<p>
+但如果是非齐次方程（方程右段有一个与 x 无(显式)关特殊项，比如力）
+只需要假如一个满足右端项的特解，就可以解出所有的解了。<sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>
+</p>
+
+<p>
+即，非齐次方程的解为（非齐次方程）对应齐次方程（也就是这个非齐次方程去掉与 x 无关的项的方程）的通解加上一个非齐次的特解。
+</p>
+</div>
+</li>
+
+<li><a id="orgba80d58"></a>二阶齐次通解：<br />
+<div class="outline-text-5" id="text-2-1-1-2">
+<p>
+刚刚我们知道二阶齐次的通解一般可以用下面形式来表达。
+\(x=A\sin(\omega t)+B\cos(\omega t),\quad x=C_1\mathrm{e}^{\mathrm{i}\omega t}+C_2\mathrm{e}^{-\mathrm{i}\omega t}\)
+我们之所以一般采用前面的形式因为它自动取了实部有直观使用三角函数，当然往往后面的更好解且形式更一般
+</p>
+
+<p>
+对于取实部而言 \(C_1^{*}=C_2\) ，进一步简化可以写作 \(x=A\cos (\omega x+\phi),\quad A=2C_2\)
+理由：
+\(C_1=a_1+b_1 \mathrm{i},\quad C_2=a_2+b_2 \mathrm{i}\)
+\(C_1(\cos \omega t+i\sin \omega t)+C_2(\cos \omega t-i\sin \omega t)\)
+得证。
+</p>
+
+<p>
+使用 \(\mathrm{e}^{\lambda t}\) 代入解出 \(\lambda\) 即得到通解，这是齐次线性微分方程通用的特征方程解法。
+</p>
+
+<p>
+对于二阶方程问题，它转化为二次方程的问题。
+equ
+</p>
+
+<p>
+根据判别式，有三种情况。
+\[\Delta = \gamma^2-4(\omega_0^2)^2\]
+</p>
+<ul class="org-ul">
+<li>两个相同的实根</li>
+<li>两个不同的实根</li>
+<li>两个共轭的虚根
+<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup></li>
+</ul>
+
+<p>
+\paragraph{临界 (critical)} 相同实根 \(\gamma = 2\omega_0^2\)
+</p>
+
+<p>
+特征方程的解： \(\lambda=\frac{-\gamma}{2}\)
+</p>
+
+<p>
+微分方程的解： \(x=(C_1+C_2t)\mathrm{e}^{\lambda t}=(C_1+C_2t)\mathrm{e}^{-\frac{\gamma}{2}t}\)
+</p>
+
+<p>
+此时下降速度最快
+\paragraph{过阻尼（overdamped)} 两个不同实根 \(\gamma <> 2\omega_0^2\)
+</p>
+
+<p>
+特征方程的解： \(\lambda_{1,2}=\frac{-\gamma\pm\sqrt{\Delta}}{2}=\frac{-\gamma\pm\sqrt{\gamma^2 - 4\omega_0^4}}{2}\)
+</p>
+
+<p>
+微分方程的解： \(x=C_1\mathrm{e}^{\lambda_1 t}+C_2\mathrm{e}^{\lambda_2 t}=\mathrm{e}^{-\frac{\gamma}{2}t}(C'_1\mathrm{e}^{\mathrm{i}\omega t}+C'_2\mathrm{e}^{-\mathrm{i}\omega t})\)
+</p>
+
+<p>
+直接下降
+\paragraph{欠阻尼(underdamped)} 两个共轭虚根 \(\gamma <> 2\omega_0^2\)
+</p>
+
+<p>
+特征方程的解： \(\lambda_{1,2}=\frac{-\gamma\pm \mathrm{i}\sqrt{-\Delta}}{2}=\frac{-\gamma\pm \mathrm{i}\sqrt{4\omega_0^4-\gamma^2}}{2}\)
+</p>
+
+<p>
+微分方程的解： \(x=C'_1\mathrm{e}^{\lambda_1 t}+C'_2\mathrm{e}^{\lambda_2 t}=\mathrm{e}^{-\frac{\gamma}{2}t}(C'_1\mathrm{e}^{\mathrm{i}\omega t}+C'_2\mathrm{e}^{-\mathrm{i}\omega t})=\mathrm{e}^{-\frac{\gamma}{2}t}(C_1\cos(\omega t)+C_2\sin(\omega t))=A\mathrm{e}^{-\frac{\gamma}{2}t}\cos(\omega_u t+\phi)\)
+</p>
+
+<p>
+有周期性，同样以负指数减小
+</p>
+
+<p>
+具体情况
+假如无
+减小幅度
+</p>
+</div>
+</li>
+<li><a id="org01cafe9"></a>二阶非齐次：加上驱动力<br />
+<div class="outline-text-5" id="text-2-1-1-3">
+<p>
+现在考虑非齐次，对于弹簧振子我们主要研究有外力的情况<sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>
+</p>
+
+
+<p>
+一般外力的形式取 \(F=\cos (\omega t+\phi)\) 这里 \(\omega\) 区别于之前的情况。
+于是方程为
+</p>
+\begin{equation}
+\label{eq:61}
+\ddot{x}+\gamma \dot{x}+\omega^{2} x=F
+\end{equation}
+<p>
+注意，这里（以及下面） \(F=\frac{F_d}{m}\) 单位是只是取这个字母方便理解
+如果使用微分方程知识，那么非常直白，我们取一个特解就得到通解。
+不理解的话就是，齐次通解加非齐次特解得到非齐次通解
+\(x=x_p+x_h\)
+对于 \(x_h\) 我们已经
+eqn
+</p>
+
+<p>
+因此只要研究特解 \(x_p\) 就可以得到通解了。（之后代入实际条件就可以解出系数得到完整方程）
+</p>
+
+<p>
+方程右端是余弦函数 \(\cos\) 于是我们取特解形式为 \(A_p\cos (\omega t +\phi)\)<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>
+</p>
+
+<p>
+方程左侧是
+举两个奇妙的小方法
+[有能力者可以跳过看下一部分]首先仍然使用函数组合代入
+</p>
+\begin{equation}
+\label{eq:60}
+x(t)=A\cos\omega t+B\sin\omega t,\quad \dot{x}=\omega(A\sin\omega t-B\cos \omega t)
+\end{equation}
+<p>
+代入
+ref
+得到
+</p>
+\begin{equation}
+\label{eq:62}
+\begin{split}
+\omega^2(-A\sin\omega t-B\sin\omega t)+\gamma\omega(A\sin\omega t-B\cos \omega t)+\omega_0(A\cos\omega t+B\sin\omega t)=F\cos\omega t\\
+(-\omega^2B-\gamma\omega A+\omega^2_0B)\sin\omega t+(-\omega^2+\gamma\omega+\omega^2_0)\cos\omega t=F\cos \omega t
+\end{split}
+\end{equation}
+<p>
+于是左右对应系数相等
+</p>
+
+\begin{align*}
+\label{eq:64}
+-\omega^2B-\gamma\omega A+\omega^2_0B=0 \\
+-\omega^2+\gamma\omega+\omega^2_0=F
+\end{align*}
+<p>
+得到
+</p>
+\begin{equation}
+\label{eq:65}
+A=\frac{(\omega_0^2-\omega^2)F}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2},\quad B=\frac{\gamma\omega F}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}
+\end{equation}
+
+<p>
+即为结果
+</p>
+
+<p>
+\paragraph{法贰}事实上，可以直接
+</p>
+\begin{equation}
+\label{eq:66}
+\ddot{x}+\gamma \dot{x}+\omega_0^2x=F\mathrm{e}^{\mathrm{i}\omega t}
+\end{equation}
+<p>
+使用 \(x=C\mathrm{e}^{\mathrm{i}\omega t}\)
+于是
+</p>
+\begin{equation}
+\label{eq:67}
+-\omega^2C\mathrm{e}^{\mathrm{i}\omega t}+\gamma \mathrm{i}\omega C\mathrm{e}^{\mathrm{i}\omega t}+\omega_0^2C\mathrm{e}^{\mathrm{i}\omega t}=F\mathrm{e}^{\mathrm{i}\omega t} 
+\end{equation}
+<p>
+消去 \(\mathrm{e}^{\mathrm{i}\omega t}\) 得到 C
+</p>
+\begin{equation}
+\label{eq:68}
+\begin{split}
+C = \frac{F}{\omega_0^2-\omega^2+\mathrm{i}\gamma\omega}=\frac{F}{\omega_0^2-\omega^2+\mathrm{i}\gamma\omega}\frac{\omega_0^2-\omega^2-\mathrm{i}\gamma\omega}{\omega_0^2-\omega^2-\mathrm{i}\gamma\omega} \\
+=\frac{(\omega_0^2-\omega^2)F}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}
+-
+\frac{\gamma\omega F}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}\mathrm{i}
+\end{split}
+\end{equation}
+<p>
+与上式
+ref 相同
+</p>
+
+<p>
+\paragraph{法叁}[绝妙]向量角度
+一般的三角函数可以写成
+</p>
+\begin{equation}
+\label{eq:69}
+x(t)=A\cos(\omega t+\phi)
+\end{equation}
+<p>
+代入
+如果你知道一般的正余弦三角函数求导的公式
+</p>
+\begin{equation}
+\label{eq:71}
+(\cos t)^{(n)}=\cos(t+\frac{n\pi}{2}),\quad (\sin t)^{(n)}=\sin(t+\frac{n\pi}{2})
+\end{equation}
+\begin{align}
+\label{eq:70}
+-\omega^2A\cos(\omega t+\phi+\pi)+\gamma\omega A\cos(\omega t+\phi+\frac{\pi}{2})+\omega_0^2A\cos(\omega t+\phi)=F\cos\omega t\\
+-\omega^2A\cos(\omega t+\phi)-\gamma\omega A\sin(\omega t+\phi)+\omega_0^2A\cos(\omega t+\phi)=F\cos\omega t\\
+?
+\end{align}
+<p>
+都当成 \(\cos\) 来解，我们看上面这个式子
+</p>
+
+<p>
+取原来的 \(\omega_0^2A\) 为水平的一个向量，那么 \(\gamma\omega A\) 就是垂直于它，最后 \(\omega^2A\) 垂直与
+和
+平行
+它们的向量组合得到
+\(F\)
+</p>
+
+<p>
+有什么用呢，画个三角形立刻可以得到角度，振幅这些我们设出的位置量
+角度：
+</p>
+\begin{equation}
+\label{eq:72}
+\tan\phi=\frac{\gamma\omega A}{(\omega_0^2-\omega^2)A}=\frac{\gamma\omega}{\omega_0^2-\omega^2}
+\end{equation}
+<p>
+A 和 F 的关系（勾股定理）
+</p>
+\begin{align}
+\label{eq:74}
+(\gamma\omega A)^2+((\omega_0^2-\omega^2)A)^2=F^2 \\
+A=\frac{F}{\sqrt{(\omega_0^2-\omega^2)^2-\gamma^2\omega^2}}
+\end{align}
+<p>
+方便起见，我们以后使用 \(x_p=A \cos(\omega t+\phi)\)
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orgc248598" class="outline-4">
+<h4 id="orgc248598"><span class="section-number-4">2.1.2.</span> 精巧的驱动，同声相应的共振</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<blockquote>
+<p>
+同声相应，同气相求
+</p>
+</blockquote>
+
+<p>
+这个式子很特别，显然这个 \(\omega\) 是我们施加的外力频率，它可以作为自变量，坟墓的位置给了它对振幅 A 很特殊的控制余地。
+</p>
+
+<p>
+事实上我想我们在生活中可能不少地方见过它
+的图像。
+</p>
+
+<p>
+最大值，可以让分母最小，
+</p>
+
+<p>
+无阻尼时 \(\gamma=0\) 得到当 \(\omega=\omega_0\) 时，为 \(A_{max}\) 阻尼趋于 0 ，振幅将会趋于无穷大。
+</p>
+
+<p>
+一般情况，研究分母最小值，（转化为极小值问题）我们取分母对 \(\omega\) 导数为 0
+</p>
+\begin{equation}
+\label{eq:76}
+\begin{split}
+((\omega_0^2-\omega^2)^2-\gamma^2\omega^2)'=2(2\omega)(\omega_0^2-\omega^2)+2\gamma^2\omega=0\\
+4\omega^3+(2\gamma^2-4\omega_0^2)\omega=0 \\
+\Rightarrow \omega=\sqrt{\omega_0^2-\frac{\gamma^2}{2}}
+\end{split}
+\end{equation}
+<p>
+代入得到峰值为
+</p>
+\begin{equation}
+\label{eq:77}
+...
+\end{equation}
+
+<p>
+你可以想到它是会有胖瘦之分，也就是函数在峰值存在一个宽度，但显然它是无限趋于令实际不好定义宽度，那么我们就人为取一段，我们只要割一段长度就好，取一个等振幅然后可以得到两个值，作差就有一个宽度，如你所念，人们取峰值一半的横坐标差为宽度
+如果横坐标取频率 \(\nu =2\pi\omega(\mathrm{Hz})\) 在通信称为
+通频带长度<sup><a id="fnr.8" class="footref" href="#fn.8" role="doc-backlink">8</a></sup>
+</p>
+
+<p>
+它的宽度这好是
+</p>
+\begin{align}
+\label{eq:79}
+\sqrt{(\omega_0^2-\omega'^2)^2-\gamma^2\omega'^2}=2\sqrt{(\omega_0^2-\omega^2)^2-\gamma^2\omega^2}\\
+3\omega_0^4+(\gamma^2-2\omega_0)(4\omega^2-\omega')+\omega^4-\omega'^4=0 \\
+(\gamma^2-2\omega_0^2)\omega \\
+\omega'=\omega
+\end{align}
+<p>
+于是宽度 \(\sqrt{3}\gamma\)
+</p>
+
+<p>
+简单讨论一下其他各种情况，
+如果外力
+慢动 \(\omega\ll \omega_0\)
+\(\gamma\omega\ll \omega_0^2\)
+</p>
+
+<p>
+快动 \(\omega\gg \omega_0\)
+</p>
+
+<p>
+共振
+</p>
+
+<p>
+周期问题
+有角频率很容易求出 \(T=\frac{2\pi}{\omega}=\frac{1}{f}\)
+也可以直接比较
+</p>
+
+<p>
+发现比原来角频率小，因此周期变大
+如果取
+级数展开
+则可以认为这个差异在
+这个尺度上
+</p>
+
+<p>
+另，考虑一种特别的情况：无阻尼，有驱动力，这时它的解的形式会很有意思。（放这因为它不存在阻尼物理意义较弱但可以熟悉一下公式并将图像与后面波相比较）
+由上面结论。我们要解的方程 \(\ddot{x}+\omega_0^2x=\mathscr{F},F\cdot m=F_d=\cos(\omega t+\phi)\) 的解是
+\(x=\frac{F}{\sqrt{(\omega_0^2-\omega^2)^2-\gamma^2\omega^2}}\cos(\omega t+\frac{\gamma\omega}{\omega_0^2-\omega^2})=\frac{F}{\omega_0^2-\omega^2}\cos(\omega t)\)
+这是通解吗？不，这是非齐次（它有右端项）的特解。它的通解要加上齐次通解
+\(x=A\sin \omega_0t+B\cos\omega_0t+\frac{F}{\omega_0^2-\omega^2}\cos(\omega t)\)
+考虑简单的初值条件如初始情况位移速度都是 0( \(x(0)=0,\dot{x}(0)=0\) )
+代入得到 \(\frac{F}{\omega_0^2-\omega^2}(\cos(\omega t)-\cos(\omega_0t))\)
+可以使用和差化积的公式
+</p>
+
+<p>
+得到
+</p>
+
+
+<p>
+位移已经明白了，不妨看看更丰富的物理量，探索位移与输入力/功率的关系
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org2c8d605"></a>来去守恒的能量，此消彼长的功率<br />
+<div class="outline-text-5" id="text-2-1-2-1">
+<p>
+众所周知，系统总能量等于动能加上势能，于是
+因此我们需要速度
+即对位移的导数
+</p>
+\begin{equation}
+\label{eq:48}
+v=\frac{\mathrm{d}x}{\mathrm{d}t}=A\mathrm{e}^{-\gamma t/2}(\frac{-\gamma}{2}\cos(\omega_u t)-\omega_u\sin\omega_ut)
+\end{equation}
+\begin{equation}
+\label{eq:47}
+\begin{split}
+E &= \frac{1}{2}m\dot{x}^2+\frac{1}{2}kx^2\\
+&= \frac{\mathrm{d}x}{\mathrm{d}t}=A^2\mathrm{e}^{-\gamma t}(\frac{-\gamma}{2}\cos^{2}(\omega_u t)-\omega_u\sin\omega_ut)+\frac{1}{2}kA^2\mathrm{e}^{\gamma t}\cos^2\omega_u t \\
+&\cdots\\
+&=\frac{1}{2}\\
+&=\frac{1}{2}mA\mathrm{e}^{-\gamma t}(\frac{\gamma^2}{4}\cos2\omega_{0}t+\frac{\gamma\omega}{2}\sin2\omega_{0}t+\omega_0^2)
+\end{split}
+\end{equation}
+<p>
+平均而言，三角函数被消去，它们不会其主要作用
+或者计算平均能量可以更名弦看出这一点
+</p>
+\begin{equation}
+\label{eq:49}
+\left\langle E \right\rangle=\frac{1}{2}m\omega_0^2A^2\mathrm{e}^{-\gamma t}=\frac{1}{2}kA\mathrm{e}^{-\gamma t}
+\end{equation}
+<p>
+那么能量损失情况如何呢
+不妨使用能量对时间的导数
+发现
+</p>
+\begin{equation}
+\label{eq:50}
+\frac{\mathrm{d}\left\langle E \right\rangle}{\mathrm{d}t}=\gamma \left\langle E \right\rangle
+\end{equation}
+<p>
+可以想到就是因为阻尼（理解为摩擦能量损耗等等）
+?
+对于一般情况，
+使用 \(E = \frac{1}{2}m\dot{x}^2+\frac{1}{2}kx^2\)
+</p>
+\begin{equation}
+\label{eq:51}
+\frac{\mathrm{d}E}{\mathrm{d}t}=m\dot{x}+kx\dot{x}=(-b\dot{x})\dot{x}
+\end{equation}
+<p>
+同样可以直接由阻尼力的功率得到
+\(F_dv=(-b\dot{x})\dot{x}=-b\dot{x}^2\)
+于是平均
+已知平均能量是两倍的动能\(\left\langle E \right\rangle=m \left\langle \dot{x} \right\rangle\) !
+</p>
+
+<p>
+重新得到\[\frac{\mathrm{d}\left\langle E \right\rangle}{\mathrm{d}t}=-\frac{b}{m}\left\langle E \right\rangle =\gamma \left\langle E \right\rangle\]
+</p>
+</div>
+</li>
+
+<li><a id="org8356322"></a>品质因素 Q<br />
+<div class="outline-text-5" id="text-2-1-2-2">
+<p>
+定义一个值，
+</p>
+\begin{equation}
+\label{eq:52}
+Q:=\frac{\omega_0}{\gamma}
+\end{equation}
+<p>
+品质
+自己的
+共振
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org73591ad" class="outline-4">
+<h4 id="org73591ad"><span class="section-number-4">2.1.3.</span> 相似系统</h4>
+<div class="outline-text-4" id="text-2-1-3">
+<p>
+基础的系统很相似
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orgd9f59e7"></a>摆<br />
+<div class="outline-text-5" id="text-2-1-3-1">
+<p>
+数学摆
+</p>
+\begin{equation}
+\label{eq:simplePendulum}
+-mg\sin\theta=m(l\ddot{\theta})\Rightarrow \theta+\omega^2\theta=0,\quad\omega=\sqrt{\frac{g}{l}}
+\end{equation}
+<p>
+物理摆
+</p>
+\begin{equation}
+\label{eq:physicalPendulum}
+-mgd\sin \theta=I\sin\ddot{\theta} \Rightarrow \ddot{\theta}+\omega^2=0,\quad\omega=\sqrt{\frac{mgd}{I}}
+\end{equation}
+<p>
+\(I=md^2\)
+显然，当 \(l\rightarrow d\) 时，
+质心做法
+\(\tau=I\alpha\)
+</p>
+</div>
+</li>
+<li><a id="orgba3e714"></a>RLC<br />
+<div class="outline-text-5" id="text-2-1-3-2">
+<p>
+LC
+关于电荷的方程
+</p>
+\begin{equation}
+\label{eq:42}
+-L \frac{\mathrm{d}I}{\mathrm{d}t}-\frac{Q}{C}=0
+\end{equation}
+\begin{equation}
+\label{eq:45}
+-L\ddot{Q}-\frac{Q}{C}=0,\quad \ddot{Q}+\omega^2Q=0,\quad \omega=\sqrt{\frac{1}{LC}}
+\end{equation}
+<p>
+无质量，可以类比\(\frac{1}{C}~k\)
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-org0fe0bbf" class="outline-3">
+<h3 id="org0fe0bbf"><span class="section-number-3">2.2.</span> 多振子：求解微分方程组的方法</h3>
+<div class="outline-text-3" id="text-2-2">
+<blockquote>
+<p>
+复杂的问题不会是因为对简单的问题还不了解
+</p>
+</blockquote>
+<p>
+单个振子已经很清楚了，现在我们准备研究模式的概念，具体而言就是就是进展到多个振子连在一起的情形。它看起来很复杂，让人抓不住要害，但实质上就是一个求解微分方程组的问题，自己应当有自信可以不借助提示完全推演出来。
+如果一般情况不明白，可以看后面三个质点的求解案例。
+</p>
+</div>
+<div id="outline-container-org137486f" class="outline-4">
+<h4 id="org137486f"><span class="section-number-4">2.2.1.</span> 一般方程</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+简化问题，先不加入阻尼和外力，并且暂时让所有的弹簧弹性系数、质点质量相同。
+方程组可以这样写出
+</p>
+\begin{eqnarray*}
+\label{eq:4}
+m\ddot{x_{1}} &=  &-kx_1-k(x_1-x_2) \\
+m\ddot{x_2} & = &-k(x_2-x_1)-k(x_2-x_3)\\
+\cdots\\
+m\ddot{x_i}&=& -k(x_i-x_{i-1})-k(x_i-x_{i+1})\\
+\cdots\\
+m\ddot{x_{n}} &=& -k(x_n-x_{n-1})-k(x_{n})
+\end{eqnarray*}
+<p>
+将方程 \(m\) 除去和 \(k\) 结合为 \(\omega_0\) 可以化为之前我们熟悉的形式，如下式：
+</p>
+\begin{equation}
+\label{eq:3}
+\begin{pmatrix}
+  & \vdots & \\
+\cdots & \omega_0^2 &-2\omega_0^2&\omega_0^2\\
+&&\omega_0^2&-2\omega_0^2&\omega_0^2\\
+&&&\omega_0^2&-2\omega_0^2&\omega_0^2&\cdots\\
+&&&&\vdots
+\end{pmatrix}
+\begin{pmatrix}
+\vdots \\
+x_{i-1}\\
+x_i\\
+x_{i+1}\\
+\vdots
+\end{pmatrix}
+=\frac{\mathrm{d}^2}{\mathrm{d}t^2}
+\begin{pmatrix}
+\vdots \\
+x_{i-1}\\
+x_i\\
+x_{i+1}\\
+\vdots
+\end{pmatrix}
+\end{equation}
+
+<p>
+先代入尝试解 \(x_i=A_{i}\mathrm{e}^{\mathrm{i}\omega t}\)
+(注意 \(\omega\) (我们猜的)与 \(\omega_{0}\) (定义为 \(\sqrt{\frac{k}{m}}\)))
+</p>
+\begin{equation}
+\label{eq:7}
+\left(
+\begin{array}{c}
+\vdots \\x_{i-1}\\x_i\\x_{i+1}\\\vdots
+\end{array}
+\right)
+=
+\left(
+\begin{array}{c}
+\vdots \\A_{i-1}\\A_i\\A_{i+1}\\\vdots
+\end{array}
+ \right)
+\mathrm{e}^{\mathrm{i}\omega t}
+\end{equation}
+<p>
+求导提出公因子可得
+</p>
+
+\begin{equation}
+\label{eq:5}
+\begin{pmatrix}
+-2\omega_0^2 & \omega^2_0 &\cdots\\
+  & \vdots & \\
+\cdots &  \omega_0^2 &-2 \omega_0^2 & \omega_0^2 \\
+&& \omega_0^2 &-2 \omega_0^2 & \omega_0^2 \\
+&&& \omega_0^2 &-2 \omega_0^2 & \omega_0^2 &\cdots\\
+&&&&\vdots \\
+\cdots &&&&& \omega_0 &\omega^2-2\omega^2_0
+\end{pmatrix}
+\begin{pmatrix}
+\vdots \\A_{i-1}\\A_i\\A_{i+1}\\\vdots
+\end{pmatrix}
+\mathrm{e}^{\mathrm{i}\omega t}
+=-\omega^2 I 
+\begin{pmatrix}
+\vdots\\
+A_{i-1}\\
+A_i\\A_{i+1}\\
+\vdots
+\end{pmatrix}
+\mathrm{e}^{\mathrm{i}\omega t}
+\end{equation}
+<p>
+其中 \(I\) 为单位矩阵，我们消去 \(\mathrm{e}^{\mathrm{i}\omega t}\) 加减并移项化简得到
+</p>
+
+\begin{equation}
+\label{eq:6}
+\begin{pmatrix}
+\omega^{2}-2\omega_0^2 & \omega^2_0 &\cdots\\
+\vdots & \cdots &&&& \cdots & \vdots \\
+\vdots &\cdots& \omega_0^2 & \omega^2-2\omega_0^2 &  \omega^2& \cdots& \vdots\\
+\vdots & \cdots &&&& \cdots & \vdots \\
+\cdots &&&&& \omega_0 &\omega^2-2\omega^2_0
+\end{pmatrix}
+\begin{pmatrix}
+\vdots \\A_{i-1}\\A_i\\A_{i+1}\\\vdots
+\end{pmatrix}
+=
+0
+\end{equation}
+<p>
+（等式右端 \(-\omega^2I\) 相当于是一个对角线上都是有 \(-\omega^2\) 的矩阵）
+于是问题转化为 \(Ax=0\) 问题，对于它一定有非零解（指它的解中所有的 A 不会同时为 0，零解是所有分量为 0 的向量解情况），因此由线性代数齐次方程的知识，它的行列式为 0。这样我们可以求解行列式得到 \(\omega\) ，进而得到解 \(x_i=A_{i}\mathrm{e}^{\mathrm{i}\omega t}\) 的完整形式。
+</p>
+
+<p>
+为了熟悉这个方程，我们先看看简单的质点是什么具体情况，如果你等不及也可以直接去看求解 N 个质点的部分。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2e06887" class="outline-4">
+<h4 id="org2e06887"><span class="section-number-4">2.2.2.</span> 二生三：模式</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+低阶方程有一些巧妙的方法，由巧妙的方法我们可以过渡到一般的方法。下面我们依然使用之前的假设和符号，其中出现的 \(x_0,x_{N+1}\) 都是墙面（振幅始终为 0），以后我们会赋予它一个新名字（边界条件：P）。
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orgb35290c"></a>N = 2<br />
+<div class="outline-text-5" id="text-2-2-2-1">
+<p>
+首先就看两个质点
+</p>
+
+<p>
+方程为
+</p>
+\begin{equation}
+\label{eq:10}
+\begin{pmatrix}
+-2\omega_{0}^2+\omega^{2} & -\omega^{2}\\
+-\omega^2 & -2\omega_0^2+\omega^{2}
+\end{pmatrix}
+\begin{pmatrix}
+A_1\\A_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+0\\0
+\end{pmatrix}
+\end{equation}
+<p>
+这是 \(Ax=0\) 的形式，因为我们认定 x 一定存在（物理也），于是 A 一定（存在线性相关量使得被 x 组合得到 0）行列式为 0，由 \(\left| A \right|=0\) 得到下式：
+</p>
+\begin{eqnarray}
+\label{eq:16}
+...\\
+(\omega^2-2\omega_0^2)^2-(\omega^2)^2=0\\
+\Rightarrow \omega^2-2\omega_0^2=\pm \omega_0^{2}
+\end{eqnarray}
+
+<p>
+这个是无比简单清晰简单的，不过不使用行列式也可以得到同样结果的，比如下面这种方法。
+</p>
+
+<p>
+首先回到最开始的约束方程
+</p>
+\begin{eqnarray}
+\label{eq:25}
+m\ddot{x_1} &=  &-kx_1-k(x_1-x_2) \\
+m\ddot{x_2} & = &-k(x_2-x_1)-k(x_2)
+\end{eqnarray}
+<p>
+注意到它的形式是相当对称的，事实上我们可以可以想象或许可以通过某种组合能产生一些新的量它们具有更简单的形式，通过加减似乎可以办到这一点。
+</p>
+\begin{eqnarray}
+\label{eq:26}
+(\ddot{x}_1+\ddot{x}_2) & = & -\omega_0^2(x_1+x_2)\\
+(\ddot{x}_1-\ddot{x}_2) & = & -3\omega^{2}_0(x_1+x_2)
+\end{eqnarray}
+<p>
+现在如果把 \(x_1+x_2\) 和 \(x_1-x_2\) 看作新的变量，方程似乎是非常简单的，那么我们为什么不试一试呢？
+</p>
+
+<p>
+这两个方程可以被迅速求解，分别得到
+</p>
+\begin{eqnarray}
+\label{eq:27}
+x_1+x_2 & = & 2A_s\cos(\omega_0 t+\phi_s)\\
+x_1-x_2 & = & 2A_f\cos(\sqrt{3}\omega_0 t+\phi_f)
+\end{eqnarray}
+
+<p>
+我每次看到引入新的物理量就感到麻烦，尽管像此处是为了简单的求解方程，但是它的出现又掩盖了原先的量的关系，干扰了我对之前的记忆理解，并且使我觉得也许为了把最开始的物理量重新反求解出来会要更加麻烦。但为了能看懂后面的内容（假设我还没有放弃），我往往无法可想，只能接受，并尝试用自己的方法感受它的存在意义。
+</p>
+
+<p>
+但希望读者不要对新的物理量沮丧，因为马上我们就可以看出这新的物理量的实际含义，事实上，我们采用了它们之后，甚至可能让人有一种为什么不一开始就这样解方程，以更早发现的遗憾。
+</p>
+
+<p>
+首先，我们很轻易可以得到（因此上面用了二倍系数）：
+</p>
+\begin{eqnarray}
+\label{eq:28}
+x_1 & = & A_f\cos(\sqrt{3}\omega_0 t +\phi) + A_s\cos(\omega_0 t +\phi)\\
+x_2 & = & A_f\cos(\sqrt{3}\omega_0 t +\phi) - A_s\cos(\omega_0 t +\phi)
+\end{eqnarray}
+</div>
+
+<ol class="org-ol">
+<li><a id="org3fcc9ad"></a>分析出了两种模式<br />
+<div class="outline-text-6" id="text-2-2-2-1-1">
+<p>
+解很对称，系数都是一样的，还有什么发现吗？
+</p>
+
+<p>
+画出图像似乎并不能说明什么，我们不妨看看之前两个新物理量，其实倘若想单独研究对应 \(x_1+x_2\) 的情况就等同于我们令 \(A_f=0\) 。这时得到 \[x_1=x_2=A_s\cos(\omega_0 t +\phi)\]  
+你应当可以因式到这是方程的一个解，而且是一个比较特殊的解，在这个情况下，两个质点方程的符号相同，它们始终朝同方向运动。十分有趣。
+</p>
+
+<p>
+对应另外一种情况\(A_s=0\) 。
+\[x_1=-x_2=A_f\cos(\sqrt{3}\omega_0 t +\phi)\]
+符号相反，两质点始终运动方向相反，就像互相排斥一样。它们二者组合，介于同向与反向之间的，就是最一般的通解形式 (\ref{eq:28}) 。
+</p>
+
+<p>
+于是在这种情况下，使用两个质点位置的和 \(x_1+x_2\) ，可以找到它们同向运动的程度满足的简单三角曲线关系，位置的差  \(x_1-x_2\) 可以找到它们互相反向运动“排斥”的程度。
+</p>
+
+<p>
+这样简单的形式，可以把复杂的情形拆解，有时候使得我们只要研究几种情形，就可以把一般的形式一眼看透。对于这些简单分立的形式
+</p>
+
+<p>
+有很多奇怪的名字，这里就使用模式来指称这个现象，它本质上模式就是（满足给定系统方程）不同频率的振动（特殊解解），它们的叠加（线性组合）勾勒了完整的图像在 N=2 的情况下，我们有“快”模式和“慢”模式，角频率分别是 \(\omega_f=\sqrt{3}\omega_0,\omega_s=\omega_{0}\)
+可以猜想，在接下来 N=3 的系统里，我们也可以找到一些简单的模式（它可能有几个呢）。
+</p>
+
+<p>
+同时，可以意识到，类似的双摆等等
+系统，它们受到的约束很强，自由度 很低，两个物体相互牵制，几乎不允许它有多样的运动。（这与我们的假设条件并无太多关系，比如你假设弹簧弹性系数不同，仅仅多了变量而改变 \(\omega\) 细节上变得复杂 ，但方程的整体形式依然类似）
+这一点在之后我们解就会发现，波它多端的变化完全被约束在边界条件之中。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="org3cdc291"></a>N = 3<br />
+<div class="outline-text-5" id="text-2-2-2-2">
+<p>
+我们使用一般情况里方法使用行列式条件求解 [接续 N=2 上没有解完的方程]
+</p>
+\begin{equation}
+\label{eq:18}
+\begin{vmatrix}
+-\omega^2+2\omega_0^2&-\omega_0^2&0\\
+-\omega_0^2&-\omega^2+2\omega_0^2&-\omega_0^2\\
+0&-\omega_0^2&-\omega^2+2\omega_0^2
+\end{vmatrix}=0
+\end{equation}
+<p>
+于是得到
+</p>
+\begin{eqnarray}
+\label{eq:15}
+(2\omega_0^2-\omega^2)((2\omega_0^2-\omega^2)-(-\omega_0^2)^2)-(-\omega_0^2)(-\omega^2)(2\omega_0^2-\omega^2) & = & 0\\
+\Rightarrow (2\omega_0^2-\omega^2)((\omega^2)^2-4\omega_0^2\omega^2+2(\omega_0^2)^2) & = & 0
+\end{eqnarray}
+<p>
+方程的解为
+</p>
+\begin{eqnarray}
+\label{eq:21}
+\omega&=&\pm \sqrt{2}\omega_0 \\
+\omega&=&\pm \sqrt{2+\sqrt{2}}\omega_0 \\
+\omega&=&\pm \sqrt{2-\sqrt{2}}\omega_0 
+\end{eqnarray}
+<p>
+此时，代入之前的矩阵可以得到 \(A_i\) 的关系
+</p>
+
+<p>
+以 \(\omega^2=(2+2 \sqrt{2})\omega_0^2\) 为例
+</p>
+
+\begin{equation}
+\label{eq:19}
+\begin{pmatrix}
+\sqrt{2}\omega_0^2 & -\omega_0^2 & 0\\
+-\omega_0^2 & \sqrt{2}\omega_0^2 & -\omega_0^2\\
+0 & -\omega_0^2 & \sqrt{2}\omega_0^2
+\end{pmatrix}
+\begin{pmatrix}
+A_1\\A_2\\A_3
+\end{pmatrix}=0
+\end{equation}
+<p>
+可以解得这个齐次代数方程的通解（可以直接观察）
+</p>
+\begin{equation}
+\label{eq:22}
+\begin{pmatrix}
+A_1\\A_2\\A_3
+\end{pmatrix}
+=C_2
+\begin{pmatrix}
+1\\-\sqrt{2}\\1
+\end{pmatrix}
+\end{equation}
+<p>
+其余同理于是通解如下：
+</p>
+\begin{equation}
+\label{eq:23}
+\begin{split}
+\begin{pmatrix}
+x_1\\x_2\\x_3
+\end{pmatrix}
+&=C_1
+\begin{pmatrix}
+1\\0\\-1
+\end{pmatrix}
+\mathrm{e}^{\pm\mathrm{i}\omega_0 t}
++C_2
+\begin{pmatrix}
+1\\-\sqrt{2}\\1
+\end{pmatrix}
+\mathrm{e}^{\pm\mathrm{i}\sqrt{2+\sqrt{2}}\omega_0 t}
++C_3
+\begin{pmatrix}
+1\\\sqrt{2}\\1
+\end{pmatrix}
+\mathrm{e}^{\pm\mathrm{i}\sqrt{2-\sqrt{2}}\omega_0 t}\\
+&=A_m
+\begin{pmatrix}
+1\\0\\-1
+\end{pmatrix}
+\cos(\sqrt{2}\omega_0 t+\phi_{m})\\
+&+A_f
+\begin{pmatrix}
+1\\-\sqrt{2}\\-1
+\end{pmatrix}
+\cos(\sqrt{2+\sqrt{2}}\omega_0 t+\phi_{f})+\\
+&+A_s
+\begin{pmatrix}
+1\\\sqrt{2}\\-1
+\end{pmatrix}
+\cos(\sqrt{2-\sqrt{2}}\omega_0 t+\phi_{s})+\\
+\end{split}
+\end{equation}
+<p>
+可以发现对于 3 个质点它们的运动情况可以由 3 个形式叠加而得，可以说它有 3 中模式，mfs 对应的是频率（模式）慢中快。
+这个通解形式只要给出 6 个初值条件（一般可以给 3 质点初始的位置和速度）即可得 6 个系数的结果。
+</p>
+</div>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-org9d0a3e8" class="outline-4">
+<h4 id="org9d0a3e8"><span class="section-number-4">2.2.3.</span> N = N</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+显然前面一开始就使用矩阵是为了方便我们可以推导任意多质点情况，之所以没使用 N=2 巧算分解法
+是避免反复对具体方程变量操作（而那种方法最大的优势在与如果你能后熟练迅速的分解，就可以立刻得到简约的模式结果）
+首先先总结一下 N 个的情况。
+我们有递推式
+对此可以除掉非关键变量质量，并且将尝试解代入
+\[m\ddot{x_n}=kx_{n-1}-2kx_n+x_{n+1}\]
+得到等价（更简洁）的递推式
+</p>
+\begin{equation}
+\label{eq:8}
+-\omega^{2}A_n=\omega_0^2(A_{n-1}-2A_n+A_{n+1})
+\end{equation}
+<p>
+如果希望避免求解行列式，我们可以直接猜想这个结果的形式，这样只需要把对应相关系数求出即可
+</p>
+
+<p>
+显然振动的结果应当与 \(n\) 有关，一定含有三角函数，故我们给出以下一个尝试解（有什么理由？直觉）
+</p>
+<div class="org-center">
+<p>
+可以写成这样的形式：
+</p>
+\begin{equation}
+\label{eq:33}
+A_n=B\cos n\theta +C\sin n\theta,\quad 2\cos \theta=\frac{A_{n-1}+A_{n+1}}{A_{n}}=\frac{2\omega_0^2-\omega^2}{\omega^2_0}
+\end{equation}
+</div>
+
+<p>
+我们使用数学归纳法证明这一点（为了避免行列式）
+假设对 n 是成立的，现推导（凑）出 n+1 的表达式。为了证明，因此我们使用之前的的递推表达式 (\ref{eq:8}) 得到下面第一行，然后利用和差化积展开整理，再积化和差合并。
+</p>
+\begin{eqnarray}
+\label{eq:17}
+A_{n+1} & = & 2\cos\theta A_n-A_{n-1}\\
+& = & 2\cos\theta(B\cos n\theta+C\sin)-(B\cos(n-1)\theta+C\sin(n-1)\theta)\\
+&=&\\
+&=&B(\cos n\theta\cos\theta-\sin n\theta)+C(\sin n\theta\cos\theta+\cos n\theta\sin\theta)\\
+&=&B\cos(n+1)\theta +C\sin(n+1)\theta
+\end{eqnarray}
+<p>
+对于 \(A_{1}:=B\cos\theta+C\sin\theta\) 可以成立
+证毕 \(\blacksquare\)
+</p>
+
+<p>
+将上述结果代入得到 \[x_n(t)=A_n\mathrm{e}^{\mathrm{i}\omega t}=(B\cos(n\theta) +C\sin(n\theta))\mathrm{e}^{\mathrm{i}\omega t}\]
+</p>
+
+<p>
+最终结果是
+</p>
+\begin{equation}
+\label{eq:24}
+\begin{split}
+x_n & =  F\cos(n\theta)\cos(\omega t+\beta)+G\sin(n\theta)\cos(\omega t+\gamma) \\
+& =  C_1\cos(n\theta)\cos(\omega t)+C_2\cos(n\theta)\sin(\omega t)
++C_3\sin(n\theta)\cos(\omega t)+C_4\sin(n\theta)\sin(\omega t)
+\end{split}
+\end{equation}
+<p>
+其中
+</p>
+\begin{equation}
+\label{eq:thetaDef}
+\theta:=\cos^{-1}(\frac{2\omega^2_0-\omega^2}{2\omega^2_0})
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org609526f" class="outline-4">
+<h4 id="org609526f"><span class="section-number-4">2.2.4.</span> 边界条件：约束带来的变</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+似乎刚刚我们玩了一大通数学，丝毫没有代入实际的物理，那么现在我们就进入现实，我们让墙带我们破除数学的纷繁，如果以后科研工作遇到类似情况没有墙（比如有限无限位能井），拿你就寻找墙的真身：边界条件。
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org3712106"></a>有限的世界<br />
+<div class="outline-text-5" id="text-2-2-4-1">
+<p>
+我们可以有无限的振子，但是不该有无限的长度（这是本质的），如果你认为波可以在无限长上发生，那可以先看看在有限的世界里面会发生什么。
+</p>
+
+<p>
+所谓有限解释可以找到边界，这里我们认为振子两边是”墙“振幅在所有时间恒为 0。数学上即 \(x_0=x_{n+1}\equiv0\)
+</p>
+
+<p>
+代入上文得到的通解中我们似乎可以发现一些惊人的限制条件产生了。
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="org9552c5b"></a>\(x_0=0\) 的吞噬<br />
+<div class="outline-text-6" id="text-2-2-4-1-1">
+\begin{eqnarray*}
+\label{eq:30}
+0=x_{0} & = &F\cos((n+1)\theta)\cos(\omega t+\beta)+G\sin((n+1)\theta)\cos(\omega t+\gamma)  \\
+&=& F\cos(\omega t+\beta)
+\end{eqnarray*}
+<p>
+这对于任何时间 \(t\) 成立（与后面的因子无关），于是必然的，我们得到 \(F=0\) ，这意味着其中一项整个没有了。
+</p>
+</div>
+</li>
+
+<li><a id="org55d25da"></a>\(x_{n+1}=0\) 的锁限<br />
+<div class="outline-text-6" id="text-2-2-4-1-2">
+\begin{eqnarray*}
+\label{eq:31}
+0=x_{n+1} & = &F\cos((n+1)\theta)\cos(\omega t+\beta)+G\sin((n+1)\theta)\cos(\omega t+\gamma)  \\
+&=& G\sin((n+1)\theta)\cos(\omega t+\gamma)
+\end{eqnarray*}
+<p>
+这一次，我们不会一下消掉一项（那可真是白费功夫解出来了），但是更深刻的东西似乎揭示出来了，即角度的取值受到限制。
+</p>
+
+<p>
+其中 \(G\cos(\omega t+\gamma)\) 的部分，应当与 0 无关（我们不会也取 \(G=0\) 那样就整个振幅是 0），因此令 \(\sin((n+1)\theta)=0\) 。根据正弦函数性质（忘记的化看一看前面波的图像），正弦函数只在 \(n\pi\) 处取 0。显然字母要混淆了，因此我们用 m 和 N 把方程这样写。
+</p>
+\begin{equation}
+\label{eq:20}
+\begin{split}
+(N+1)\theta &= m\pi\\
+\Rightarrow \theta &= \frac{m\pi}{N+1},\quad N,m \in \mathbb{N}
+\end{split}
+\end{equation}
+<p>
+于是，我们可以把 \(\theta\) 直接代回方程得到完整形式了。
+</p>
+\begin{equation}
+\label{eq:29}
+\begin{split}
+A_n & = G\sin(\frac{nm\pi}{N+1})\\
+x_{n} & = G\sin(\frac{nm\pi}{N+1})\cos(\omega t+\gamma)
+\end{split}
+\end{equation}
+<p>
+同时，注意到 \(\theta\) 和 \(\omega\) 之间有 ref 关系，因此可以解得：
+</p>
+\begin{equation}
+\label{eq:32}
+\begin{split}
+\cos\theta:&=\frac{2\omega_0^2-\omega^2}{2\omega^2_0}\\
+\frac{\omega^2}{\omega_0^2}&=1-\cos\theta \\
+\omega^2&=(2\omega_0^2)(2\sin \frac{\theta}{2})\\
+\Rightarrow\omega&=2\omega_0\sin(\frac{m\pi}{2(N+1)})
+\end{split}
+\end{equation}
+<p>
+由此 \(A,\omega\) 两个至关重要的公式都得到了。
+</p>
+</div>
+</li>
+</ol>
+</li>
+<li><a id="orgdfa3b15"></a>梳理关联<br />
+<div class="outline-text-5" id="text-2-2-4-2">
+<p>
+现在我们似乎已经集齐了所有的拼图，对于任意的质点振子连接都可以解得它们的情况了，只要有 m 对于给定系统我们就可以求出 \(\omega\) 了，然后得到各个系数的。
+</p>
+
+<p>
+但是可能你会觉得有一点混乱，这很正常，因为最为关键的一个条件是被给予的，一个我们作出的假设：
+你当然也可能想如果一开始就设 
+那样就得到了，不过根本上我们之前无法获知 A 的形式
+</p>
+
+<p>
+m 可以取什么值，注意到上面解的限制是正整数， N 肯定不能是 0 或负数， m 如果是 0，（振幅为 0）也没有意义（那么为什么不能取负数呢：对称性），如果是 N+1 ，\(\sin \frac{N+1}{N+1}=0\) 。至少在到 N 的范围内 m 是可以取的。大于 N+1 的情况呢？（它们已经被包含）
+</p>
+
+<p>
+现在，我们可以意识到 \(\omega\) 只能取分立的值，这一点是边界条件施加后三角函数所要求的。但对于具体情况总体上看可能不太直观，我们不妨回到熟悉的情形，当 N 还小，一切都在掌握之中的时候……
+</p>
+</div>
+</li>
+
+<li><a id="orgb4cd94d"></a>叠矩重规<br />
+<div class="outline-text-5" id="text-2-2-4-3">
+<p>
+整体的顺序是较为统一的，不过我建议有兴趣者先读后面推广里面的
+绳结振动，当然不看也是完全可以的。
+</p>
+</div>
+
+<ol class="org-ol">
+<li><a id="org89f2d52"></a>N = 2<sup><a id="fnr.9" class="footref" href="#fn.9" role="doc-backlink">9</a></sup><br />
+<div class="outline-text-6" id="text-2-2-4-3-1">
+<p>
+我们先取 m 为 1 和 2 。
+</p>
+<ul class="org-ul">
+<li>\(m=1\)</li>
+</ul>
+\begin{equation}
+\label{eq:34}
+\begin{split}
+\omega = 2\omega_0\sin(\frac{1\pi}{2(2+1)})=2\omega_0\sin \frac{\pi}{6}&,\quad A_n=G\sin(\frac{1n\pi}{2+1})=\sin(\frac{3n}{\pi})\\
+\quad\omega=\omega_0&,\quad
+\begin{pmatrix}
+A_1\\A_2
+\end{pmatrix}
+=C
+\begin{pmatrix}
+\sin \frac{\pi}{3}\\\sin \frac{2\pi}{3}
+\end{pmatrix}=C
+\begin{pmatrix}
+1\\1
+\end{pmatrix}
+\end{split}
+\end{equation}
+<ul class="org-ul">
+<li>\(m=2\)</li>
+</ul>
+\begin{equation}
+\begin{split}
+\omega = 2\omega_0\sin(\frac{2\pi}{2(2+1)})=2\omega_0\sin \frac{\pi}{3}&,\quad A_n=G\sin(\frac{2n\pi}{2+1})=\sin(\frac{2\pi}{3})\\
+\quad\omega=\sqrt{3}\omega_0&,\quad
+\begin{pmatrix}
+A_1\\A_2
+\end{pmatrix}
+=C
+\begin{pmatrix}
+\sin \frac{2\pi}{3}\\\sin \frac{4\pi}{3}
+\end{pmatrix}=C
+\begin{pmatrix}
+1\\-1
+\end{pmatrix}
+\end{split}
+\end{equation}
+<p>
+因为之前付出努力，这里得到解无比轻易。
+</p>
+
+<p>
+现在进入未知的海域：
+</p>
+<ul class="org-ul">
+<li>\(m=4\)</li>
+</ul>
+\begin{align*}
+\omega = 2\omega_0\sin(\frac{4\pi}{2(2+1)})=\sqrt{3}\omega_0 ,\quad
+\begin{pmatrix}
+A_1\\A_2
+\end{pmatrix}
+=C
+\begin{pmatrix}
+\sin \frac{4\pi}{3}\\\sin \frac{8\pi}{3}
+\end{pmatrix}=C
+\begin{pmatrix}
+-1\\1
+\end{pmatrix}
+\end{align*}
+
+<p>
+结果与 \(m=2\) 相同。
+</p>
+
+<p>
+事实上，可以注意到
+</p>
+
+<p>
+我们采用一个形象的图解法，这时提到的绳结的意义。
+我们想象一个弦，我们取 N 个点，即分 N+1 次。然后，画一个波的图像：三角函数，它的范围取 m 半个周期。
+</p>
+
+<p>
+此时刚好可以看出，上图中两个点同步同向振动，下图反向振动，结合上面 \(\begin{pmatrix}
+A_1\\A_2
+\end{pmatrix}\) 表达式这是完全一致。
+当然事实上，只有两个点，不过我们使用一个完整的三角函数可以完美地拟合。
+</p>
+
+<p>
+对于频率则是切分 \(\frac{\pi}{2}\) ，切分次数为 \(\frac{1}{N+1}\) 两个质点，我们使用 3 等分，正好得到 \(\frac{\pi}{6},\frac{\pi}{3}\) 。下面对于 3 个情况。
+</p>
+</div>
+</li>
+<li><a id="org945aa80"></a>N = 3<br />
+<div class="outline-text-6" id="text-2-2-4-3-2">
+<p>
+直接使用弦的思路，即半周期、整周期、一个半周期，并标出 4 等分位置。
+于是得到：
+</p>
+\begin{align}
+\label{eq:35}
+\omega_s = 2\omega_0\sin(\frac{\pi}{2(3+1)})=\sqrt{2-\sqrt{2}}\omega_0 &,\quad
+\begin{pmatrix}
+A_1\\A_2\\A_3
+\end{pmatrix}
+=C
+\begin{pmatrix}
+\sin \frac{\pi}{4}\\\sin \frac{2\pi}{4}\\\sin \frac{3\pi}{4}
+\end{pmatrix}=C
+\begin{pmatrix}
+1\\\sqrt{2}\\1
+\end{pmatrix}\\
+\omega_m = 2\omega_0\sin(\frac{2\pi}{8})=\sqrt{2}\omega_0 &,\quad
+\begin{pmatrix}
+A_1\\A_2\\A_3
+\end{pmatrix}
+=C
+\begin{pmatrix}
+\sin \frac{2\pi}{4}\\\sin \frac{4\pi}{4}\\\sin \frac{6\pi}{4}
+\end{pmatrix}=C
+\begin{pmatrix}
+1\\0\\-1
+\end{pmatrix}\\
+\omega_f = 2\omega_0\sin(\frac{3\pi}{8})=\sqrt{2+\sqrt{2}}\omega_0 &,\quad
+\begin{pmatrix}
+A_1\\A_2\\A_3
+\end{pmatrix}
+=C
+\begin{pmatrix}
+\sin \frac{3\pi}{4}\\\sin \frac{6\pi}{4}\\\sin \frac{9\pi}{4}
+\end{pmatrix}=C
+\begin{pmatrix}
+1\\\sqrt{2}\\1
+\end{pmatrix}
+\end{align}
+<p>
+一一吻合。
+</p>
+</div>
+</li>
+
+<li><a id="orgd99ddea"></a>等价<br />
+<div class="outline-text-6" id="text-2-2-4-3-3">
+<p>
+所有满足下面等式的 \(m'\) 都可以满足。
+\(m'+m=2ak(N+1)\)
+</p>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+
+<div id="outline-container-orge261f0a" class="outline-4">
+<h4 id="orge261f0a"><span class="section-number-4">2.2.5.</span> 一种思路</h4>
+<div class="outline-text-4" id="text-2-2-5">
+<p>
+我们指出一种思路，假如不知道。那么就使用弦的振动
+那么我们可以直接考虑几种简单的情况，进行叠加。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6037711" class="outline-4">
+<h4 id="org6037711"><span class="section-number-4">2.2.6.</span> 推广和等价系统</h4>
+<div class="outline-text-4" id="text-2-2-6">
+<p>
+我们前面一直推演弹簧振子现在一切都很清晰了。
+喝口茶歇一歇，让我们欣赏一下振子模型中先前忽略的条件、局限性的假设在更一般的情况下是怎样的。当然还有一些你可能在其他书中很早就会看到的案例，它们如何与弹簧振子模型发生关联。将它们称之为等价系统因为核心的运动方程是一致的，有言在先，模型展示到推出二阶方程为止。
+</p>
+</div>
+<ol class="org-ol">
+<li><a id="orge7a6fb4"></a>阻尼外力<br />
+<div class="outline-text-5" id="text-2-2-6-1">
+<p>
+共振又出现了，像之前所言，细节上变得复杂了但是核心没有变化。
+</p>
+</div>
+</li>
+<li><a id="orgc722fe6"></a>双摆<br />
+<div class="outline-text-5" id="text-2-2-6-2">
+<p>
+太经典的周期运动了，
+非线性方程它还要出场
+</p>
+</div>
+</li>
+<li><a id="orgceb97b2"></a>绳结振动<br />
+<div class="outline-text-5" id="text-2-2-6-3">
+<p class="verse">
+微小尺度，模型近似<br />
+受力一致，小角近似<br />
+</p>
+
+<p>
+很多书喜欢谈论这个，因为你可以在这里看到“节点”，但是我认为使用通常（也是这里）采取的假设与节点比较是十分荒唐的，不过这个模型也犹他的价值，我们稍微仔细谈论一下。
+</p>
+
+<p>
+现在我们不考虑重力，有一根物理理想轻绳（考虑它的受力但不考虑它的质量带来的惯性重力），上面固定了一些物体质点（你如果之后对它的运动感到奇怪可以认为它们是有质量的绳结），为简单考虑假设它们等距等质量分布在绳子上。
+如果给它轻微扰动，请问各个会如何振动，决定运动方程的会是那些量？
+</p>
+
+<p>
+与弹簧振子相比，绳子类似一个横波，因为振动的时候，波形从左向右变化，而每一个质点（近似）上下振动（如果你像我开始一样认为它们几乎不可能完美地上下振动，那么就把它们都上下振动当作一个必要的近似假设），弹簧振子运动传递的方向和振动的方向是一致的。
+</p>
+
+<p>
+这个模型需要很多近似的假设，根本上而言，它的振动很小
+<del>（但这个近似与摆有差异因为摆的方程具有一定统一性，但这里物理规律只能在小的尺度，大尺度下考虑神的弹力就完全不一样了）</del>
+。所以我们得到它们的间距近似不变（设为 \(l\)），整个绳子的张力处处相等（设为 \(T\)）。
+</p>
+
+<p>
+我们直接使用 \(\psi\) 来表示位移，，我们研究一个聚焦到一个质点，得到递推式。
+</p>
+
+<p>
+仍然是从牛顿定律出发列方程。
+</p>
+\begin{equation}
+\label{eq:36}
+m\ddot{\psi}=-T\sin\theta_{n-1}-T\sin\theta_{n+1}
+\end{equation}
+<p>
+为了引入其它质点位移，我们采用小角近似 \(\sin\theta\approx\tan\theta\)<sup><a id="fnr.10" class="footref" href="#fn.10" role="doc-backlink">10</a></sup>
+</p>
+
+<p>
+，再设 \(\omega_0^2=\frac{T}{m}\) 于是我们可以得到
+</p>
+\begin{equation}
+\label{eq:37}
+\ddot{\psi}=-\omega_0^2(\frac{\psi_n-\psi_{n-1}}{l}+\frac{\psi_n-\psi_{n+1}}{l})
+\end{equation}
+<p>
+于是得到和 ref 同样的形式：
+</p>
+\begin{equation}
+\label{eq:38}
+\ddot{\psi}=\omega_0^2(\psi_{n-1}-2\psi_n+\psi_{n+1})
+\end{equation}
+<p>
+就此可以知道一切紧绷的弦振动的近似结果。
+</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="outline-container-org98e8e28" class="outline-4">
+<h4 id="org98e8e28"><span class="section-number-4">2.2.7.</span> 纵波推导波动方程</h4>
+<div class="outline-text-4" id="text-2-2-7">
+<p>
+现在我们让 \(N\rightarrow\infty\) 。
+</p>
+
+\begin{eqnarray}
+\label{eq:11}
+m\ddot{\psi_n} & = & k(\psi_{n-1}-2\psi_n+\psi_{n+1})\\
+m\ddot{\psi}(x) & = & k(\psi(x-\Delta x)-\psi(x)-\psi(x)+\psi(x+\Delta x))\\
+m \frac{\mathrm{d}^2}{\mathrm{d}t^2} \psi(x)&=&k[(\psi(x-\Delta x)-\psi(x))-(\psi(x)+\psi(x+\Delta x))]\\
+m \frac{\mathrm{d}^2}{\mathrm{d}t^2} \psi(x)&=&k \frac{\Delta^{2} x}{\Delta x}(\frac{\psi(x-\Delta x)-\psi(x)}{\Delta x}-\frac{\psi(x)-\psi(x+\Delta x)}{\Delta x})\\
+\end{eqnarray}
+<p>
+取极限
+，可以将右边变为对位置的二阶导数
+化为
+</p>
+\begin{equation}
+\label{eq:9}
+\frac{m}{\Delta x}\frac{\partial^2\psi(x,t)}{\partial t^2}=k\Delta x \frac{\partial^2 \psi(x,t)}{\partial x^2}
+\end{equation}
+<p>
+定义 \(\rho=\frac{m}{\Delta x}\) (密度), \(E=k\Delta x\) 弹性模量
+得到 <b>波动方程</b> ：
+</p>
+\begin{equation}
+\label{eq:longWF}
+\rho\frac{\partial^2\psi(x,t)}{\partial t^2}=E \frac{\partial^2 \psi(x,t)}{\partial x^2}
+\end{equation}
+</div>
+<ol class="org-ol">
+<li><a id="orge22e403"></a>解的形式<br />
+<div class="outline-text-5" id="text-2-2-7-1">
+<p>
+使用 \(\psi(x,t)=a(x)\mathrm{e}^{\mathrm{i}\omega t}\) 代入
+</p>
+\begin{eqnarray}
+\label{eq:12}
+\rho \frac{\partial^2}{\partial t^2}a(x)\mathrm{e}^{\mathrm{i}\omega t} & = & E \frac{\partial^2}{\partial x^2}a(x)\mathrm{e}^{\mathrm{i}\omega t}\\
+-\omega^2\rho a(x) &=& E a''(x) \\
+a''(x)&=&-\frac{\rho\omega^2}{E}a(x)
+\end{eqnarray}
+<p>
+所以，令 \(k:=\omega \sqrt{\frac{\rho}{E}}\) 则 \(a\) 的解为 \[a=A\mathrm{e}^{\pm\mathrm{i}kx}\]
+此处 \(k\) 为波数，单位 \(\rm{}\frac{1}{s}\sqrt{\frac{kg/m}{kg\cdot m/s^2}}=\frac{1}{m}\) 因此检验 \(kx\) 为无量纲量，是合理的。同时我们可以从这个式子重新定义波长，
+\[\lambda := \frac{2\pi}{k} \]
+</p>
+
+<p>
+言归正传，把最后结果代回 \(\psi\) 得到
+</p>
+\begin{eqnarray}
+\label{eq:13}
+\psi(x,t)&=&A\mathrm{e}^{\mathrm{i}(\pm kx\pm\omega t)}\\
+&=&A_1\mathrm{e}^{\mathrm{i}(kx+\omega t)}+A_1^{*}\mathrm{e}^{\mathrm{i}(-kx-\omega t)}+A_2\mathrm{e}^{\mathrm{i}(kx-\omega t)}+A_2^{*}\mathrm{e}^{\mathrm{i}(-kx+\omega t)}
+\end{eqnarray}
+</div>
+</li>
+<li><a id="org1052b84"></a>一般形式<br />
+<div class="outline-text-5" id="text-2-2-7-2">
+<p>
+同时，可以定义 \[v=\frac{\omega}{k}\]
+效果上如取 \(kx-\omega t=0\) 类似于看等高面的变化
+于是可以把波动方程写为
+</p>
+\begin{equation}
+\label{eq:14}
+\frac{\partial^2\psi}{\partial t^2}=v^{2} \frac{\partial^2 \psi}{\partial x^2},\quad \ddot{\psi}-v^2\psi''=0
+\end{equation}
+
+<p>
+(使用点表示对时间求导，撇对空间求导)越来越简洁的形<sup><a id="fnr.11" class="footref" href="#fn.11" role="doc-backlink">11</a></sup>式
+然而它对我们暂时都作用不大，
+因为更强有的数学工具还没有完全具备——时频变换：傅里叶变换。
+</p>
+
+
+<div class="org-center">
+<p>
+回顾
+</p>
+<ul class="org-ul">
+<li>解</li>
+<li></li>
+
+<li>模式</li>
+</ul>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9b4d6e3" class="outline-2">
+<h2 id="org9b4d6e3"><span class="section-number-2">3.</span> 波动</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Fourier
+</p>
+
+<p>
+弦
+</p>
+</div>
+<div id="outline-container-org2458764" class="outline-3">
+<h3 id="org2458764"><span class="section-number-3">3.1.</span> 有限到无限的连续</h3>
+<div class="outline-text-3" id="text-3-1">
+</div>
+<div id="outline-container-org180370e" class="outline-4">
+<h4 id="org180370e"><span class="section-number-4">3.1.1.</span> 三角函数正交性：傅里叶变换为什么可以</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+按照不少物理教材乃至于数学的讲法，我们使用 \(\mathrm{e}^{\lambda t}\) 去猜二阶（乃至高阶方程）的解，这为什么合理呢？
+</p>
+
+<p>
+涉及到两个问题（并不是说每本书资料会讲这两方面，如果你要查），完备性（complete）和唯一性（unique）
+</p>
+<ul class="org-ul">
+<li>完备性：我的形式可以包含一切，类比 3 维空间用 3 个单位正交向量，此处则是 \(\mathrm{e}^{\lambda t}\) 可以表达任意（合乎物理）函数</li>
+<li>唯一性：只有一个结果，（方法不重要）所得即结果，如：不同方法必然解得等价的</li>
+</ul>
+<p>
+省略了存在性，因为不研究不存在的物理。（牛顿）
+</p>
+
+<p>
+华罗庚的书中完全没用，而我们这里想解释的是三角函数的正交性，由于 \(\sin(kx)\quad k \mathsf{N}\) 可以得到它，这也是傅里叶级数的基础。
+</p>
+
+<p>
+Hilbert
+</p>
+
+<p>
+*正交函数组
+将在有限区域积分定义为函数的内积（有内积就有了度量于是可以构建空间的尺度）
+内积满足 S 不等式
+</p>
+
+<p>
+一组函数可以正交化
+Gram 方法
+两种看法
+投影、取正交去同向部分
+</p>
+
+<p>
+范数为函数自己的内积
+归一即自己内积后结果为 1，可以乘系数达到。（这会方便我们定义函数展开系数）
+</p>
+
+<p>
+*Bessel 不等式
+</p>
+
+<p>
+有正交归一函数组 \(\varphi\cdots\varphi_n\)
+定义一个函数对于这夹函数组的每一函数的系数为它与里面该项的内积
+\(c_i=\left\langle f,\varphi_i \right\rangle\)
+我们研究 \(f\) 与 \(c\varphi\) 函数的差异关系
+取它们的差的平方积分这一定是一个正数。
+\(\int (f-\sum_{i=1}^nc_i\varphi_{i})^2\mathrm{d}x \geq 0\)
+展开可以得到
+</p>
+\begin{equation}
+\label{eq:73}
+0\leq \int f^2\mathrm{d}x-2\sum_1^nc_i\int f\varphi_i\mathrm{d}x+\sum_{i=1}^nc_i^2=\left| f \right|-\sum c_i^2
+\end{equation}
+<p>
+更一般的，因此右边不依赖于 n 有
+</p>
+\begin{equation}
+\label{eq:75}
+\sum_{i=1}^{\infty}c_i^{2}\leq \left\lVert f \right\rVert
+\end{equation}
+<p>
+这是 Bessel 不等式，它保证了正交归一函数的展开系系数平方和一定收敛
+更一般的对于复数
+是
+</p>
+
+\begin{equation}
+\label{eq:80}
+\sum_{i=1}^{\infty} \left\lvert c_i  \right\rvert^2 \leq \left\lVert f \right\rVert
+\end{equation}
+
+<p>
+量子力学波函数展开可以用这夹保证
+</p>
+
+<p>
+*完备性关系
+</p>
+
+<p>
+假如任一分段连续函数可以被这个正交归一的函数以任意的准确度近似
+近似也就是
+</p>
+\begin{equation}
+\label{eq:81}
+M=\int (f-\sum_{i=1}^n\gamma_i\varphi_{i})^2\mathrm{d}x 
+\end{equation}
+
+<p>
+当误差足够小就称为完备。充分条件是 Bessel 不等式。
+证明：不会
+</p>
+
+<p>
+正交归一化的三角函数组是完备的
+即
+</p>
+\begin{equation}
+\label{eq:82}
+\frac{1}{\sqrt{2\pi}},\quad \frac{1}{\sqrt{\pi}}\cos x,\quad \frac{1}{\sqrt{\pi}}\sin x\quad \frac{1}{\sqrt{\pi}}\cos2x\quad \frac{1}{\sqrt{\pi}}\sin2x
+\end{equation}
+<p>
+在区间 \(-\pi\leq x\leq\pi\) 是完备的。
+</p>
+
+<p>
+所以在这个区间连续
+fn 且满足 \(f(-\pi)=f(\pi)\) （不满足者可是使用满足的替代）的函数
+可以使用下式已知逼近
+</p>
+\begin{equation}
+\label{eq:83}
+f(x)=\frac{a_0}{2}+\sum_{k=1}^m(A\cos k x +B\sin k x)
+\end{equation}
+<p>
+证明：下次
+大意：取极坐标，单位圆， Wer 逼近定理
+</p>
+
+<p>
+*傅里叶级数
+可以得到，从 Fourier 多项式
+ref 可以得到最好的 f 的 n 级近似
+</p>
+\begin{equation}
+\label{eq:84}
+f(x)=\frac{a_0}{2}+\sum_{k=1}^m(A\cos k x +B\sin k x)
+\end{equation}
+<p>
+其中
+</p>
+\begin{align}
+\label{eq:86}
+A_k=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\cos kx\mathrm{d}x\\
+B_k=\frac{1}{\pi}\int\limits_{-\pi}^{\pi}f(x)\sin kx\mathrm{d}x\\
+a_0=
+\end{align}
+<p>
+换指数形式就是
+</p>
+\begin{equation}
+\label{eq:87}
+f(x)=\sum_{k=-n}^nA_k\mathrm{e}^{\mathrm{i}kx},\quad A_k=\frac{1}{2\pi}\int\limits_{-\pi}^{\pi}f(t)\mathrm{e}^{-\mathrm{i}kt}\mathrm{d}t
+\end{equation}
+
+
+<p>
+定理：任何在区间分段连续的 2pi 周期的含函数可以展开为 Fourier 级数，且在连续区间上一致收敛。
+证明：不会
+</p>
+
+<p>
+*Fourier 积分
+在 \(-l<x<l\) 可表为 Fourier 级数的函数 f，如果找到 \(l\to\infty\) 的
+条件
+最佳（不需要周期延拓）
+进而有非周期函数的表达形式
+</p>
+
+<p>
+假设：
+f 在 \(-l<x<l\) 上分段光滑间断间断点为左右极限的算术平均，同时 \(\int\limits_{-\infty}^{\infty}\left| f(x) \right|\mathrm{d}x\) 存在。
+( \(-l<x<l\) 上，相当于把 \(\pi\) 变成 \(\frac{\pi}{l}\))
+从 Fourier 有
+</p>
+\begin{equation}
+\label{eq:89}
+f(x)=\sum_{k=-\infty}^{\infty}A_k\mathrm{e}^{\mathrm{i}k \frac{\pi}{l}x},\quad A_k=\frac{1}{2l}\int\limits_{-l}^lf(t)\mathrm{e}^{-\mathrm{i}k \frac{\pi}{l}}\mathrm{d}t
+\end{equation}
+<p>
+可以把 A 代入
+\(f(x)=\sum_{k=-\infty}^{\infty}\frac{1}{2l}(\int\limits_{-l}^lf(t)\mathrm{e}^{-\mathrm{i}k \frac{\pi}{l}t}\mathrm{d}t)\mathrm{e}^{\mathrm{i}k \frac{\pi}{l}x}=\frac{1}{2l}\sum_{k=-\infty}^{\infty}\int\limits_{-l}^lf(t)\mathrm{e}^{\mathrm{i}k\frac{\pi}{l}(x-t)}\mathrm{d}t\)
+取 \(\delta=\frac{\pi}{l}\)
+</p>
+\begin{equation}
+\label{eq:88}
+f(x)=\frac{\delta}{2\pi}\sum_{k=-\infty}^{\infty}\int\limits_{-l}^lf(t)\mathrm{e}^{\mathrm{i}k\delta(x-t)}\mathrm{d}t
+\end{equation}
+<p>
+令 \(l\to\infty\) ，则 \(\delta\to 0\)
+发现
+</p>
+\begin{equation}
+\label{eq:90}
+f(x)=\frac{1}{2\pi}\int\limits_{-\infty}^{\infty}\mathrm{d}u\sum_{k=-\infty}^{\infty}\int\limits_{-l}^lf(t)\mathrm{e}^{\mathrm{i}u(x-t)}\mathrm{d}t
+\end{equation}
+
+<p>
+证可以这样取极限。。。
+</p>
+
+<p>
+如果取
+</p>
+\begin{equation}
+\label{eq:91}
+g(u)=\frac{1}{2\pi}\int\limits_{-\infty}^{\infty}f(t)\mathrm{e}^{-\mathrm{i}ut}\mathrm{d}t
+\end{equation}
+<p>
+就可以得到
+</p>
+\begin{equation}
+\label{eq:92}
+f(t)=\frac{1}{2\pi}\int\limits_{-\infty}^{\infty}g(u)\mathrm{e}^{\mathrm{i}ut}\mathrm{d}u
+\end{equation}
+
+<p>
+华罗庚：
+发现三角函数在一个周期内自己积分得到 0，与不同频率相称得到，与自己相乘积分得到 \(\pi^2\)
+\(\int\limits_0^{2\pi}\sin\omega x=0,\quad\int\limits_0^{2\pi}\sin \omega_1 x\sin\omega_2 x=0,\quad \int\limits_0^{2\pi}\sin^2\omega x=\pi^2\)
+于是提出三角函数的正交和归一性
+</p>
+
+<p>
+于是，如果有 \(f(x)=\frac{a_0}{2}+\sum_{k=1}^m(A\cos k x +B\sin k x)\)
+(即有三角函数组成的级数一致收敛到 \(f(x)\))
+那么逐项积分得到
+\(\int\limits_0^{2\pi}f(x)\mathrm{d}x=\pi a_0\)
+有正交性可以得到前面的系数 A,B
+</p>
+
+<p>
+即乘以我们想知道的三角函数可以得到得到该项系数
+</p>
+
+<p>
+类似向量与坐标轴单位向量内积可以得到它在那个坐标方向上的坐标。
+</p>
+
+<p>
+也就是
+</p>
+\begin{align}
+\label{eq:63}
+a_0=
+\end{align}
+
+<p>
+这个级数称为 \(f(x)\) 的 Fourier 级数
+</p>
+</div>
+</div>
+
+<div id="outline-container-org342ab6b" class="outline-4">
+<h4 id="org342ab6b"><span class="section-number-4">3.1.2.</span> Fourier 级数到变换</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Fourier 就类似 Talyor ，都是想展开函数，但前者有更丰富的拓展与物理意义。
+</p>
+
+<p>
+几个问题：
+如何从复变函数角度理解
+</p>
+
+<p>
+为什么从级数到变换
+</p>
+
+<p>
+广义变换拓展了什么
+?
+为什么有冲击函数，介绍方波（门函数）除了说明拟合效果好还有什么意义
+</p>
+
+<p>
+变换是否总是有效
+</p>
+
+<p>
+能不能写出一个 Fourier 变换形式，使得
+</p>
+
+<p>
+有哪些性质？
+线性、平移
+</p>
+
+
+<p>
+几个有用的性质
+</p>
+<ul class="org-ul">
+<li>线性性
+\(\mathscr{F}\mathcal{F}{\mathcal FD}\mathscr{K}\)</li>
+</ul>
+
+<p>
+还有一些
+已经知道方波函数，拿么取离散的一个方波
+如
+</p>
+\begin{equation}
+\label{eq:100}
+\text{rec}(t)=
+\left\{ 
+\begin{array}{rcl}
+1 & |t| < W \\
+0 & |t| > W 
+\end{array} \right.
+\end{equation}
+<p>
+做傅里叶发现 
+</p>
+\begin{align}
+\label{eq:101}
+\tilde{\text{rec}}(\omega)=\mathscr{F}[\text{rec}(t)]&=\int_{-\infty}^{\infty}\text{rec}(t)\mathrm{e}^{-\mathrm{i}\omega t}\mathrm{d}t \\
+&=\int_{-W}^W1\times\mathrm{e}^{-\mathrm{i}\omega t}\mathrm{d}t \\
+&=\frac{\mathrm{e}^{-\mathrm{i}\omega W}-\mathrm{e}^{\mathrm{i}\omega W}}{-\mathrm{i}\omega} \\
+&=d\\
+&=\frac{\sin \omega W}{\omega}:= W\text{sinc}(\omega W)
+\end{align}
+<p>
+也就是我们可以定义 \(\text{sinc}(x)=\frac{\sin x}{x}\)
+</p>
+
+<p>
+如果我们想求 sinc 的傅里叶变换
+直接积分是很困难的（可以使用
+</p>
+
+<p>
+Laplace）
+</p>
+
+<p>
+但因为对称性可以取巧
+</p>
+
+<p>
+利用上面的公式
+我们 \(\tilde{\text{rec}}(\omega)\) 逆傅里叶变换，然后改换变元。
+</p>
+\begin{align}
+\label{eq:102}
+\text{rec}(t) &= \mathscr{F}[\tilde{\text{rec}}(\omega)] \\
+\text{rec}(t) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} \frac{\sin \omega W}{\omega} \mathrm{e}^{\mathrm{i}\omega t}\mathrm{d}\omega \\
+\text{rec}(-t) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} \frac{\sin \omega W}{\omega} \mathrm{e}^{\mathrm{i}\omega -t}\mathrm{d}\omega \\
+\text{rec}(-\omega) &= \frac{1}{2\pi}\int_{-\infty}^{\infty} \frac{\sin t W}{t} \mathrm{e}^{\mathrm{i}\omega -t}\mathrm{d}t
+\end{align} 
+<p>
+于是
+</p>
+\begin{equation}
+\label{eq:103}
+\text{rec}(-\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} W \text{sinc}(Wt)} \mathrm{e}^{\mathrm{i} \omega -t}\mathrm{d}t
+\end{equation}
+
+\begin{align}
+\label{eq:105}
+\text{rec}(-\omega) &=& \frac{1}{2\pi} \int_{-\infty}^{\infty} W \text{sinc}(Wt)} \mathrm{e}^{\mathrm{i} \omega -t}\mathrm{d}t \\
+\text{rec}(-\omega) &=& \frac{1}{2\pi} W \mathscr{F}[\text{sinc}(Wt)]
+\end{align}
+
+
+
+<p>
+简单解释一下上面的公式
+</p>
+</div>
+</div>
+<div id="outline-container-org9ad48d9" class="outline-4">
+<h4 id="org9ad48d9"><span class="section-number-4">3.1.3.</span> 时间频率</h4>
+</div>
+</div>
+<div id="outline-container-org59c4978" class="outline-3">
+<h3 id="org59c4978"><span class="section-number-3">3.2.</span> 横波的流动</h3>
+<div class="outline-text-3" id="text-3-2">
+</div>
+<div id="outline-container-org12c81a7" class="outline-4">
+<h4 id="org12c81a7"><span class="section-number-4">3.2.1.</span> 推导</h4>
+</div>
+<div id="outline-container-orge5719c4" class="outline-4">
+<h4 id="orge5719c4"><span class="section-number-4">3.2.2.</span> 反射透射</h4>
+</div>
+<div id="outline-container-org56310f2" class="outline-4">
+<h4 id="org56310f2"><span class="section-number-4">3.2.3.</span> 驻波？</h4>
+</div>
+</div>
+<div id="outline-container-orgb998b61" class="outline-3">
+<h3 id="orgb998b61"><span class="section-number-3">3.3.</span> 电动力学－电磁波</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Maxwell 方程组
+电磁分离 Hemholz 方程
+</p>
+
+<p>
+模式
+TE
+TM
+EM/ME
+</p>
+
+<p>
+使用 \(\mathbf{E},\mathbf{B},\cdots\) 表示矢量
+使用 \(E,B,\cdots\) 表示大小 \(E=\left| \mathbf{E} \right|\)
+字母表
+</p>
+</div>
+<div id="outline-container-orgccde772" class="outline-4">
+<h4 id="orgccde772"><span class="section-number-4">3.3.1.</span> 电磁波的推导</h4>
+<div class="outline-text-4" id="text-3-3-1">
+<p>
+\paragraph{Maxwell 方程}
+</p>
+\begin{align}
+\label{eq:78}
+\nabla\cdot \vec{E}=\frac{\rho_f}{\epsilon} \\
+\nabla\cdot \vec{B}=0\\
+\nabla\times \vec{E}=-\frac{\partial \vec{B}}{\partial t}\\
+\nabla\times \vec{B}=\frac{\partial D}{\partial t}+J
+\end{align}
+
+<p>
+一般形式：
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">微分</td>
+<td class="org-left">积分</td>
+<td class="org-left">含义</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\nabla\cdot \mathbf{E}=\frac{\rho}{\epsilon_0}\)</td>
+<td class="org-left">\(\int \mathbf{E}\cdot \mathrm{d}\mathbf{A}=\frac{q}{\epsilon_0}\)</td>
+<td class="org-left">Gauss 定律：电场的源是电荷</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\nabla\cdot \mathbf{B}=0\)</td>
+<td class="org-left">\(\int \mathbf{B}\cdot \mathrm{d}\mathbf{A}=0\)</td>
+<td class="org-left">无磁单极</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\nabla\times \mathbf{E}=-\frac{\partial \mathbf{B}}{\partial t}\)</td>
+<td class="org-left">\(\int E\cdot \mathrm{d}\mathbf{l}=-\frac{\mathrm{d}\Phi}{\mathrm{d}t}\)</td>
+<td class="org-left">Faraday 定律：磁生电</td>
+</tr>
+
+<tr>
+<td class="org-left">\(\nabla\times \mathbf{B}=\mu_0\epsilon_0 \frac{\partial \mathbf{E}}{\partial t}+\mu_0J\)</td>
+<td class="org-left">\(\int \mathbf{B}\cdot \mathrm{d}\mathbf{l}=\mu_0\epsilon_0 \frac{\mathrm{d}\Phi}{\mathrm{d}t}+\mu_0I\)</td>
+<td class="org-left">Ampere 定律：电生磁</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+往往还有 \(\mathbf{D}=\epsilon \mathbf{E}\) , \(\mathbf{H}=\frac{\mathbf{B}}{\mu}\)
+D 是电位移矢量， H 是磁场强度
+</p>
+
+<p>
+对于我们理论考虑一般取 \(\rho,J\) 为 0
+</p>
+
+<p>
+现在推导处电磁波方程，需要一点矢量分析的初步知识。
+</p>
+
+<p>
+这里有个变量， \(\mathbf{E},\mathbf{B},t\)
+空间
+</p>
+
+<p>
+对于 E,B 都可以得到波动形式
+E 看起来角单一点我们先处理它。
+我们希望电磁分离：
+</p>
+
+\begin{equation}
+\label{eq:85}
+\begin{split}
+\nabla\times(\nabla\times \mathbf{E})=\nabla\times(\frac{\partial \mathbf{B}}{\partial t})\\
+=-\frac{\partial}{\partial t}(\nabla\times \mathbf{B})\\
+=-\frac{\partial}{\partial t}(\mu_0\epsilon_0 \frac{\partial B}{\partial t})\\
+=-\mu_0\epsilon_0 \frac{\partial^2 E}{\partial t^2}
+\end{split}
+\end{equation}
+<p>
+左边我们会得到 \(-\nabla^2 \mathbf{E}\)
+</p>
+
+<p>
+这需要用到公式 \(a\times(b\times c)=b(a\cdot c)-c(a\cdot b)\)
+于是得到
+</p>
+\begin{equation}
+\label{eq:93}
+\nabla^2 \mathbf{E}=\mu_0\epsilon_0\frac{\partial^2 \mathbf{E}}{\partial t^2}
+\end{equation}
+<p>
+波速 \(c=\frac{1}{\sqrt{\mu_0\epsilon_0}}\approx3\times10^8\)
+</p>
+
+<p>
+\(\nabla=\frac{\partial}{\partial x}+\frac{\partial}{\partial y}+\frac{\partial}{\partial z}\)
+\(\nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}\)
+</p>
+
+
+<p>
+波矢 \(\mathbf{k}:=(k_x,k_y,k_z)\)
+</p>
+
+<p>
+现在波在空间传播，波可以写成这样形式 \(A\mathrm{e}^{\mathrm{i}(\mathbf{k}\mathrm{\cdot \mathbf{r}-\omega t})}\) ，其中 \(\mathbf{r}:=(x,y,z)\) 为位矢
+代入得到
+</p>
+\begin{equation}
+\label{eq:94}
+(-\mathrm{i}\omega)^2=\mathrm{i}^2\frac{1}{\mu_0\epsilon_0}(+k_x^2+k_y^2+k_z^2) \Rightarrow \omega^2=\frac{\left| \mathbf{k} \right|^2}{\mu_0\epsilon_0} \Rightarrow \omega=c \left| \mathbf{k} \right|
+\end{equation}
+
+<p>
+利用 k 可以重写一些表达式
+</p>
+
+\begin{equation}
+\label{eq:95}
+\begin{split}
+\nabla\cdot \mathbf{E}=0 &\Rightarrow \mathrm{i}(k_xE_x+k_yE_y+k_zE_z) \\
+&\Rightarrow \mathbf{k}\cdot \mathbf{E} =0
+\end{split}
+\end{equation}
+<p>
+同理
+\(\mathbf{k}\cdot \mathbf{B}=0\)
+\(\mathbf{k}\times \mathbf{B}=\omega \mathbf{B}\)
+</p>
+
+\begin{align}
+\label{eq:96}
+\nabla\times \mathbf{B}=\frac{1}{c^2}\frac{\partial \mathbf{E}}{\partial t} \\
+\mathrm{i}\mathbf{k}\times \mathbf{B}=\frac{1}{c^2}\mathrm{i}\omega \mathbf{E} \\
+kB=\frac{\omega}{kc^2}E\\
+B=\frac{E}{c}a
+\end{align}
+<p>
+总结
+</p>
+\begin{equation}
+\label{eq:97}
+\mathbf{E}\perp \mathbf{k},\quad\mathbf{B}\perp \mathbf{k},\quad\mathbf{E}\perp \mathbf{B},\quad E=cB
+\end{equation}
+
+
+<p>
+能量 \(\mathcal{E}=\frac{1}{2}\epsilon_0E^2+\frac{1}{2}\frac{B^2}{\mu_0}\)
+守恒/连续性方程
+</p>
+
+
+\begin{equation}
+\label{eq:98}
+\frac{\partial W}{\partial t}=\frac{1}{\mu}\int_A(\mathbf{E}\times \mathbf{B})\mathrm{d}\mathbf{A}
+\end{equation}
+
+\begin{equation}
+\label{eq:99}
+\mathbf{S}:=\frac{1}{\mu_0}\mathbf{E}\times \mathbf{B}
+\end{equation}
+
+<p>
+Poynting 矢量
+</p>
+
+<p>
+行波
+\(\mathcal{E}=\frac{1}{2}\epsilon_0E^2+\frac{1}{2}\frac{B^2}{\mu_0}=\frac{1}{2}\epsilon_0E^2+\frac{1}{2}\frac{E^2}{\mu_0c^2}=\epsilon_0 E^2\)
+于是
+\(\mathbf{S}=\epsilon_0 cE^2\hat{\mathbf{k}}=c\mathcal{E}\hat{k}\)
+</p>
+
+<p>
+驻波
+?
+</p>
+</div>
+</div>
+<div id="outline-container-orgea6f822" class="outline-4">
+<h4 id="orgea6f822"><span class="section-number-4">3.3.2.</span> 偏振</h4>
+</div>
+</div>
+
+<div id="outline-container-org3c4297a" class="outline-3">
+<h3 id="org3c4297a"><span class="section-number-3">3.4.</span> 量子力学－波函数</h3>
+<div class="outline-text-3" id="text-3-4">
+</div>
+<div id="outline-container-org09a6e2d" class="outline-4">
+<h4 id="org09a6e2d"><span class="section-number-4">3.4.1.</span> 基本形式</h4>
+<div class="outline-text-4" id="text-3-4-1">
+\begin{equation}
+\label{eq:40}
+\mathrm{i}\hbar \frac{\partial \psi}{\partial t}=\hat{H}\psi
+\end{equation}
+<p>
+一维情况：
+位能井
+</p>
+</div>
+</div>
+<div id="outline-container-org137fc49" class="outline-4">
+<h4 id="org137fc49"><span class="section-number-4">3.4.2.</span> 简谐振子</h4>
+</div>
+<div id="outline-container-org8fdf153" class="outline-4">
+<h4 id="org8fdf153"><span class="section-number-4">3.4.3.</span> 径向氢原子</h4>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f59a66" class="outline-2">
+<h2 id="org9f59a66"><span class="section-number-2">4.</span> 弦</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org759ee71" class="outline-3">
+<h3 id="org759ee71"><span class="section-number-3">4.1.</span> 推导波动方程</h3>
+<div class="outline-text-3" id="text-4-1">
+</div>
+<div id="outline-container-orgf3730f6" class="outline-4">
+<h4 id="orgf3730f6"><span class="section-number-4">4.1.1.</span> 近似</h4>
+<div class="outline-text-4" id="text-4-1-1">
+<p>
+研究一小端
+引入位移
+近似
+力
+没有横向移动，没有横向加速度
+</p>
+
+<p>
+\(F_{net}=T(\psi(x+\mathrm{d}x)-\psi(x))=T \frac{\mathrm{d}x}{\mathrm{d}x}(\psi(x+\mathrm{d}x)-\psi(x))=T\mathrm{d}x \frac{\mathrm{d}^2\psi(x)}{\mathrm{d}x^2}\)
+</p>
+
+\begin{equation}
+\label{eq:1}
+F_{net}=m\ddot{x}\rightarrow T\mathrm{d}x \frac{\mathrm{d}^2\psi(x)}{\mathrm{d}x^2}=(\mu \mathrm{d}x)\frac{\mathrm{d}^2\psi}{\mathrm{d}t^2}
+\end{equation}
+<p>
+所以得到波动方程：
+</p>
+\begin{equation}
+\label{eq:55}
+\frac{\partial^2\psi}{\partial t^2}=\frac{T}{\mu}\frac{\partial^2\psi}{\partial x^2}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orge7676cc" class="outline-4">
+<h4 id="orge7676cc"><span class="section-number-4">4.1.2.</span> 通解：</h4>
+<div class="outline-text-4" id="text-4-1-2">
+\begin{equation}
+\label{eq:43}
+\frac{\partial^{2} \psi}{\partial t^2}=\frac{T}{\mu}\frac{\partial^2 \psi}{\partial x^2}
+\end{equation}
+
+\begin{equation}
+\label{eq:44}
+\psi(x,t)=A\mathrm{e}^{\mathrm{i}(\pm kx\pm \omega t)}
+\end{equation}
+
+<p>
+从 \(\frac{E}{\rho}\) 变为 \(\frac{T}{\mu}\) (正巧，大写对大写，小写对小写，单位上也是
+)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1cfafdc" class="outline-4">
+<h4 id="org1cfafdc"><span class="section-number-4">4.1.3.</span> 关联</h4>
+<div class="outline-text-4" id="text-4-1-3">
+<p>
+还有
+\(\frac{\omega}{k}=\sqrt{\frac{T}{\mu}}:=c\)
+</p>
+
+<p>
+使用傅里叶变换
+</p>
+
+<p>
+\(f(z)=\int\limits_{-\infty}^{\infty}C(k)\mathrm{e}^{\mathrm{i}kz}\mathrm{d}k\)
+对于这里，任意满足
+</p>
+
+<p>
+\(x-ct\)
+</p>
+
+<p>
+代入 \(\psi(x,t)=\int\limits_{-\infty}^{\infty}C(k)\mathrm{e}^{\mathrm{i}kz}\mathrm{d}k\)
+</p>
+
+<p>
+可以写成 e 形式
+</p>
+
+<p>
+考虑 k 不变的情况下， C 的表达式
+</p>
+
+\begin{equation}
+\label{eq:46}
+g(t)=\int\limits_{-\infty}^{\infty}\beta(\omega)\mathrm{e}^{\mathrm{i}\omega t}\mathrm{d}\omega
+\end{equation}
+<p>
+k 变化很小时
+</p>
+
+\begin{equation}
+\label{eq:53}
+C(k,t)=\int\limits_{-\infty}^{\infty}\beta(k,\omega)\mathrm{e}^{\mathrm{i}\omega t}\mathrm{d}\omega
+\end{equation}
+
+
+<p>
+代入 \(\psi\)
+</p>
+\begin{equation}
+\label{eq:56}
+\begin{split}
+\psi(x,t)=\int(\int\beta(k,\omega)\mathrm{e}^{\mathrm{i}\omega t}\mathrm{d}\omega)\mathrm{e}^{\mathrm{i}kx}\mathrm{d}k \\
+=\int\int\beta(k,\omega)\mathrm{e}^{\mathrm{i}(kx+\omega t)}\mathrm{d}k\mathrm{d}\omega
+\end{split}
+\end{equation}
+
+<p>
+代入波动方程
+</p>
+
+<p>
+于是得到
+</p>
+\begin{equation}
+\label{eq:54}
+\beta(\omega^2-c^2k^2)=0
+\end{equation}
+
+<p>
+这是
+\(\frac{4}{\pi}\)
+反射透射
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org164a014" class="outline-2">
+<h2 id="org164a014"><span class="section-number-2">5.</span> 色散：步伐不再一致</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+之后研究的很多部分都是不统一带来的（就像研究材料发现种种特性），那么与之前相比差异在哪里呢？
+利用弦振动研究
+</p>
+
+<p>
+已知
+ref
+</p>
+</div>
+</div>
+
+<div id="outline-container-org862b21e" class="outline-2">
+<h2 id="org862b21e"><span class="section-number-2">6.</span> <span class="todo TODO">TODO</span> 干涉？</h2>
+</div>
+<div id="outline-container-orgb5e285e" class="outline-2">
+<h2 id="orgb5e285e"><span class="section-number-2">7.</span> 需要的数学知识</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-orgdafb498" class="outline-3">
+<h3 id="orgdafb498"><span class="section-number-3">7.1.</span> 线性代数</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+代数方程
+矩阵、行列式
+线性空间
+? 特征值
+</p>
+</div>
+</div>
+
+<div id="outline-container-org368c552" class="outline-3">
+<h3 id="org368c552"><span class="section-number-3">7.2.</span> 微积分</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+懂得求导，明白
+我们可以直接研究微分方程
+</p>
+</div>
+</div>
+<div id="outline-container-org4fd7d2b" class="outline-3">
+<h3 id="org4fd7d2b"><span class="section-number-3">7.3.</span> 级数</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+极限和级数密不可分
+数列的极限
+函数的极限
+柯西
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org10ed075" class="outline-2">
+<h2 id="org10ed075"><span class="section-number-2">8.</span> 结束</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+结束未必是最后写的
+</p>
+
+<p>
+不是一本一般意义的讲义，而是学习的视角对知识的阐述。
+latex 格式 book
+(没法用中文)
+</p>
+
+
+<p>
+给公式标号是论文的做法，我希望最大地追求美观，美是我的规范，只有比较重要的公式我会给予标号已便于引用和找到。
+我本来希望对于每一个函数用它较为完全的形式表达，比如
+这样至少体现出它完整的自变量信息，可是一来比较麻烦，而且容易把括号混淆，因此就希望读者都是熟悉了物理学混乱标记的优秀者了。
+</p>
+
+<p>
+org
+</p>
+
+<p>
+写讲义的过程也是学习的过程，我基本完全参考了
+</p>
+
+<p>
+同时融入了一些自己的理解
+加入理论力学、电动力学、量子力学的交叉知识。
+可能也没人看吧，毕竟也需要一门名字叫作 WAO 的课程才能鼓舞起我最大的动力来啃下其中的知识。
+</p>
+<blockquote>
+<p>
+feryman
+</p>
+</blockquote>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+如果你完全理解了这句话，你就可以不用看啦
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+这是我的看法，你可以有别的看法
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+解释需要线性空间函数正交性 ref
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+同线性代数中线性方程的解
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Life is complex by reason of it has a real part and an imaginary part.
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+应对最一般非齐次（线性）方程可以使用常数变易法
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+p articular 注意 omega 的确
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8" role="doc-backlink">8</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+认为不要在这个范围内重叠即可通讯，另函数不一定是这个形式只要是增长在下降对称的的信号波往往都可以比如高斯函数。还有也有取峰值 e 分之一，两者成比例关系。 nu f 都可用表示频率
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9" role="doc-backlink">9</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+之前的结论在 ref
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10" role="doc-backlink">10</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+一个经典的大宦官系，在陷入困境时使用该锦囊牌。原理： 近似等腰三角形
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11" role="doc-backlink">11</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+如果你看过普林斯顿数学指南里面甚至把波动方程写成这样
+</p></div></div>
+
+
+</div>
+</div></main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,144 @@
+body {
+    width: 95%;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 2% auto;
+    font-family: Arial, sans-serif;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 15%;
+    /* display: none; */
+}
+
+#intro,
+#test,
+.test {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin-bottom: 20px;
+    /* 添加底部间距 */
+}
+
+.test {
+    display: none;
+}
+
+.choose-number {
+    width: 100%;
+    align-items: center;
+    border: 1px dashed #6b6b6b;
+    padding: 20px;
+}
+
+.choice_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.number {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: lightseagreen;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes jump {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.number:hover {
+    background-color: lightgreen;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+.text {
+    font-family: 'KaiTi', '楷体', '宋体', 'SongTi', '微软雅黑', 'Arial', sans-serif;
+    font-size: 1.2em;
+    line-height: 1.5;
+
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.congratulation {
+    display: none;
+    font-family: 'SongTi','Simsum', '宋体', '微软雅黑', 'Arial', sans-serif;
+}
+
+.hidden {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.revealed {
+    display: block;
+    opacity: 1;
+}
+
+.revealingEffect {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.display {
+    display: flex;
+}
+
+.display_block {
+    display: block;
+}

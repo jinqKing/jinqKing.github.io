@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: auto;
+    padding: 10%;
+}
+
+#introduction {
+    margin: 10px;
+}
+
+table {
+    margin: 1em auto;
+    border-top: 2px solid;
+    border-collapse: collapse
+}
+
+table,
+thead {
+    border-bottom: 2px solid
+}
+
+table td+td,
+table th+th {
+    border-left: 1px solid grey
+}
+
+table tr {
+    border-top: 1px solid #d3d3d3
+}
+
+td,
+th {
+    padding: .3em .6em;
+    vertical-align: middle
+}
+
+#setting-scores {
+    margin: 10px;
+}
+
+#setting-scores div {
+    margin: 5px;
+}
+
+#single-game-fun {
+    margin: 10px;
+}
+
+#player1,
+#player2 {
+    display: inline-block;
+    margin: 10px;
+}
+
+#player1 button,
+#player2 button {
+    margin: 5px;
+}
+
+#result {
+    margin: 10px;
+}
+
+#result-text {
+    margin: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.result {
+    /* padding: 5px; */
+    background-color: #b499f5;
+}
+
+.strategy {
+    color: blue;
+    border: 2px solid black;
+    max-width: 200px;
+    width: fit-content;
+    padding: .5em;
+    /* align-items: center; */
+    margin: 3px;
+
+    /* height: 50px; */
+}
+
+#multi-game-strategies,
+#strategies-choosen-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+
+}
+
+.strategy-inputbox {
+    display: inline-block;
+    border: 2px solid blue;
+    width: 250px;
+    max-width: 20%;
+    max-height: 15%;
+    min-height: 320px;
+    padding:5px;
+}
+
+.drop-over {
+    background-color: lightblue;
+}

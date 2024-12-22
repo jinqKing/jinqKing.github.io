@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-01 Thu 11:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>模式人工智能手抄*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/pic/king.png"><link rel="shortcut icon" href="/pic/king.png"/>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+</head>
+<body>
+<div id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-27 Sat 15:55 | 凝墨: 2024-04-29 Mon 11:23 </p>
+</div>
+<div id="content" class="content">
+<h1 class="title">模式人工智能手抄*</h1>
+<p>
+整理我感兴趣的一些相关内容，不侧重当下火热的部分，
+注重图、模式识别
+</p>
+
+
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2024-04-29 Mon 11:10&gt;</span></span>
+</p>
+
+<p>
+知乎：
+</p>
+
+<p>
+以前，这个地方的确散发着一种‘求知欲’。就像一个立志破解柔默空缺之谜的古生物学本科生。它的理想固然有半分天真，它也有着七情六欲会去看丝袜图片，但是它，的确 - ‘不一样’。现在的它，毕业找到了个销售工作，相亲结婚生孩子，在酒桌上时不时会显摆自己的学识与学历。学历是真的，学识也是真的，但是看着它你会忍不住地想 - ‘泯然众人’。也许是理想的破灭，也许是大染缸的潜移默化，谁知道呢？但这并不重要。
+人也在变。随着学识的增长，一个人新学到的知识，跟一个人的新疑问，会越来越不为他人理解。有时候，理解的人数会降到1，甚至0。随着这个数字的下降，交流的欲望会随之下降。一边是下降的数字，一边是专家的稀释跟隐退。千金易得，知己难求。不过在当年，知乎的确是‘PL唯一的社交软件’，甚至不需要加‘中文’这个限定词。现在这些地方多了很多，也算完成历史使命了。
+</p>
+
+<p>
+作者：圆角骑士魔理沙
+链接：<a href="https://www.zhihu.com/question/617140163/answer/3168536809">https://www.zhihu.com/question/617140163/answer/3168536809</a>
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</p>
+
+<p>
+注：地质史上存在一段长达2500万年的化石空白期，称为柔默空缺（Romer’s Gap）
+</p>
+
+<p>
+Set Theory: An Introduction to Independence Proofs
+</p>
+
+<p>
+作者：mcwu
+链接：<a href="https://www.zhihu.com/question/66184910/answer/239205382">https://www.zhihu.com/question/66184910/answer/239205382</a>
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+</p>
+
+<p>
+在表达力方面，通常不是系统本身有所限制，而是用户对类型论了解的多少限制了使用定理证明器的深度。其实就复杂性和表达力两点总结而言，就是对使用形式化证明技术的数学家的类型论和逻辑要求非常高。不了解类型论，就难以找到合适地表达定理的方法，也难以优雅地构造 proof terms。如果要以 tactics 方式自定义 domain-specific 的自动化，那么又会在类型论的基础上加上对证明论和模型论的了解。你首先需要知道你想处理的目标理论是什么，比如是带有等词的完全一阶逻辑，还是无量词的 equational logic，还是它的 universal 片段？对每一个目标理论，你需要考虑：这个理论是可判定的吗？它有有穷模型性质吗？它接受量词消去吗？它接受 cut elimination 进而获得子公式性质吗？如果是可判定的，它的完备且高效的判定过程是什么？如果这个理论是半可判定的，那么应该怎样设计 heuristic ？要回答这些问题，用户就需要对递归论，模型论，和传统的判定过程有一定了解。这就是为什么说，数理逻辑中最能够被计算机科学应用的是（结构）证明论，（初等）模型论和（在 ω&omega;&omega; 上的经典）递归论。回到问题，将来有没有可能借助机器学习来做定理证明呢？当然是可能的，但是至今都没有突破性的方法，Alan Bundy 的圈子里的人尝试了 premise selection，虽然有一定效果，但是对于关键的构造 proof terms 并没有涉及。我们想知道的是，比如，机器学习有能力在读了数百万个证明后准确实例化某个引理中的存在量词吗？数学家又是如何洞察到一个特殊而复杂的数学对象满足引理中描述的某个性质的？想起来答辩时老板问我的最后一个问题是，你觉得十年内，你做的这个定理的形式化，能被完全自动化吗，或者说机器能做到什么程度？我跟他说我完全看不到任何希望，我不知道什么算法能让机器具备数学家的直观。其实这倒不是我说的，是两年前我问老板时他自己跟我说的，他当时的说法是，他有生之年恐怕都看不到希望，虽然说得很委婉。但是如果哪天机器真的完全实现了自动推理，那恐怕我们离强AI也就不远了。
+</p>
+
+
+<p>
+LEAN HoTT
+</p>
+
+<p>
+Geek 学院
+</p>
+
+<p>
+元编程
+</p>
+
+<p>
+A self-contained, brief and complete formulation
+</p>
+
+<p>
+类似 Anorld 物理数学
+</p>
+
+<p>
+fundations of mechanics
+</p>
+
+<p>
+力学与对称性导论
+</p>
+
+<p>
+为什么算法复杂度不考虑系数？
+因为你学的不考虑，没有仔细学过计算机运算方面
+《数学女孩4》考虑了又简化了
+</p>
+</div>
+<div id="postamble" class="status">
+<script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</div>
+</body>
+</html>

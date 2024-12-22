@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2024-12-21 Sat 14:39 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>这个博客运行实现的原理 How this blog published by Emacs</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+</head>
+<body>
+<header id="preamble" class="status">
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-09-04 Wed 22:02 | 凝墨 Modified: 2024-12-20 Fri 22:54 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">这个博客运行实现的原理 How this blog published by Emacs</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org998d0bd">基础设定</a></li>
+<li><a href="#orgb126d17">年表 blogRecord</a></li>
+<li><a href="#orgfa7db05">上下篇实现</a></li>
+<li><a href="#orga0f3847"></a></li>
+<li><a href="#org58507b0">目录随浏览显示</a></li>
+<li><a href="#orge4671a0">图片解析 DOT</a></li>
+<li><a href="#orgf9f67db">图片解析－截图</a></li>
+</ul>
+</div>
+</div>
+<p>
+介绍关于这个博客可能看起来有意思的部分
+</p>
+
+<div id="outline-container-org998d0bd" class="outline-2">
+<h2 id="org998d0bd">基础设定</h2>
+<div class="outline-text-2" id="text-org998d0bd">
+<p>
+Emacs publish 部分
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(setq org-publish-project-alist
+      `(
+	("site"
+         :base-directory ,blog-org-base-directory
+         :base-extension "org"
+         :recursive nil
+         :publishing-directory ,my/publish-directory
+         :publishing-function org-html-publish-to-html
+	 :html-validation-link nil
+	 :html-head ,my-blog-head
+	 :htmlized-source t
+	 )
+
+        ("posts"
+         :base-directory ,(expand-file-name "posts/" blog-org-base-directory)
+         :base-extension "org"
+         :publishing-directory ,(expand-file-name "posts/" my/publish-directory)
+         :publishing-function org-html-publish-to-html
+	 :headline-levels 3
+	 :html-head ,my-blog-head
+	 :html-head-extra ,my-blog-headextra-nav 
+	 :html-preamble ,my-blog-preamble
+	 :html-postamble ,my-blog-giscus-postamble
+	 :exclude-tags ("noexport" "todo")
+	 :htmlized-source t
+	 :auto-sitemap t
+         :sitemap-filename "sitemap_posts.org"
+	 :sitemap-title "Posts"
+         :sitemap-sort-files anti-chronologically
+	 :publishing-function org-html-publish-to-html
+	 )
+
+	("topic"
+         :base-directory ,(expand-file-name "topic/" blog-org-base-directory)
+         :base-extension "org"
+         :publishing-directory ,(expand-file-name "topic/" my/publish-directory)
+         :publishing-function org-html-publish-to-html
+	 :headline-levels 4
+	 :htmlized-source t
+	 :recursive t
+	 
+	 :auto-sitemap t
+	 
+         :sitemap-filename "sitemap_topics.org"
+	 :sitemap-title "Topics"
+         :sitemap-sort-files anti-chronologically
+	 
+	 :html-head ,my-blog-head
+	 :html-head-extra ,my-blog-headextra-nav
+         :html-link-home ""
+	 :html-link-up ""
+	 :html-preamble ,my-blog-preamble
+	 :html-postamble my-org-html-postamble
+	 :html-validation-link nil
+	 :exclude-tags ("noexport" "todo")
+	 )
+	
+        ("static"
+         :base-directory ,blog-org-base-directory
+         :base-extension "html\\|css\\|js\\|txt\\|jpg\\|gif\\|png\\|svg\\|pdf"
+         :recursive t
+         :publishing-directory  ,my/publish-directory
+         :publishing-function org-publish-attachment
+	 :exclude "^ltximg/\\|/ltximg/"
+	 )
+
+        ("Blog"
+	 :html-link-home ""
+	 :html-link-up ""
+	 :html-head-extra ,my-blog-headextra-nav
+	 :exclude ".*\\(ltximg\\|~undo-tree~\\).*"
+	 :exclude "^ltximg/\\|/ltximg/"
+	 :html-validation-link nil
+	 :components ("site" "posts" "topic" "static")))
+      
+      )
+
+</pre>
+</div>
+
+<p>
+推荐阅读详解
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb126d17" class="outline-2">
+<h2 id="orgb126d17">年表 blogRecord</h2>
+<div class="outline-text-2" id="text-orgb126d17">
+<p>
+生成所有，如何实现按最后修改和最初创建排序，
+事实上 org 内有完整两套列表，当点击按钮时会触发 js 控制已被定义 id 的元素 display:none
+</p>
+
+<p>
+代码：
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(defun create-index-org_2t (org-dir blog-index-file)
+  "Create blog index org at BLOG-INDEX-FILE."
+  (interactive "D\nFOutput org file: ")
+  (let* ((org-files (directory-files-recursively org-dir "\.org$"))
+         (output-buffer (find-file blog-index-file))
+         (current-year nil)
+         (current-month nil)
+         (last-modified-content "")
+         (created-content ""))
+    (with-current-buffer output-buffer
+      (erase-buffer)
+      (insert "#+title: 年表
+#+HTML_LINK_HOME: ./index.html
+#+options: num:nil toc:nil
+#+begin_export html\n")
+      (insert "&lt;div align=\"center\"&gt;
+  &lt;button onclick=\"showSection('outline-container-last-modified')\"&gt;按最后修改排序&lt;/button&gt;
+  &lt;button onclick=\"showSection('outline-container-created')\"&gt;按创建时间排序&lt;/button&gt;
+&lt;/div&gt;\n")      
+      (insert "#+end_export\n")
+      (insert "* /按最后修改排序的内容/
+:PROPERTIES:
+:CUSTOM_ID: last-modified
+:END:\n")
+      ;; 按最后修改时间排序
+      (setq org-files
+            (sort org-files
+                  (lambda (file1 file2)
+                    (let* ((time1 (file-attribute-modification-time (file-attributes file1)))
+                           (time2 (file-attribute-modification-time (file-attributes file2))))
+                      (time-less-p time2 time1)))))
+      (dolist (org-file org-files)
+        (let* ((date (format-time-string "%Y-%m-%d %H:%M:%S" (file-attribute-modification-time (file-attributes org-file))))
+               (title (find-keyword-in-orgfile org-file "TITLE")))
+          (if (and title date)
+              (let* ((year (substring date 0 4))
+                     (month (substring date 5 7))
+                     (day (substring date 8 10))
+                     (type (file-name-nondirectory (directory-file-name (file-name-directory org-file))))
+                     (link (format "[[file:%s][%s-|%s|~ %s]]" org-file day type title)))
+                (unless (equal current-year year)
+                  (setq current-year year)
+                  (setq last-modified-content (concat last-modified-content (format "\n** %s \n" year))))
+                (unless (equal current-month month)
+                  (setq current-month month)
+                  (setq last-modified-content (concat last-modified-content (format "*** %s \n" month))))
+                (setq last-modified-content (concat last-modified-content (format "- %s\n" link))))
+            (setq last-modified-content (concat last-modified-content (format "- [[file:%s][%s]]\n" org-file (file-name-nondirectory org-file)))))))
+      (insert last-modified-content)
+      (insert "* 按创建时间排序的内容
+:PROPERTIES:
+:CUSTOM_ID: created
+:END:
+")
+      (setq org-files
+            (sort org-files
+                  (lambda (file1 file2)
+               	    (let* ((time1 (or (find-keyword-in-orgfile file1 "DATE") "2024-07-31 13:55 Wed"))
+                           (time2 (or (find-keyword-in-orgfile file2 "DATE") "2024-07-31 13:55 Wed")))
+		      (string&gt; time1 time2)
+		      ))))
+      (dolist (org-file org-files)
+	(let* ((date  (find-keyword-in-orgfile org-file "DATE"))
+	       (title (find-keyword-in-orgfile org-file "TITLE")))
+          (if (and title date)
+              (let* ((year (substring date 0 4))
+                     (month (substring date 5 7))
+                     (day (substring date 8 10))
+                     (type (file-name-nondirectory (directory-file-name (file-name-directory org-file))))
+                     (link (format "[[file:%s][%s-|%s|~ %s]]" org-file day type title)))
+                (unless (equal current-year year)
+                  (setq current-year year)
+                  (setq created-content (concat created-content (format "\n** %s \n" year))))
+                (unless (equal current-month month)
+                  (setq current-month month)
+                  (setq created-content (concat created-content (format "*** %s \n" month))))
+                (setq created-content (concat created-content (format "- %s\n" link))))
+            (setq created-content (concat created-content (format "- [[file:%s][%s]]\n" org-file (file-name-nondirectory org-file)))))))
+      (insert created-content)
+      (insert "\n#+begin_export html\n&lt;/div&gt;
+&lt;script&gt;
+function showSection(sectionId) {
+  document.getElementById('outline-container-last-modified').style.display = 'none';
+  document.getElementById('outline-container-created').style.display = 'none';\n")
+      (insert "  document.getElementById(sectionId).style.display = 'block';\n")
+      (insert "}\n")
+      (insert "&lt;/script&gt;\n")
+      (insert "#+end_export\n")
+      (save-buffer)
+      (goto-char (point-min))
+      (message "Org links generated and saved to %s" blog-index-file))))
+</pre>
+</div>
+
+<p>
+它每次在 org-publish 之前运行，便于生成文档之后加入 blog 中
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfa7db05" class="outline-2">
+<h2 id="orgfa7db05">上下篇实现</h2>
+<div class="outline-text-2" id="text-orgfa7db05">
+<p>
+终于有了这一部分
+</p>
+
+<p>
+在 org 里面添加即可
+</p>
+<pre class="example" id="org3aa39f5">
+#+PREVIOUS: [[file:将 Windows 截图插入 WSL 中的 Emacs org 中显示.org]]
+#+NEXT: [[file:如何使用 LaTeX 完成大物实验报告.org]]
+</pre>
+
+<p>
+配置函数是
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">(defun my-org-html-postamble (info)
+  (concat (my-html-prev-next-postamble)
+	  my-blog-giscus-postamble
+            ))
+
+(defun my-html-prev-next-postamble ()
+  "Generate custom HTML postamble with navigation links for Org export."
+  (let ((previous (org-element-map (org-element-parse-buffer) 'keyword
+                    (lambda (k)
+                      (when (string= (org-element-property :key k) "PREVIOUS")
+                        (org-element-property :value k)))
+                   nil t))
+        (next (org-element-map (org-element-parse-buffer) 'keyword
+                (lambda (k)
+                  (when (string= (org-element-property :key k) "NEXT")
+                    (org-element-property :value k)))
+                nil t))
+	)
+    (concat
+     "&lt;nav class='prev-next-links'&gt;"
+     (when previous
+       (format "&lt;span class='prev-link'&gt;« 上一篇:%s&lt;/span&gt;" 
+               (org-export-string-as (format "%s" previous) 'html t)))
+     (when next
+       (format "&lt;span class='next-link'&gt;下一篇:%s&lt;/span&gt;"
+               (org-export-string-as (format "%s" next) 'html t)))
+     "&lt;/nav&gt;"
+     )))
+
+</pre>
+</div>
+
+<p>
+之后在里面写上
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp">:html-postamble my-org-html-postamble
+</pre>
+</div>
+
+
+<p>
+然而需要 div 否则评论会把上面吞掉 <a id="org8d5acad"></a>
+(之后再加上新代码)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga0f3847" class="outline-2">
+<h2 id="orga0f3847"></h2>
+</div>
+<div id="outline-container-org58507b0" class="outline-2">
+<h2 id="org58507b0">目录随浏览显示</h2>
+<div class="outline-text-2" id="text-org58507b0">
+<p>
+通过 js 参考其它网站实现
+</p>
+</div>
+</div>
+<div id="outline-container-orge4671a0" class="outline-2">
+<h2 id="orge4671a0">图片解析 DOT</h2>
+<div class="outline-text-2" id="text-orge4671a0">
+<p>
+博客里面的很多风格类似的图片是直接用 DOT 生成插入的，可是原来就发现，如果 PNG 就很没意思清晰度堪忧，而且我一开始就留意到 DOT 支持超链接和 SVG 导出。于是这里第一次成功了 <a href="周报/mathInArt249.html">周报/mathInArt249.html</a>
+</p>
+
+<p>
+其实主要是改了题头非常简单 :&gt;
+</p>
+<div class="org-src-container">
+<pre class="src src-org">\#+BEGIN_SRC dot :file mathInArt249/DOT:20240905182933.svg :results none :exports none  :cmdline -Kdot -Tsvg
+digraph development {...}
+\#+END_SRC
+
+\#+INCLUDE: "./mathInArt249/DOT:20240905182933.svg" export html
+
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf9f67db" class="outline-2">
+<h2 id="orgf9f67db">图片解析－截图</h2>
+<div class="outline-text-2" id="text-orgf9f67db">
+<p>
+请看 <a href="将 Windows 截图插入 WSL 中的 Emacs org 中显示.html">我如何插图的：一个函数</a>
+</p>
+
+
+
+<p>
+Your next stop <a href="draft/criticize&amp;reflection.html">draft/criticize&amp;reflection.html</a>
+</p>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'><span class='prev-link'>« Pre 上一篇<p>
+<a href="将 Windows 截图插入 WSL 中的 Emacs org 中显示.html">将 Windows 截图插入 WSL 中的 Emacs org 中显示.html</a></p>
+</span><span class='next-link'>下一篇 Nex »<p>
+<a href="如何使用 LaTeX 完成大物实验报告.html">如何使用 LaTeX 完成大物实验报告.html</a></p>
+</span></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

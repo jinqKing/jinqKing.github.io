@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-01 Thu 11:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>将 Windows 截图插入 WSL 中的 Emacs org 中显示*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/pic/king.png"><link rel="shortcut icon" href="/pic/king.png"/>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔: 2024-04-08 Mon 20:10 | 凝墨: 2024-08-01 Thu 08:10 </p>
+</div>
+<div id="content" class="content">
+<h1 class="title">将 Windows 截图插入 WSL 中的 Emacs org 中显示*</h1>
+<p>
+今天花费了一下午写了一个 20 行的小功能，但很有意义就当是，简要说说，也许放在博客对别人有帮助。
+</p>
+
+<p>
+起因是用它写关于准晶的文章，然后显然科普文需要一些图片点缀，就想着能不能通过 Windows 截图，然后一键贴到 Org 里面，毕竟它这么强大。于是历经 <b>org-download 、受别人启发、原始版、 ChatGPT 优化版得到最后比较简单的函数</b> 。
+</p>
+
+<p>
+不想看下面是代码：
+</p>
+
+<div class="org-center">
+<p>
+环境：WSL 中的 Emacs
+</p>
+
+<p>
+依赖 Windows 截图后剪切板中的图片，使用联想小新 win11 无问题
+</p>
+</div>
+
+
+<div class="org-src-container">
+<pre class="src src-lisp">(defun paste-file-from-win-clip-to-org ()
+  "Insert link of WINDOWS clip to current org file."
+  (interactive)
+  (let* ((org-path (substring buffer-file-name 0 -4))
+         (org-dir (file-name-directory org-path))
+	 (org-name (file-name-nondirectory org-path))
+         (file-name (format-time-string "%Y%m%d%H%M%S.png"))
+         (file-dir (concat org-dir org-name))
+	 (file-path (expand-file-name file-name file-dir)))
+    (unless (file-directory-p file-dir)
+      (make-directory file-dir t))
+    (call-process-shell-command (concat "powershell.exe -Command \"(Get-Clipboard -Format image).Save('$(wslpath -w " file-path ")')\" "))
+    (message (concat "\norg-path: " org-path "\norg-dir: " org-dir "\norg-name: " org-name "\n file-name: " file-name "\n file-dir: " file-dir "\n file-path: " file-path))
+    (if (file-exists-p file-path)
+        (progn
+          (insert (format "[[file:%s]]" (concat org-name "/" file-name)))
+          (org-display-inline-images))
+      (message "Failed, file does not exist."))))
+
+(global-set-key (kbd "C-c v") 'paste-file-from-win-clip-to-org)
+</pre>
+</div>
+
+<p>
+于是得到
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">  --- yourFileName.org &lt;-+
+  |                      *
+  --- yourFileName       * 
+  |   |                  *
+  |   --- screenshot.png +
+</pre>
+</div>
+
+<p>
+简单流程就是
+</p>
+<ol class="org-ol">
+<li>截图</li>
+<li>获得当前 buffer 名称（文件地址），切掉 .org 后缀名</li>
+<li>创建和 Org 同名的子目录（有了就跳过）</li>
+<li>调用 Windows PowerShell 通过 GetClipboard 指令将剪切板上的截图保存到 2. 中文件夹</li>
+<li>在当前位置 insert 链接并且显示图片</li>
+</ol>
+
+<p>
+先使用 org-download 不过在有的时候粘贴报错
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">  At the beginning of line ...
+</pre>
+</div>
+
+<p>
+而且我基本用不到这个插件功能，本着能少一事少一事的态度（心里默念：可以更快打开，防止暗中插件占用快捷键，占用空间…），所需的功能就是一个转移插入，干脆自己做一个。
+</p>
+
+<p>
+其实，最关键的决定性因素是在用 org-download 时，我用的一个配置<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-lisp">  (use-package org-download
+    ...
+    :custom  (org-download-screenshot-method "powershell.exe -Command \"(Get-Clipboard -Format image).Save('$(wslpath -w %s)')\""))
+</pre>
+</div>
+
+<p>
+因为看到它，我似乎就察觉到一丝玄机，一个特殊的接口就隐藏在这句话中。我想起了一看就知道一件事能成一样，我看到它就知道浙一近给出了一个简单一心德方法，只要稍加修改我就可以用一个小函数（没想到怎么久）让 Org 插图舒适度提升一个档次。
+</p>
+
+<p>
+这个启发的确很特别，因为注意到使用 powershell.exe ,我本来想得是直接用文件系统，找到文件夹中最新的
+</p>
+
+<p>
+中间一段时间在研究 Windows PowerShell ,主要是看微软把剪切板的相关命令有什么，本来想直接获取截图后剪切板上图片的文字形式（可惜不存在这种形式）然后得到信息。不过最后妥协了，应该是没有。
+</p>
+
+<p>
+这里总结一下 ClipBoard 相关命令：<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>
+</p>
+<ul class="org-ul">
+<li><p>
+<b>Get-ClipBoard</b>
+</p>
+
+<p>
+可以加 <b>-Form</b> 
+</p>
+
+<p>
+像一个对剪切板内容作分析的小函数，参数有：
+</p>
+<ol class="org-ol">
+<li>Text</li>
+<li>FileDropList : 我理解是复制文件后显示基本信息</li>
+<li>Image : 显示图片大小等信息，如
+<img src="将 Windows 截图插入 WSL 中的 Emacs org 中显示/20240408214312.png" alt="20240408214312.png" /></li>
+<li>Audio</li>
+</ol></li>
+<li><p>
+<b>Set-ClipBoard</b>
+</p>
+
+<p>
+我本来也想用这个，但思考了一下这似乎更麻烦的绕圈子。
+</p></li>
+</ul>
+
+<p>
+话说微软这个命令从让人觉得和 Linux 等很不相同，命名似乎生动却繁琐奇怪
+</p>
+
+<p>
+GPT 帮忙在于把原来一堆变量合并化简，我同时把名字起得更合适
+</p>
+<div class="org-center">
+<p>
+<b>dir</b> 是所在目录； <b>path</b> 是具体的含文件名的位置
+</p>
+</div>
+<p>
+。不过最后还是用了很多变量可是忙活了半天。
+</p>
+
+<p>
+我想这还是很笨重的，还依赖于截图会在剪贴板
+</p>
+<p class="verse">
+原来我想可能要找到 Screenshots 文件夹（默认在 C:\Users\JUSTIN\Pictures\Screenshots ，）然后转移到 wsl 中。转移的话， wsl 似乎可以直接访问 \mnt… 然后获取 win 下的文件<br />
+</p>
+<p>
+不过
+</p>
+
+<p>
+对了，我在此顺带用 copilot.el<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup> 把微软 Copliot 接入 Emacs 中， Emacs 这个『上帝』编辑器如今是非常完美了，除了因为简易熟悉我想不到非要使用 VSCode 的理由（哦还有输入法）
+</p>
+
+<p>
+想想如果可能我也可以把电脑上给各种便捷配置写写。
+</p>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+之后又在一个英文博客看到，<a href="https://github.com/abo-abo/org-download/issues/178">https://github.com/abo-abo/org-download/issues/178</a> 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<a href="https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-clipboard?view=powershell-7.4">https://learn.microsoft.com/zh-cn/powershell/module/microsoft.powershell.management/get-clipboard?view=powershell-7.4</a> 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+<a href="https://github.com/copilot-emacs/copilot.el">https://github.com/copilot-emacs/copilot.el</a> 
+</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</div>
+</body>
+</html>
