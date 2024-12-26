@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-23 Mon 00:00 -->
+<!-- 2024-12-26 Thu 11:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>电动力学整理*</title>
@@ -55,7 +55,7 @@
 </head>
 <body>
 <header id="preamble" class="status">
-<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-16 Mon 11:44 | 凝墨 Modified: 2024-12-22 Sun 23:54 </p>
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-16 Mon 11:44 | 凝墨 Modified: 2024-12-25 Wed 09:13 </p>
 </header>
 <main id="content" class="content">
 <h1 class="title">电动力学整理*
@@ -82,16 +82,16 @@
 </li>
 <li><a href="#orgc902290">电磁基本量</a>
 <ul>
+<li><a href="#orgfbdc45d">镜像电荷法</a></li>
 <li><a href="#orgd8a08b2">中文书</a></li>
 </ul>
 </li>
 <li><a href="#orgf2b9e3f">Laplace 方程解法</a>
 <ul>
 <li><a href="#org2445f68">案例试炼</a></li>
-<li><a href="#orgab1b738">一些形式</a></li>
 </ul>
 </li>
-<li><a href="#org3d8b323"><span class="todo TODO">TODO</span> 光波传导</a>
+<li><a href="#org3d8b323">光波传导&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">不考</span></span></a>
 <ul>
 <li><a href="#org3a1b4af">电动力学中的波传播</a>
 <ul>
@@ -105,6 +105,7 @@
 <li><a href="#org765a2ce">相对论</a>
 <ul>
 <li><a href="#orgdd83bdb">变化（38/54）</a></li>
+<li><a href="#orgbdef497">双生子</a></li>
 </ul>
 </li>
 <li><a href="#org22c6957">作业解析</a>
@@ -126,7 +127,7 @@
 <li><a href="#orgde0fe97">Problem 2: Vector Potential and Magnetic Field in Cylindrical Coordinates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
 <li><a href="#orgd945ddd">? Problem 3: Electric Field in the Overlapping Region of Two Spheres</a></li>
 <li><a href="#orge6e6fbf">Problem 4: Electric Field, Charge Density, and Total Charge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></a></li>
-<li><a href="#org4812e89"><span class="todo TODO">TODO</span> Problem 5: Magnetic Field of a Circular Current Loop</a></li>
+<li><a href="#org4812e89">Problem 5: Magnetic Field of a Circular Current Loop</a></li>
 <li><a href="#org2230b11"><span class="todo TODO">TODO</span> Problem 6: Magnetic Field from a Finite Straight Current-Carrying Wire</a></li>
 </ul>
 </li>
@@ -135,8 +136,8 @@
 <li><a href="#org1e7462b">Problem 1: Prove the Mean Value Theorem for the 2D Laplace Equation:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></a></li>
 <li><a href="#org56267b1">Problem 2: Image Charge Problem for a Point Charge Inside a Spherical Conducting Shell:</a></li>
 <li><a href="#org3f672bb">Problem 3: Fourier Transform of Dirac Delta Function and Heaviside Step Function:</a></li>
-<li><a href="#orgdd5ad43">Problem 4: Potential Distribution Inside a Cube:</a></li>
-<li><a href="#org81ad138">Problem 5: Potential and Surface Charge Distribution for a Sphere with Surface Potential:</a></li>
+<li><a href="#orgbd49f98">Problem 4: Potential Distribution Inside a Cube</a></li>
+<li><a href="#org068c293">Problem 5: Potential and Surface Charge Distribution for a Sphere with Surface Potential</a></li>
 <li><a href="#org291a994">Problem 6: Dipole Moment of a Sphere with Surface Charge Density:</a></li>
 </ul>
 </li>
@@ -177,13 +178,16 @@ PDF: <a href="electrodynamicSummary.pdf">文件不一定最新</a><br />
 <h2 id="orgc333de6">考试预判</h2>
 <div class="outline-text-2" id="text-orgc333de6">
 <ul class="org-ul">
-<li>电场</li>
-<li>磁场</li>
-<li>Laplace</li>
-<li>(传播)</li>
-<li>能量能流</li>
-<li>相对论</li>
+<li>矢量计算： 散旋度计算（ &delta; 出现）</li>
+<li>电场：镜像电荷（球）； 特别的题－ \(\cos\theta\)</li>
+<li>磁场：<a href="#org4812e89">电流元（BS）</a></li>
+<li>Laplace: 介质球在电场中；<a href="#orgbd49f98">正方体分离变量</a></li>
+<li>相对论:<a href="#orgbdef497">双生子</a></li>
 </ul>
+
+<p>
+不考复杂计算，电动本身考得少，电磁波传播界面透射反射不考  
+</p>
 </div>
 
 <div id="outline-container-org4086398" class="outline-3">
@@ -226,7 +230,7 @@ PDF: <a href="electrodynamicSummary.pdf">文件不一定最新</a><br />
 <tr>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">\(\nabla\times B=\mu J+\epsilon \frac{\partial E}{\partial t}\)</td>
+<td class="org-left">\(\nabla\times B=\mu_{0} \left( J+\epsilon \frac{\partial E}{\partial t} \right)\)</td>
 <td class="org-left">&#xa0;</td>
 </tr>
 
@@ -245,7 +249,7 @@ PDF: <a href="electrodynamicSummary.pdf">文件不一定最新</a><br />
 </tr>
 
 <tr>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">Lorent 变换</td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">&#xa0;</td>
@@ -347,7 +351,7 @@ p=\int \sigma r \mathrm{d}S\\
 <div id="outline-container-orgd590629" class="outline-3">
 <h3 id="orgd590629"><span class="done DONE">DONE</span> 曲线坐标系——换系</h3>
 <div class="outline-text-3" id="text-orgd590629">
-<pre class="example" id="org76bb408">
+<pre class="example" id="orgba6baa7">
 可记可不记属于数学补完，放公式表里
 </pre>
 </div>
@@ -438,11 +442,33 @@ p=qr, \text{dipole}
 P=\sum qr
 \end{gather*}
 
+
+
+<div id="org1ed2cd7" class="figure">
+<p><img src="electrodynamicSummary/20241225091317.png" alt="20241225091317.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfbdc45d" class="outline-3">
+<h3 id="orgfbdc45d">镜像电荷法</h3>
+<div class="outline-text-3" id="text-orgfbdc45d">
+
+<div id="org532ea82" class="figure">
+<p><img src="electrodynamicSummary/20241224233744.png" alt="20241224233744.png" />
+</p>
+</div>
+
+<p>
+作业
+</p>
+
 <p>
 <img src="electrodynamicSummary/20241218090630.png" alt="20241218090630.png" />
 <img src="electrodynamicSummary/20241218090707.png" alt="20241218090707.png" />
 <img src="electrodynamicSummary/20241218090732.png" alt="20241218090732.png" />
 </p>
+</div>
 </div>
 
 
@@ -450,19 +476,19 @@ P=\sum qr
 <h3 id="orgd8a08b2">中文书</h3>
 <div class="outline-text-3" id="text-orgd8a08b2">
 
-<div id="org9cc7cc9" class="figure">
+<div id="org393255a" class="figure">
 <p><img src="electrodynamicSummary/20241218090333.png" alt="20241218090333.png" />
 </p>
 </div>
 
 
-<div id="orgbcd411c" class="figure">
+<div id="orgca61ea1" class="figure">
 <p><img src="electrodynamicSummary/20241218090407.png" alt="20241218090407.png" />
 </p>
 </div>
 
 
-<div id="org2ca3749" class="figure">
+<div id="orgd7ca842" class="figure">
 <p><img src="electrodynamicSummary/20241218090527.png" alt="20241218090527.png" />
 </p>
 </div>
@@ -477,7 +503,7 @@ P=\sum qr
 <div id="outline-container-orgf2b9e3f" class="outline-2">
 <h2 id="orgf2b9e3f">Laplace 方程解法</h2>
 <div class="outline-text-2" id="text-orgf2b9e3f">
-<pre class="example" id="org39f7204">
+<pre class="example" id="org7a080ad">
 更一般的讲法应当是 Possion 方程，区别是 Laplace
 这是一定要掌握方法流程的
 </pre>
@@ -490,7 +516,20 @@ P=\sum qr
 <p>
 何时右侧有 \(\rho/\epsilon\) 区域内有电荷，如果是点电荷 -&gt;
 </p>
+
+<div class="org-center">
+<p>
+BV1S4421D7za
+</p>
 </div>
+
+
+<div id="org88ba285" class="figure">
+<p><img src="electrodynamicSummary/20241224233559.png" alt="20241224233559.png" />
+</p>
+</div>
+</div>
+
 <div id="outline-container-org2445f68" class="outline-3">
 <h3 id="org2445f68">案例试炼</h3>
 <div class="outline-text-3" id="text-org2445f68">
@@ -511,19 +550,11 @@ P=\sum qr
 </p>
 </div>
 </div>
-<div id="outline-container-orgab1b738" class="outline-3">
-<h3 id="orgab1b738">一些形式</h3>
-<div class="outline-text-3" id="text-orgab1b738">
-<p>
-Legrendre 应用
-</p>
-</div>
-</div>
 </div>
 
 
 <div id="outline-container-org3d8b323" class="outline-2">
-<h2 id="org3d8b323"><span class="todo TODO">TODO</span> 光波传导</h2>
+<h2 id="org3d8b323">光波传导&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">不考</span></span></h2>
 <div class="outline-text-2" id="text-org3d8b323">
 <p>
 介质变化。主要用边界条件
@@ -602,22 +633,45 @@ n = n' + i k
 <div id="outline-container-org765a2ce" class="outline-2">
 <h2 id="org765a2ce">相对论</h2>
 <div class="outline-text-2" id="text-org765a2ce">
-<p>
-变换
+<ul class="org-ul">
+<li>光速不变： Lorentz 变换</li>
+<li>相对性原理：物理规律都不变</li>
+</ul>
+
+
+<div id="org0e910aa" class="figure">
+<p><img src="electrodynamicSummary/20241224234636.png" alt="20241224234636.png" />
 </p>
+</div>
+
+<p>
+<img src="electrodynamicSummary/20241224234704.png" alt="20241224234704.png" />
+<img src="electrodynamicSummary/20241224234729.png" alt="20241224234729.png" />
+</p>
+
+<p>
+钟慢： \(t=\frac{t_0}{\sqrt{1-\frac{v^2}{c^2}}}\) 尺缩： \(l=l_0\sqrt{1-\frac{v^2}{c^2}}\)
+<img src="electrodynamicSummary/20241224234906.png" alt="20241224234906.png" />
+</p>
+
+
+<div id="orgc33b062" class="figure">
+<p><img src="electrodynamicSummary/20241224234937.png" alt="20241224234937.png" />
+</p>
+</div>
 </div>
 <div id="outline-container-orgdd83bdb" class="outline-3">
 <h3 id="orgdd83bdb">变化（38/54）</h3>
 <div class="outline-text-3" id="text-orgdd83bdb">
-<div class="exercise" id="orgc81e646">
+<div class="exercise" id="orgb4a7458">
 <p>
 A particle of mass \(m\) whose total energy is twice its rest energy collides with an identical particle at rest. If they stick together, what is the mass of the resulting composite particle? What is its velocity?
 </p>
 
 </div>
 
-<div class="collapsible" id="orged6982e">
-<div class="solution" id="org000b35d">
+<div class="collapsible" id="orgbd038f6">
+<div class="solution" id="orga8d573e">
 <ol class="org-ol">
 <li>Total energy of the moving particle:
 <ul class="org-ul">
@@ -685,6 +739,43 @@ where \( \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} \) is the Lorentz factor.</li>
 </div>
 </div>
 </div>
+<div id="outline-container-orgbdef497" class="outline-3">
+<h3 id="orgbdef497">双生子</h3>
+<div class="outline-text-3" id="text-orgbdef497">
+<div class="exercise" id="org5880c5b">
+<p>
+<b>Problem 12.16</b> The twin paradox revisited.
+On their 21st birthday, one twin gets on a moving sidewalk, which carries her out to star X at speed her twin brother stays home. When the traveling twin gets to star X, she immediately jumps onto the returning moving sidewalk and comes back to earth, again at speed She arrives on her 39th birthday (as determined by her watch).
+</p>
+
+<ol class="org-ol">
+<li>How old is her twin brother (who stayed at home)? (a)</li>
+
+<li>How far away is star X? (Give your answer in light years.) (b)</li>
+
+<li>What are the coordinates \((x, t)\) of the jump (from outbound to inbound sidewalk) in \(S\)? (c)</li>
+
+<li>What are the coordinates \((\bar{x}, \bar{t})\) of the jump in \(\bar{S}\)? (d)</li>
+
+<li>What are the coordinates \((\bar{x}, \bar{t})\) of the jump in \(\bar{\bar{S}}\)? (e)</li>
+
+<li>If the traveling twin wanted her watch to agree with the clock in \(\bar{S}\), how would she have to reset it immediately after the jump? If she did this, what would her watch read when she got home? (This wouldn't change her age, of course—she's still 39—it would just make her watch agree with the standard synchronization in \(\bar{S}\).) (f)</li>
+
+<li>If the traveling twin is asked the question, "How old is your brother right now?", what is the correct reply (i) just before she makes the jump, (ii) just after she makes the jump? (Nothing dramatic happens to her brother during the split second between (i) and (ii), of course; what does change abruptly is his sister's notion of what 'right now, back home' means.) (g)</li>
+
+<li>How many earth years does the return trip take? Add this to (ii) from (g) to determine how old she expects him to be at their reunion. Compare your answer to (a). (h)</li>
+</ol>
+
+</div>
+<div class="solution" id="orgbfc9419">
+<p>
+<img src="electrodynamicSummary/20241224224249.png" alt="20241224224249.png" />
+<img src="electrodynamicSummary/20241224224302.png" alt="20241224224302.png" />
+</p>
+
+</div>
+</div>
+</div>
 </div>
 
 <div id="outline-container-org22c6957" class="outline-2">
@@ -695,7 +786,7 @@ where \( \gamma = \frac{1}{\sqrt{1 - v^2/c^2}} \) is the Lorentz factor.</li>
 <h3 id="orgcccdb7d">Hw1</h3>
 <div class="outline-text-3" id="text-orgcccdb7d">
 <p>
-许多题方法太难（在回想当时自己简单的方法中）
+许多题方法太难（在回想自己简单的方法中）
 </p>
 
 <p>
@@ -706,7 +797,7 @@ Optional Problems: Derive the curl \(\nabla\times A\) in cylindrical coordinates
 <div id="outline-container-orgef9b0da" class="outline-4">
 <h4 id="orgef9b0da">1.13</h4>
 <div class="outline-text-4" id="text-orgef9b0da">
-<div class="exercise" id="org35dc24c">
+<div class="exercise" id="org29116d3">
 <p>
 Problem 1.13 Let \( \mathbf{r} \) be the separation vector from a fixed point \( (x', y', z') \) to the point \( (x, y, z) \), and let \( z \) be its length. Show that
 </p>
@@ -725,7 +816,7 @@ Problem 1.13 Let \( \mathbf{r} \) be the separation vector from a fixed point \(
 
 </div>
 
-<div class="solution" id="org46fac26">
+<div class="solution" id="org5dfffbf">
 \begin{gather*}
 \mathbf{r}=(x-x',y-y',z-z'),r=\sqrt{(x-x')^2 +(y-y')^2 +(z-z')^2}\\
 \begin{split}
@@ -753,7 +844,7 @@ Problem 1.13 Let \( \mathbf{r} \) be the separation vector from a fixed point \(
 <div id="outline-container-org3905d34" class="outline-4">
 <h4 id="org3905d34">1.49</h4>
 <div class="outline-text-4" id="text-org3905d34">
-<div class="exercise" id="org261e64e">
+<div class="exercise" id="org09010b6">
 <p>
 (a) Let \( F_{1} = x^{2}\hat{z} \) and \( F_{2} = x\hat{\mathbf{x}} + y\hat{\mathbf{y}} + z\hat{\mathbf{z}} \). Calculate the divergence and curl of \( F_{1} \) and \( F_{2} \). Which one can be written as the gradient of a scalar? Find a scalar potential that does the job. Which one can be written as the curl of a vector? Find a suitable vector potential.
 </p>
@@ -764,8 +855,8 @@ Problem 1.13 Let \( \mathbf{r} \) be the separation vector from a fixed point \(
 
 </div>
 
-<div class="collapsible" id="orgc50f78a">
-<div class="solution" id="orga7f93f7">
+<div class="collapsible" id="orga672c99">
+<div class="solution" id="org32a5b52">
 \begin{gather*}
 \nabla\cdot F_1=0;\nabla\times F_1=(0,-2x,0)\\
 \nabla\cdot F_2=1+1+1=3;\nabla\times F_2=0\\
@@ -806,7 +897,7 @@ A_x&A_y&A_z
 <div id="outline-container-org1b76b28" class="outline-4">
 <h4 id="org1b76b28">1.53</h4>
 <div class="outline-text-4" id="text-org1b76b28">
-<div class="exercise" id="orgf227a15">
+<div class="exercise" id="org214f566">
 <p>
 Check the divergence theorem for the function
 \[
@@ -815,7 +906,7 @@ Check the divergence theorem for the function
 using as your volume one octant of the sphere of radius \( R \) (Fig. 1.48). Make sure you include the entire surface.
 </p>
 
-<div id="org4a2e962" class="figure">
+<div id="org76a1256" class="figure">
 <p><img src="electrodynamicSummary/20241216201336.png" alt="20241216201336.png" />
 </p>
 </div>
@@ -839,7 +930,7 @@ Divergence theorem:
 <div id="outline-container-org5d0bc75" class="outline-4">
 <h4 id="org5d0bc75">1.54</h4>
 <div class="outline-text-4" id="text-org5d0bc75">
-<div class="exercise" id="orgc65b2fe">
+<div class="exercise" id="orgf0ce0ef">
 <p>
 Check Stokes' theorem using the function
 \[
@@ -850,7 +941,7 @@ Check Stokes' theorem using the function
 
 </div>
 
-<div id="org50b2e4a" class="figure">
+<div id="org81b8929" class="figure">
 <p><img src="electrodynamicSummary/20241216230251.png" alt="20241216230251.png" />
 </p>
 </div>
@@ -880,13 +971,13 @@ Check Stokes' theorem using the function
 <h4 id="org9eeea0d">1.62</h4>
 <div class="outline-text-4" id="text-org9eeea0d">
 
-<div id="org6a72dee" class="figure">
+<div id="org7bcc9d5" class="figure">
 <p><img src="electrodynamicSummary/20241216230410.png" alt="20241216230410.png" />
 </p>
 </div>
-<div class="solution" id="org5a92ae5">
+<div class="solution" id="org7bc1071">
 
-<div id="orga87bf17" class="figure">
+<div id="orgb4b6168" class="figure">
 <p><img src="electrodynamicSummary/20241216230425.png" alt="20241216230425.png" />
 </p>
 </div>
@@ -902,13 +993,13 @@ Check Stokes' theorem using the function
 <div id="outline-container-orge3e0133" class="outline-4">
 <h4 id="orge3e0133">Problem 1: Electric Field in Spherical Coordinates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h4>
 <div class="outline-text-4" id="text-orge3e0133">
-<div class="exercise" id="org72fd518">
+<div class="exercise" id="orgd7bcfa6">
 <p>
 Suppose the electric field in a region is given by \(E=kr^2\hat{r}\) in spherical coordinates, where \(k\) is a constant. Find the charge density \(\rho(r)\) in this region.
 </p>
 
 </div>
-<div class="solution" id="org3bf317c">
+<div class="solution" id="orgfb8b985">
 \begin{gather*}
 \nabla \cdot \mathbf{E} =\frac{\rho}{\epsilon_0}\\
 \nabla \cdot \mathbf{A} = \frac{1}{r^2}\frac{\partial }{\partial r} \left( r^2 \cdot \mathbf{A} \right)
@@ -934,14 +1025,14 @@ Suppose the electric field in a region is given by \(E=kr^2\hat{r}\) in spherica
 <div id="outline-container-orgde0fe97" class="outline-4">
 <h4 id="orgde0fe97">Problem 2: Vector Potential and Magnetic Field in Cylindrical Coordinates&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h4>
 <div class="outline-text-4" id="text-orgde0fe97">
-<div class="exercise" id="org59ba895">
+<div class="exercise" id="orgc554088">
 <p>
 The vector potential in cylindrical coordinates is given by \(\mathbf{A}=kr^2\hat{\mathbf{r}}\), where \(k\) is a constant. Find the magnetic field \(B\) generated by this vector potential.
 </p>
 
 </div>
 
-<div class="solution" id="org2738aa0">
+<div class="solution" id="org6554f7a">
 \begin{gather*}
 \mathbf{B}= \nabla\times \mathbf{A}\\
 \nabla \times \mathbf{A} = \frac{1}{r} \left[ \frac{\partial (r A_\phi)}{\partial r} \hat{\mathbf{z}} - \frac{\partial A_z}{\partial \phi} \hat{\mathbf{r}} + \frac{\partial A_r}{\partial z} \hat{\mathbf{\phi}} \right]
@@ -968,19 +1059,19 @@ The vector potential in cylindrical coordinates is given by \(\mathbf{A}=kr^2\ha
 <div id="outline-container-orgd945ddd" class="outline-4">
 <h4 id="orgd945ddd">? Problem 3: Electric Field in the Overlapping Region of Two Spheres</h4>
 <div class="outline-text-4" id="text-orgd945ddd">
-<div class="exercise" id="org42f2898">
+<div class="exercise" id="org08d1ed3">
 <p>
 Two spheres, each of radius \(R\) and carrying uniform charge densities \(+\rho\) and \(-\rho\), respectively, are placed so that they partially overlap. Let \(d\) be the vector from the center of the positive sphere to the center of the negative sphere. Show that the electric field in the region of overlap is constant, and find its value.
 </p>
 
 </div>
-<div class="solution" id="org7ff8c63">
+<div class="solution" id="org5ddb92c">
 <p>
 两球体问题
 </p>
 
 
-<div id="org009e2e5" class="figure">
+<div id="org9b0df95" class="figure">
 <p><img src="electrodynamicSummary/20241221115515.png" alt="20241221115515.png" />
 </p>
 </div>
@@ -1033,7 +1124,7 @@ E = \frac{2\rho d}{\epsilon_0}
 <div id="outline-container-orge6e6fbf" class="outline-4">
 <h4 id="orge6e6fbf">Problem 4: Electric Field, Charge Density, and Total Charge&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h4>
 <div class="outline-text-4" id="text-orge6e6fbf">
-<div class="exercise" id="orge664a71">
+<div class="exercise" id="org6e64feb">
 <p>
 For the electric potential
 </p>
@@ -1041,34 +1132,58 @@ For the electric potential
 V(r)=A \frac{\mathrm{e}^{-\lambda r}}{r}
 \end{equation*}
 <p>
-find the corresponding electric field E(r), charge density &rho;(r), and total charge Q.
+find the corresponding electric field \(E(r)\), charge density \(\rho(r)\), and total charge \(Q\).
 </p>
 
 </div>
+<div class="solution" id="orgf0d3624">
 \begin{gather*}
 \mathbf{E}=-\nabla V;\rho= \epsilon_0 \nabla\cdot \mathbf{E};Q=\int \rho \mathrm{d}V
 \end{gather*}
+\begin{gather*}
+\begin{split}
+\vec{E} &=-\nabla V=-\nabla A \frac{\mathrm{e}^{-\lambda r}}{r} \\
+&=-A \left( -\frac{\mathrm{e}^{-\lambda r}}{r^2}-\lambda \frac{\mathrm{e}^{-\lambda r}}{r} \right)= A \mathrm{e}^{-\lambda r}(1+r) \frac{1}{r^2} \mathbf{\hat{r}}
+\end{split}
+\end{gather*}
+\begin{gather*}
+\begin{split}
+\rho &= \epsilon_0 \nabla\cdot E= A \epsilon_0 \nabla\cdot\left( \mathrm{e}^{-\lambda r}(1+r) \frac{1}{r^2} \right)\\
+&= 
+\end{split}
+\end{gather*}
+<div class="org-center">
+<p>
+注意有 &delta; 总电荷为0,意义是（负）电荷屏蔽
+</p>
+</div>
 
-<div id="orgbeacf8d" class="figure">
+<div id="org93a0559" class="figure">
 <p><img src="electrodynamicSummary/20241218100156.png" alt="20241218100156.png" />
 </p>
+</div>
+<blockquote>
+<p>
+中心一个点电荷，周围电荷对它形成屏蔽
+</p>
+</blockquote>
+
 </div>
 </div>
 </div>
 <div id="outline-container-org4812e89" class="outline-4">
-<h4 id="org4812e89"><span class="todo TODO">TODO</span> Problem 5: Magnetic Field of a Circular Current Loop</h4>
+<h4 id="org4812e89">Problem 5: Magnetic Field of a Circular Current Loop</h4>
 <div class="outline-text-4" id="text-org4812e89">
-<div class="exercise" id="org1cb8ed0">
+<div class="exercise" id="orgf9f6bea">
 <p>
 A circular loop of radius \(R\) carries a steady current \(I\). Calculate the magnetic field at a point on the axis of the loop, a distance \(z\) from the center of the loop.
 </p>
 
 </div>
-<div class="solution" id="org7317361">
+<div class="solution" id="org6cb3bf7">
 <p>
 
 </p>
-
 
 \begin{gather*}
 d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I d\mathbf{l} \times \hat{\mathbf{r}}}{r^2}\\
@@ -1077,8 +1192,7 @@ B= \frac{\mu}{4\pi} \frac{I 2\pi R}{r^2}\cos \theta =\frac{\mu I}{2r^2}\frac{z}{
 \end{gather*}
 
 
-
-<div id="org313286a" class="figure">
+<div id="org5978cf0" class="figure">
 <p><img src="electrodynamicSummary/20241221122435.png" alt="20241221122435.png" />
 </p>
 </div>
@@ -1088,7 +1202,7 @@ B= \frac{\mu}{4\pi} \frac{I 2\pi R}{r^2}\cos \theta =\frac{\mu I}{2r^2}\frac{z}{
 计算圆形环路的磁场： <b>BS 公式</b>
 </p>
 </div>
-<div class="collapsible" id="orgd43ddf6">
+<div class="collapsible" id="org37b0a49">
 <p>
 考虑一个半径为 \( R \) 的圆形电流环，携带恒定电流 \( I \)，要求计算位于环轴线上，距离环中心为 \( z \) 的点的磁场。
 </p>
@@ -1149,14 +1263,14 @@ B_z = \frac{\mu_0 I R^2}{2 \left( R^2 + z^2 \right)^{3/2}}
 <div id="outline-container-org2230b11" class="outline-4">
 <h4 id="org2230b11"><span class="todo TODO">TODO</span> Problem 6: Magnetic Field from a Finite Straight Current-Carrying Wire</h4>
 <div class="outline-text-4" id="text-org2230b11">
-<div class="exercise" id="org1a9845e">
+<div class="exercise" id="org1dfb2f1">
 <p>
 A straight wire of finite length \(L\) carries a steady current \(I\). Calculate the magnetic field at a point located a distance \(d\) directly above the center of the wire.
 </p>
 
 </div>
 
-<div class="solution" id="org628b7f4">
+<div class="solution" id="org66011fc">
 \begin{gather*}
 d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I d\mathbf{l} \times \hat{\mathbf{r}}}{r^2}
 \end{gather*}
@@ -1166,18 +1280,14 @@ d\mathbf{B} = \frac{\mu_0}{4\pi} \frac{I d\mathbf{l} \times \hat{\mathbf{r}}}{r^
 </p>
 
 
-<div id="org341bab8" class="figure">
+<div id="orge2f093d" class="figure">
 <p><img src="electrodynamicSummary/20241221123202.png" alt="20241221123202.png" />
 </p>
 <p><span class="figure-number">Figure 1: </span>赵凯华・电磁学</p>
 </div>
-<div class="collapsiable" id="org7fd7280">
+<div class="collapsible" id="orga5f01ee">
 <p>
-
-</p>
-
-<p>
-<i>解答</i>
+*解答×
 </p>
 
 <p>
@@ -1288,6 +1398,11 @@ B = \frac{\mu_0 I L}{2\pi d \sqrt{(L/2)^2 + d^2}}
 </div>
 
 </div>
+
+<p>
+<b>延伸</b>
+电流方向上一点无磁场
+</p>
 </div>
 </div>
 </div>
@@ -1298,14 +1413,14 @@ B = \frac{\mu_0 I L}{2\pi d \sqrt{(L/2)^2 + d^2}}
 <div id="outline-container-org1e7462b" class="outline-4">
 <h4 id="org1e7462b">Problem 1: Prove the Mean Value Theorem for the 2D Laplace Equation:&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></h4>
 <div class="outline-text-4" id="text-org1e7462b">
-<div class="exercise" id="org11d5e33">
+<div class="exercise" id="org5a75a2e">
 <p>
 Prove that for any harmonic function \(\phi(x, y)\) that satisfies the 2D Laplace equation \(\nabla^2\phi = 0\), the value of \(\phi\) at any point is equal to the average of its values over a circle centered at that point.
 </p>
 
 </div>
 
-<div class="solution" id="orgffc4869">
+<div class="solution" id="org26a70ae">
 <p>
 
 </p>
@@ -1330,7 +1445,7 @@ Taylor 展开：结果中积分为0,只剩下 \(\phi_0\) 项。
 <i>天才做法</i>
 </p>
 </div>
-<div class="collapsible" id="orgf98adfb">
+<div class="collapsible" id="orgc048cc3">
 <p>
 To prove the Mean Value Theorem for the 2D Laplace equation, we proceed as follows:
 </p>
@@ -1398,14 +1513,14 @@ This proves that the value of \( \phi \) at \( \mathbf{r}_0 \) is the average of
 <div id="outline-container-org56267b1" class="outline-4">
 <h4 id="org56267b1">Problem 2: Image Charge Problem for a Point Charge Inside a Spherical Conducting Shell:</h4>
 <div class="outline-text-4" id="text-org56267b1">
-<div class="exercise" id="org29ac334">
+<div class="exercise" id="orgc7d7eaf">
 <p>
 Consider a conducting spherical shell with radius \(R\). A point charge \(q\) is placed inside the shell at a distance \(d\) from the center. Find the image charge configuration and determine the potential distribution inside the shell.
 </p>
 
 </div>
 
-<div class="solution" id="org98fa486">
+<div class="solution" id="orga4def3a">
 <p>
 球内任意位置场强
 </p>
@@ -1430,14 +1545,14 @@ where \(r_q = (0, 0, d)\) and \(r_q' = (0, 0, R^2/d)\) .
 <div id="outline-container-org3f672bb" class="outline-4">
 <h4 id="org3f672bb">Problem 3: Fourier Transform of Dirac Delta Function and Heaviside Step Function:</h4>
 <div class="outline-text-4" id="text-org3f672bb">
-<div class="exercise" id="org1902918">
+<div class="exercise" id="org0518653">
 <p>
 Find the Fourier transforms of the Dirac delta function \(\delta(x)\) the Heaviside step function H(x).
 </p>
 
 </div>
 
-<div class="solution" id="org8a059ce">
+<div class="solution" id="orgb8490e3">
 <p>
 傅里叶
 </p>
@@ -1446,7 +1561,7 @@ Find the Fourier transforms of the Dirac delta function \(\delta(x)\) the Heavis
 \mathscr{F}(H)=\int_{-\infty}^{\infty}H(x)\exp(-\mathrm{i}\omega x)\mathrm{d}x=\int_0^{\infty}\exp(-\mathrm{i}\omega x)\mathrm{d}x \\
 =\frac{-1}{\mathrm{i}\omega}\exp(-\mathrm{i}\omega x)\bigg|_0^{\infty}=\boxed{\frac{1}{\mathrm{i}\omega}(+\pi\delta(k))}
 \end{gather*}
-<pre class="example" id="org96bcfb0">
+<pre class="example" id="org4c0e22c">
 ()里的项是答案没有但，前面积分不收敛专门去查的
 第一项： 它表示阶梯函数 H(x) 对于非零频率 k 的贡献，反映了它的非平滑性质。
 第二项：这是由于阶梯函数在x=0 处的不连续跳跃，产生了在k=0 处的 delta 函数贡献。
@@ -1457,17 +1572,17 @@ Find the Fourier transforms of the Dirac delta function \(\delta(x)\) the Heavis
 </div>
 </div>
 
-<div id="outline-container-orgdd5ad43" class="outline-4">
-<h4 id="orgdd5ad43">Problem 4: Potential Distribution Inside a Cube:</h4>
-<div class="outline-text-4" id="text-orgdd5ad43">
-<div class="exercise" id="orgee7c806">
+<div id="outline-container-orgbd49f98" class="outline-4">
+<h4 id="orgbd49f98">Problem 4: Potential Distribution Inside a Cube</h4>
+<div class="outline-text-4" id="text-orgbd49f98">
+<div class="exercise" id="org55256d3">
 <p>
 A cube with conducting walls has one face at a constant potential \(V_0\) while all other faces are grounded (at zero potential). Find the potential distribution inside the cube.
 </p>
 
 </div>
 
-<div class="solution" id="org6818149">
+<div class="solution" id="orgf094154">
 <div class="org-center">
 <p>
 解 Laplace 方程:分离变量：对 xyz；方块的边界条件
@@ -1504,7 +1619,7 @@ A_{nm} = \frac{4V_0}{nm\pi^2}
 \phi(x, y, z) = \frac{4V_0}{\pi^2} \sum_{n=1}^{\infty} \sum_{m=1}^{\infty} \frac{\sin\left(\frac{n\pi x}{a}\right) \sin\left(\frac{m\pi y}{a}\right)}{nm}
 \left( e^{\sqrt{n^2 + m^2}\pi z/a} - e^{-\sqrt{n^2 + m^2}\pi z/a} \right)
 \end{gather*}
-<div class="collapsible" id="orgc98d0e4">
+<div class="collapsible" id="org85b56d1">
 <p>
 Boundary Conditions
 \[
@@ -1577,10 +1692,83 @@ Final Result
 </div>
 </div>
 </div>
-<div id="outline-container-org81ad138" class="outline-4">
-<h4 id="org81ad138">Problem 5: Potential and Surface Charge Distribution for a Sphere with Surface Potential:</h4>
-<div class="outline-text-4" id="text-org81ad138">
-<div class="exercise" id="org2c61e07">
+<div id="outline-container-org068c293" class="outline-4">
+<h4 id="org068c293">Problem 5: Potential and Surface Charge Distribution for a Sphere with Surface Potential</h4>
+<div class="outline-text-4" id="text-org068c293">
+<div class="exercise" id="org4c759f5">
+<p>
+A spherical shell has a surface potential given by \(V(\theta)=\cos^2\theta\). Find the potential distribution both inside and outside the sphere using the method of separation of variables. Also, compute the surface charge density on the sphere.
+</p>
+
+</div>
+<div class="solution" id="org74db904">
+<p>
+The general solution is:
+\[
+V_{\text{out}}(r, \theta) = \sum_{l=0}^\infty \left( A_l r^{-l-1} \right) P_l(\cos\theta),
+\]
+where \( P_l \) are the Legendre polynomials.
+</p>
+
+<p>
+Inside the Sphere (\( r \leq R \)):
+The general solution is:
+\[
+V_{\text{in}}(r, \theta) = \sum_{l=0}^\infty \left( B_l r^l \right) P_l(\cos\theta).
+\]
+</p>
+
+<p>
+Boundary Conditions:
+</p>
+<ol class="org-ol">
+<li>Continuity of potential at \( r = R \): \( V_{\text{in}}(R, \theta) = V_{\text{out}}(R, \theta) = \cos^2\theta \).</li>
+<li>Surface charge implies discontinuity in the radial derivative:
+\[
+   \epsilon_0 \left. \frac{\partial V_{\text{out}}}{\partial r} \right|_{r=R} - \epsilon_0 \left. \frac{\partial V_{\text{in}}}{\partial r} \right|_{r=R} = \sigma(\theta).
+   \]</li>
+</ol>
+
+<p>
+Using \( \cos^2\theta = \frac{2}{3} P_2(\cos\theta) + \frac{1}{3} P_0(\cos\theta) \), we find:
+\[
+A_0 = \frac{R}{3}, \quad A_2 = \frac{2R^3}{15}, \quad B_0 = \frac{1}{3}, \quad B_2 = \frac{2R^3}{15}.
+\]
+</p>
+
+<p>
+Thus:
+</p>
+\begin{gather*}
+\begin{cases}
+V_{\text{out}}(r, \theta) = \frac{R}{3r} + \frac{2R^3}{15r^3} P_2(\cos\theta),\\
+V_{\text{in}}(r, \theta) = \frac{1}{3} + \frac{2r^2}{15} P_2(\cos\theta).
+\end{cases}
+\end{gather*}
+
+
+<p>
+The surface charge density is:
+\[
+\sigma(\theta) = \epsilon_0 \left. \left( \frac{\partial V_{\text{out}}}{\partial r} - \frac{\partial V_{\text{in}}}{\partial r} \right) \right|_{r=R}.
+\]
+Substituting the expressions for \( V_{\text{out}} \) and \( V_{\text{in}} \):
+\[
+\sigma(\theta) = \epsilon_0 \left( -\frac{R}{3} - \frac{4R}{15} P_2(\cos\theta) \right).
+\]
+Using \( P_2(\cos\theta) = \frac{1}{2}(3\cos^2\theta - 1) \), the result is:
+\[
+\sigma(\theta) = -\frac{\epsilon_0 R}{15} \left( 5 + 4(3\cos^2\theta - 1) \right) = \frac{\epsilon_0 R}{15} (3 - 12\cos^2\theta).
+\]
+</p>
+
+</div>
+
+<p>
+类似题
+</p>
+<div class="collapsible" id="org978c94a">
+<div class="exercise" id="org97a76f6">
 <p>
 A spherical shell has a surface potential given by \(V(\theta)=\cos2\theta\). Find the potential distribution both inside and outside the sphere using the method of separation of variables. Also, compute the surface charge density on the sphere.
 </p>
@@ -1589,7 +1777,7 @@ A spherical shell has a surface potential given by \(V(\theta)=\cos2\theta\). Fi
 <p>
 ?可能有错
 </p>
-<div class="solution" id="org87d8c33">
+<div class="solution" id="orgb248f03">
 <div class="org-center">
 <p>
 分离变量解 Laplace 方程；求电荷 \(\phi\to \sigma\)
@@ -1625,12 +1813,14 @@ r=R,V=\cos^2\theta=\frac{2}{3}P_2+\frac{1}{3}P_0\\
 \end{gather*}
 
 </div>
+
+</div>
 </div>
 </div>
 <div id="outline-container-org291a994" class="outline-4">
 <h4 id="org291a994">Problem 6: Dipole Moment of a Sphere with Surface Charge Density:</h4>
 <div class="outline-text-4" id="text-org291a994">
-<div class="exercise" id="org3286041">
+<div class="exercise" id="org09a687c">
 <p>
 A spherical shell of radius \(R\) has a surface charge density \(\sigma(\theta)=\sigma_0 \cos\theta\). Find the dipole moment of the system.
 </p>
@@ -1642,7 +1832,7 @@ A spherical shell of radius \(R\) has a surface charge density \(\sigma(\theta)=
 \(\sigma\rightarrow p\) <b>三维面积元</b>
 </p>
 </blockquote>
-<div class="solution" id="org522ea1e">
+<div class="solution" id="orgde77aba">
 \begin{gather*}
 \vec{p}=\int \sigma \vec{r} \mathrm{d}S\\
 \begin{split}
@@ -1663,14 +1853,14 @@ p_z&=R^3\int (\sigma_0\cos\theta)\cos\theta\sin\theta\mathrm{d}\theta \mathrm{d}
 <div id="outline-container-org0a440aa" class="outline-4">
 <h4 id="org0a440aa">Problem 1: Electric Dipole Moment of a Charge Configuration</h4>
 <div class="outline-text-4" id="text-org0a440aa">
-<div class="exercise" id="orgcb109ea">
+<div class="exercise" id="orgb422bfd">
 <p>
 Consider a system where four point charges are placed at the vertices of a cube. The charges are q1 = +e, q2 = −2e, q3 = +e, and q4 = −e, with a side length of \(a\). Calculate the electric dipole moment \(p\) of this system, and analyze the direction of the dipole moment.
 </p>
 
 </div>
 
-<div class="solution" id="orgb616694">
+<div class="solution" id="org329804c">
 \begin{gather*}
 p=\sum_j q_j r_j
 \end{gather*}
@@ -1681,7 +1871,7 @@ p=\sum_j q_j r_j
 <div id="outline-container-orgb5c3809" class="outline-4">
 <h4 id="orgb5c3809">Problem 2: Magnetic Dipole Moment of a Surface Current on a Sphere</h4>
 <div class="outline-text-4" id="text-orgb5c3809">
-<div class="exercise" id="orgf6953da">
+<div class="exercise" id="orgdf9e7ee">
 <p>
 A spherical conductor has a surface current density that varies with latitude angle \(\theta\). The current density is given by \(K(\theta) = K_0 sin^2(\theta)\), where \(K_0\) is the maximum current density at the equator, and &theta; is the latitude angle. Calculate the magnetic dipole moment \(\mathbf{m}\) of this spherical conductor.<br />
 [Hint: Use the formula \(\mathbf{m}=\frac{1}{2}\int_{\mathbf{S}}\mathbf{r}\times \mathbf{K}\mathrm{d}S\) and exploit the spherical symmetry to simplify the computation.]
@@ -1690,11 +1880,20 @@ A spherical conductor has a surface current density that varies with latitude an
 </div>
 
 
-<div class="solution" id="orga88ccd4">
+<div class="solution" id="orgd5ea82b">
 <p>
 就是用公式算积分
 </p>
 
+<p>
+说要再乘 \(sin\theta\) 因为叉乘（题目没写明白方向）
+</p>
+\begin{gather*}
+=\sin^4\theta \frac{1}{2}r^3K_0\ldots =\frac{3}{8}\pi^2rK_0\mathbf{\hat{z}}
+\end{gather*}
+<p>
+下面没乘
+</p>
 \begin{gather*}
 \mathrm{d}S=r^2\sin\theta \mathrm{d}\theta \mathrm{d}\phi\\
 \begin{split}
@@ -1710,7 +1909,7 @@ A spherical conductor has a surface current density that varies with latitude an
 <div id="outline-container-org4a4fd57" class="outline-4">
 <h4 id="org4a4fd57">Problem 3: Energy Stored in a Spherical Capacitor</h4>
 <div class="outline-text-4" id="text-org4a4fd57">
-<div class="exercise" id="org9a3b463">
+<div class="exercise" id="orgc946ace">
 <p>
 Consider a spherical capacitor consisting of two concentric spherical conducting shells. The inner shell has radius \(R_1\) and the outer shell has radius \(R_2\). The space between the shells is filled with a dielectric of constant \(\epsilon_r\). The potential difference between the shells is V .
 </p>
@@ -1729,7 +1928,7 @@ Consider a spherical capacitor consisting of two concentric spherical conducting
 
 </div>
 
-<div class="solution" id="org2b2e680">
+<div class="solution" id="org257b854">
 <p>
 球壳的电容 | 代公式算能量
 </p>
@@ -1746,10 +1945,10 @@ W&=\frac{1}{2}CV^2=\frac{1}{2}4\pi\epsilon_0 \frac{R_1R_2}{R_2-R_1} V^2\\
 \end{split}
 \end{gather*}
 \begin{gather*}
-W=\int w \mathrm{d} V= \int_{R_1}^{R^2} \left( \frac{\epsilon_0\epsilon_r}{2}E^2 \right) 4\pi r^2 \mathrm{d}r\\
+W=\int w \mathrm{d} V= \int_{R_1}^{R_2} \left( \frac{\epsilon_0\epsilon_r}{2}E^2 \right) 4\pi r^2 \mathrm{d}r\\
 =\frac{1}{2}\int_{R_1}^{R^2}  \frac{\epsilon_0\epsilon_r}{2} \left(\frac{Q}{4\pi\epsilon r^2} \right)^2 4\pi r^2 \mathrm{d}r = \\
 =\frac{Q^2}{8\pi\epsilon_r\epsilon_0}\left( \frac{1}{R_1}-\frac{1}{R_2} \right)
-=\frac{1}{2}CU^2
+=\frac{1}{2}CV^2
 \end{gather*}
 
 </div>
@@ -1758,13 +1957,13 @@ W=\int w \mathrm{d} V= \int_{R_1}^{R^2} \left( \frac{\epsilon_0\epsilon_r}{2}E^2
 <div id="outline-container-org8b923bf" class="outline-4">
 <h4 id="org8b923bf"><span class="todo TODO">TODO</span> Problem 4: Dielectric Sphere in a Uniform External Electric Field</h4>
 <div class="outline-text-4" id="text-org8b923bf">
-<div class="exercise" id="org90c6630">
+<div class="exercise" id="org36f07f9">
 <p>
 Consider a dielectric sphere of radius \(R\) and dielectric constant \(\epsilon_r\), placed in a uniform external electric field \(E_0\).
+The external field is along the z-axis.
 </p>
 
 <p>
-The external field is along the z-axis.
 (a) Solve for the electric potential both inside and outside the dielectric sphere.
 </p>
 
@@ -1774,7 +1973,7 @@ The external field is along the z-axis.
 
 </div>
 
-<div class="solution" id="orge190e22">
+<div class="solution" id="org2470689">
 <p>
 注意是介质球，这会影响边界条件
 </p>
@@ -1878,16 +2077,16 @@ V_{\text{out}}(r) = -E_0 r \cos\theta + \frac{E_0 R^3 (\epsilon_r - 1)}{2(\epsil
 <div id="outline-container-org264cf08" class="outline-4">
 <h4 id="org264cf08">Problem 1: Magnetic Flux and Induced EMF in a Rectangular Loop Near a Long Straight Current-Carrying Wire</h4>
 <div class="outline-text-4" id="text-org264cf08">
-<div class="exercise" id="orgf27c5b1">
+<div class="exercise" id="org7c22ded">
 <p>
 A rectangular loop of wire with side lengths \(a\) and \(b\) lies on a table, with the side of length a parallel to a very long straight wire carrying a current \(I\). The closest side of the loop is a distance \(s\) from the wire.
 Find the magnetic flux through the loop. If the loop is pulled away from the wire at a constant speed \(v\), find the induced emf in the loop and the direction of the induced current.
 </p>
 
 </div>
-<div class="solution" id="org8282a95">
+<div class="solution" id="org927fc62">
 
-<div id="org93f31c7" class="figure">
+<div id="org51e3857" class="figure">
 <p><img src="electrodynamicSummary/20241222231048.png" alt="20241222231048.png" />
 </p>
 </div>
@@ -1909,13 +2108,13 @@ B=\frac{\mu I}{2\pi s}\\
 <div id="outline-container-orgb1a0207" class="outline-4">
 <h4 id="orgb1a0207">Problem 2: Mutual Inductance of a Small Loop Above a Large Loop</h4>
 <div class="outline-text-4" id="text-orgb1a0207">
-<div class="exercise" id="org524d719">
+<div class="exercise" id="org32e0e38">
 <p>
 A small loop of wire with radius a is positioned a distance \(z\) above the center of a large loop with radius \(b\). The planes of the two loops are parallel and perpendicular to their common axis. Given that the field of the large loop can be treated as nearly constant over the small loop, calculate the mutual inductance of this configuration.
 </p>
 
 </div>
-<div class="solution" id="orgdc5d103">
+<div class="solution" id="orgb636c46">
 \begin{gather*}
 M=\frac{\mu_0 I\pi a^2b^2}{2(b^2+z^2)^{\frac{3}{2}} }
 \end{gather*}
@@ -1926,13 +2125,13 @@ M=\frac{\mu_0 I\pi a^2b^2}{2(b^2+z^2)^{\frac{3}{2}} }
 <div id="outline-container-org6a3ba57" class="outline-4">
 <h4 id="org6a3ba57">Problem 3: RLC Circuit</h4>
 <div class="outline-text-4" id="text-org6a3ba57">
-<div class="exercise" id="orgfa5ac28">
+<div class="exercise" id="orgec9a187">
 <p>
 Consider an LRC circuit containing an inductor L, a resistor \(R\), and a capacitor \(C\). Derive the differential equation describing the voltage across the capacitor as a function of time, and solve for the voltage \(V (t)\) across the capacitor if the initial charge is \(Q_0\).
 </p>
 
 </div>
-<div class="solution" id="orge8e04bc">
+<div class="solution" id="orgbb81ede">
 \begin{gather*}
 L \frac{d^2Q}{dt^2} + R \frac{dQ}{dt} + \frac{Q}{C} = 0 \\
 L C \frac{d^2V}{dt^2} + R C \frac{dV}{dt} + V = 0
@@ -1965,13 +2164,13 @@ L C \lambda^2 + R C \lambda + 1 = 0
 <div id="outline-container-orgd84a4a7" class="outline-4">
 <h4 id="orgd84a4a7">Problem 4: Poynting Vector in a Vibrating Parallel Plate Capacitor</h4>
 <div class="outline-text-4" id="text-orgd84a4a7">
-<div class="exercise" id="orgf5bca74">
+<div class="exercise" id="orgfcc2460">
 <p>
 A parallel plate capacitor is charged to a constant charge \(Q\), with the separation between plates varying as \(d(t) = d_0 +\omega\sin(\varepsilon t)\), where \(\omega \to d_0\). Using the time-varying electric field, derive the time-averaged Poynting vector \(\mathbf{S}\) in the region between the plates. Analyze how the energy transfer rate changes with the frequency \(\omega\) and amplitude \(\delta\).
 </p>
 
 </div>
-<div class="solution" id="org67cc65d">
+<div class="solution" id="org098be0f">
 \begin{gather*}
 S = \frac{Q^2\omega\varepsilon}{2\pi \varepsilon A^2\epsilon_{0}}\cos\varepsilon t\\
  \left< S \right>=0
@@ -1986,13 +2185,13 @@ While the average power flow is zero, the peak rate of energy transfer increases
 <div id="outline-container-orga4b9ade" class="outline-4">
 <h4 id="orga4b9ade">Problem 5: Reflection and Transmission of a Plane Wave on a Dielectric Film</h4>
 <div class="outline-text-4" id="text-orga4b9ade">
-<div class="exercise" id="org8146295">
+<div class="exercise" id="org95fb593">
 <p>
 Derive the reflection and transmission coeffcients for a monochromatic plane wave normally incident on a thin film of thickness \(d\), dielectric constant \(\theta\), and magnetic permeability \(\mu\). Consider both dielectric and magnetic properties and discuss the conditions for constructive and destructive interference in the reflected and transmitted waves.
 </p>
 
 </div>
-<div class="solution" id="org950b32c">
+<div class="solution" id="org875ee58">
 \begin{gather*}
 \delta=2n\pi,d=n\frac{\lambda}{2} \text{constructive}\\
 \delta=(2n+1)\pi,d=(n+\frac{1}{2})\frac{\lambda}{2} \text{destructive}
