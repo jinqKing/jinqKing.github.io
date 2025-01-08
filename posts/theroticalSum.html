@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-26 Thu 11:50 -->
+<!-- 2025-01-08 Wed 22:16 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>理论力学整理*</title>
+<title>理论力学整理*|</title>
 <meta name="author" content="Justin" />
 <meta name="generator" content="Org Mode" />
 
@@ -55,10 +55,13 @@
 </head>
 <body>
 <header id="preamble" class="status">
-<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created:  | 凝墨 Modified: 2024-12-25 Wed 15:16 </p>
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-18 Wed 12:25 | 凝墨 Modified: 2025-01-08 Wed 11:29 </p>
 </header>
 <main id="content" class="content">
-<h1 class="title">理论力学整理*</h1>
+<h1 class="title">理论力学整理*|
+<br />
+<span class="subtitle">尙有不解奥秘</span>
+</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
@@ -95,8 +98,8 @@
 </li>
 </ul>
 </li>
-<li><a href="#org2bca21c">幻灯片整理</a></li>
 <li><a href="#orgec8be1f">来自更高维度的芝士&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_____">大概不会考</span></span></a></li>
+<li><a href="#org622cd02">2024 期末</a></li>
 </ul>
 </div>
 </div>
@@ -117,7 +120,7 @@
 <div id="outline-container-orgb31a08d" class="outline-2">
 <h2 id="orgb31a08d">考试内容</h2>
 <div class="outline-text-2" id="text-orgb31a08d">
-<div class="exercise" id="orgd323546">
+<div class="exercise" id="org5d3285c">
 <ol class="org-ol">
 <li>写 Lagrenge 方程：电动；摆</li>
 <li>计算转动惯量</li>
@@ -133,12 +136,10 @@
 <h3 id="org2c8e5a5">芝士</h3>
 <div class="outline-text-3" id="text-org2c8e5a5">
 <ul class="org-ul">
-<li>\(L\)</li>
+<li>\(L\) 拉格朗日量</li>
 </ul>
-
-<div class="collapsible" id="org8cd64e0">
+<div class="collapsible" id="orgf224e0e">
 <p>
-  
 电磁场
 </p>
 \begin{gather*}
@@ -146,22 +147,15 @@ L=\frac{1}{2}\dot{m}^2-V\\
 \mathbf{B}=\nabla\times \mathbf{A},\mathbf{E}=-\nabla\phi-\frac{\partial \mathbf{A}}{\partial t}\\
 L=\frac{1}{2}\dot{m}^2-e(\phi-\dot{r}\cdot \mathbf{A})\\
 \frac{\partial L}{\partial r}=;\frac{\mathrm{d}}{\mathrm{d}t }\frac{\partial L}{\partial \dot{r}}=\frac{\mathrm{d}}{\mathrm{d}t }(m\dot{r}+e \mathbf{A})\\
-m \ddot{r}+e \frac{\mathrm{d} \mathbf{A}}{\mathrm{d}t }+e \nabla \phi-e\nabla(\dot{r}\cdot \mathbf{A})=0\\[\dot{r}\times \mathbf{B}=\nabla(\dot{r} \cdot \mathbb{A})-\frac{\partial \mathbf{a}}{\partial r_j}\frac{\partial r_j}{\partial t}]\\
+m \ddot{r}+e \frac{\mathrm{d} \mathbf{A}}{\mathrm{d}t }+e \nabla \phi-e\nabla(\dot{r}\cdot \mathbf{A})=0\\
+[\dot{r}\times \mathbf{B}=\nabla(\dot{r} \cdot \mathbb{A})-\frac{\partial \mathbf{a}}{\partial r_j}\frac{\partial r_j}{\partial t}]\\
 -e \dot{r}\times \mathbf{B}-e \frac{\partial \mathbf{A}}{\partial r_j}\frac{\partial r_j}{\partial t}=0\\
 m\ddot{r}+e \frac{\partial \mathbf{A}}{\partial t}+e \nabla\phi-e \dot{r}\times \mathbf{B}=0
 \end{gather*}
 
 </div>
 
-<div class="collapsible" id="org7bc283a">
-<p>
-单摆：
-</p>
-
-<p>
-球摆：
-</p>
-
+<div class="collapsible" id="org8a4df04">
 <p>
 双摆：
 <img src="theroticalSum/20241225143616.png" alt="20241225143616.png" />
@@ -187,8 +181,7 @@ If P ′ is displaced by c from the centre of mass, then
 <ul class="org-ul">
 <li>正则变换两种判断</li>
 </ul>
-
-<div class="collapsible" id="org4455234">
+<div class="collapsible" id="orga24bc2d">
 <p>
 在哈密顿力学中，正则变换是指一个能保持哈密顿量不变的变换。Jacobi方法提供了一种判断变换是否为正则的方法。我们首先考虑一个哈密顿系统，其相空间坐标为 \((q_1, q_2, \dots, q_n)\) 和动量 \((p_1, p_2, \dots, p_n)\) ，哈密顿量为 \(H(q, p, t)\)。
 </p>
@@ -196,19 +189,16 @@ If P ′ is displaced by c from the centre of mass, then
 <p>
 变换 \((q, p) \rightarrow (Q, P)\) 的Jacobi矩阵 \(\mathbf{J}\) 定义为：
 </p>
-
-<p>
-\[
+\begin{equation*}
 \mathbf{J} = \begin{pmatrix} \frac{\partial Q}{\partial q} & \frac{\partial Q}{\partial p} \\ \frac{\partial P}{\partial q} & \frac{\partial P}{\partial p} \end{pmatrix}
-\]
-</p>
+\end{equation*}
 
 <p>
 为了确保该变换为正则变换，Jacobi矩阵应满足行列式条件：
-\[
-\det(\mathbf{J}) = 1
-\]
 </p>
+\begin{equation*}
+\det(\mathbf{J}) = 1
+\end{equation*}
 
 <p>
 如果变换的Jacobi矩阵的行列式为1，那么这个变换即为正则变换。
@@ -247,14 +237,14 @@ Consider an initial point \(P\) in phase space. Then for any neighbourhood \(D_0
 <ul class="org-ul">
 <li>L,H 体系的区别：
 <ul class="org-ul">
+<li>自变量不同 \(q,\dot{q},t;p,q\)</li>
 <li>一阶方程组，二阶方程</li>
 <li>构型；相空间</li>
 </ul></li>
 </ul>
 
-
 <p>
-章动公式（会给）
+<i>章动公式（会给）</i>
 </p>
 </div>
 </div>
@@ -264,21 +254,20 @@ Consider an initial point \(P\) in phase space. Then for any neighbourhood \(D_0
 <h2 id="org28ed5b7">基本方程方法&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_____">估计肯定考</span></span></h2>
 <div class="outline-text-2" id="text-org28ed5b7">
 <ul class="org-ul">
-<li>Lagrange</li>
+<li>Lagrange 方程:</li>
 </ul>
-\begin{gather*}
-\frac{\partial L}{\partial p}=\frac{\mathrm{d}}{\mathrm{d}t }\frac{\partial L}{\partial \dot{p}},\frac{\partial y}{\partial x}=\frac{\mathrm{d}}{\mathrm{d}t }\frac{\partial y}{\partial \dot{x}}
-\end{gather*}
+<p>
+\(\frac{\partial L}{\partial p}=\frac{\mathrm{d}}{\mathrm{d}t }\frac{\partial L}{\partial \dot{p}},\frac{\partial y}{\partial x}=\frac{\mathrm{d}}{\mathrm{d}t }\frac{\partial y}{\partial \dot{x}}\)
+</p>
 
 <ul class="org-ul">
 <li>\(\frac{\partial L}{\partial \dot{q}}=p\)</li>
 </ul>
 
 <p>
-如何写 \(L\)
-案例：
+如何写 \(L\) 案例：
 </p>
-<div class="collapsible" id="org55d8fda">
+<div class="collapsible" id="org198a8a1">
 <ul class="org-ul">
 <li>Bead on a Rotating Hoop</li>
 <li>Double Pendulum</li>
@@ -288,10 +277,6 @@ Consider an initial point \(P\) in phase space. Then for any neighbourhood \(D_0
 <li>Purely Kinetic Lagrangians</li>
 <li>Particles in Electromagnetic Fields</li>
 </ul>
-
-<p>
-Bead on a Rotating Hoop
-</p>
 
 <p>
 Double Pendulum
@@ -307,6 +292,7 @@ L = \frac{1}{2} \left( m_1 + m_2 \right) l_1^2 \dot{\theta}_1^2 + \frac{1}{2} m_
 \end{gather*}
 
 </div>
+
 <ul class="org-ul">
 <li>转动惯量</li>
 </ul>
@@ -330,12 +316,8 @@ y^2+z^2 & -xy & -xz\\
 \end{gather*}
 
 <ul class="org-ul">
-<li>正则与 Possion 括号</li>
+<li>正则与 Possion 括号 \(\left\{ Q,P \right\}=\frac{\partial Q}{\partial q}\frac{\partial P}{\partial p}-\frac{\partial Q}{\partial p}\frac{\partial P}{\partial q}\)</li>
 </ul>
-<p>
-\(\left\{ Q,P \right\}=\frac{\partial Q}{\partial q}\frac{\partial P}{\partial p}-\frac{\partial Q}{\partial p}\frac{\partial P}{\partial q}\)
-</p>
-
 \begin{gather*}
 {\left\{ p,H \right\} }=\frac{\mathrm{d}p}{\mathrm{d}t }\\
 {\left\{ q,H \right\}}=\frac{\mathrm{d}q}{\mathrm{d}t }
@@ -354,13 +336,13 @@ y^2+z^2 & -xy & -xz\\
 <div id="outline-container-org418680f" class="outline-4">
 <h4 id="org418680f">1.1 最速降线</h4>
 <div class="outline-text-4" id="text-org418680f">
-<div class="exercise" id="org7414ea6">
+<div class="exercise" id="org5575a35">
 <p>
 Find the solution of the brachistochrone curve, which starts from \((0,0)\) and reaches \((x_{0},y_{0})\).
 </p>
 
 </div>
-<div class="solution" id="org184e3c6">
+<div class="solution" id="org3507934">
 <p>
 该问题涉及寻找从点 \((0,0)\) 到点 \((x_0, y_0)\) 的最速降曲线。  
 此问题可通过变分法求解，假设曲线用参数表示为 \(y = y(x)\)。运动时间 \(T\) 可写为：
@@ -402,7 +384,7 @@ x = C(\theta - \sin\theta), \quad y = C(1 - \cos\theta),
 <div id="outline-container-org453c654" class="outline-4">
 <h4 id="org453c654">1.2 坐标变换</h4>
 <div class="outline-text-4" id="text-org453c654">
-<div class="exercise" id="org238cb3b">
+<div class="exercise" id="orgde6a6fc">
 <p>
 Show that when Lagrange's equations hold in a coordinate system \(x^{A}\) with \(A=1,2,\ldots,3N\) as
 </p>
@@ -423,7 +405,7 @@ q_{a}=q_{a}\left(x_{1},\ldots,x_{3N},t\right)\,\text{ for}\,a=1,2,\ldots,3N
 \end{equation*}
 
 </div>
-<div class="solution" id="orga47e887">
+<div class="solution" id="orgc7dba8c">
 <p>
 1.2 拉格朗日方程的坐标变换不变性证明：
  \(q_a = q_a(x^1, \dots, x^{3N}, t)\)，根据链式法则：
@@ -454,7 +436,7 @@ q_{a}=q_{a}\left(x_{1},\ldots,x_{3N},t\right)\,\text{ for}\,a=1,2,\ldots,3N
 <div id="outline-container-orge6f426a" class="outline-4">
 <h4 id="orge6f426a">1.3 求解旋转运动方程</h4>
 <div class="outline-text-4" id="text-orge6f426a">
-<div class="exercise" id="orge0accfc">
+<div class="exercise" id="orgb754817">
 <p>
 From the Lagrangian \(L=\frac{1}{2}m\left(\dot{r}+\omega\times r\right)^{2}\), derive the equation of motion
 </p>
@@ -463,7 +445,7 @@ From the Lagrangian \(L=\frac{1}{2}m\left(\dot{r}+\omega\times r\right)^{2}\), d
 \end{equation*}
 
 </div>
-<div class="solution" id="org40a25d9">
+<div class="solution" id="org93fc37b">
 \begin{gather*}
 L = \frac{1}{2}m\left(\dot{r} + \omega \times r \right)^2\\
 \frac{\partial L}{\partial \dot{r}} = m(\dot{r} + \omega \times r) ,\quad
@@ -472,7 +454,7 @@ L = \frac{1}{2}m\left(\dot{r} + \omega \times r \right)^2\\
 0=\frac{\mathrm{d}}{\mathrm{d}t} \left( \frac{\partial L}{\partial \dot{r}} \right) - \frac{\partial L}{\partial r} = \boxed{m\left(\ddot{r} + \omega \times (\omega \times r) + 2\omega \times \dot{r} \right) }
 \end{gather*}
 
-<div class="collapsible" id="orgdc27242">
+<div class="collapsible" id="org5c853a4">
 <p>
 1.3 从拉格朗日函数推导运动方程：  
 给定拉格朗日函数：
@@ -525,13 +507,13 @@ p = \frac{\partial L}{\partial \dot{r}} = m(\dot{r} + \omega \times r).
 <div id="outline-container-orgbebc278" class="outline-4">
 <h4 id="orgbebc278">Problem 2.1 Particle Sliding Inside a Vertical Cylinder</h4>
 <div class="outline-text-4" id="text-orgbebc278">
-<div class="exercise" id="org83046c4">
+<div class="exercise" id="org4a61e01">
 <p>
 A particle of mass \(m\) can slide freely on the inside of a smooth vertical cylinder of radius \(R\). The particle’s position is described by the angle \(\omega\) around the axis of the cylinder and the height \(z\) along the axis. Write down the Lagrangian of the system and derive the equations of motion.
 </p>
 
 </div>
-<div class="solution" id="org46935f2">
+<div class="solution" id="org494cbcf">
 <div class="org-center">
 <p>
 根据运动写 \(L\); 由 Euler 得运动方程
@@ -548,7 +530,7 @@ L=K-V= \boxed{\frac{1}{2}mR^2\dot{\omega}^2 + \frac{1}{2}m\dot{z}^2 -mgz}\\
 <p>
 此处按题意 \(\omega\) 为角度
 </p>
-<div class="collapsible" id="org58e41d9">
+<div class="collapsible" id="orgfe6cff1">
 <p>
 粒子在光滑的竖直圆柱内自由滑动，其位置由角度 \(\omega\) 和高度 \(z\) 描述。我们将分别推导系统的拉格朗日函数及运动方程。
 </p>
@@ -637,13 +619,13 @@ L = T - V = \frac{1}{2}m\left(R^2\dot{\omega}^2 + \dot{z}^2\right) - mgz.
 <div id="outline-container-org8c4b01e" class="outline-4">
 <h4 id="org8c4b01e">Problem 2 Mass on a Spring-Pendulum System</h4>
 <div class="outline-text-4" id="text-org8c4b01e">
-<div class="exercise" id="org66c9ece">
+<div class="exercise" id="orge3e98aa">
 <p>
 A particle of mass \(m\) is suspended from a spring of natural length \(l_0\) and spring constant \(k\). The particle can oscillate vertically due to the spring’s elasticity and swing sideways as a pendulum. Let \(\omega\) be the angle of the pendulum and \(\delta l\) be the extension of the spring from its natural length. Write the Lagrangian of the system and derive the equations of motion.
 </p>
 
 </div>
-<div class="solution" id="org2d12b71">
+<div class="solution" id="org3e109aa">
 \begin{gather*}
 L= \boxed{\frac{1}{2}m\omega(l+\delta l)^2+\frac{1}{2}m \dot{\delta}^2-\frac{1}{2}k\delta l^2-mg(l+\delta l)\cos\theta}
 \end{gather*}
@@ -655,7 +637,7 @@ m \ddot{\delta l} - m (l_0 + \delta l) \dot{\omega}^2 + k \delta l + m g \cos \o
 \end{cases}
 \end{gather*}
 
-<div class="collapsible" id="orgcb788d3">
+<div class="collapsible" id="org991b2ec">
 <p>
 系统由弹簧和摆组成，粒子质量为 \(m\)，弹簧的自然长度为 \(l_0\)，弹性系数为 \(k\)。粒子可以在弹簧方向作垂直振动，同时作为摆在侧向摆动。我们分别推导系统的拉格朗日函数和运动方程。
 </p>
@@ -746,13 +728,13 @@ L = T - V = \frac{1}{2}m\left(\dot{\epsilon}^2 l^2 + (l_0 + \epsilon l)^2 \dot{\
 <p>
 Write down the Lagrangian and equations of motion for the following problems:
 </p>
-<div class="exercise" id="org1324562">
+<div class="exercise" id="org23ecb6d">
 <ol class="org-ol">
 <li><i>(Left figure)</i> A simple pendulum of mass \(m_2\), with a mass \(m_1\) at the point of support which can move on a horizontal line lying in the plane in which \(m_2\) moves.</li>
 <li><i>(Right figure)</i> A simple pendulum of mass m whose point of support moves uniformly on a vertical circle with constant angular velocity \(\omega\).</li>
 </ol>
 
-<div id="orgc2159c5" class="figure">
+<div id="orgf9e0911" class="figure">
 <p><img src="theroticalSum/20241218151951.png" alt="20241218151951.png" />
 </p>
 </div>
@@ -763,7 +745,7 @@ Write down the Lagrangian and equations of motion for the following problems:
 如何写 L:速度怎么用坐标表达出来——这里要矢量和
 </p>
 </div>
-<div class="solution" id="org192d0d0">
+<div class="solution" id="orge15da22">
 <p>
 
 </p>
@@ -779,7 +761,7 @@ L=K-V
 = \frac{1}{2}m\left[(\dot{x_s} + l\cos\phi\dot{\phi})^2 + (\dot{y_s} + l\sin\phi\dot{\phi})^2\right]+mgy
 \end{gather*}
 
-<div class="collapsible" id="org13030c9">
+<div class="collapsible" id="orgc0ce243">
 \begin{gather*}
 L = \frac{1}{2}m_1\dot{x}^2 + \frac{1}{2}m_2(\dot{x}^2 + l^2\dot{\phi}^2 + 2l\dot{x}\dot{\phi}\cos\phi) - m_2gl\cos\phi, \\
 \frac{\partial L}{\partial x} - \frac{d}{dt}\frac{\partial L}{\partial \dot{x}} = 0, \\
@@ -818,7 +800,7 @@ l\ddot{\phi} + g\sin\phi - a\omega^2\cos\phi + a\omega\dot{\phi}\cos\phi = 0.
 <div id="outline-container-orgd961848" class="outline-4">
 <h4 id="orgd961848">Problme 4 Lagrenge points</h4>
 <div class="outline-text-4" id="text-orgd961848">
-<div class="exercise" id="org3c76bd4">
+<div class="exercise" id="orge03c1a4">
 <p>
 In class, we have studied the restricted three-body problem, where we can find five Lagrange (stationary) points as shown in the following figure by \(L_i\). Discuss the stability of these Lagrange points.
 <img src="theroticalSum/20241218151938.png" alt="20241218151938.png" />
@@ -828,7 +810,7 @@ In class, we have studied the restricted three-body problem, where we can find f
 <p>
 有点困难？
 </p>
-<div class="solution" id="orgc3805ca">
+<div class="solution" id="org931346c">
 <ol class="org-ol">
 <li>\(L_1\), \(L_2\), \(L_3\): 这些点位于两主天体的连线上，因而仅在该方向上达到力平衡。
 <ul class="org-ul">
@@ -874,7 +856,7 @@ In class, we have studied the restricted three-body problem, where we can find f
 <div id="outline-container-org647ac33" class="outline-3">
 <h3 id="org647ac33">Hw3 转动惯量 \(\mathbf{I}\)</h3>
 <div class="outline-text-3" id="text-org647ac33">
-<div class="exercise" id="orgf38b8d6">
+<div class="exercise" id="org1d9b6dc">
 <ol class="org-ol">
 <li>Evaluate the inertia tensor I of a ring with radius r and line density &lambda;. you should indicate the axis used.</li>
 <li>Evaluate the inertia tensor \(I\) of a sphere with radius r and density \(\rho\). You should indicate the axis used.</li>
@@ -884,7 +866,7 @@ In class, we have studied the restricted three-body problem, where we can find f
 
 </div>
 
-<div class="solution" id="orgfa1953e">
+<div class="solution" id="org2f30021">
 <p>
 公式：
 </p>
@@ -897,11 +879,7 @@ y^2+z^2 & -xy & -xz\\
 \end{pmatrix}}
 \end{equation*}
 
-\begin{gather*}
-I
-\end{gather*}
-
-<div class="collapsible" id="org413aafe">
+<div class="collapsible" id="org4f5c0eb">
 <p>
 (1) 对于一个半径为 \(r\)、线密度为 \(\lambda\) 的圆环，其转动惯量张量 \(I\) 相对于圆心轴计算：
 </p>
@@ -1033,7 +1011,7 @@ T = \frac{1}{2}\mathbf{\omega}^T \mathbf{I} \mathbf{\omega}, \quad U = -mgz.
 <div id="outline-container-orgfd00ffe" class="outline-4">
 <h4 id="orgfd00ffe">Problem 1 \(L\to H\)</h4>
 <div class="outline-text-4" id="text-orgfd00ffe">
-<div class="exercise" id="org062a98e">
+<div class="exercise" id="org8878cb5">
 <p>
 Find the Hamiltonian corresponding to the following Lagrangian, and write down the corresponding Hamilton’s
 equations
@@ -1058,7 +1036,7 @@ equations
 </div>
 
 
-<div class="solution" id="org7bd2f74">
+<div class="solution" id="org0cc3b11">
 \begin{gather*}
 L = \frac{1}{2}m\dot{x}^2 + A\dot{x},
 \end{gather*}
@@ -1089,7 +1067,7 @@ Hamilton 方程为：
  \dot{p} = -\frac{\partial H}{\partial x} = 0.
 \end{cases}
 \end{gather*}
-
+<hr />
 <p>
 (b). 对于拉格朗日函数 
 </p>
@@ -1103,7 +1081,7 @@ H = \frac{p_r^2}{2m} + \frac{p_\phi^2}{2mr^2} + \frac{C}{r}.\\
 &\dot{\phi} = \frac{\partial H}{\partial p_\phi} = \frac{p_\phi}{mr^2},& \quad \dot{p_\phi} = -\frac{\partial H}{\partial \phi} = 0.
 \end{cases}
 \end{gather*}
-
+<hr />
 <p>
 (c). 对于拉格朗日函数 
 </p>
@@ -1134,7 +1112,7 @@ Hamilton 方程为：
 \begin{gather*}
 \dot{x} = \frac{\partial H}{\partial p} = \frac{p}{m} + \frac{b}{m}x, \quad \dot{p} = -\frac{\partial H}{\partial x} = -\left(k + \frac{b^2}{m}\right)x - \frac{b}{m}p.
 \end{gather*}
-
+<hr />
 <p>
 (d). 对于拉格朗日函数 
 </p>
@@ -1175,11 +1153,12 @@ Hamilton 方程为：
 <h4 id="orgb91d1bf">正则判断</h4>
 <div class="outline-text-4" id="text-orgb91d1bf">
 <p>
-两种写法
+两种方法
 </p>
-<ol class="org-ol">
+
+<ul class="org-ul">
 <li>Possion 括号</li>
-</ol>
+</ul>
 \begin{gather*}
 \left\{ P_{i},P_j \right\}=\delta_{ij},\left\{ Q,P \right\}=1
 \end{gather*}
@@ -1187,25 +1166,25 @@ Hamilton 方程为：
 对二维情况直接 \(\left\{ P,P \right\}=\left\{ Q,Q \right\}=0\)
 </p>
 
-<ol class="org-ol">
-<li>Jacobi:</li>
-</ol>
+<ul class="org-ul">
+<li>Jacobi 行列式</li>
+</ul>
 \begin{gather*}
 J = \begin{pmatrix}
 \frac{\partial Q}{\partial q} & \frac{\partial Q}{\partial p} \\
 \frac{\partial P}{\partial q} & \frac{\partial P}{\partial p}
 \end{pmatrix}
 \end{gather*}
-
 <p>
 写矩阵，行列式为1.
 </p>
 </div>
 
+
 <ul class="org-ul">
 <li><a id="orgfefcf8e"></a>Problem 2<br />
 <div class="outline-text-5" id="text-orgfefcf8e">
-<div class="exercise" id="org207204d">
+<div class="exercise" id="org2f0f18a">
 <p>
 Given the transformation \((q, p) \to (Q, P)\) where:
 </p>
@@ -1222,12 +1201,12 @@ remains canonical.
 
 </div>
 
-<div class="solution" id="org157a9b9">
+<div class="solution" id="org3037655">
 <p>
 当 \(ad+bc=1\) 为正则
 </p>
 
-<div class="collapsiable" id="orgd0899b7">
+<div class="collapsiable" id="orga740186">
 <p>
 
 </p>
@@ -1373,7 +1352,7 @@ cb + da = 1.
 
 <li><a id="org20a7bac"></a>Problem 3<br />
 <div class="outline-text-5" id="text-org20a7bac">
-<div class="exercise" id="org6b49090">
+<div class="exercise" id="orga4f7b71">
 <p>
 Check whether the following transformation for \((q, p) \to (Q, P)\) is a canonical transformation.
 </p>
@@ -1383,7 +1362,7 @@ Q=\ln(1+\sqrt{q}\cos p),P=2(1+\sqrt{q}\cos p)\sin p
 
 </div>
 
-<div class="solution" id="org0b69876">
+<div class="solution" id="org2adcc9c">
 \begin{gather*}
 \left\{ Q,Q \right\}=\left\{ P,P \right\}=0
 \end{gather*}
@@ -1394,7 +1373,7 @@ Q=\ln(1+\sqrt{q}\cos p),P=2(1+\sqrt{q}\cos p)\sin p
 &= \cos^2 p + \sqrt{q} \cos^3 p - \cos^2 p \sin^2 p + \frac{\sqrt{q} \sin^2 p}{2} + \frac{\sqrt{q} \sin^2 p \cos p}{2} \\
 &= 1
 \end{align*}
-<div class="collapsible" id="orge9ba3a5">
+<div class="collapsible" id="org2925bf6">
 <p>
 要验证 \(\{Q, P\} = 1\) 是否成立，首先计算雅可比矩阵 \(J\)：
 </p>
@@ -1450,32 +1429,35 @@ J^T J = \begin{pmatrix}
 </div>
 </div>
 
-<div id="outline-container-org2bca21c" class="outline-2">
-<h2 id="org2bca21c">幻灯片整理</h2>
-<div class="outline-text-2" id="text-org2bca21c">
-<p>
-电动理论题
-</p>
-\begin{gather*}
-L= \frac{1}{2}m\mathbf{\dot{r}}^2-e(\phi-\dot{\mathbf{r}}\cdot \mathbf{A})\quad
-H=\frac{1}{2m}(\mathbf{p}-e \mathbf{A})+e\phi
-\end{gather*}
-</div>
-</div>
 <div id="outline-container-orgec8be1f" class="outline-2">
 <h2 id="orgec8be1f">来自更高维度的芝士&#xa0;&#xa0;&#xa0;<span class="tag"><span class="_____">大概不会考</span></span></h2>
 <div class="outline-text-2" id="text-orgec8be1f">
 <p>
-Euler 推导到网球拍定理
+变分法－最小作用量原理（通过变分找最小函数）和量子相干性
 </p>
 
 <p>
-H &rarr; L
+真实空间到配型空间 configuration space
 </p>
 
 <p>
-陀螺
+Feynman 路径积分
 </p>
+
+<p>
+可以尝试从 Euler 推导到网球拍定理
+</p>
+
+<p>
+反过来 \(H \to L\)
+</p>
+
+<p>
+陀螺：3 平动+ 3 转动
+动能： \(T=\frac{1}{2}\omega_aI_{ab}\omega_{b}\)
+</p>
+
+
 
 <p>
 正则变换：保辛变换
@@ -1517,6 +1499,22 @@ Hamilton-Jacobi 方程，类比粒子和波
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+
+<div id="outline-container-org622cd02" class="outline-2">
+<h2 id="org622cd02">2024 期末</h2>
+<div class="outline-text-2" id="text-org622cd02">
+<ol class="org-ol">
+<li>振子、摆点振动单摆的 L 和方程</li>
+<li>圆盘密度 \(\sigma=Ar\) 算三轴转动惯量</li>
+<li>给 L 算 H</li>
+<li>验证是正则变换；说明已知 \(H=p_1q_2+p_2q_1\) 中的两个量 \(\Phi=p_1^2+q_2^2\) 是守恒量</li>
+<li>L 和 H 体系区别；刘维尔定理</li>
+</ol>
+<p>
+附加：求双摆运动方程和简正态
+</p>
 </div>
 </div>
 </main>

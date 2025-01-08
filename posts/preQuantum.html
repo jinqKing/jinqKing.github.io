@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-12-26 Thu 11:50 -->
+<!-- 2025-01-08 Wed 11:02 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>原子物理整理*</title>
+<title>原子物理整理*|</title>
 <meta name="author" content="Justin" />
 <meta name="generator" content="Org Mode" />
 
@@ -55,10 +55,10 @@
 </head>
 <body>
 <header id="preamble" class="status">
-<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-17 Tue 14:40 | 凝墨 Modified: 2024-12-26 Thu 11:49 </p>
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-12-17 Tue 14:40 | 凝墨 Modified: 2025-01-08 Wed 11:01 </p>
 </header>
 <main id="content" class="content">
-<h1 class="title">原子物理整理*
+<h1 class="title">原子物理整理*|
 <br />
 <span class="subtitle">啃下大杂烩</span>
 </h1>
@@ -73,9 +73,6 @@
 <ul>
 <li><a href="#org49925f0">Comlomb 散射</a></li>
 <li><a href="#orgcca041d">Rutherford 散射</a></li>
-<li><a href="#org4b8114c">1-3</a></li>
-<li><a href="#orgf488ad2">1-4</a></li>
-<li><a href="#orgd4a4343">1-6</a></li>
 </ul>
 </li>
 <li><a href="#org4bda570">第二章・Bohr</a>
@@ -86,7 +83,6 @@
 </li>
 <li><a href="#org9141170">第三章・量子力学初步</a>
 <ul>
-<li><a href="#orga8475d3">Bohr 之后</a></li>
 <li><a href="#org51423a3">波粒二项</a></li>
 <li><a href="#org7da9039">不确定关系</a></li>
 <li><a href="#org6eaf740">波函数～薛定谔方程</a></li>
@@ -97,16 +93,14 @@
 <li><a href="#orga08e116">轨道磁矩和角动量量子化</a></li>
 <li><a href="#orgdc548f6">Lande 因子 \(g\)</a></li>
 <li><a href="#org62adae4">认电子状态</a></li>
-<li><a href="#org1797957">原子组态</a></li>
 <li><a href="#org96fe4c2">GPT 老师的傻瓜教学</a></li>
-<li><a href="#orge470fa5">多电子耦合</a></li>
-<li><a href="#org81ade61">自旋</a></li>
-<li><a href="#org7418b43">SG 实验</a></li>
-<li><a href="#org27d3679">自旋角动量</a></li>
+<li><a href="#orgc06d01e">自旋及实验</a></li>
+<li><a href="#orgcba641a">角动量</a></li>
 </ul>
 </li>
 <li><a href="#org52d3479">第五章・多电子</a>
 <ul>
+<li><a href="#org1797957">原子组态</a></li>
 <li><a href="#orgc9cbc9d">Compton 散射</a></li>
 </ul>
 </li>
@@ -146,6 +140,13 @@
 </ul>
 </li>
 <li><a href="#orgbd8d04d">第六章・康普顿散射 6-7</a></li>
+</ul>
+</li>
+<li><a href="#org939e9fd">2024年期末</a>
+<ul>
+<li><a href="#org258d2be">选择题</a></li>
+<li><a href="#orge64ed46">判断题</a></li>
+<li><a href="#org9ab85c6">计算题</a></li>
 </ul>
 </li>
 </ul>
@@ -243,15 +244,15 @@
 </tr>
 
 <tr>
-<td class="org-left">Lande g 因子</td>
-<td class="org-left">将磁矩变为 z 方向因子</td>
-<td class="org-left">\(g=\frac{3}{2}+\frac{S^2-L^{2}}{2J^{2}}\)</td>
-</tr>
-
-<tr>
 <td class="org-left">角动量量子化</td>
 <td class="org-left">&#xa0;</td>
 <td class="org-left">\(L=\sqrt{l(l+1)}\hbar;S=\sqrt{s(s+1)}\hbar;J=\sqrt{j(j+1)}\hbar\)</td>
+</tr>
+
+<tr>
+<td class="org-left">Lande g 因子</td>
+<td class="org-left">将磁矩变为 z 方向因子</td>
+<td class="org-left">\(g=\frac{3}{2}+\frac{S^2-L^{2}}{2J^{2}}\)</td>
 </tr>
 
 <tr>
@@ -270,12 +271,6 @@
 <td class="org-left">&#xa0;</td>
 <td class="org-left">散射光子能量</td>
 <td class="org-left">\(h\nu=\frac{h\nu}{1+r(1-\cos\theta)},r=\frac{h\nu}{m c^2}\)</td>
-</tr>
-
-<tr>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">反冲电子能量</td>
-<td class="org-left">\(E=h\nu-h\nu\)</td>
 </tr>
 </tbody>
 </table>
@@ -356,22 +351,26 @@ b=\frac{a}{2}\cot \frac{\theta}{2},a=\frac{1}{4\pi\epsilon_0}\frac{Z_1Z_2e^2}{E_
 </ul>
 <p class="verse">
 原子模型的问题：<br />
-原子很稳定，没有电磁损失（绕圈电子应当会产生电磁场导致能拉损失）<br />
-原子可一模一样，行星结构形成很难<br />
-再生：行星平衡容易被打破<br />
+- 原子很稳定，没有电磁损失（绕圈电子应当会产生电磁场导致能拉损失）<br />
+- 原子可一模一样，行星结构形成很难难以存在完全相同<br />
+- 原子可再生：行星平衡容易被打破<br />
+</p>
+<hr />
+<div class="org-center">
+<p>
+以下为复习课讲解以及找到相关题
 </p>
 </div>
-</div>
-<div id="outline-container-org4b8114c" class="outline-4">
-<h4 id="org4b8114c">1-3</h4>
-<div class="outline-text-4" id="text-org4b8114c">
-<div class="exercise" id="orgdaec22c">
+
+<div class="collapsible" id="org38ee9f9">
+<div class="exercise" id="org51b48cd">
 <p>
-1-3 试问：4.5 MeV的 \(\alpha\) 粒子与金核对心碰撞时的最小距离是多少？若把金核改为 \({}^7\text{Li}\) 核，则结果如何？
+<b>1-3</b>
+试问：4.5 MeV的 \(\alpha\) 粒子与金核对心碰撞时的最小距离是多少？若把金核改为 \({}^7\text{Li}\) 核，则结果如何？
 </p>
 
 </div>
-<div class="solution" id="org7b699e4">
+<div class="solution" id="org5d59862">
 <p>
 解（1）由式（4-2）知 \(\alpha\) 粒子与金核对心碰撞的最小距离为
 </p>
@@ -385,7 +384,6 @@ r_m = a = \frac{e^2 Z_1 Z_2}{4\pi\varepsilon_0 E_k} = \frac{1.44 \text{ fm} \cdo
 \begin{gather*}
 E_c = \frac{1}{2} m_\mu v^2 \quad \left( \text{式中 } m_\mu = \frac{m' m}{m + m'} \right)
 \end{gather*}
-
 <p>
 得
 </p>
@@ -401,14 +399,13 @@ r_{\min} = a = \frac{e^2 Z_1 Z_2}{4\pi\varepsilon_0 E_c} = \frac{1.44 \text{ fm}
 \end{gather*}
 
 </div>
+
 </div>
-</div>
-<div id="outline-container-orgf488ad2" class="outline-4">
-<h4 id="orgf488ad2">1-4</h4>
-<div class="outline-text-4" id="text-orgf488ad2">
-<div class="exercise" id="orgec213f4">
+
+<div class="collapsible" id="orgf56a920">
+<div class="exercise" id="org4b3a266">
 <p>
-1-4
+<b>1-4</b>
 (1) 假定金核半径为 7.0 fm，试问：入射质子需要多少能量，才能在对头碰撞时刚好到达金核的表面？
 </p>
 
@@ -417,7 +414,7 @@ r_{\min} = a = \frac{e^2 Z_1 Z_2}{4\pi\varepsilon_0 E_c} = \frac{1.44 \text{ fm}
 </p>
 
 </div>
-<div class="solution" id="org2337037">
+<div class="solution" id="org8e6ba03">
 <div class="org-center">
 <p>
 约化质量！
@@ -450,25 +447,23 @@ E_c = \frac{1}{2} m_{\mu} v^2 = \frac{m'}{m + m'} E_k
 \end{gather*}
 
 </div>
-</div>
+
 </div>
 
-<div id="outline-container-orgd4a4343" class="outline-4">
-<h4 id="orgd4a4343">1-6</h4>
-<div class="outline-text-4" id="text-orgd4a4343">
-<div class="exercise" id="org6a1c717">
+<div class="collapsible" id="org0e25eac">
+<div class="exercise" id="orgb048245">
 <p>
+<b>1.6</b>
 一束 \(\alpha\) 粒子垂直射至一重金属箔上，试求 \(\alpha\) 粒子被金属箔散射后，散射角大于 \(60^\circ\) 的 \(\alpha\) 粒子数与散射角大于 \(90^\circ\) 的 \(\alpha\) 粒子数之比。
 </p>
 
 </div>
-
-<div class="solution" id="org0eac02d">
+<div class="solution" id="orgedbf6aa">
 \begin{gather*}
 \frac{N_{30}}{N_{90}}=\frac{nt\pi \left( \frac{a}{2}\cot \frac{60}{2} \right)^2}{nt\pi \left( \frac{a}{2}\cot \frac{90}{2} \right)^2}=\frac{\sqrt{3}}{1}
 \end{gather*}
-<div class="collapsible" id="org93b969a">
 <p>
+#+begin<sub>collapsible</sub>
 解 对于每一个靶核，散射角大于 \(\theta\) 的入射粒子位于 \(b < b(\theta)\) 的圆盘截面内，该截面面积为
 </p>
 \begin{gather*}
@@ -505,20 +500,15 @@ E_c = \frac{1}{2} m_{\mu} v^2 = \frac{m'}{m + m'} E_k
 <div id="outline-container-org4bda570" class="outline-3">
 <h3 id="org4bda570">第二章・Bohr</h3>
 <div class="outline-text-3" id="text-org4bda570">
-<div class="org-center">
-<p>
-背景知识
-</p>
-</div>
-<ol class="org-ol">
-<li>光电效应：频率相关而不是强度－</li>
-<li>黑体辐射－给出</li>
-<li>光谱－能级跃迁</li>
-</ol>
+<pre class="example" id="orga78a9f6">
+1. 光电效应：频率相关而不是强度－光的粒子性
+2. 黑体辐射－给出量子概念
+3. 光谱－能级跃迁－定态
 
-<p>
-FH 实验
-</p>
+考察：\\
+1. 光电 ; 2. (Bohr 半径和能量) ; 3. 谱线
+</pre>
+
 <hr />
 </div>
 <div id="outline-container-orgdfc3fbe" class="outline-4">
@@ -534,15 +524,18 @@ FH 实验
 <h4 id="orgee0a5b7">Bohr 模型</h4>
 <div class="outline-text-4" id="text-orgee0a5b7">
 <p>
-频率条件
+三部曲：频率条件
 </p>
-
 \begin{gather*}
 L= n\hbar=mvr=\sqrt{\frac{me^2r}{4\pi\epsilon_0}}\Rightarrow
 r_n=\frac{4\pi \epsilon_0\hbar^2}{me^2},E_n=\frac{me^4}{(4\pi\epsilon)^22\hbar^2n^2}
 \end{gather*}
+<p>
+由此计算半径、速度
+</p>
 
 <p>
+H 的基态能量： 13.6 eV<br />
 其它： Frank-Hertz 实验； Compton 散射 都得到量子化结果
 </p>
 </div>
@@ -551,17 +544,17 @@ r_n=\frac{4\pi \epsilon_0\hbar^2}{me^2},E_n=\frac{me^4}{(4\pi\epsilon)^22\hbar^2
 <div id="outline-container-org9141170" class="outline-3">
 <h3 id="org9141170">第三章・量子力学初步</h3>
 <div class="outline-text-3" id="text-org9141170">
-<p>
+<pre class="example" id="org0ec84d5">
+布拉格散射公式： $2d\sin\theta=n\lambda$ \\
+康普顿波长： $\lambda=\frac{h}{mc}$
+1. 物质波长
+   $\lambda=\frac{h}{p}=\frac{h}{\sqrt{2mE}}$
+2. 不确定关系
+
 主要考薛定谔方程
-</p>
-</div>
-<div id="outline-container-orga8475d3" class="outline-4">
-<h4 id="orga8475d3">Bohr 之后</h4>
-<div class="outline-text-4" id="text-orga8475d3">
-<p>
-戴维森葛末实验：验证波粒二项性
-</p>
-</div>
+
+科学史：戴维森葛末实验——验证波粒二项性
+</pre>
 </div>
 <div id="outline-container-org51423a3" class="outline-4">
 <h4 id="org51423a3">波粒二项</h4>
@@ -581,7 +574,7 @@ p=\frac{h}{\lambda},E=h\nu
 <p>
 一般使用 \(\geq\frac{\hbar}{2}\)
 </p>
-<div class="collapsible" id="org3a39421">
+<div class="collapsible" id="orgea93efd">
 <p>
 <img src="preQuantum/20241222192715.png" alt="20241222192715.png" />
 <img src="preQuantum/20241222192819.png" alt="20241222192819.png" />
@@ -617,16 +610,19 @@ p=\frac{h}{\lambda},E=h\nu
 </ol>
 
 <p>
-归一化条件：
+归一化条件（用于解系数）：
 </p>
 \begin{gather*}
 \int_{-\infty}^{\infty}\psi^*\psi \mathrm{d}x=1
 \end{gather*}
-<div class="collapsible" id="org0017083">
+
+<p>
+下面为经典模型
+</p>
+<div class="collapsible" id="org34329b6">
 <ul class="org-ul">
 <li>无限位能井</li>
 </ul>
-
 \begin{gather*}
 V = 
 \begin{cases}
@@ -644,7 +640,7 @@ E_n=\frac{n^2h^2}{8md^2}\\
 V =
 \begin{cases}
 0, & |x| < \frac{d}{2}\\
-V_0, &
+V_0, & |x| > \frac{d}{2}
 \end{cases}
 \end{gather*}
 \begin{gather*}
@@ -652,10 +648,8 @@ V_0, &
 \begin{cases}
 A_{+} \mathrm{e}^{k_{d}x},& x \leq -\frac{d}{2}\\
 \sin\\
-A_{-} \mathrm{e}^{-k_{d}x},& x \geq \frac{d}{2
+A_{-} \mathrm{e}^{-k_{d}x},& x \geq \frac{d}{2}
 \end{cases}
-
-
 \end{gather*}
 
 </div>
@@ -666,15 +660,15 @@ A_{-} \mathrm{e}^{-k_{d}x},& x \geq \frac{d}{2
 <div id="outline-container-org6313509" class="outline-3">
 <h3 id="org6313509">第四章・原子精细结构</h3>
 <div class="outline-text-3" id="text-org6313509">
+<pre class="example" id="org8103a9f">
+1. 磁场能量
+2. 认原子态
+3. 算 slm,g 磁矩
+</pre>
 </div>
 <div id="outline-container-orga08e116" class="outline-4">
 <h4 id="orga08e116">轨道磁矩和角动量量子化</h4>
 <div class="outline-text-4" id="text-orga08e116">
-
-<div id="org8ac041b" class="figure">
-<p><img src="preQuantum/20241220112920.png" alt="20241220112920.png" />
-</p>
-</div>
 \begin{gather*}
 \text{Bohr 磁子} \mu_B=\frac{e\hbar}{2m_{e}}, \text{量子磁矩} \mu_l=\sqrt{l(l+1)}\mu_B,\mu_{lz}=-m_l\mu_B
 \end{gather*}
@@ -693,7 +687,7 @@ A_{-} \mathrm{e}^{-k_{d}x},& x \geq \frac{d}{2
 </p>
 
 
-<div id="orgd9d938e" class="figure">
+<div id="org25240ab" class="figure">
 <p><img src="preQuantum/20241220110608.png" alt="20241220110608.png" />
 </p>
 </div>
@@ -704,103 +698,21 @@ A_{-} \mathrm{e}^{-k_{d}x},& x \geq \frac{d}{2
 <div class="outline-text-4" id="text-org62adae4">
 <p>
 电子状态表示 \(^2S_{\frac{1}{2}}\)
-其中：S 表示 \(l=0\) ; 右下角 \(\frac{1}{2}\) 表示 \(j=\frac{1}{2}\) ; 左上角 2 表示 \(2s+1=2\)
+其中：
 </p>
+<ul class="org-ul">
+<li>左上角 2 表示 \(2s+1=2\) (此 s 下共 2s+1 种取值);</li>
+<li>S 表示 \(l=0\) ;</li>
+<li>右下角 \(\frac{1}{2}\) 表示 \(j=\frac{1}{2}\) ;</li>
+</ul>
 
+<div class="org-center">
 <p class="verse">
 左上角： 2s+1<br />
-左下角：原子序数<br />
-右下角：<br />
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">2s+1</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">原子序数</td>
-<td class="org-left">s</td>
-</tr>
-</tbody>
-</table>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">S</td>
-<td class="org-left">&#xa0;</td>
-</tr>
-
-<tr>
-<td class="org-left">P</td>
-<td class="org-left">l=1</td>
-<td class="org-left">\(j=\frac{1}{2},\frac{3}{2}\)</td>
-</tr>
-</tbody>
-</table>
-
-
-<p>
-SG:
-H 原子进入不均匀磁场出现分裂谱线
-</p>
-
-<p>
-Zeeman:
-外磁场下原子能级分裂
-</p>
-
-<p>
-反常 Zeeman：推测有自旋
+左下角： 原子序数<br />
+右下角： j<br />
 </p>
 </div>
-</div>
-
-<div id="outline-container-org1797957" class="outline-4">
-<h4 id="org1797957">原子组态</h4>
-<div class="outline-text-4" id="text-org1797957">
-<p>
-如 sp 耦合
-</p>
-<ul class="org-ul">
-<li>当 l-s 耦合， \(s_1=s_2=\frac{1}{2},l_1=0,l_2=1\) 于是 \(J=0,1,2\) 可表示 \(^1P_1, ^3P_2, ^3P_1, ^3P_0\)</li>
-<li>当 j-j 耦合， \(j_1=\frac{1}{2},j_2=\frac{1}{2},\frac{3}{2}\) 则 \(J=0,1,1,2\) 表示 \(\left( \frac{1}{2},\frac{3}{2} \right)_2\),\(\left( \frac{1}{2},\frac{3}{2} \right)_1\),\(\left( \frac{1}{2},\frac{1}{2} \right)_1\),\(\left( \frac{1}{2},\frac{1}{2} \right)_0\)</li>
-</ul>
-
-<p>
-还要考虑泡利不相容：
-</p>
-
-<p>
-只有对 l-s 耦合，有洪特、朗德间隔约束：
-</p>
-<ul class="org-ul">
-<li>洪特规则：当某原子态具有 S 最大时，所处能级未知最低，对同一S 以 L 最大的为最低</li>
-<li>朗德间隔定则：三重态中，一对相邻能级之间间隔与两个 J 值中交大的值成正比。</li>
-</ul>
-
-<blockquote>
-<p>
-上面的我也看不懂
-</p>
-</blockquote>
 </div>
 </div>
 <div id="outline-container-org96fe4c2" class="outline-4">
@@ -809,7 +721,7 @@ Zeeman:
 <p>
 <a href="#org3dbde27">习题</a>
 </p>
-<div class="collapsible" id="orgd564166">
+<div class="collapsible" id="org8373d07">
 <ol class="org-ol">
 <li><b><b>电子状态符号的完整结构</b></b></li>
 </ol>
@@ -1065,30 +977,13 @@ J = |L - S|, \dots, (L + S)
 <hr />
 </div>
 </div>
-<div id="outline-container-orge470fa5" class="outline-4">
-<h4 id="orge470fa5">多电子耦合</h4>
-<div class="outline-text-4" id="text-orge470fa5">
-<ul class="org-ul">
-<li>sl 耦合： \(\Delta S=0,\Delta L=0,\pm 1,\Delta J=0,\pm 1\)</li>
-<li>jj 耦合： $&Delta; j=0,&plusmn; 1,$</li>
-</ul>
-</div>
-</div>
-
-
-<div id="outline-container-org81ade61" class="outline-4">
-<h4 id="org81ade61">自旋</h4>
-<div class="outline-text-4" id="text-org81ade61">
-\begin{gather*}
-\mu=iS=\frac{ev}{2\pi r}\pi r^2 = -\frac{e}{2m}L,
-\gamma=\frac{e}{2m}\\
-\mathbf{\mu}=-\gamma \mathbf{L}\\
-\frac{\mathrm{d}L}{\mathrm{d}t }=\mathbf{\tau}=\mathbf{\mu}\times \mathbf{B}\rightarrow \\
-\frac{\mathrm{d}\mathbf{\mu}}{\mathrm{d}t }-\gamma \mathbf{\mu} \times \mathbf{B}=\mathbf{\omega}\times\mathbf{\mu},\omega=\gamma B
-\end{gather*}
+<div id="outline-container-orgc06d01e" class="outline-4">
+<h4 id="orgc06d01e">自旋及实验</h4>
+<div class="outline-text-4" id="text-orgc06d01e">
 <p>
-Lamour 进动
-量子表示
+SG: H 原子进入不均匀磁场出现分裂谱线<br />
+Zeeman: 外磁场下原子能级分裂<br />
+反常 Zeeman：推测有自旋
 </p>
 
 <p>
@@ -1099,30 +994,13 @@ Lamour 进动
 <li>精细结构光谱：</li>
 <li>反常 Zeeman 塞曼：</li>
 </ol>
-
-<p>
-耦合？
-</p>
-
-<p>
-s-1,p-3,d-5
-</p>
-\begin{gather*}
-\mu..=-\frac{e}{}
-F=\vec{\mu} \frac{\mathrm{d}B_z}{\mathrm{d}z }
-\end{gather*}
-
-<pre class="example" id="orga04aa21">
-BV1s14y127nq
-</pre>
-</div>
 </div>
 
-<div id="outline-container-org7418b43" class="outline-4">
-<h4 id="org7418b43">SG 实验</h4>
-<div class="outline-text-4" id="text-org7418b43">
+<ul class="org-ul">
+<li><a id="org7418b43"></a>SG 实验<br />
+<div class="outline-text-5" id="text-org7418b43">
 
-<div id="orgd99c352" class="figure">
+<div id="org6f31147" class="figure">
 <p><img src="preQuantum/20241219104657.png" alt="20241219104657.png" />
 </p>
 </div>
@@ -1132,23 +1010,20 @@ z=\mu_z \frac{\partial B_z}{\partial z}\frac{Dd}{3kT}
 \end{gather*}
 
 <p>
-证明角动量取向量子化（前面已有能量量子化）
+<span class="underline">证明角动量取向量子化</span> （前面已有能量量子化——FH 实验）
 </p>
 </div>
+</li>
+</ul>
 </div>
 
-<div id="outline-container-org27d3679" class="outline-4">
-<h4 id="org27d3679">自旋角动量</h4>
-<div class="outline-text-4" id="text-org27d3679">
+<div id="outline-container-orgcba641a" class="outline-4">
+<h4 id="orgcba641a">角动量</h4>
+<div class="outline-text-4" id="text-orgcba641a">
 \begin{gather*}
 L=\sqrt{l(l+1)}\hbar;S=\sqrt{s(s+1)}\hbar;J=\sqrt{j(j+1)}\hbar\\
 g=\frac{3}{2}+\frac{1}{2}\left( \frac{s^2-l^2}{j^2} \right)
 \end{gather*}
-
-<ul class="org-ul">
-<li>两个电子：
-j-j,l-s</li>
-</ul>
 </div>
 </div>
 </div>
@@ -1157,6 +1032,31 @@ j-j,l-s</li>
 <h3 id="org52d3479">第五章・多电子</h3>
 <div class="outline-text-3" id="text-org52d3479">
 </div>
+<div id="outline-container-org1797957" class="outline-4">
+<h4 id="org1797957">原子组态</h4>
+<div class="outline-text-4" id="text-org1797957">
+<p>
+如 sp 耦合
+</p>
+<ul class="org-ul">
+<li>当 l-s 耦合， \(s_1=s_2=\frac{1}{2},l_1=0,l_2=1\) 于是 \(J=0,1,2\) 可表示 \(^1P_1, ^3P_2, ^3P_1, ^3P_0\)</li>
+<li>当 j-j 耦合， \(j_1=\frac{1}{2},j_2=\frac{1}{2},\frac{3}{2}\) 则 \(J=0,1,1,2\) 表示 \(\left( \frac{1}{2},\frac{3}{2} \right)_2\),\(\left( \frac{1}{2},\frac{3}{2} \right)_1\),\(\left( \frac{1}{2},\frac{1}{2} \right)_1\),\(\left( \frac{1}{2},\frac{1}{2} \right)_0\)</li>
+</ul>
+
+<p>
+还要考虑泡利不相容：
+</p>
+
+<p>
+只有对 l-s 耦合，有洪特、朗德间隔约束：
+</p>
+<ul class="org-ul">
+<li>洪特规则：当某原子态具有 S 最大时，所处能级未知最低，对同一S 以 L 最大的为最低</li>
+<li>朗德间隔定则：三重态中，一对相邻能级之间间隔与两个 J 值中交大的值成正比。</li>
+</ul>
+</div>
+</div>
+
 <div id="outline-container-orgc9cbc9d" class="outline-4">
 <h4 id="orgc9cbc9d">Compton 散射</h4>
 <div class="outline-text-4" id="text-orgc9cbc9d">
@@ -1164,7 +1064,7 @@ j-j,l-s</li>
 光打电子波长变
 </p>
 
-<div id="org1024ff3" class="figure">
+<div id="org7431157" class="figure">
 <p><img src="preQuantum/20241217145152.png" alt="20241217145152.png" />
 </p>
 </div>
@@ -1229,21 +1129,19 @@ h\nu'-h\nu=h\frac{c}{\lambda'}-h \frac{c}{\lambda}
 <div id="outline-container-org0f67a89" class="outline-3">
 <h3 id="org0f67a89">第六章・ X 射线吸收</h3>
 <div class="outline-text-3" id="text-org0f67a89">
-<pre class="example" id="org9bf370e">
+<pre class="example" id="orgb26060a">
 只考概念
 </pre>
-
 <p>
-布拉格方程得到晶格常数
-特征谱（XRF）
+布拉格公式：
 </p>
+\begin{equation*}
+2d \sin\theta=n\lambda
+\end{equation*}
 
 <p>
-导带价带
-</p>
-
-<p>
-一般测半导体（导体无，绝缘体太宽）
+布拉格方程得到晶格常数、
+特征谱（XRF）；
 </p>
 </div>
 </div>
@@ -1259,7 +1157,7 @@ h\nu'-h\nu=h\frac{c}{\lambda'}-h \frac{c}{\lambda}
 <div id="outline-container-org3b7ce0b" class="outline-4">
 <h4 id="org3b7ce0b">1-2 公式代入</h4>
 <div class="outline-text-4" id="text-org3b7ce0b">
-<div class="exercise" id="org9529205">
+<div class="exercise" id="orgc933198">
 <blockquote>
 <p>
 1-2
@@ -1275,7 +1173,7 @@ h\nu'-h\nu=h\frac{c}{\lambda'}-h \frac{c}{\lambda}
 </p>
 
 </div>
-<div class="solution" id="org6b4e63c">
+<div class="solution" id="org9f490f6">
 <p>
 <b>解答:</b>
 </p>
@@ -1296,7 +1194,7 @@ b &= \frac{a}{2} \cot \frac{\theta}{2} = \frac{1}{2}\frac{e^2 Z_1 Z_2}{4 \pi \ep
 \end{split}
 \end{gather*}
 
-<div class="collapsible" id="orgbc4e119">
+<div class="collapsible" id="org3238a69">
 <p>
 (1) 由式(3-1)、(3-2)知碰撞参数 \(b\) 与散射角 \(\theta\) 的关系式为
 </p>
@@ -1388,14 +1286,14 @@ N' = N n t \pi b^2
 <div id="outline-container-org6205082" class="outline-4">
 <h4 id="org6205082">1-5</h4>
 <div class="outline-text-4" id="text-org6205082">
-<div class="exercise" id="orge6aff6a">
+<div class="exercise" id="org57114e7">
 <p>
 动能为 \(1.0 \, \text{MeV}\) 的窄质子束垂直地射在质量厚度为 \(1.5 \, \text{mg/cm}^2\) 的金箔上，计数器记录以 \(60^\circ\) 角散射的质子。计数器圆形输入孔的面积为 \(1.5 \, \text{cm}^2\)，离金箔散射区的距离为 \(10 \, \text{cm}\)，输入孔对着且垂直于射到它上面的质子。试问：散射到计数器输入孔的质子数与入射到金箔的质子数之比是多少？（质量厚度定义为 \(\rho_m = \rho t\)，其中 \(\rho\) 为质量密度，\(t\) 为靶厚。）
 </p>
 
 </div>
 
-<div class="solution" id="orgb2fd1c9">
+<div class="solution" id="org9e4a3e9">
 <p>
 解：窄质子束打到金箔上，散射到 \(\theta \rightarrow \theta - \Delta\theta\) 方向上 \(\Delta\Omega\) 立体角的概率 \(\eta\) 为
 \[
@@ -1439,7 +1337,7 @@ a = \frac{e^2 Z_1 Z_2}{4\pi \varepsilon_0 E_k} = \frac{1.44 \, \text{fm} \cdot \
 <div id="outline-container-org18b5d38" class="outline-4">
 <h4 id="org18b5d38">2-1 光电效应逸出功&#xa0;&#xa0;&#xa0;<span class="tag"><span class="easy">easy</span></span></h4>
 <div class="outline-text-4" id="text-org18b5d38">
-<div class="exercise" id="org0da1a3a">
+<div class="exercise" id="org513188e">
 <blockquote>
 <p>
 2-1
@@ -1459,7 +1357,7 @@ a = \frac{e^2 Z_1 Z_2}{4\pi \varepsilon_0 E_k} = \frac{1.44 \, \text{fm} \cdot \
 
 </div>
 
-<div class="solution" id="orgd50998a">
+<div class="solution" id="orgeaf8814">
 \begin{gather*}
 E=h\nu-W, E=0\\
 \nu=\frac{W}{h}=\frac{1.9 \text{ eV} \times 3.0 \times 10^8 \text{ m/s}}{1.24 \text{ nm} \cdot \text{keV}} = \boxed{4.6 \times 10^{14} \text{ Hz}}\\
@@ -1474,7 +1372,7 @@ E=h \frac{c}{\lambda}-W \rightarrow 1.5 \text{eV}=h \frac{c}{\lambda}-1.9 \text{
 \end{split}
 \end{gather*}
 
-<div class="collapsible" id="orgd2531a2">
+<div class="collapsible" id="orge4ce958">
 <p>
 根据式(6-9) 爱因斯坦的光电效应方程
 </p>
@@ -1520,7 +1418,7 @@ h \nu &= \frac{1}{2} m v_m^2 + \phi \\
 <div id="outline-container-org2260216" class="outline-4">
 <h4 id="org2260216">2-6 计算谱线波长&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">公式</span></span></h4>
 <div class="outline-text-4" id="text-org2260216">
-<div class="exercise" id="org4c47ffd">
+<div class="exercise" id="orgc4ba25a">
 <blockquote>
 <p>
 2-6
@@ -1532,7 +1430,7 @@ h \nu &= \frac{1}{2} m v_m^2 + \phi \\
 
 </div>
 
-<div class="solution" id="org507a983">
+<div class="solution" id="org3ff74b1">
 <p>
 <b>解答</b>
 </p>
@@ -1553,7 +1451,7 @@ n'=5,& \quad \lambda = 94.98\, \text{nm}
 3 条，n =2,3,4。
 </p>
 
-<div class="collapsible" id="org5ad12aa">
+<div class="collapsible" id="org23620af">
 <p>
 在通常温度下，氢原子都处于基态，所以吸收光谱是从 \(n=1\) 能级向高能级跃迁产生的。
 </p>
@@ -1588,7 +1486,7 @@ n' = 4, & \quad \lambda = 97.25 \, \text{nm}
 <div id="outline-container-orgae4bebe" class="outline-4">
 <h4 id="orgae4bebe">3-1 物质波长&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">公式</span></span></h4>
 <div class="outline-text-4" id="text-orgae4bebe">
-<div class="exercise" id="org6816fa5">
+<div class="exercise" id="orgdea202b">
 <blockquote>
 <p>
 3-1
@@ -1599,7 +1497,7 @@ n' = 4, & \quad \lambda = 97.25 \, \text{nm}
 </p>
 
 </div>
-<div class="solution" id="org8e7a30f">
+<div class="solution" id="org5577e7a">
 <p>
 电子速度远小于光速,则电子动量和能量的关系为
 \[
@@ -1632,7 +1530,7 @@ p = \sqrt{2 m_e E}
 <div id="outline-container-org36ae39b" class="outline-4">
 <h4 id="org36ae39b">3-15 势能井波动方程&#xa0;&#xa0;&#xa0;<span class="tag"><span class="hard">hard</span></span></h4>
 <div class="outline-text-4" id="text-org36ae39b">
-<div class="exercise" id="org207aec0">
+<div class="exercise" id="org093e6f4">
 <blockquote>
 <p>
 3-15
@@ -1663,7 +1561,7 @@ V_0 a^2 \geq \frac{h^2}{32m}
 
 </div>
 
-<div class="solution" id="org29b3dca">
+<div class="solution" id="org40d276a">
 <p>
 <b>解：</b>
 <img src="preQuantum/20241219112232.png" alt="20241219112232.png" />
@@ -1784,7 +1682,7 @@ V_0 a^2 \geqslant \frac{\pi^2 h^2}{8 m} = \frac{h^2}{32 m}
 <div id="outline-container-org57224a3" class="outline-4">
 <h4 id="org57224a3">4-1 磁场中能量&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">公式</span></span></h4>
 <div class="outline-text-4" id="text-org57224a3">
-<div class="exercise" id="org7cb6693">
+<div class="exercise" id="org75dfe6d">
 <blockquote>
 <p>
 4-1
@@ -1795,7 +1693,7 @@ V_0 a^2 \geqslant \frac{\pi^2 h^2}{8 m} = \frac{h^2}{32 m}
 </p>
 
 </div>
-<div class="solution" id="orgccf1cc9">
+<div class="solution" id="orgbc13cee">
 \begin{gather*}
 \underline{E=-\mu\cdot B}\\
 \Delta E=\mu_{e} B-(-\mu_{e} B)=2 \times 0.578 \times 10^{-18} \, \text{eV} \cdot \text{T}^{-1} \times 1.2 \, \text{T} = \boxed{1.4 \times 10^{-18} \, \text{eV}}
@@ -1837,7 +1735,7 @@ U = -\mu_e \cdot B = -\mu_e B = g_e m_e \mu_B B \quad \left( \text{其中 } g_e 
 <div id="outline-container-orgc9e72e2" class="outline-4">
 <h4 id="orgc9e72e2">4-5 SG 实验电子状态&#xa0;&#xa0;&#xa0;<span class="tag"><span class="__">公式</span>&#xa0;<span class="hard">hard</span></span></h4>
 <div class="outline-text-4" id="text-orgc9e72e2">
-<div class="exercise" id="org59e2a60">
+<div class="exercise" id="orgc706d4c">
 <blockquote>
 <p>
 4.5
@@ -1848,7 +1746,7 @@ U = -\mu_e \cdot B = -\mu_e B = g_e m_e \mu_B B \quad \left( \text{其中 } g_e 
 </p>
 
 </div>
-<div class="solution" id="org78bf69d">
+<div class="solution" id="org743fe60">
 <p>
 <a href="#org62adae4">从表达式分析电子状态</a> | SG:z | E<sub>k</sub> &rarr; kT:\(E=\frac{1}{2}mv^2=\frac{3}{2}kT\)
 </p>
@@ -1864,7 +1762,7 @@ z&=\mu_z \frac{\partial B_z}{\partial z}\frac{Dd}{3kT}
 \end{split}
 \end{gather*}
 
-<div class="collapsible" id="org8f1d979">
+<div class="collapsible" id="orgdf11710">
 <p>
 矾原子的基态为 \({}^4 F_{3/2}\), 其角动量量子数分别为
 \[
@@ -1941,7 +1839,7 @@ z = \mu_2 \frac{\partial B_1}{\partial z} \frac{d D}{3 k T} = -m_1 g_1 \mu_B \fr
 <div id="outline-container-org8cde6a1" class="outline-4">
 <h4 id="org8cde6a1">5-2 L &sdot; S</h4>
 <div class="outline-text-4" id="text-org8cde6a1">
-<div class="exercise" id="org073a565">
+<div class="exercise" id="orgeb49b6d">
 <blockquote>
 <p>
 5-2
@@ -1955,7 +1853,7 @@ z = \mu_2 \frac{\partial B_1}{\partial z} \frac{d D}{3 k T} = -m_1 g_1 \mu_B \fr
 <p>
 <a href="#org62adae4">怎么认电子态</a>
 </p>
-<div class="solution" id="org9850847">
+<div class="solution" id="org3726e34">
 <p>
 对于 \(^4D_{3/2}\) 态，其角动量量子数分别为
 \[
@@ -1998,7 +1896,7 @@ J^2 = L^2 + S^2 + 2\mathbf{L} \cdot \mathbf{S}
 <div id="outline-container-org3dbde27" class="outline-4">
 <h4 id="org3dbde27">5-7 原子态</h4>
 <div class="outline-text-4" id="text-org3dbde27">
-<div class="exercise" id="org14656c9">
+<div class="exercise" id="org0d728bf">
 <blockquote>
 <p>
 5-7
@@ -2016,7 +1914,7 @@ J^2 = L^2 + S^2 + 2\mathbf{L} \cdot \mathbf{S}
 <p>
 <a href="#org1797957">原理</a>
 </p>
-<div class="solution" id="orgbba3139">
+<div class="solution" id="orgc8e4e3d">
 <p>
 
 </p>
@@ -2085,13 +1983,13 @@ J^2 = L^2 + S^2 + 2\mathbf{L} \cdot \mathbf{S}
 <div id="outline-container-orgbd8d04d" class="outline-3">
 <h3 id="orgbd8d04d">第六章・康普顿散射 6-7</h3>
 <div class="outline-text-3" id="text-orgbd8d04d">
-<div class="exercise" id="org8c058c4">
+<div class="exercise" id="orgabc275a">
 <p>
 在康普顿散射中，若入射光子能量等于电子的静止能，求散射光子的最小能量及电子的最大能量。
 </p>
 
 </div>
-<div class="solution" id="org644f3a3">
+<div class="solution" id="org373ccd4">
 <div class="org-center">
 <p>
 能量守恒、动量守恒
@@ -2109,6 +2007,63 @@ p=\frac{1}{3}+1=\frac{4}{3} \frac{h}{\lambda}=\frac{4}{3}m_0c=0.681 \text{MeV}
 \end{gather*}
 
 </div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org939e9fd" class="outline-2">
+<h2 id="org939e9fd">2024年期末</h2>
+<div class="outline-text-2" id="text-org939e9fd">
+</div>
+<div id="outline-container-org258d2be" class="outline-3">
+<h3 id="org258d2be">选择题</h3>
+<div class="outline-text-3" id="text-org258d2be">
+<ol class="org-ol">
+<li>电子发现者是谁
+JJ 汤姆孙</li>
+
+<li>bohr 三部曲
+量子态效应； <b>跃迁</b> ；</li>
+
+<li>测不准关系：无法测出 x,p</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orge64ed46" class="outline-3">
+<h3 id="orge64ed46">判断题</h3>
+<div class="outline-text-3" id="text-orge64ed46">
+<ol class="org-ol">
+<li>光电效应是一些物质具有的特性（错误：不应该是一些应该是所有）</li>
+<li>量子物理是建立概率，经典物理是因果律（正确）</li>
+<li>Bohr 模型的错误是没考虑效应（错误）</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org9ab85c6" class="outline-3">
+<h3 id="org9ab85c6">计算题</h3>
+<div class="outline-text-3" id="text-org9ab85c6">
+<p>
+计算卢瑟福散射的瞄准距离
+</p>
+
+<p>
+H 基态到第一激发态的能量以及以此发射出的光的波长
+</p>
+
+<p>
+He 在 SG 实验中在屏幕上留下几条线
+</p>
+
+<p>
+P,S 原子态对应的电子组态，基态的原子组态
+</p>
+
+<p>
+薛定谔方程无限位能井计算解的形式
+</p>
 </div>
 </div>
 </div>
