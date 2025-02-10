@@ -1,0 +1,262 @@
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    background: #6200ea;
+    color: white;
+    padding: 1rem;
+    width: 99%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+    max-width: 800px;
+    width: 95%;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.canvas-container {
+    display:flex;
+    justify-content:center;
+/*    text-align: center;*/
+    margin: 1rem 0;
+}
+
+.center-div{
+    display:flex;
+    justify-content:center;
+}
+
+#curveCanvas{
+    width:800px;
+    height:600px;
+    max-width: 90%;
+    max-height: 50%;
+    style:border 1px solid #ccc;
+}
+
+#latexPreDiv{
+     margin: 1.5em;
+}
+
+.latex-render {
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+.plus-symbol {
+    margin: 0 5px;
+    font-size: 1.2em;
+    color: gray;
+}
+.highlighted {
+    background-color: rgba(173, 216, 230, 0.5); /* 浅蓝色背景 */
+    border: 1px solid #1e90ff; /* 蓝色边框 */
+    border-radius: 4px;        /* 圆角 */
+    padding: 2px 4px;          /* 内边距 */
+}
+
+.controls {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.control-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+}
+.button-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:2px;
+}
+button {
+    background: #6200ea;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-left:1.5px;
+    margin-right:1.5px;
+}
+
+button:hover {
+    background: #3700b3;
+}
+.hint-p {
+    opacity: 0.4;
+}
+footer,.hint-p {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* 计时和误差容器 */
+.output-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    background-color: #fbffff; 
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 85%;
+    max-width: 680px;
+    margin-bottom:1em;
+}
+
+/* 单个项目的样式 */
+.output-item {
+    text-align: center;
+    flex: 1;
+}
+
+/* 计时和误差文本样式 */
+#timeCountOutput, #errorOutput {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    padding: 5px;
+}
+
+/* 计时文本的特殊样式 */
+#timeCountOutput {
+    color: #007bff; /* 蓝色文字 */
+}
+
+/* 误差文本的特殊样式 */
+#errorOutput {
+    transition: color 0.3s ease; /* 平滑颜色过渡 */
+}
+
+/* 响应式样式 */
+@media (max-width: 600px) {
+    .output-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .output-item {
+        margin-bottom: 10px;
+    }
+}
+
+
+.saved-fit-results {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.state-container {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 140px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.state-container:hover{
+    background:aliceblue;
+}
+.state-container canvas {
+    margin-bottom: 5px;
+}
+.state-container p,
+.state-container input {
+    margin: 5px 0;
+    font-size: 14px;
+    text-align: center;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.delete-button:hover {
+    background-color: #ff1a1a;
+}
+
+
+#advancedPanel {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+#advancedPanel h3 {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+#advancedPanel .control-group {
+    margin-bottom: 10px;
+}
+
+#advancedPanel #expressionInput {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#advancedPanel .buttons-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+#advancedPanel .insert-btn {
+    padding: 8px 12px;
+    font-size: 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#advancedPanel .insert-btn:hover {
+    background-color: #0056b3;
+}
