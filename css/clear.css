@@ -104,7 +104,7 @@ nav {
     a:hover { 	background-color: #a2d7f6;    }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 800px) {
     #toc-toggle{
 	right: 90%;
 	top:10em;
@@ -118,7 +118,7 @@ nav {
 	right: 1%;
     }
 }
-@media (min-width: 1100px) { 
+@media (min-width: 800px) { 
     #table-of-contents {
         width: 18%; 
         right: 1%; /* 小屏初始隐藏 */
@@ -2713,7 +2713,7 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    opacity: 0.15;
+    opacity: 0.1;
     animation: rotate 20s linear infinite;
     pointer-events: none; 	/*不干扰下面点击完美*/
 }
@@ -2956,14 +2956,11 @@ td.org-center {
 }
 
 blockquote {
-    /* font-family: songti; */
-    /* font-size: 1.2rem; */
+    font-weight: bold;
     margin-left: 5px;
     padding-left: 1em;
     border-left: 3px solid #ccc
 }
-
-
 
 kbd {
     background-color: #f7f7f7;

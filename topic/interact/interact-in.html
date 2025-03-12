@@ -3,12 +3,17 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
 <head>
-<!-- 2025-02-10 Mon 13:55 -->
+<!-- 2025-03-12 Wed 23:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>interact</title>
 <meta name="author" content="Justin" />
 <meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/plantuml-encoder@1.4.0/dist/plantuml-encoder.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -30,29 +35,33 @@ codeBlock.style.display = 'none';
 });
 });
 </script>
-
-<nav><ul>
-<a href='/index.html'>Home</a>
-<a href='/blogRecord.html'>Index</a>
-<a href='/about.html'>About</a>
-</ul></nav>
 </head>
 <body>
 <header id="preamble" class="status">
-<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-08-06 Tue 22:47 | 凝墨 Modified: 2025-02-10 Mon 13:29 </p>
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2024-08-06 Tue 22:47 | 凝墨 Modified: 2025-03-12 Wed 22:55 </p>
 </header>
 <main id="content" class="content">
 <h1 class="title">interact</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org34f173d">1. fitQuest 拟合小游戏</a></li>
+<li><a href="#org675827e">2. mg 数字小交互尝试</a></li>
+<li><a href="#orgdeb6dc0">3. pg 反复囚徒困境</a>
+<ul>
+<li><a href="#orgc734023">3.1. 开发笔记</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 <p>
-关于 interact 板块主介绍：这里最大的特征是所有 HTML 都是从 0 写的。
+<b>这是什么</b>: 一个娱乐空间，你可以玩简单的小游戏，我写网站也是玩，这里每个 HTML 都是从 0 写的。
 </p>
 
 <p>
-一些富有创造力的趣味内容，将过往知道的知识用一用，比如 html css js ——用好了就可以放在博客里了。
-</p>
-
-<p>
-由于是手搓网站，所以大部分内容没有美化，我也认识到开发中有一个设计师的重要，一个同时考虑功能架构，就能难再把设计色彩的事情放脑子里（也可能我并没有自以为那么审美能力唉）
+一些富有创造力的趣味内容，将知道的知识用一用，比如 html css js ——用好了就可以放在博客里了。
 </p>
 
 <blockquote>
@@ -68,17 +77,25 @@ codeBlock.style.display = 'none';
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-02-10 Mon 13:27&gt;</span></span>
 </p>
 
-<div class="solution" id="org34b6390">
+<div class="solution" id="orga0c253c">
 <p>
-看你能不能拟合上嘿，挑战数感！
+机器拟合函数表达式可以做的很好了，但人类定下的符号，人类自己能感知到什么程度呢？
 </p>
 
 </div>
 
+<div class="exercise" id="org8726a86">
+<div class="org-center">
 <p>
-<a href="fitQuest/fitQ2.html">fitQuest/fitQ2.html</a>
+快去玩 -&gt; <a href="fitQuest/fitQ2.html">fitQuest/fitQ2.html</a>
 </p>
+</div>
 
+</div>
+
+<p>
+其中的规律难道不是很有趣，什么函数先快增再慢减？什么符合人口的规律？（完全体计划是有一个物理等学科中常见模型函数的探索，但…）
+</p>
 <p>
 目前简单模式可玩，预备图像化选项。
 </p>
@@ -181,7 +198,7 @@ stop
 <div id="outline-container-org675827e" class="outline-2">
 <h2 id="org675827e"><span class="section-number-2">2.</span> mg 数字小交互尝试</h2>
 <div class="outline-text-2" id="text-2">
-<div class="exercise" id="org6d80511">
+<div class="exercise" id="org9fee069">
 <ul class="org-ul">
 <li><a href="mg/mg 介绍.html">mg/mg 介绍.html</a></li>
 <li><a href="mg/tapnum.html">mg/tapnum.html</a></li>
@@ -198,7 +215,7 @@ stop
 </p>
 
 <div class="org-center">
-<div class="exercise" id="org6a9aba5">
+<div class="solution" id="org2fa0a39">
 <p>
 <b>快去玩 -&gt;
 <a href="mg/tapnum.html">mg/tapnum.html</a></b>
@@ -211,7 +228,9 @@ stop
 一直希望让网页发挥互动的价值，碰巧发现很好的素材，于是尝试实现一下。
 </p>
 
-
+<p>
+下面是之前的 demo ,现在做了第一部分完整版了。不过很快发现后面的实现很有挑战性…
+</p>
 <div class="org-center">
 <p>
 <b>快去玩 -&gt;
@@ -219,9 +238,6 @@ stop
 </p>
 </div>
 
-<p>
-这是之前的 demo ,现在做了第一部分完整版了。不过很快发现后面的实现很有挑战性…
-</p>
 
 <p>
 话说之后想用 org 直接导出，不过又感到也许 vscode 有些功能实在不忍割舍。
@@ -254,8 +270,13 @@ stop
 <div id="outline-container-orgdeb6dc0" class="outline-2">
 <h2 id="orgdeb6dc0"><span class="section-number-2">3.</span> pg 反复囚徒困境</h2>
 <div class="outline-text-2" id="text-3">
+<div class="org-center">
 <p>
-囚徒困境小游戏
+
+</p>
+
+<p>
+重复囚徒困境的小游戏
 </p>
 
 <p>
@@ -263,13 +284,18 @@ stop
 </p>
 
 <p>
-希望做成可拓展自定义美观的
+希望做成可拓展自定义美观的交互游戏
 </p>
+</div>
+
+<div class="exercise" id="org76e2c77">
 <div class="org-center">
 <p>
 <b>快去玩 -&gt;
 <a href="prisongame/prisongame.html">prisongame/prisongame.html</a></b>
 </p>
+</div>
+
 </div>
 
 <p>

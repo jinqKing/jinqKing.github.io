@@ -55,7 +55,15 @@ let savedStates = [];
 // Error threshold
 const ERROR_THRESHOLD = 1;
 const MAX_ERROR = 10;
-const functionColors = { linear: "black", quadratic: "blue", sin: "green" };
+const functionColors = {
+    linear: "black", 
+    quadratic: "gray", 
+    sin: "green",
+    exp: "purple",
+    log: "blue",
+    C: "gold",
+
+};
 
 // Draw axes and grid
 function drawAxesAndGrid() {
@@ -154,7 +162,7 @@ function generateRandomFunction(difficulty) {
     const functions = {
         beginner: ["linear", "quadratic"],
         intermediate: ["linear", "quadratic", "sin", "cos"],
-        advanced: ["sin", "cos", "ln", "exp", "quadratic"],
+        advanced: ["sin", "cos", "log", "exp", "quadratic"],
     };
 
     const coefficients = {
@@ -180,38 +188,69 @@ function generateRandomFunction(difficulty) {
     const functionComponents = [];
 
     for (let i = 0; i < count; i++) {
-        const funcType = functions[difficulty][Math.floor(Math.random() * functions[difficulty].length)];
+        const type = functions[difficulty][Math.floor(Math.random() * functions[difficulty].length)];
         const a = getRandom(...coefficients[difficulty], 0.1);
         const b = getRandom(...coefficients[difficulty], 0.1);
         const c = getRandom(...coefficients[difficulty], 0.1);
 
-        if (funcType === "linear") {
-            functionComponents.push(`(${a} * x + ${b})`);
-        } else if (funcType === "quadratic") {
-            functionComponents.push(`(${a} * x * x + ${b} * x + ${c})`);
-        } else if (funcType === "sin") {
-            functionComponents.push(`(${a} * Math.sin(${b} * x + ${c}))`);
-        } else if (funcType === "cos") {
-            functionComponents.push(`(${a} * Math.cos(${b} * x + ${c}))`);
-        } else if (funcType === "ln") {
-            functionComponents.push(`(${a} * Math.log(Math.abs(${b} * x + ${c}) + 1e-6))`);
-        } else if (funcType === "exp") {
-            functionComponents.push(`(${a} * Math.exp(${b} * x + ${c}))`);
-        }
-    }
+        
 
+        var matchPower = type.match(/^power-(\d+)$/);
+
+        if (type.match(/^power-(\d+)$/)) {
+            
+            var power = parseInt(type.match(/^power-(\d+)$/)[1], 10);
+            functionComponents.push(`${a} * x ** ${power}`);
+        }
+        if (type === "linear") {
+            functionComponents.push(`(${a} * x + ${b})`);
+        } else if (type === "quadratic") {
+            functionComponents.push(`(${a} * x * x + ${b} * x + ${c})`);
+        } else if (type === "sin") {
+            functionComponents.push(`(${a} * Math.sin(${b} * x + ${c}))`);
+        } else if (type === "cos") {
+            functionComponents.push(`(${a} * Math.cos(${b} * x + ${c}))`);
+        } else if (type === "log") { // 将 "ln" 改为 "log" 以表示一般对数
+            // 使用换底公式实现一般对数 log_b(x) = ln(x) / ln(b)
+            functionComponents.push(`(${a} * (Math.log( x + ${c}) + 1e-6) / Math.log(${b})))`);
+        } else if (type === "exp") {
+            functionComponents.push(`(${a} * Math.exp(${b} * x + ${c}))`);
+        } else if (type === "C") {
+            functionComponents.push(`${a}`);
+        }
+        
+
+    }
     const functionString = functionComponents.join(" + ");
     return new Function("x", `return ${functionString};`);
 }
-
 // Plot user function
 function plotUserFunction() {
+    console.log("plot")
     userFunction = (x) => functions.reduce((sum, func) => {
+        var matchPower = func.type.match(/^power-(\d+)$/);
+        if (matchPower) {
+            var power = parseInt(matchPower[1], 10);
+            return sum + func.a * (x ** power);
+        }
         switch (func.type) {
-            case "linear": return sum + func.a * x + func.b;
-            case "quadratic": return sum + func.a * x ** 2 + func.b * x + func.c;
-            case "sin": return sum + func.a * Math.sin(func.b * x) + func.c;
-            default: return sum;
+        case "linear":
+            return sum + func.a * x + func.b;
+        case "quadratic":
+            return sum + func.a * x ** 2 + func.b * x + func.c;
+        case "sin":
+            return sum + func.a * Math.sin(func.b * x + func.c); // 修正为与生成函数逻辑一致
+        case "cos":
+            return sum + func.a * Math.cos(func.b * x + func.c);
+        case "log": // 将 "ln" 改为 "log"
+            // 使用换底公式实现一般对数 log_b(x) = ln(x) / ln(b)
+            return sum + func.a * (Math.log(Math.abs(x + func.c) + 1e-6) / Math.log(func.b));
+        case "exp":
+            return sum + func.a * Math.exp(func.b * x + func.c);
+        case "C":
+            return sum + func.a;
+        default:
+            return sum;
         }
     }, 0);
 
@@ -293,20 +332,37 @@ function renderLatex() {
     });
     MathJax.typesetPromise([latexPreDiv]);
 }
-
 // Create LaTeX expression from 3 types(txt)
 function createLatex(type, a, b, c) {
+    var matchPower = type.match(/^power-(\d+)$/);
+    if (matchPower) {
+        var power = parseInt(matchPower[1], 10);
+        return `${a}x^{${power}}`;
+    }
     switch (type) {
-        case "linear": return `${a}x + ${b}`;
-        case "quadratic": return `${a}x^2 + ${b}x + ${c}`;
-        case "sin": return `${a}\\sin(${b}x) + ${c}`;
-        default: return "";
+    case "linear":
+        return `${a}x + ${b}`;
+    case "quadratic":
+        return `${a}x^2 + ${b}x + ${c}`;
+    case "sin":
+        return `${a}\\sin(${b}x + ${c})`; // 修正为与生成函数逻辑一致
+    case "cos":
+        return `${a}\\cos(${b}x + ${c})`;
+    case "log": // 将 "ln" 改为 "log"
+        return `${a}\\log_{${b}}(x + ${c})`; // 修正为与生成函数逻辑一致
+    case "exp":
+        return `${a}e^{${b}x + ${c}}`;
+    case "C":
+        return `(${a})`;
+    default:           
+        return "";
     }
 }
 
 // Update button states
 function updateButtonStates() {
     addFunctionButton.textContent = editingIndex !== null ? "确认 Confirm" : "添加 Add";
+    cancelBt.textContent = editingIndex !== null ? "撤销 Undo" : "取消 Cancel";
     clearBt.textContent = editingIndex !== null ? "删除 Delete" : "清空 Clear";
 }
 
@@ -319,12 +375,12 @@ function resetEditingState() {
     originalValues = null;
 
     updateButtonStates();
-    renderLatex();
+    
     updatePlotAndError();
+    renderLatex();
 }
 
-// Add/modify function
-addFunctionButton.addEventListener("click", () => {
+function addFunL(){
     const type = functionSelect.value;
     const a = parseFloat(parameterA.value) || 0;
     const b = parseFloat(parameterB.value) || 0;
@@ -336,9 +392,15 @@ addFunctionButton.addEventListener("click", () => {
         functions.push({ type, a, b, c, latex: createLatex(type, a, b, c) });
     }
     editingIndex = null;
-    renderLatex();
+    
     updatePlotAndError();
     updateButtonStates();
+    renderLatex();
+}
+
+// Add/modify function
+addFunctionButton.addEventListener("click", () => {
+    addFunL();
 });
 
 // Clear or delete function
@@ -349,9 +411,10 @@ clearBt.addEventListener("click", () => {
     } else {
         functions.length = 0;
     }
-    renderLatex();
+    
     updatePlotAndError();
     updateButtonStates();
+    renderLatex();
 });
 
 // Double click to delete function
@@ -361,9 +424,11 @@ latexPreDiv.addEventListener("dblclick", (event) => {
         const index = parseInt(clickedSpan.id.split("-")[1], 10);
         functions.splice(index, 1);
         editingIndex = null;
-        renderLatex();
+        
         updatePlotAndError();
+        renderLatex();
     }
+    // resetEditingState();2
     updateButtonStates();
 });
 
@@ -380,9 +445,21 @@ latexPreDiv.addEventListener("click", (event) => {
         editingIndex = index;
 
         functionSelect.value = func.type;
+        // 卡片同步
+        cards.forEach(card => {
+            card.classList.remove('selected');
+            if (card.dataset.type === func.type) {
+                card.classList.add('selected');
+            }
+        });
         parameterA.value = func.a;
         parameterB.value = func.b;
         parameterC.value = func.c;
+        updateButtonStates();
+    } else {
+        document.querySelectorAll(".latex-render").forEach(span => span.classList.remove("highlighted"));   
+        cards.forEach(card => {card.classList.remove('selected');})
+        resetEditingState();
         updateButtonStates();
     }
 });
@@ -514,7 +591,6 @@ function createIndependentThumbnail() {
     thumbnailCtx.moveTo(centerXThumb, 0);
     thumbnailCtx.lineTo(centerXThumb, height);
     thumbnailCtx.stroke();
-
     // 绘制函数曲线
     if (generatedFunction) {
         thumbnailCtx.strokeStyle = 'blue';
@@ -535,7 +611,6 @@ function createIndependentThumbnail() {
         }
         thumbnailCtx.stroke();
     }
-
     if (userFunction) {
         thumbnailCtx.strokeStyle = 'red';
         thumbnailCtx.lineWidth = 2;
@@ -555,7 +630,6 @@ function createIndependentThumbnail() {
         }
         thumbnailCtx.stroke();
     }
-
     return thumbnail;
 }
 
@@ -575,16 +649,159 @@ function getDefaultStateName() {
     return `Fit ${timestamp}`;
 }
 
-// Event listeners
+
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+let previousCheckedRadio = document.querySelector('input[type="radio"]:checked');
+let blinkInterval;
+let revertTimer;
+radioButtons.forEach(radio => {
+    radio.addEventListener('change', function () {
+                // 清除之前的定时器和闪烁效果
+        clearInterval(blinkInterval);
+        clearTimeout(revertTimer);
+        generateButton.classList.remove('blinking');
+
+        console.log('Chosen: ' + this.value);
+
+                // 让按钮开始闪烁
+        generateButton.classList.add('blinking');
+        blinkInterval = setInterval(() => {
+            generateButton.classList.toggle('blinking');
+        }, 1000);
+
+                // 设置定时器，如果用户在 5 秒内没有点击按钮，切换回之前的选择
+        revertTimer = setTimeout(() => {
+            previousCheckedRadio.checked = true;
+            generateButton.classList.remove('blinking');
+            clearInterval(blinkInterval);
+        }, 5000);
+    });
+});
+
+
+const cards = document.querySelectorAll('.card');
+
+const powerUpButton = document.querySelector('.power-up-button');
+
+const MAX_POWER = 6; // 最大幂次
+let power = 1;
+
+        // 更新标题和 data-type
+function updatePowerFunction() {
+    const powerFunctionTitle = document.querySelector('.power-function-title');
+    if (power <= MAX_POWER) {
+     const card = document.getElementById('power-card');
+     power++;
+     powerFunctionTitle.innerHTML = `幂 \\(ax^${power}\\)`;
+     card.dataset.type = `power-${power}`;
+     showMessage(`已升幂到 ${power} 次幂`);
+     MathJax.typesetPromise([powerFunctionTitle]);
+ }
+ if (power === MAX_POWER) {
+    showMessage('已达到最大幂次');
+    power=0;
+}
+}
+        // 显示提示信息
+function showMessage(message) {
+    const powerUpMessage = document.querySelector('.power-up-message');
+    powerUpMessage.textContent = message;
+    powerUpMessage.style.opacity = 1;
+    setTimeout(() => {
+        powerUpMessage.style.opacity = 0;
+    }, 2000);
+}
+powerUpButton.addEventListener('click', () => {
+    // if (power < MAX_POWER) {
+        updatePowerFunction();
+    // }
+});
+
+
+        // 初始化时根据下拉框选中项设置卡片选中状态
+const initialSelectedValue = functionSelect.value;
+cards.forEach(card => {
+    if (card.dataset.type === initialSelectedValue) {
+        card.classList.add('selected');
+    }
+});
+
+
+
+        // 监听下拉框的变化
+functionSelect.addEventListener('change', () => {
+    const selectedValue = functionSelect.value;
+            // 移除所有卡片的选中状态
+    cards.forEach(card => {
+        card.classList.remove('selected');
+        if (card.dataset.type === selectedValue) {
+            card.classList.add('selected');
+        }
+    });
+});
+
+        // 监听卡片的点击事件
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+                // 移除所有卡片的选中状态
+        cards.forEach(c => c.classList.remove('selected'));
+                // 为当前点击的卡片添加选中状态
+        card.classList.add('selected');
+                // 更新下拉框的选中项
+        const selectedType = card.dataset.type;
+
+         let optionExists = false;
+                const options = functionSelect.options;
+                for (let i = 0; i < options.length; i++) {
+                    if (options[i].value === selectedType) {
+                        optionExists = true;
+                        break;
+                    }
+                }
+
+                // 如果不存在，则添加新的 option
+                if (!optionExists) {
+                    const newOption = document.createElement('option');
+                    newOption.value = selectedType;
+                    newOption.text = selectedType; // 这里简单设置文本为 value，可根据需求修改
+                    functionSelect.appendChild(newOption);
+                }
+
+
+        functionSelect.value = selectedType;
+    });
+    card.addEventListener('dblclick',() =>{
+        cards.forEach(c => c.classList.remove('selected'));
+                // 为当前点击的卡片添加选中状态
+        card.classList.add('selected');
+                // 更新下拉框的选中项
+        const selectedType = card.dataset.type;
+        functionSelect.value = selectedType;
+        addFunL();
+    })
+});
+
+
+        // 按钮点击事件
 generateButton.addEventListener('click', () => {
+            // 清除定时器和闪烁效果
+    clearInterval(blinkInterval);
+    clearTimeout(revertTimer);
+    generateButton.classList.remove('blinking');
+
+            // 获取当前选中的难度级别
+    const difficultyLevel = document.querySelector('input[type="radio"]:checked');
+            // 这里假设 generateRandomFunction、ctx、canvas 等已经定义
     generatedFunction = generateRandomFunction(difficultyLevel.value);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawAxesAndGrid();
     plotFunction(generatedFunction, 'blue');
     startTimer();
     console.log('新函数已生成！');
-});
 
+            // 更新之前选中的单选按钮
+    previousCheckedRadio = document.querySelector('input[type="radio"]:checked');
+});
 plotButton.addEventListener('click', updatePlotAndError);
 
 submitButton.addEventListener('click', saveState);
@@ -594,8 +811,34 @@ cancelBt.addEventListener("click", () => {
     updateButtonStates();
 });
 
+
+        const sliderA = document.getElementById('sliderA');
+        const sliderB = document.getElementById('sliderB');
+        const sliderC = document.getElementById('sliderC');
+
+        parameterA.addEventListener('input', function () {
+            sliderA.value = this.value;
+        });
+        parameterB.addEventListener('input', function () {
+            sliderB.value = this.value;
+        });
+        parameterC.addEventListener('input', function () {
+            sliderC.value = this.value;
+        });
+
+        sliderA.addEventListener('input', function () {
+            parameterA.value = this.value;
+        });
+        sliderB.addEventListener('input', function () {
+            parameterB.value = this.value;
+        });
+        sliderC.addEventListener('input', function () {
+            parameterC.value = this.value;
+        });
+
 // 实时更新绘图和误差，当参数输入变化时
-[functionSelect, parameterA, parameterB, parameterC].forEach(input => {
+[functionSelect, parameterA, parameterB, parameterC,sliderA,sliderB,sliderC].forEach(input => {
+    console.log("有变化")
     input.addEventListener('input', () => {
         if (editingIndex !== null) {
             const type = functionSelect.value;
@@ -610,9 +853,9 @@ cancelBt.addEventListener("click", () => {
                 c,
                 latex: createLatex(type, a, b, c)
             };
-
-            renderLatex();
+            
             updatePlotAndError();
+            renderLatex();
         }
     });
 });
@@ -641,18 +884,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const convertToLatex = (input) => {
         return input
            .replace(/\*/g, "\\times")
-           .replace(/\//g, "\\div")
-           .replace(/\^/g, "^?")
-           .replace(/sq\((?![^\)]*\))/g, "\\sqrt{?}")
-           .replace(/sq\(([^)]+)\)/g, "\\sqrt{$1}")
-           .replace(/ln\((?![^\)]*\))/g, "\\ln{?}")
-           .replace(/ln\(([^)]+)\)/g, "\\ln{$1}")
-           .replace(/sin\((?![^\)]*\))/g, "\\sin{?}")
-           .replace(/sin\(([^)]+)\)/g, "\\sin{\\left($1\\right)}")
-           .replace(/cos\((?![^\)]*\))/g, "\\cos{?}")
-           .replace(/cos\(([^)]+)\)/g, "\\cos{\\left($1\\right)}")
-           .replace(/tan\((?![^\)]*\))/g, "\\tan{?}")
-           .replace(/tan\(([^)]+)\)/g, "\\tan{\\left($1\\right)}");
+        .replace(/\//g, "\\div")
+        .replace(/\^/g, "^?")
+        .replace(/sq\((?![^\)]*\))/g, "\\sqrt{?}")
+        .replace(/sq\(([^)]+)\)/g, "\\sqrt{$1}")
+        .replace(/ln\((?![^\)]*\))/g, "\\ln{?}")
+        .replace(/ln\(([^)]+)\)/g, "\\ln{$1}")
+        .replace(/sin\((?![^\)]*\))/g, "\\sin{?}")
+        .replace(/sin\(([^)]+)\)/g, "\\sin{\\left($1\\right)}")
+        .replace(/cos\((?![^\)]*\))/g, "\\cos{?}")
+        .replace(/cos\(([^)]+)\)/g, "\\cos{\\left($1\\right)}")
+        .replace(/tan\((?![^\)]*\))/g, "\\tan{?}")
+        .replace(/tan\(([^)]+)\)/g, "\\tan{\\left($1\\right)}");
     };
 
     expressionInput.addEventListener("input", () => {
@@ -668,11 +911,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // 初始化函数，在页面加载完成后执行一些操作
 function init() {
     const elementToRemove = document.getElementById('canvasLoading');
-            if (elementToRemove) {
+    if (elementToRemove) {
                 // 直接调用 remove() 方法删除元素
-                elementToRemove.remove();
-            }
-     function exampleFunction(x) {
+        elementToRemove.remove();
+    }
+    function exampleFunction(x) {
         return Math.sin(x) + Math.cos(2 * x);
     }
 // 绘制曲线

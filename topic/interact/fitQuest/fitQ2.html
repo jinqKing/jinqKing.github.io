@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,63 +10,124 @@
 </head>
 <body>
     <header>
-        <h1>拟合上没 <img src="./fitfavicon.png" width=25px> Fit Quest</h1>
+        <h1>拟合上没<img src="./fitfavicon.png" width=25px> Fit Quest</h1>        
     </header>
-    <main>
+    <main>         
+        <div class="center-div">
+            <div class="selection-container">
+                <input type="radio" id="beginner" name="level" value="beginner" checked>
+                <label for="beginner">入门</label>
+                <input type="radio" id="intermediate" name="level" value="intermediate">
+                <label for="intermediate">进阶</label>
+                <input type="radio" id="difficult" name="level" value="advanced">
+                <label for="difficult">困难</label>
+            </div>
+            <button id="generateButton">换一个 Generate New Function</button>
+        </div>
         <div class="output-group">
             <p id="timeCountOutput">计时 Time</p>
             <p id="errorOutput">误差 Error</p>
-        </div>
-        <div class="center-div">
-            <!-- <span>模式 Level: </span> -->
-            <select id="difficultySelect">
-                <option value="beginner">入门 beginner</option>
-                <option value="intermediate">进阶 intermediate</option>
-                <option value="advanced">困难 advanced</option>
-            </select>
-            <button id="generateButton">换一个 Generate New Function</button>
         </div>
         <div class="canvas-container">
             <div id=canvasLoading>画板制作中 Loading……</div>
             <canvas id="curveCanvas"></canvas>
         </div>
-        
+
         <div id="basicPanel" class="panel">
             <div>
                 <p class="hint-p">单击选中编辑；双击删除函数</p>
             </div>
             <div id="latexPreDiv"></div>
-            <div class="control-group">
-                <span>函数 Fun:</span>
-                <select id="functionSelect">
-                    <option value="linear">Linear ax + b</option>
-                    <option value="quadratic">Quadratic ax^2 + bx + c</option>
-                    <option value="sin">Sine a*sin(bx) + c</option>
-                </select>
-                <button id="addFunction">添加 Add</button>
-                <button id="cancelBt">取消 Cancel </button>
-                <button id="clearBt">清空 Clear</button>
-                
+            <div>
+                <p class="hint-p">单击选中编辑；双击直接添加</p>
             </div>
-            <div class="control-group">
-                <label for="parameterA">Parameter a:</label>
-                <input type="number" id="parameterA" value="1" step="0.1">
+            <div class="card-container">
+
+                <div class="card"  id="power-card" data-type="linear">
+                    <div class="card-image">
+                        幂函数图像
+                    </div>
+                    <div class="card-content">
+                        <h3 class="power-function-title">幂 \(ax + b\)</h3>
+                        <p class="power-up-message"></p>
+                        <button class="power-up-button">升幂</button>
+                    </div>
+                </div>
+                <div class="card" data-type="exp">
+                    <div class="card-image">
+                        指数函数图像
+                    </div>
+                    <div class="card-content">
+                        <h3>指数\(ae^{bx+c}\)</h3>
+                    </div>
+                </div>        
+                <div class="card" data-type="log">
+                    <div class="card-image">
+                        对数函数图像
+                    </div>
+                    <div class="card-content">
+                        <h3>对数\(a\log_{b}(x+c)\)</h3>
+                    </div>
+                </div>
+                <div class="card" data-type="sin">
+                    <div class="card-image">
+                        三角函数图像
+                    </div>
+                    <div class="card-content">
+                        <h3>三角 \( a\sin(bx + c)\)</h3>
+                    </div>
+                </div>
+                <div class="card" data-type="C">
+                    <div class="card-content">
+                        <h3>常数</h3><h3>\(+C\)</h3>
+                    </div>
+                </div>
             </div>
-            <div class="control-group">
-                <label for="parameterB">Parameter b:</label>
-                <input type="number" id="parameterB" value="1" step="0.1">
+            <div class="dashed-border">
+                <div class="control-group">
+                    <span>函数 Fun:</span>
+                    <select id="functionSelect">
+                        <option value="linear">Linear ax + b</option>
+                        <option value="quadratic">Quadratic ax^2 + bx + c</option>
+                        <option value="sin">Sine a*sin(bx) + c</option>
+                        <option value="log">Log a*log_b(x+c)</option>
+                        <option value="exp">Exp ae^(bx+c)</option>
+                        <option value="C">Constant</option>
+                    </select>
+                    <button id="addFunction">添加 Add</button>
+                    <button id="cancelBt">取消 Cancel </button>
+                    <button id="clearBt">清空 Clear</button>
+                </div>
+
+                <div class="ircontrol-groups">
+                    <div class="ircontrol-group">
+                        <div class="input-container">
+                            <label for="parameterA">Parameter a:</label>
+                            <input type="number" id="parameterA" value="1" step="0.1" min="-10" max="10">
+                        </div>
+                        <input type="range" id="sliderA" value="1" step="0.1" min="-10" max="10">
+                    </div>
+                    <div class="ircontrol-group">
+                        <div class="input-container">
+                            <label for="parameterB">Parameter b:</label>
+                            <input type="number" id="parameterB" value="1" step="0.1" min="-10" max="10">
+                        </div>
+                        <input type="range" id="sliderB" value="1" step="0.1" min="-10" max="10">
+                    </div>
+                    <div class="ircontrol-group">
+                        <div class="input-container">
+                            <label for="parameterC">Parameter c:</label>
+                            <input type="number" id="parameterC" value="0" step="0.1" min="-10" max="10">
+                        </div>
+                        <input type="range" id="sliderC" value="0" step="0.1" min="-10" max="10">
+                    </div>
+                </div>
             </div>
-            <div class="control-group">
-                <label for="parameterC">Parameter c:</label>
-                <input type="number" id="parameterC" value="0" step="0.1">
+            <div class="button-group">
+                <button id="plotButton">更新 Plot</button>
+                <button id="submitButton">记录 Save</button>
             </div>
         </div>
-
-        <div class="button-group">
-            <button id="plotButton">更新 Plot</button>
-            <button id="submitButton">记录 Save</button>
-        </div>
-
         <div class="saved-fit-results">
         </div>
 
@@ -91,7 +152,7 @@
                 <button class="insert-btn" data-insert="^">^</button>
             </div>
         </div>
-        
+
     </main>
 
     <footer>
