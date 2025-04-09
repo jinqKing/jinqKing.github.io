@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2025-04-07 Mon 23:28 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>固体物理整理*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2025-04-07 Mon 20:23 | 凝墨 Modified: 2025-04-07 Mon 23:27 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">固体物理整理*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org6295419">晶体</a>
+<ul>
+<li><a href="#org48d6561">习题</a></li>
+</ul>
+</li>
+<li><a href="#orgf68570d">晶体结合方式</a></li>
+<li><a href="#org3668260"></a></li>
+</ul>
+</div>
+</div>
+<div class="org-center">
+<p>
+适合 IAS 宝宝的简单讲义，适合懂了一些后回顾补全
+</p>
+</div>
+<p>
+<i>尝试在期中之前完成考试内容整理</i>
+</p>
+<div class="abstract" id="org0e5391f">
+<p>
+课叫固体物理，其实改名晶体与电子的共舞完全可行 ;)（<span class="timestamp-wrapper"><span class="timestamp">&lt;2025-04-07 Mon 20:31&gt;</span></span>）。物理研究要对固体建模，首先基于前人经验，我们采用一个方便的网格来组成物质的骨架，符合这种模型的物质就分类为<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>——
+</p>
+
+</div>
+<div id="outline-container-org6295419" class="outline-2">
+<h2 id="org6295419">晶体</h2>
+<div class="outline-text-2" id="text-org6295419">
+<p>
+晶体具有周期性，可以用 <b>基元</b> 放到 <b>格点</b> (lattice site) 的网络上表达<sup><a id="fnr.2" class="footref" href="#fn.2" role="doc-backlink">2</a></sup>，所有格点就是 <b>布拉伐格子</b> 。格点要保持间隙，使用坐标系会方便，故在空间中使用 <b>基矢</b> 表达方向<sup><a id="fnr.3" class="footref" href="#fn.3" role="doc-backlink">3</a></sup>。
+</p>
+<blockquote>
+<p>
+Bravais 格⼦的两个等价定义：<br />
+第⼀个定义：等价的⼏何点集合(可以⽤来判断⼀个图形是否是 Bravais 格⼦)
+第⼆个定义：由⽮量 𝑹𝑛 = 𝑛1 𝒂1 + 𝑛2 𝒂2 + 𝑛3 𝒂3 代表的所有点的集合，其中 𝑛1,𝑛2, 𝑛3 为整数
+</p>
+</blockquote>
+
+
+<div id="orgd32bcb5" class="figure">
+<p><img src="固体物理整理/20250407214302.png" alt="20250407214302.png" width="200px" />
+</p>
+<p><span class="figure-number">Figure 1: </span>绿、蓝是晶胞：每个 cell ⾥有两个格点；红⾊是原胞：最⼩的重复单元；蓝为惯⽤晶胞：具格⼦最⾼对称性晶胞</p>
+</div>
+
+<p>
+同时重复性意味着可以找出最小单元，称之为 <b>原胞</b> primitive cell，最小体现在 <span class="underline">只包含一个格点</span> <sup><a id="fnr.4" class="footref" href="#fn.4" role="doc-backlink">4</a></sup>。<br />
+（若要体现对称性，晶/单胞 unit cell 模型<sup><a id="fnr.5" class="footref" href="#fn.5" role="doc-backlink">5</a></sup>）<br />
+原胞有各种选择（但是包围的⾯积/体积都相同），
+一般常见使用WS原胞<sup><a id="fnr.6" class="footref" href="#fn.6" role="doc-backlink">6</a></sup>，它的线\面取在两个格点的中垂面。
+</p>
+
+
+<div id="org61b047b" class="figure">
+<p><img src="固体物理整理/20250407214226.png" alt="20250407214226.png" width="100px" />
+</p>
+</div>
+
+<p>
+有格点就能连线成面，平行直线称为 <i>晶列</i> ，它定义⼀个⽅向，称作晶向，参数称之为
+<b>晶向指数</b>:
+同样格点可以看作在平行等距的不同 <i>晶面</i> 上排列，描述晶面数学上使用法向量，参数称之为
+<b>晶面指数（密勒指数）</b> ：取晶轴长度倒数。<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>
+</p>
+
+<div class="exercise" id="org220ccb4">
+<p>
+相邻晶⾯间的间距： \(d^2=\frac{a^2}{h^2+k^2+l^2}\)
+</p>
+
+</div>
+
+<p>
+简单晶体结构：
+</p>
+<ul class="org-ul">
+<li>简立方 Simple Cube
+Po, CsCl</li>
+<li>面心立方 Face Center Cube
+NaCl(就是每个格点间隔放原子，但最小的8原子无法组成晶体（此时只有0.5Na0.5Cl）于是需要8个小立方组成大立方，故而原来顶点变成面心位置，相当于在大立方面心放不同大立方顶点不同的原子)</li>
+<li>体心立方 Body Center Cube</li>
+<li>六角格⼦
+⽯墨烯</li>
+</ul>
+
+<hr />
+
+<p>
+倒格子
+基矢
+倒格子中的原胞定义为 <b>第一布里渊区</b>
+</p>
+
+<p>
+晶体衍射
+布拉格方程
+Laue
+</p>
+
+<p>
+堆积
+</p>
+
+<p>
+晶体结构之上是维系构成的结合——
+</p>
+</div>
+<div id="outline-container-org48d6561" class="outline-3">
+<h3 id="org48d6561">习题</h3>
+<div class="outline-text-3" id="text-org48d6561">
+</div>
+<div id="outline-container-org0393ddd" class="outline-4">
+<h4 id="org0393ddd">为什么Po和CsCl都是简⽴⽅晶体？</h4>
+<div class="outline-text-4" id="text-org0393ddd">
+<p>
+Po 是代表性简立方晶体； CsCl 因为两者不等价
+</p>
+
+<p>
+<img src="固体物理整理/20250407212335.png" alt="20250407212335.png" />
+Cs+ 和 Cl− 不等价， 不能都抽象为格点，把抽象的格点取在 Cs+ 位置，得到和Po⼀
+样的简⽴⽅。
+</p>
+</div>
+</div>
+<div id="outline-container-org4a138c8" class="outline-4">
+<h4 id="org4a138c8">我们目前接触到了四种 Bravais 格⼦（简⽴⽅，体⼼⽴⽅，⾯⼼⽴⽅，以及六角</h4>
+<div class="outline-text-4" id="text-org4a138c8">
+<p>
+密堆），总共有多少种不同类型的三维 Bravais 格⼦︖
+14种
+</p>
+
+<ol class="org-ol">
+<li>六⽅格⼦为何需要四指标表⽰？试举例说明。</li>
+</ol>
+<p>
+六⽅晶系采⽤四指标表⽰（Miller-Bravais指数），即（uvsw）表⽰，主要是为了⽅便描述六⽅对称性。六⽅晶系的对称性决定了其晶⾯族的等价性较为复杂，三指标表⽰法（hkl）有时难以体现这种对称性。例如：
+</p>
+
+<hr />
+
+<p>
+写晶胞的基矢
+PPT
+</p>
+
+<p>
+1.如何通过对称性简化介电常数张量的计算︖
+以⽴⽅晶体为例⼦， ⾸先，确定晶体点群：明确材料所属的晶体学点群，不同点群
+对应不同的对称操作︔ 列出对称操作对应的变换矩阵：每个对称操作对应⼀个坐标
+变换矩阵 A，例如旋转轴︔ 应⽤对称操作约束条件：介电常数张量 ϵ 需满⾜对称操
+作下的不变性，即： 𝜖 = 𝜖′ = 𝐴𝜖𝐴−1︔推导独⽴分量： 若存在对称轴或镜⾯，非对
+角分量可能为零。旋转对称性可能导致某些对角分量相等（如⽴⽅晶系 ϵ11=ϵ22=ϵ33
+）。具体数学过程见上节课件P16-17。
+</p>
+<ol class="org-ol">
+<li>按照对称性，三维晶体可以分成哪⼏类︖</li>
+</ol>
+<p>
+6 种晶族（Crystal Families）︔7 种晶系（Crystal Systems）︔32 种（⼏何）晶类
+（Geometric Crystal Classes）︔7 种格⼦系（Lattice Systems） ︔14 种 Bravais 格⼦
+类（Bravais Classes/Flocks）︔73 种（代数）晶类（Arithmetic Crystal Classes）︔
+230 种空间群
+</p>
+
+<ol class="org-ol">
+<li>在晶体学中，为什么没有5重旋转轴 ︖数学上如何解释︖</li>
+</ol>
+<p>
+晶体的原⼦排列具有平移对称性，⽽平移对称性和旋转对称性必须兼容。根据晶体
+学中的点群和空间群理论，晶体只能有1、2、3、4、6次旋转轴，⽽没有5次或更⾼
+次的轴。这是因为五重对称无法与三维空间的周期性排列相容，导致无法无间隙地
+铺满空间。数学证明参考上节课件P28-29
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf68570d" class="outline-2">
+<h2 id="orgf68570d">晶体结合方式</h2>
+<div class="outline-text-2" id="text-orgf68570d">
+<p>
+常见结合
+（高中化学）
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">晶体类型</th>
+<th scope="col" class="org-left">力</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">共价</td>
+<td class="org-left">共享电子对的化学键</td>
+</tr>
+
+<tr>
+<td class="org-left">离子</td>
+<td class="org-left">正负离子键库伦作用</td>
+</tr>
+
+<tr>
+<td class="org-left">金属</td>
+<td class="org-left">自由电子与（金属）阳离子库伦作用</td>
+</tr>
+
+<tr>
+<td class="org-left">分子</td>
+<td class="org-left">分子力</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+书写势能
+Lennard-Jones
+</p>
+
+
+<p>
+前文只是画了图像上的内容，并没利用深入，具体实验上的物理量比如热容何以从晶体结构中决定，数学模型带着新名词声子波动而来。
+</p>
+
+<p>
+更仔细的讲，以上晶体结构无法给出更多信息，需要考虑格点上基元本身来计算物质的差异。这里所说的就是晶格振动，并由此抽象的声子。
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3668260" class="outline-2">
+<h2 id="org3668260"></h2>
+<div class="outline-text-2" id="text-org3668260">
+<p>
+1.如何通过对称性简化介电常数张量的计算︖
+以⽴⽅晶体为例⼦， ⾸先，确定晶体点群：明确材料所属的晶体学点群，不同点群
+对应不同的对称操作︔ 列出对称操作对应的变换矩阵：每个对称操作对应⼀个坐标
+变换矩阵 A，例如旋转轴︔ 应⽤对称操作约束条件：介电常数张量 ϵ 需满⾜对称操
+作下的不变性，即： 𝜖 = 𝜖′ = 𝐴𝜖𝐴−1︔推导独⽴分量： 若存在对称轴或镜⾯，非对
+角分量可能为零。旋转对称性可能导致某些对角分量相等（如⽴⽅晶系 ϵ11=ϵ22=ϵ33
+）。具体数学过程见上节课件P16-17。
+</p>
+<ol class="org-ol">
+<li>按照对称性，三维晶体可以分成哪⼏类︖</li>
+</ol>
+<p>
+6 种晶族（Crystal Families）︔7 种晶系（Crystal Systems）︔32 种（⼏何）晶类
+（Geometric Crystal Classes）︔7 种格⼦系（Lattice Systems） ︔14 种 Bravais 格⼦
+类（Bravais Classes/Flocks）︔73 种（代数）晶类（Arithmetic Crystal Classes）︔
+230 种空间群
+</p>
+
+<ol class="org-ol">
+<li>在晶体学中，为什么没有5重旋转轴 ︖数学上如何解释︖</li>
+</ol>
+<p>
+晶体的原⼦排列具有平移对称性，⽽平移对称性和旋转对称性必须兼容。根据晶体
+学中的点群和空间群理论，晶体只能有1、2、3、4、6次旋转轴，⽽没有5次或更⾼
+次的轴。这是因为五重对称无法与三维空间的周期性排列相容，导致无法无间隙地
+铺满空间。数学证明参考上节课件P28-29
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+什么时候分类为晶体应该是初中知识（固定熔点），它们的特性和原因有机会说（这是不采用历史叙事的无奈选择）
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2" role="doc-backlink">2</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+晶体结构 = 点阵 * 基元（点阵和基元的卷积） 1-1:17
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3" role="doc-backlink">3</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+晶胞由平⾏六⾯体的三个边确定，这是三个不共⾯（线性无关）的⽮量 \(\vec{a},\vec{b},\vec{c}\)。这三个⽮量称为基⽮（lattice basis）晶胞有多种选择，一般使用 <b>惯用晶胞</b> ，此时基矢就此固定
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4" role="doc-backlink">4</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+并不限制形状必须为平⾏六⾯体，而晶体学（Crystallography）⾥ <span class="underline">晶胞</span> unit cell 特指形状为平⾏六⾯体（四边形）的 cell，可含有多个格点／基元 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5" role="doc-backlink">5</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+来自中文黄昆，课堂上可以把晶胞 cell 理解为比原胞更宽泛的概念
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6" role="doc-backlink">6</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+在晶体学⾥采⽤惯⽤晶胞， 物理计算多采⽤ Wigner-Seitz 原胞 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7" role="doc-backlink">7</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+Miller 指数代表晶⾯法线⽅向，可以证明 Miller 指数之比＝ 晶⾯法线⽅向和三个
+坐标轴夹角的⽅向余弦之比
+• 简单⽴⽅晶格中，⼀个晶⾯的密勒指数和晶⾯法线的晶向指数完全相同。
+• 后⾯我们会看到，⼀般格⼦⾥晶⾯法向平⾏于 ℎ𝒃1 + 𝑘𝒃2 + 𝑙𝒃3， 其中 𝒃1,2,3 为倒格
+⽮基⽮。 
+</p></div></div>
+
+
+</div>
+</div></main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>

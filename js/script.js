@@ -86,9 +86,16 @@ function updateCountdown() {
         countdownElement.textContent = "倒计时结束";
     }
 }
-// 每秒更新一次倒计时
-const countdownInterval = setInterval(updateCountdown, 1000);
+const examCountdownElements = document.querySelectorAll('.ExamCountdown');
 
+// 判断是否存在该类元素，并获取数量
+if (examCountdownElements.length > 0) {
+    // 每秒更新一次倒计时
+    const countdownInterval = setInterval(updateCountdown, 1000);
+}
+// else {
+    // console.log('不存在 class 为 ExamCountdown 的元素');
+// }
 
 const copyLabel = "<i class='bx bx-copy-alt' ></i>";
 
@@ -125,11 +132,45 @@ function addCopyCodeButtons() {
 }
 
 
+function foonotePreview(){
+    const footnotes = document.querySelectorAll('.footref');
+    footnotes.forEach(footnote => {
+        const footnoteId = footnote.getAttribute('href').substring(1); // 获取脚注ID
+	console.log(footnoteId);
+        const footnoteContent = document.getElementById(footnoteId).parentNode.nextSibling.nextSibling.textContent;
+
+        // 创建预览元素
+        const preview = document.createElement('div');
+        preview.className = 'footnote-preview';
+        preview.innerText = footnoteContent;
+
+        // 将预览元素插入到脚注链接后面
+        footnote.insertAdjacentElement('afterend', preview);
+
+         // 设置预览元素的位置
+        const rect = footnote.getBoundingClientRect();
+        preview.style.top = `${rect.bottom + window.scrollY}px`;
+        preview.style.left = `${rect.left + window.scrollX}px`;
+
+        // 鼠标悬停时显示预览
+        footnote.addEventListener('mouseenter', () => {
+            footnote.classList.add('footref-preview-active');
+        });
+
+        // 鼠标离开时隐藏预览
+        footnote.addEventListener('mouseleave', () => {
+            footnote.classList.remove('footref-preview-active');
+        });
+    });
+}
+
+
 document.addEventListener("DOMContentLoaded", function() {
     
     tocBasicDisplay();
     collapsePreAddHead();
-    addCopyCodeButtons()
+    addCopyCodeButtons();
+    foonotePreview();
     
 });
 
