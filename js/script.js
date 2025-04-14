@@ -138,25 +138,20 @@ function foonotePreview(){
         const footnoteId = footnote.getAttribute('href').substring(1); // 获取脚注ID
 	console.log(footnoteId);
         const footnoteContent = document.getElementById(footnoteId).parentNode.nextSibling.nextSibling.textContent;
-
         // 创建预览元素
         const preview = document.createElement('div');
         preview.className = 'footnote-preview';
         preview.innerText = footnoteContent;
-
         // 将预览元素插入到脚注链接后面
         footnote.insertAdjacentElement('afterend', preview);
-
          // 设置预览元素的位置
         const rect = footnote.getBoundingClientRect();
         preview.style.top = `${rect.bottom + window.scrollY}px`;
         preview.style.left = `${rect.left + window.scrollX}px`;
-
         // 鼠标悬停时显示预览
         footnote.addEventListener('mouseenter', () => {
             footnote.classList.add('footref-preview-active');
         });
-
         // 鼠标离开时隐藏预览
         footnote.addEventListener('mouseleave', () => {
             footnote.classList.remove('footref-preview-active');
@@ -164,6 +159,107 @@ function foonotePreview(){
     });
 }
 
+function tableExpand(){
+  document.querySelectorAll("table").forEach((table) => {
+    table.querySelectorAll("tr").forEach((row) => {
+      row.addEventListener("click", function () {
+        // 如果已经被隐藏，说明已经展开，直接返回
+        if (row.style.display === "none") return;
+        const cellCount = row.children.length;
+        // 隐藏原始行（不删除）
+        row.style.display = "none";
+        // 构造展开块 tr
+        const blockRow = document.createElement("tr");
+        const blockCell = document.createElement("td");
+        blockCell.colSpan = cellCount;
+        const blockDiv = document.createElement("div");
+        blockDiv.style.display = "flex";
+        blockDiv.style.flexDirection = "column";
+        blockDiv.style.border = "1px solid #ccc";
+        blockDiv.style.padding = "10px";
+        blockDiv.style.background = "#f9f9f9";
+        blockDiv.style.position = "relative";
+        // 添加收起按钮
+        const closeBtn = document.createElement("button");
+        closeBtn.innerText = "收起";
+        closeBtn.style.position = "absolute";
+        closeBtn.style.top = "5px";
+        closeBtn.style.right = "10px";
+        closeBtn.style.padding = "2px 6px";
+        closeBtn.style.fontSize = "12px";
+        closeBtn.style.cursor = "pointer";
+        closeBtn.style.border = "1px solid #888";
+        closeBtn.style.borderRadius = "4px";
+        closeBtn.style.background = "#eee";
+        blockDiv.appendChild(closeBtn);
+        // 拷贝每个单元格内容为段落
+        Array.from(row.children).forEach((cell) => {
+          const p = document.createElement("p");
+          p.style.margin = "0.5em 0";
+          const cellContent = cell.cloneNode(true); // 深拷贝
+          p.appendChild(cellContent);
+          blockDiv.appendChild(p);
+        });
+        // 插入
+        blockCell.appendChild(blockDiv);
+        blockRow.appendChild(blockCell);
+        row.parentNode.insertBefore(blockRow, row.nextSibling);
+        // 收起按钮行为
+        closeBtn.addEventListener("click", function (e) {
+          e.stopPropagation(); // 阻止再次触发展开
+          // 显示原始行
+          row.style.display = "";
+          // 移除展开块
+          blockRow.remove();
+        });
+      });
+    });
+  });
+}
+
+function imgDisplay(){
+// 创建模态框元素
+    const modal = document.createElement('div');
+    modal.id = 'myModal';
+    modal.className = 'modal';
+    // 创建关闭按钮元素
+    const closeBtn = document.createElement('span');
+    closeBtn.className = 'close';
+    closeBtn.textContent = '×';
+    modal.appendChild(closeBtn);
+    // 创建模态框内的图片元素
+    const modalImg = document.createElement('img');
+    modalImg.className = 'modal-content';
+    modalImg.id = 'img01';
+    modal.appendChild(modalImg);
+    // 将模态框添加到页面中
+    document.body.appendChild(modal);
+    // 获取页面上所有的 img 元素
+    const images = document.querySelectorAll('img');
+    // 为每个 img 元素添加点击事件监听器
+    images.forEach((img) => {
+      img.addEventListener('click', function () {
+        modal.style.display = 'block';
+        modalImg.src = this.src;
+      });
+    });
+    // 为关闭按钮添加点击事件监听器
+    closeBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+    // 点击模态框外部关闭模态框
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+    // 监听键盘事件，按 Esc 键关闭模态框
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modal.style.display === 'block') {
+        modal.style.display = 'none';
+      }
+    });
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     
@@ -171,6 +267,8 @@ document.addEventListener("DOMContentLoaded", function() {
     collapsePreAddHead();
     addCopyCodeButtons();
     foonotePreview();
-    
+    tableExpand();
+    imgDisplay();
+
 });
 
