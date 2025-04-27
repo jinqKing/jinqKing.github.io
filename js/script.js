@@ -2,6 +2,7 @@
 var scriptsToLoad = [
     // 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
     // 你可以在这里添加更多的脚本URL
+    // '/scripts/fold.js'
 ];
 
 // 定义一个函数来动态加载这些脚本
@@ -87,7 +88,6 @@ function updateCountdown() {
     }
 }
 const examCountdownElements = document.querySelectorAll('.ExamCountdown');
-
 // 判断是否存在该类元素，并获取数量
 if (examCountdownElements.length > 0) {
     // 每秒更新一次倒计时
@@ -131,12 +131,11 @@ function addCopyCodeButtons() {
   });
 }
 
-
 function foonotePreview(){
     const footnotes = document.querySelectorAll('.footref');
     footnotes.forEach(footnote => {
         const footnoteId = footnote.getAttribute('href').substring(1); // 获取脚注ID
-	console.log(footnoteId);
+	// console.log(footnoteId);
         const footnoteContent = document.getElementById(footnoteId).parentNode.nextSibling.nextSibling.textContent;
         // 创建预览元素
         const preview = document.createElement('div');

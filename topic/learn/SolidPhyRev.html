@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
 <head>
-<!-- 2025-04-14 Mon 09:48 -->
+<!-- 2025-04-27 Sun 15:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>固体物理整理*</title>
@@ -55,7 +55,7 @@
 </head>
 <body>
 <header id="preamble" class="status">
-<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2025-04-07 Mon 20:23 | 凝墨 Modified: 2025-04-14 Mon 09:37 </p>
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2025-04-07 Mon 20:23 | 凝墨 Modified: 2025-04-27 Sun 15:14 </p>
 </header>
 <main id="content" class="content">
 <h1 class="title">固体物理整理*</h1>
@@ -66,23 +66,66 @@
 <li><a href="#orgb6913e1">1. 晶体结构</a>
 <ul>
 <li><a href="#orgf487530">1.1. 简单晶体结构</a></li>
-<li><a href="#orgcb58368">1.2. 倒格子</a></li>
-<li><a href="#org67f2d4f">1.3. 晶体衍射条件</a></li>
+<li><a href="#orgcb58368">1.2. 倒格子</a>
+<ul>
+<li><a href="#orga5bd150">基矢变换公式</a></li>
+<li><a href="#org28bfc99">Harrison 判定法</a></li>
+<li><a href="#orgadf0e02">倒格矢和 Miller 指数之间的关系</a></li>
+</ul>
+</li>
+<li><a href="#org67f2d4f">1.3. 晶体衍射条件</a>
+<ul>
+<li><a href="#org68b690f">Bragg布拉格方程</a></li>
+<li><a href="#org3b7a31c">Laue劳厄关系</a></li>
+</ul>
+</li>
 <li><a href="#org1396d61">1.4. 电子中子探测</a></li>
-<li><a href="#org4a2e5a1">1.5. 习题</a></li>
+<li><a href="#org1909223">1.5. 习题</a>
+<ul>
+<li><a href="#org45d83bb">1-1</a></li>
+<li><a href="#orgdfaf6af">1-2</a></li>
+<li><a href="#orge266178">1-3</a></li>
+<li><a href="#orge514547">1-4</a></li>
+<li><a href="#org8ea6889">作业</a></li>
+<li><a href="#org69fa737">中文书练习</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#org8c8d945">2. 晶体结合方式</a>
 <ul>
-<li><a href="#org3600b61">2.1. 习题</a></li>
+<li><a href="#org73203d0">2.1. 分子晶体：Lennard-Jones 势</a></li>
+<li><a href="#org05bb0de">2.2. 离子晶体：马德隆常数</a></li>
+<li><a href="#orgfe45406">2.3. 习题</a>
+<ul>
+<li><a href="#org837c760">2-1</a></li>
+<li><a href="#org7a5563e">作业</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#org1ce36e7">3. 晶体中的格波与声子</a>
 <ul>
 <li><a href="#orgb21b78a">3.1. 色散关系结果</a></li>
-<li><a href="#org1fba02f">3.2. 固体热容</a></li>
-<li><a href="#orgae23ae4">3.3. 声子作用和探测</a></li>
-<li><a href="#orgd67840c">3.4. 习题</a></li>
+<li><a href="#orgc28188a">3.2. 简正坐标</a></li>
+<li><a href="#orgb473af2">3.3. 周期性边界条件</a></li>
+<li><a href="#orgc1c1bb3">3.4. 声子态密度函数</a></li>
+<li><a href="#org1fba02f">3.5. 固体热容</a></li>
+<li><a href="#orgd9c51c9">3.6. 声子作用和探测（非简谐）</a></li>
+<li><a href="#org4980fcc">3.7. 习题</a>
+<ul>
+<li><a href="#org855c200">3-1</a></li>
+<li><a href="#orgcf7b7f8">3-2</a></li>
+<li><a href="#orgf937955">3-3</a></li>
+<li><a href="#org80ad4d8">3-4</a></li>
+<li><a href="#org374c35d">作业</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org7b8538d">4. 金属自由电子</a>
+<ul>
+<li><a href="#orgdf285ad">4.1. 薛定谔</a></li>
 </ul>
 </li>
 </ul>
@@ -97,12 +140,21 @@
 </p>
 </div>
 
-<div class="abstract" id="orgfe624cf">
+<pre class="example" id="orgc53e81d">
+资料：
+网课好像都不容易，这里看到一个详尽课件 http://staff.ustc.edu.cn/~gzwang/ 对想了解数学推导有很大帮助。知乎上有一些文章挺生动的 https://zhuanlan.zhihu.com/p/466931505 可以看一遍－文生于。
+
+</pre>
+<hr />
+
+<div class="abstract" id="org0934213">
 <p>
 课叫固体物理，其实改名晶体与电子的共舞完全可行。物理研究要对固体建模，首先基于前人经验，我们采用一个方便的网格来组成物质的骨架，符合这种模型的物质就分类为<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>——
 </p>
 
 </div>
+
+
 <div id="outline-container-orgb6913e1" class="outline-2">
 <h2 id="orgb6913e1"><span class="section-number-2">1.</span> 晶体结构</h2>
 <div class="outline-text-2" id="text-1">
@@ -125,7 +177,7 @@ Bravais 格子两个等价定义：
 </p>
 </div>
 
-<div id="org8ee9ccf" class="figure">
+<div id="org1ce1627" class="figure">
 <p><img src="固体物理整理/20250407214302.png" alt="20250407214302.png" width="200px" />
 </p>
 <p><span class="figure-number">Figure 1: </span>绿、蓝晶胞：cell 有两个格点；红原胞；蓝为惯用晶胞</p>
@@ -139,7 +191,7 @@ Bravais 格子两个等价定义：
 </p>
 
 
-<div id="org67b2e76" class="figure">
+<div id="orgdac6505" class="figure">
 <p><img src="固体物理整理/20250407214226.png" alt="20250407214226.png" width="100px" />
 </p>
 <p><span class="figure-number">Figure 2: </span>WS原胞 红色中垂线</p>
@@ -160,13 +212,13 @@ Bravais 格子两个等价定义：
 <b>晶面指数（密勒指数）</b> ：取晶轴长度倒数。<sup><a id="fnr.7" class="footref" href="#fn.7" role="doc-backlink">7</a></sup>
 </p>
 
-<div id="orgf580d7c" class="figure">
+<div id="org040a18d" class="figure">
 <p><img src="SolidPhyRev/20250409113311.png" alt="20250409113311.png" width="200px" />
 </p>
 <p><span class="figure-number">Figure 3: </span>Miller 指数： (632)</p>
 </div>
 
-<div class="solution" id="org0384943">
+<div class="solution" id="orgfa9e676">
 <p>
 相邻晶面间的间距： \(d^2=\frac{a^2}{h^2+k^2+l^2}\)
 </p>
@@ -187,7 +239,7 @@ NaCl（结构很简单每个格点间隔放原子，但最小的8原子无法组
 </ul>
 
 <hr />
-<div class="collapsible" id="orgb5fca71">
+<div class="collapsible" id="orge79fb56">
 <p>
 其实倒格子的引入是一个很自然的事情，完全不需要用到傅里叶变换。主流教材（我用的胡安的书）是通过对正点阵做傅里叶变换得到的倒点阵；但是为啥要对正点阵做傅里叶变换却没有讲清楚。我总不能无缘无故做这事吧。而且主流教材还引入密勒指数。我当时就疯了……为了表示晶面族，老老实实用截距不好吗？？？为什么要搞个截距的倒数，还要化为互质整数？没有缘由地采用复杂的技术简直是浪费生命。于是在下面这篇文章中，作者浅显地描述了倒格子和密勒指数的关系，看完它就能获得一个自然的思路。
 </p>
@@ -236,7 +288,7 @@ NaCl（结构很简单每个格点间隔放原子，但最小的8原子无法组
 <h5 id="orgbea7a40">面心立方</h5>
 <div class="outline-text-5" id="text-orgbea7a40">
 
-<div id="orgd52e74d" class="figure">
+<div id="org49e0ef8" class="figure">
 <p><img src="SolidPhyRev/20250408141221.png" alt="20250408141221.png" />
 </p>
 </div>
@@ -255,7 +307,7 @@ BCC 的倒格⼦为 FCC，第⼀布⾥渊区为正 12 ⾯体
 <h5 id="org5d88db0">体心立方</h5>
 <div class="outline-text-5" id="text-org5d88db0">
 
-<div id="org1690f1e" class="figure">
+<div id="orgc85b47a" class="figure">
 <p><img src="SolidPhyRev/20250408141209.png" alt="20250408141209.png" />
 </p>
 </div>
@@ -263,13 +315,13 @@ BCC 的倒格⼦为 FCC，第⼀布⾥渊区为正 12 ⾯体
 <p>
 FCC 的倒格⼦为 BCC，第⼀布⾥渊区为截⾯八⾯体
 </p>
-<div class="collapsible" id="org44ea084">
+<div class="collapsible" id="org16d96dd">
 <p>
 
 </p>
 
 
-<div id="orgdd78164" class="figure">
+<div id="org1b9bd3c" class="figure">
 <p><img src="SolidPhyRev/20250408141014.png" alt="20250408141014.png" />
 </p>
 <p><span class="figure-number">Figure 4: </span><a href="https://zhuanlan.zhihu.com/p/617838245">https://zhuanlan.zhihu.com/p/617838245</a></p>
@@ -294,7 +346,7 @@ FCC 的倒格⼦为 BCC，第⼀布⾥渊区为截⾯八⾯体
 </p>
 
 
-<div id="org7376a21" class="figure">
+<div id="org1eeb810" class="figure">
 <p><img src="SolidPhyRev/20250408143105.png" alt="20250408143105.png" />
 </p>
 <p><span class="figure-number">Figure 5: </span>红点在第⼀ BZ;⿊点在第⼆ BZ;紫点在第四 BZ</p>
@@ -343,7 +395,7 @@ FCC 的倒格⼦为 BCC，第⼀布⾥渊区为截⾯八⾯体
 \end{equation}
 
 
-<div id="org09e11cf" class="figure">
+<div id="org87e218b" class="figure">
 <p><img src="SolidPhyRev/20250408144445.png" alt="20250408144445.png" />
 </p>
 </div>
@@ -368,7 +420,7 @@ k_{i}-k_{f}=G_{HKL}
 <p>
 相当于是一个几何关系，当乘 &hbar; 就是动量
 </p>
-<div class="collapsible" id="org9dbfcd6">
+<div class="collapsible" id="orgf964704">
 <p>
 可以反向Bragg 到 Laue(凑 \(G=2\pi/d,k=2\pi/\lambda\))
 </p>
@@ -398,7 +450,7 @@ Ewald 球面：找衍射方向？
 （系统消光：因为对称性导致一些衍射峰消失？原因）
 </p>
 </div>
-<div class="collapsible" id="org6d3b686">
+<div class="collapsible" id="org4af5956">
 <div class="org-center">
 <p>
 课堂笔记
@@ -523,20 +575,20 @@ STM：实空间成像晶元平整度检测，现在能做到 10<sup>-10</sup> �
 </p>
 </div>
 </div>
-<div id="outline-container-org4a2e5a1" class="outline-3">
-<h3 id="org4a2e5a1"><span class="section-number-3">1.5.</span> 习题</h3>
+<div id="outline-container-org1909223" class="outline-3">
+<h3 id="org1909223"><span class="section-number-3">1.5.</span> 习题</h3>
 <div class="outline-text-3" id="text-1-5">
 </div>
 <div id="outline-container-org45d83bb" class="outline-4">
 <h4 id="org45d83bb">1-1</h4>
 <div class="outline-text-4" id="text-org45d83bb">
-<div class="exercise" id="org21f1e03">
+<div class="exercise" id="org32cdabd">
 <p>
 为什么Po和CsCl都是简立方晶体？
 </p>
 
 </div>
-<div class="solution" id="org5376942">
+<div class="solution" id="org6a290b1">
 <p>
 Po 是代表性简立方晶体； CsCl 因为Cs,Cl两者不等价
 </p>
@@ -544,7 +596,7 @@ Po 是代表性简立方晶体； CsCl 因为Cs,Cl两者不等价
 <img src="固体物理整理/20250407212335.png" alt="20250407212335.png" width="500px" />
 Cs+ 和 Cl− 不等价， 不能都抽象为格点，把抽象的格点取在 Cs+ 位置，得到和Po简⽴⽅。
 </p>
-<div class="collapsible" id="org6edb97a">
+<div class="collapsible" id="org37981c5">
 <p>
 和 NaCl 区别：NaCl 都在顶点也就是原子间距相同，这里 CsCl A 与 B 原子距离为B 与 B 原子距离 \(1/\sqrt{2}\) 因此说不等价。
 </p>
@@ -552,86 +604,36 @@ Cs+ 和 Cl− 不等价， 不能都抽象为格点，把抽象的格点取在 C
 </div>
 
 </div>
-<div class="exercise" id="orge0e1372">
+<div class="exercise" id="org2e011a8">
 <p>
 我们目前接触到了四种 Bravais 格⼦（简⽴⽅，体⼼⽴⽅，⾯⼼⽴⽅，以及六角密堆），总共有多少种不同类型的三维 Bravais 格⼦
 </p>
 
 </div>
-<div class="solution" id="orga250d5c">
+<div class="solution" id="org9dd0818">
 <p>
 \(\boxed{14}\) 种
 </p>
 
 
-<div id="orgf65269a" class="figure">
+<div id="org7c7936a" class="figure">
 <p><img src="SolidPhyRev/20250408165702.png" alt="20250408165702.png" />
 </p>
 </div>
 
 </div>
-<div class="exercise" id="org9c1c8aa">
+<div class="exercise" id="org3f94ca2">
 <p>
 六方格子为何需要四指标表示？试举例说明。
 </p>
 
 </div>
-<div class="solution" id="orgc93074d">
+<div class="solution" id="org74cba9a">
 <p>
 六方晶系采用四指标表示（Miller - Bravais指数），即（uvsw）表示，主要是为了更方便地描述六方晶系的对称性。由于六方晶系具有独特的对称性，其晶面族的等价性相对复杂，传统的三指标表示法（hkl）在某些情况下难以充分体现这种对称性。
 例如： \(1\bar{1}00\)
 <img src="SolidPhyRev/20250409151808.png" alt="20250409151808.png" />
 </p>
-
-</div>
-
-<div class="exercise" id="orgcf52dd3">
-<p>
-写晶胞的基矢
-</p>
-
-</div>
-<p>
-PPT 1-1:39
-</p>
-<div class="solution" id="orge439c6c">
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">类型</th>
-<th scope="col" class="org-left">晶体</th>
-<th scope="col" class="org-left">基矢</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">sc</td>
-<td class="org-left"><img src="SolidPhyRev/20250409151927.png" alt="20250409151927.png" /></td>
-<td class="org-left"><img src="SolidPhyRev/20250409151936.png" alt="20250409151936.png" /></td>
-</tr>
-
-<tr>
-<td class="org-left">bcc</td>
-<td class="org-left"><img src="SolidPhyRev/20250409152412.png" alt="20250409152412.png" /></td>
-<td class="org-left"><img src="SolidPhyRev/20250409152420.png" alt="20250409152420.png" /></td>
-</tr>
-
-<tr>
-<td class="org-left">fcc</td>
-<td class="org-left"><img src="SolidPhyRev/20250409152452.png" alt="20250409152452.png" /></td>
-<td class="org-left"><img src="SolidPhyRev/20250409152456.png" alt="20250409152456.png" /></td>
-</tr>
-</tbody>
-</table>
 
 </div>
 
@@ -641,26 +643,63 @@ PPT 1-1:39
 <div id="outline-container-orgdfaf6af" class="outline-4">
 <h4 id="orgdfaf6af">1-2</h4>
 <div class="outline-text-4" id="text-orgdfaf6af">
-<div class="exercise" id="org8250abf">
+<div class="exercise" id="orgafa2c4f">
 <p>
 1.如何通过对称性简化介电常数的计算
 </p>
 
 </div>
-<div class="solution" id="org49f57ac">
+<div class="solution" id="orgdf24f55">
 <p>
-以⽴⽅晶体为例⼦，⾸先，确定晶体点群：明确材料所属的晶体学点群，不同点群对应不同的对称操作︔ 列出对称操作对应的变换矩阵：每个对称操作对应⼀个坐标变换矩阵 A，例如旋转轴︔ 应⽤对称操作约束条件：介电常数张量 &epsilon; 需满⾜对称操作下的不变性，即： $&epsilon;=&epsilon;'= A&epsilon; A<sup>-1</sup>$︔推导独⽴分量： 若存在对称轴或镜⾯，非对角分量可能为零。旋转对称性可能导致某些对角分量相等（如⽴⽅晶系 \(\varepsilon_{11}=\varepsilon_{22}=\varepsilon_{33}\) ）。具体数学过程见上节课件P16-17。
+以⽴⽅晶体为例⼦，⾸先，确定晶体点群：明确材料所属的晶体学点群，不同点群对应不同的对称操作；列出对称操作对应的变换矩阵：每个对称操作对应⼀个坐标变换矩阵 A，例如旋转轴︔ 应⽤对称操作约束条件：介电常数张量 &epsilon; 需满⾜对称操作下的不变性，即： $&epsilon;=&epsilon;'= A&epsilon; A<sup>-1</sup>$︔推导独⽴分量： 若存在对称轴或镜⾯，非对角分量可能为零。旋转对称性可能导致某些对角分量相等（如⽴⽅晶系 \(\varepsilon_{11}=\varepsilon_{22}=\varepsilon_{33}\) ）。具体数学过程见上节课件P16-17。
 </p>
+
+
+<div class="collapsible" id="orgc52c360">
+<p>
+比如绕 x 轴旋转 180 有不变性晶体，我们知道这个旋转矩阵是
+</p>
+\begin{gather*}
+A_{x}=
+\begin{pmatrix}
+1&&\\&-1&\\&&-1
+\end{pmatrix}
+\end{gather*}
+<p>
+由 \(\varepsilon=\tilde{A}_x\varepsilon A_{x}\) ，可以得到
+</p>
+\begin{gather*}
+\begin{pmatrix}
+a&b&c\\d&e&f\\g&h&i
+\end{pmatrix}
+=\begin{pmatrix}
+a&-b&-c\\-d&e&f\\-g&h&i
+\end{pmatrix}\\
+\Rightarrow\varepsilon=
+\begin{pmatrix}
+a&&\\&e&f\\&h&i
+\end{pmatrix}
+\end{gather*}
+<p>
+完成一部步骤简化
+</p>
+<blockquote>
+<p>
+参考中文1.11
+</p>
+</blockquote>
 
 </div>
 
-<div class="exercise" id="orgfe193fa">
+</div>
+
+<div class="exercise" id="orgc8df50b">
 <p>
 2.按照对称性，三维晶体可以分成哪⼏类？
 </p>
 
 </div>
-<div class="solution" id="org34cb786">
+<div class="solution" id="org4d6a3f3">
 <p>
 ​​7 个晶系​​ 和 ​​32 个点群​​，进一步可以归纳为 ​​230 个空间群​​。<br />
 空间群：三维 230 ／⼆维 17
@@ -674,19 +713,19 @@ PPT 1-1:39
 
 </div>
 
-<div class="exercise" id="orgb5c4092">
+<div class="exercise" id="org1a85631">
 <p>
 3.在晶体学中，为什么没有5重旋转轴？数学上如何解释
 </p>
 
 </div>
-<div class="solution" id="org8b8b749">
+<div class="solution" id="orge186477">
 <p>
 晶体的原⼦排列具有平移对称性，⽽平移对称性和旋转对称性必须兼容。根据晶体学中的点群和空间群理论，晶体只能有1、2、3、4、6次旋转轴，⽽没有5次或更⾼次的轴。这是因为五重对称无法与三维空间的周期性排列相容，导致无法无间隙地铺满空间。数学证明参考上节课件P28-29
 </p>
-<div class="collapsible" id="orgc974b68">
+<div class="collapsible" id="org1e3e92f">
 
-<div id="orgac9a132" class="figure">
+<div id="org2ed09f3" class="figure">
 <p><img src="SolidPhyRev/20250408191856.png" alt="20250408191856.png" />
 </p>
 </div>
@@ -700,16 +739,16 @@ PPT 1-1:39
 <div id="outline-container-orge266178" class="outline-4">
 <h4 id="orge266178">1-3</h4>
 <div class="outline-text-4" id="text-orge266178">
-<div class="exercise" id="orgff94db8">
+<div class="exercise" id="orgad47fd6">
 <p>
 1.为什么体心立方的倒格子是面心立方？试推导其倒格子基矢。
 </p>
 
 </div>
-<div class="solution" id="orgf72eb5e">
+<div class="solution" id="org624fc8d">
 <p>
 原因：根据倒格子基矢与正格子基矢的关系推导得出，体心立方正格子基矢满足特定坐标关系，通过计算其倒格子基矢，会发现符合面心立方的基矢特征。
-推导：体心立方正格子基矢\
+推导：体心立方正格子基矢
 </p>
 \begin{gather*}
 \boldsymbol{a}_{1}=\frac{a}{2}(\hat{\boldsymbol{y}}+\hat{\boldsymbol{z}} - \hat{\boldsymbol{x}})\\
@@ -731,13 +770,23 @@ PPT 1-1:39
 
 </div>
 
-<div class="exercise" id="orga7c82c9">
+<div class="exercise" id="orgc23be11">
 <p>
-2.对于简单立方晶格，计算 Miller 指数（hkl）晶面系的面间距 d 。
+2.对于简单立方晶格，计算 Miller 指数（hkl）晶面系的面间距 \(d\) 。
 </p>
 
 </div>
-<div class="solution" id="org14f4e64">
+<div class="solution" id="orgf54f210">
+<p>
+
+</p>
+
+<p>
+\(d=\frac{2\pi}{G}\)
+\(G=(h,k,l)\)
+\(d^2=\frac{4\pi^2}{h^2+k^2+l^2}\)
+</p>
+
 <p>
 简单立方晶格正格子基矢 \(\boldsymbol{a}_{1}=a\hat{\boldsymbol{x}}\)，\(\boldsymbol{a}_{2}=a\hat{\boldsymbol{y}}\)，\(\boldsymbol{a}_{3}=a\hat{\boldsymbol{z}}\) ，倒格子基矢\(\boldsymbol{b}_{1}=\frac{2\pi}{a}\hat{\boldsymbol{x}}\)，\(\boldsymbol{b}_{2}=\frac{2\pi}{a}\hat{\boldsymbol{y}}\)，\(\boldsymbol{b}_{3}=\frac{2\pi}{a}\hat{\boldsymbol{z}}\) 。
 </p>
@@ -754,13 +803,13 @@ PPT 1-1:39
 <div id="outline-container-orge514547" class="outline-4">
 <h4 id="orge514547">1-4</h4>
 <div class="outline-text-4" id="text-orge514547">
-<div class="exercise" id="org0670528">
+<div class="exercise" id="org852e9b3">
 <p>
 1.如何从 Laue 方程推导 Bragg 方程？
 </p>
 
 </div>
-<div class="solution" id="org401284f">
+<div class="solution" id="org5801d6c">
 \begin{gather*}
 k_{i}-k_{f}=G_{hkl}\Rightarrow G=2k\sin\theta\\
 G_{hkl}=nG_{0}=n \frac{2\pi}{d}\\
@@ -770,13 +819,13 @@ n \frac{2\pi}{d}=2 \underset{k}{\left( \frac{2\pi}{\lambda} \right)}\sin\theta \
 
 </div>
 
-<div class="exercise" id="orgb466eea">
+<div class="exercise" id="org1854c47">
 <p>
 2.为何体心立方（BCC）会出现系统消光？
 </p>
 
 </div>
-<div class="solution" id="org5bab311">
+<div class="solution" id="org6eb28cd">
 <p>
 BCC 每个晶胞只有一个原子<br />
 光斑亮度 \(I\propto|F_{hkl}|^2\)
@@ -796,13 +845,13 @@ F_{hkl}=f \left[ 1+\cos(h+k+l)\pi+\mathrm{i}\sin(h+k+l)\pi \right]\\
 
 </div>
 
-<div class="exercise" id="org57821fa">
+<div class="exercise" id="orgeb47e17">
 <p>
 3.中子衍射相比X射线衍射在确定晶体结构时有什么优势？
 </p>
 
 </div>
-<div class="solution" id="org8fa896c">
+<div class="solution" id="orgb8d5c41">
 <ul class="org-ul">
 <li>中⼦（不带电）主要和原⼦核发⽣散射，X射线最要是和电⼦发⽣散射，因此可以测定含有重元素原⼦（外层电⼦多）晶体中轻原⼦的位置</li>
 <li>可以区分出晶体结构中的同位素原⼦</li>
@@ -815,16 +864,16 @@ F_{hkl}=f \left[ 1+\cos(h+k+l)\pi+\mathrm{i}\sin(h+k+l)\pi \right]\\
 <hr />
 </div>
 </div>
-<div id="outline-container-orgc48c034" class="outline-4">
-<h4 id="orgc48c034">作业</h4>
-<div class="outline-text-4" id="text-orgc48c034">
-<div class="exercise" id="orga2375a9">
+<div id="outline-container-org8ea6889" class="outline-4">
+<h4 id="org8ea6889">作业</h4>
+<div class="outline-text-4" id="text-org8ea6889">
+<div class="exercise" id="org5182b7e">
 <p>
 1.简述晶体学中“单胞”（Unit Cell）与“原胞”（Primitive Cell）的区别，并举例说明在简立方（SC）和体心立方（BCC）结构中如何选择原胞。
 </p>
 
 </div>
-<div class="solution" id="org8a76096">
+<div class="solution" id="org4cf6d8b">
 <p>
 单胞与原胞的区别：
 </p>
@@ -866,13 +915,13 @@ F_{hkl}=f \left[ 1+\cos(h+k+l)\pi+\mathrm{i}\sin(h+k+l)\pi \right]\\
 
 </div>
 
-<div class="exercise" id="org0300732">
+<div class="exercise" id="orgda25ca8">
 <p>
 2.画出二维正方格子的 Wigner-Seitz 原胞，并描述其构造步骤。
 </p>
 
 </div>
-<div class="solution" id="org67f589c">
+<div class="solution" id="orge717ebd">
 <ol class="org-ol">
 <li>选择一个格点作为中心。</li>
 <li>画出该格点到最近邻格点的垂直平分线。</li>
@@ -885,13 +934,13 @@ F_{hkl}=f \left[ 1+\cos(h+k+l)\pi+\mathrm{i}\sin(h+k+l)\pi \right]\\
 
 </div>
 
-<div class="exercise" id="orgd596ac5">
+<div class="exercise" id="org3d09658">
 <p>
 3.已知简立方晶体的晶格常数为 \(a\)，求晶面 (123) 的面间距 \(d_{123}\)。
 </p>
 
 </div>
-<div class="solution" id="orgc23a7a1">
+<div class="solution" id="orgedc16a7">
 <p>
 晶面间距公式：
 \(d_{hkl} = \frac{a}{\sqrt{h^2 + k^2 + l^2}}\)
@@ -902,13 +951,13 @@ d_{123} = \frac{a}{\sqrt{1^2 + 2^2 + 3^2}} = \frac{a}{\sqrt{14}}
 \end{equation*}
 
 </div>
-<div class="exercise" id="org5de4247">
-<ol class="org-ol">
-<li>若正格子基矢为 \(\mathbf{a}_1 = a \hat{x}, \mathbf{a}_2 = a \hat{y}, \mathbf{a}_3 = a \hat{z}\)，求其对应的倒格子基矢，并说明倒格子与正格子的几何关系。</li>
-</ol>
+<div class="exercise" id="org4071a80">
+<p>
+4.若正格子基矢为 \(\mathbf{a}_1 = a \hat{x}, \mathbf{a}_2 = a \hat{y}, \mathbf{a}_3 = a \hat{z}\)，求其对应的倒格子基矢，并说明倒格子与正格子的几何关系。
+</p>
 
 </div>
-<div class="solution" id="org1cf4e62">
+<div class="solution" id="org718291d">
 <p>
 倒格子基矢公式计算结果：
 \[
@@ -924,13 +973,13 @@ d_{123} = \frac{a}{\sqrt{1^2 + 2^2 + 3^2}} = \frac{a}{\sqrt{14}}
 
 </div>
 
-<div class="exercise" id="org4623c53">
+<div class="exercise" id="org7720210">
 <p>
 5.列出立方晶系（Cubic System）中包含的 Bravais 格子类型，并说明其晶胞特征。
 </p>
 
 </div>
-<div class="solution" id="org8f50a4a">
+<div class="solution" id="orgf9d46bd">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -959,13 +1008,13 @@ d_{123} = \frac{a}{\sqrt{1^2 + 2^2 + 3^2}} = \frac{a}{\sqrt{14}}
 
 </div>
 
-<div class="exercise" id="orgd66b454">
+<div class="exercise" id="org628b284">
 <p>
 6.推导 X 射线在晶体衍射中的 Bragg 方程及 Laue 方程，并比较 X 射线和中子散射的优劣。
 </p>
 
 </div>
-<div class="solution" id="org0b711de">
+<div class="solution" id="orge3204ef">
 <ul class="org-ul">
 <li>Bragg 方程推导：</li>
 </ul>
@@ -973,8 +1022,7 @@ d_{123} = \frac{a}{\sqrt{1^2 + 2^2 + 3^2}} = \frac{a}{\sqrt{14}}
 假设晶面间距为 \(d\)，入射角为 \(\theta\)，X 射线波长为 \(\lambda\)。 反射光程差为：
   \[ \Delta = 2d\sin\theta  \]
 衍射条件为光程差为波长的整数倍：
-  \[  n\lambda = 2d\sin\theta  \]
-  即 Bragg 方程
+  \(n\lambda = 2d\sin\theta\)  即 Bragg 方程
 </p>
 
 <ul class="org-ul">
@@ -988,12 +1036,12 @@ d_{123} = \frac{a}{\sqrt{1^2 + 2^2 + 3^2}} = \frac{a}{\sqrt{14}}
 X 射线与中子散射比较：
 </p>
 <ul class="org-ul">
-<li>*X 射线*：
+<li><b>X 射线</b> ：
 <ul class="org-ul">
 <li>波长较短，适合研究原子位置。</li>
 <li>对轻元素（如 H）敏感度低。</li>
 </ul></li>
-<li>*中子*：
+<li><b>中子</b> ：
 <ul class="org-ul">
 <li>波长适中，对轻元素敏感。</li>
 <li>能区分同位素。</li>
@@ -1012,6 +1060,133 @@ X 射线与中子散射比较：
 <li>了解晶体学中的14种布拉伐格⼦及其特征；</li>
 <li>晶体衍射中Bragg⽅程及Laue⽅程的推导。</li>
 </ol>
+</div>
+</div>
+<div id="outline-container-org69fa737" class="outline-4">
+<h4 id="org69fa737">中文书练习</h4>
+<div class="outline-text-4" id="text-org69fa737">
+<div class="exercise" id="org8570016">
+<p>
+写晶胞的基矢，配位数（最近邻数）、单胞体积、原胞体积
+</p>
+
+</div>
+
+<div class="solution" id="orgf1044f3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">类型</th>
+<th scope="col" class="org-left">晶体</th>
+<th scope="col" class="org-left">基矢</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">sc</td>
+<td class="org-left"><img src="SolidPhyRev/20250409151927.png" alt="20250409151927.png" /></td>
+<td class="org-left"><img src="SolidPhyRev/20250409151936.png" alt="20250409151936.png" /></td>
+</tr>
+
+<tr>
+<td class="org-left">bcc</td>
+<td class="org-left"><img src="SolidPhyRev/20250409152412.png" alt="20250409152412.png" /></td>
+<td class="org-left"><img src="SolidPhyRev/20250409152420.png" alt="20250409152420.png" /></td>
+</tr>
+
+<tr>
+<td class="org-left">fcc</td>
+<td class="org-left"><img src="SolidPhyRev/20250409152452.png" alt="20250409152452.png" /></td>
+<td class="org-left"><img src="SolidPhyRev/20250409152456.png" alt="20250409152456.png" /></td>
+</tr>
+</tbody>
+</table>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">晶格</td>
+<td class="org-right">配位数</td>
+<td class="org-right">次近邻数</td>
+<td class="org-left">单胞体积</td>
+<td class="org-left">原胞体积</td>
+<td class="org-left">配位距离</td>
+<td class="org-left">次近邻距离</td>
+</tr>
+
+<tr>
+<td class="org-left">体心</td>
+<td class="org-right">8</td>
+<td class="org-right">6</td>
+<td class="org-left">\(a^{3}\)</td>
+<td class="org-left">\(a^{3}/2\)</td>
+<td class="org-left">\(\frac{\sqrt{3}}{2}a\)</td>
+<td class="org-left">a</td>
+</tr>
+
+<tr>
+<td class="org-left">面心</td>
+<td class="org-right">12</td>
+<td class="org-right">6</td>
+<td class="org-left">\(a^{3}\)</td>
+<td class="org-left">\(a^{3}/4\)</td>
+<td class="org-left">\(\frac{a}{\sqrt{2}}\)</td>
+<td class="org-left">a</td>
+</tr>
+</tbody>
+</table>
+<p>
+原胞体积乘以格点数等于单胞体积
+</p>
+
+</div>
+
+<p>
+倒格矢 \(G_{hkl}\) 垂直于晶面密勒指数 \((hkl)\)
+</p>
+
+<div class="exercise" id="org9761108">
+<p>
+NaCl Mr=58.46 室温密度 \(2.167\times10^{3}\) kg.m<sup>-3</sup> 计算晶格常量
+</p>
+
+</div>
+<div class="solution" id="org28f313d">
+<p>
+晶格常量即 a 晶格长度， NaCl 是面心立方晶体，一个晶胞里面有 4 Na 4 Cl
+</p>
+\begin{gather*}
+\rho = \frac{m}{V} = \frac{M_{r}}{V} = \frac{M_r}{N_A a^3}\\
+a= \sqrt[3]{\frac{4 N_A M}{\rho}}=5.63 \overset{\circ}{\text{A}}
+\end{gather*}
+
+</div>
 </div>
 </div>
 </div>
@@ -1065,7 +1240,12 @@ X 射线与中子散射比较：
 (量子力学<sup><a id="fnr.14" class="footref" href="#fn.14" role="doc-backlink">14</a></sup>)
 </p>
 </div>
+</div>
 
+
+<div id="outline-container-org73203d0" class="outline-3">
+<h3 id="org73203d0"><span class="section-number-3">2.1.</span> 分子晶体：Lennard-Jones 势</h3>
+<div class="outline-text-3" id="text-2-1">
 <p>
 更进一步我们给出一些势能的数学表达，对此作出一些区分。
 </p>
@@ -1089,7 +1269,12 @@ u(r)=-\frac{a}{r^6}+\frac{b}{r^{n=12}}=4\epsilon \left[ \left( \frac{\sigma}{r} 
 \label{eq:1}
 U=2N\epsilon \left[ A_{12}\left( \frac{\sigma}{r} \right)^{12}-A_6\left( \frac{\sigma}{r} \right)^{6} \right]
 \end{equation}
+</div>
+</div>
 
+<div id="outline-container-org05bb0de" class="outline-3">
+<h3 id="org05bb0de"><span class="section-number-3">2.2.</span> 离子晶体：马德隆常数</h3>
+<div class="outline-text-3" id="text-2-2">
 <div class="org-center">
 <p>
 (平衡间距)
@@ -1107,25 +1292,30 @@ U=2N\epsilon \left[ A_{12}\left( \frac{\sigma}{r} \right)^{12}-A_6\left( \frac{\
 更仔细的讲，以上晶体结构无法给出更多信息，需要考虑格点上基元本身来计算物质的差异。这里所说的就是晶格振动，并由此抽象的声子。
 </p>
 </div>
+</div>
 
-<div id="outline-container-org3600b61" class="outline-3">
-<h3 id="org3600b61"><span class="section-number-3">2.1.</span> 习题</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgfe45406" class="outline-3">
+<h3 id="orgfe45406"><span class="section-number-3">2.3.</span> 习题</h3>
+<div class="outline-text-3" id="text-2-3">
 </div>
 <div id="outline-container-org837c760" class="outline-4">
 <h4 id="org837c760">2-1</h4>
 <div class="outline-text-4" id="text-org837c760">
 <p>
 总结各晶体特征
-<img src="SolidPhyRev/20250409161338.png" alt="20250409161338.png" />
 </p>
-<div class="exercise" id="org271c3b3">
+
+<div id="orge512f82" class="figure">
+<p><img src="SolidPhyRev/20250409161338.png" alt="20250409161338.png" width="200px" />
+</p>
+</div>
+<div class="exercise" id="org0dea447">
 <ol class="org-ol">
 <li>晶体结合的主要类型及其结合力来源是什么？</li>
 </ol>
 
 </div>
-<div class="solution" id="org14c063f">
+<div class="solution" id="orgb415298">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1186,13 +1376,13 @@ U=2N\epsilon \left[ A_{12}\left( \frac{\sigma}{r} \right)^{12}-A_6\left( \frac{\
 
 </div>
 
-<div class="exercise" id="org75d5753">
+<div class="exercise" id="org855799c">
 <p>
 2.晶体结合能如何定义与计算？以 van der Waals 晶体为例说明。
 </p>
 
 </div>
-<div class="solution" id="orgd433a4c">
+<div class="solution" id="org771346b">
 <p>
 ​<b>定义</b> ：晶体结合能是指将晶体分解为孤立的原子或分子所需的能量，通常用 \(E_b\) 表示。
 </p>
@@ -1219,13 +1409,13 @@ E = -\frac{3N}{4} \left( A r^{-12} - B r^{-6} \right)
 
 </div>
 
-<div class="exercise" id="org3f3697f">
+<div class="exercise" id="org79ccb85">
 <p>
 3.电负性如何影响元素或化合物的晶体结合类型？
 </p>
 
 </div>
-<div class="solution" id="org8462af6">
+<div class="solution" id="orgec90ba0">
 <p>
 ​<b>电负性定义</b> ： 电负性是原子吸引电子的能力。电负性差异会影响原子间的电子分布，从而决定晶体结合类型。
 </p>
@@ -1266,24 +1456,24 @@ E = -\frac{3N}{4} \left( A r^{-12} - B r^{-6} \right)
 </div>
 <hr />
 <p>
-(无2-2)
+(无2-2习题)
 </p>
 </div>
 </div>
-<div id="outline-container-org7e84987" class="outline-4">
-<h4 id="org7e84987">作业</h4>
-<div class="outline-text-4" id="text-org7e84987">
+<div id="outline-container-org7a5563e" class="outline-4">
+<h4 id="org7a5563e">作业</h4>
+<div class="outline-text-4" id="text-org7a5563e">
 <p>
 (前两题一样)
 </p>
 
-<div class="exercise" id="orgece9813">
+<div class="exercise" id="org753a6f9">
 <p>
 3.用 Lennard-Jones 势计算 Ne 在体⼼和⾯⼼⽴⽅结构中的结合能之比。已知 bcc: A<sub>6</sub>=12.25, A<sub>12</sub>=9.11;fcc A<sub>6</sub>=14.45, A<sub>12</sub>=12.13
 </p>
 
 </div>
-<div class="solution" id="orgee410a9">
+<div class="solution" id="org0385d83">
 <p>
 ​使用 Lennard-Jones 势公式：
 \[
@@ -1328,10 +1518,13 @@ E \propto \frac{N_\text{pairs}}{2} \left( A r^{-12} - B r^{-6} \right)
 <h2 id="org1ce36e7"><span class="section-number-2">3.</span> 晶体中的格波与声子</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-就是解波动方程，得到色散关系 \(\omega(q)\)， q 为波矢
+就是解波动方程，得到色散关系 \(\omega(q)\)， \(q\) 为波矢
+</p>
+
+<p>
+解法就是设好了 \(\mathrm{e}^{\mathrm{i}(qa-\omega t)}\) 带进去得到约束关系，与微分方程波与振动方法一致。
 </p>
 </div>
-
 <div id="outline-container-orgb21b78a" class="outline-3">
 <h3 id="orgb21b78a"><span class="section-number-3">3.1.</span> 色散关系结果</h3>
 <div class="outline-text-3" id="text-3-1">
@@ -1364,6 +1557,32 @@ E \propto \frac{N_\text{pairs}}{2} \left( A r^{-12} - B r^{-6} \right)
 </tbody>
 </table>
 
+<p>
+下面的是声学上面是光学支
+</p>
+</div>
+</div>
+<div id="outline-container-orgc28188a" class="outline-3">
+<h3 id="orgc28188a"><span class="section-number-3">3.2.</span> 简正坐标</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+以上没有考虑坐标，其实可以预先选择简正坐标
+目的：解耦运动。
+</p>
+
+<p>
+<del>赋予物理意义的说法就是，每个运动模式对应上简正坐标</del>
+</p>
+<blockquote>
+<p>
+在绝热近似与简谐近似的条件下，在对角化哈密顿量的过程中引入了简正坐标，求得简正坐标的运动方式为简谐振动。每个简正坐标的振动即振动模所映射的是体系中所有原子的总体运动情况。抽象一点来理解，原子体系的一个运动状态映射到某一个线性空间中的一个矢量，这个矢量可以由一组正交完备的基底展开，而这里的基底就对应着我们得到的一系列简正模。也就是说体系的运动情况是简正模的线性叠加。<sup><a id="fnr.15" class="footref" href="#fn.15" role="doc-backlink">15</a></sup>
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-orgb473af2" class="outline-3">
+<h3 id="orgb473af2"><span class="section-number-3">3.3.</span> 周期性边界条件</h3>
+<div class="outline-text-3" id="text-3-3">
 <div class="org-center">
 <p>
 (三维、周期性边界条件了解即可)
@@ -1371,34 +1590,227 @@ E \propto \frac{N_\text{pairs}}{2} \left( A r^{-12} - B r^{-6} \right)
 </div>
 
 <p>
-以上没有考虑坐标，其实可以预先选择简正坐标
+周期性边界条件 Bohr-Karman ：保持晶格平移不变性<sup><a id="fnr.16" class="footref" href="#fn.16" role="doc-backlink">16</a></sup> 
+</p>
+\begin{gather*}
+\mathrm{e}^{\mathrm{i}(k(x+Lx))}=\mathrm{e}^{\mathrm{i}(kx)}\\
+\Rightarrow kL=2\pi n,x\in \mathbb{Z}
+\end{gather*}
+<p>
+导致波矢量子化
 </p>
 
 <p>
-态密度
+<i>问：为什么后文电子声子允许波矢一样？用的一样周期性条件，导出同样结果。</i>
 </p>
 </div>
 </div>
 
+<div id="outline-container-orgc1c1bb3" class="outline-3">
+<h3 id="orgc1c1bb3"><span class="section-number-3">3.4.</span> 声子态密度函数</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+声子是固体中的元激发。一种格波（振动模式就是一种声子）， N 原子三维晶体有 3N 格波/声子。
+</p>
+
+<p>
+相互作用中能量守恒，（准动量守恒）<br />
+热传导看作声子扩散，热阻是声子被散射——模型化
+</p>
+
+<p>
+声子是玻色子，波矢为 q 的声子平均数 \(n_q=\frac{1}{\mathrm{e}^{\frac{\hbar\omega_q}{k_BT}-1}}\)
+</p>
+
+<p>
+态密度就是，对于自变量 &omega; 状态密度 \(g(\omega)\) 数学计算法为 \(g(\omega)\mathrm{d}\omega=\sum_{!} 1\) 取好 &sum; 的范围
+</p>
+<pre class="example" id="org34ca27a">
+从求和到积分。三维可以，密度足够；二维是不连续，反正不能
+</pre>
+
+<p>
+不同假设下不同结果
+离散单原子：某一点不连续
+debye
+</p>
+
+<p>
+2/3 3表示3个色散
+</p>
+
+<p>
+计算方法见习题
+</p>
+
+<p>
+单原子链：
+</p>
+\begin{gather*}
+g(\omega)=\frac{2N}{\pi}\frac{1}{\sqrt{\omega^2_m-\omega^2}}
+\end{gather*}
+
+
+<div id="orgb681f29" class="figure">
+<p><img src="SolidPhyRev/20250426120806.png" alt="20250426120806.png" />
+</p>
+</div>
+
+<div class="collapsible" id="orge0a7e3c">
+<p>
+一维：
+</p>
+\begin{gather*}
+g(\omega() =\frac{ L}{\pi v_g}
+\end{gather*}
+
+</div>
+
+<p>
+学完后面热容振动
+</p>
+<div class="collapsible" id="org6787afc">
+<p>
+描述晶体原子运动简谐波的能量量子叫声子
+</p>
+
+</div>
+</div>
+</div>
 <div id="outline-container-org1fba02f" class="outline-3">
-<h3 id="org1fba02f"><span class="section-number-3">3.2.</span> 固体热容</h3>
-<div class="outline-text-3" id="text-3-2">
+<h3 id="org1fba02f"><span class="section-number-3">3.5.</span> 固体热容</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+热容定义： \(C_V=\frac{\mathrm{d}\overline{E}}{\mathrm{d}T}\)
+含义是升高温度要（能容纳）多少热
+</p>
+
 <p>
 两个模型
-Einstein,
-Debye
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">Einstein</td>
+<td class="org-left">\(3Nk_B \left( \frac{\Theta_E}{T} \right)^2 \frac{\mathrm{e}^{\frac{\Theta_E}{T}}}{\left( \mathrm{e}^{\frac{\Theta_E}{T}}-1 \right)}\)</td>
+<td class="org-left"><img src="SolidPhyRev/20250426121543.png" alt="20250426121543.png" /></td>
+</tr>
+
+<tr>
+<td class="org-left">Debye</td>
+<td class="org-left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+假设上的重要区别：
+</p>
+<ul class="org-ul">
+<li>Einstein:所有频率同样波矢</li>
+<li>Debye:直线 \(g(\omega)=\frac{3V}{2\pi^2\overline{C}^3}\omega^2\)</li>
+</ul>
+
+
+<div id="orgd7c2fdd" class="figure">
+<p><img src="SolidPhyRev/20250426122951.png" alt="20250426122951.png" />
+</p>
+<p><span class="figure-number">Figure 6: </span>一维情形（见Phonons 一书 Ⅰp48）</p>
+</div>
+
+<p>
+实空间和倒空间
+相乘为 \(2\pi\)
+</p>
+
+<div class="collapsible" id="orgcb653b5">
+<p>
+总结的总结
+</p>
+<ol class="org-ol">
+<li>大部分固体热容在温度较高时约为3R，随温度下降热容减小</li>
+
+<li>经典模型从能量均分定理出发，热容恒为3R，无法解释热容随温度下降而减小</li>
+
+<li>爱因斯坦模型假设所有原子按同一频率振动，温度较高时热容约为3R，随温度下降热容减小，但下降速度比实验值快</li>
+
+<li>德拜模型假设原子振动的色散关系为线性，温度较高时热容约为3R，随温度下降热容减小，且可以解释部分固体热容较高温时不为3R，但0K附近理论热容还与实验有一点偏差</li>
+</ol>
+
+<p>
+Einstein 模型：
+把晶体中的原子看作是一些具有相同圆频率 \(\omega_E\) 并能在
+空间做自由振动的独立谐振子，根据Plank理论，他假定每个
+谐振子的能量是量子化的。
+这个模型抓住了本质现象，但过于简化，只是定性地说
+明了热容温度关系，定量上不够精确——
 </p>
 
 <p>
-Einstein:所有频率同样波矢<br />
-Debye:直线
+<i>爱因斯坦模型局限性：</i>
+爱因斯坦的假设十分简单粗暴：所有的原子都以一个相同频率振动，而我们知道实际情况肯定不是这么简单的。所以尽管和实验吻合得不错，但还是存在一定偏差，具体就是T趋近于0时爱因斯坦模型的 
+ 也趋近于0，但爱因斯坦模型理论值  下降很陡峭，与实验值不符合。
 </p>
-</div>
+
+<p>
+Debye 模型：
+把晶体中原子间相互关联的运动看作是在一个连续的、
+各向同性介质中的波，并用一个最高频率 为上限的弹性
+波频谱来表述。
+由于德拜理论所引入的频率分布具有晶体实际频率分布
+的某些特征，因此除去最精密的测量外，这个模型与简单晶
+体的热容测量结果是吻合的，特别是低温部分。
+</p>
+
 </div>
 
-<div id="outline-container-orgae23ae4" class="outline-3">
-<h3 id="orgae23ae4"><span class="section-number-3">3.3.</span> 声子作用和探测</h3>
-<div class="outline-text-3" id="text-3-3">
+<div class="collapsible" id="org528814e">
+<p>
+德拜模型的局限性是容易理解的，因为使用弹性波色散
+关系描述格波的假设是一种近似，它忽略了格点的不连续
+性，对于那些长波或频率低的波，它们不连续性的效果是不
+重要的，采用这个近似是允许的，可是当波长短到足以与原
+子间距相比较时，德拜近似就失效了，所以德拜模型不足以
+全面地表述晶格振动的性质，只是比较准确地表述了低温下
+晶格振动的性质。
+尽管如此，德拜模型的成功还是被充分肯定的。
+德拜温度 是一个衡量晶体物理性质的
+</p>
+
+<p>
+德拜温度可以看作是一个分界温度，近似地表示了经典理
+论的使用范围，在该温度以下，许多模式被冻结，必须使用量
+子理论处理。
+</p>
+
+<p>
+在非常低的温度下，由于短波声子的能量太高，不会被热
+激发，而被“冷冻”下来。所以 . 的声子对热容几乎
+没有贡献；只有那些
+长波声子才会被热激发。
+</p>
+
+<p>
+因此，低温下晶格热容的贡献
+主要来自于长波声子的贡献。
+</p>
+
+</div>
+</div>
+</div>
+<div id="outline-container-orgd9c51c9" class="outline-3">
+<h3 id="orgd9c51c9"><span class="section-number-3">3.6.</span> 声子作用和探测（非简谐）</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 引出非简谐运动，补全上文简谐未补充的内容
 </p>
@@ -1413,20 +1825,20 @@ Raman Brillouin 散射
 </div>
 </div>
 
-<div id="outline-container-orgd67840c" class="outline-3">
-<h3 id="orgd67840c"><span class="section-number-3">3.4.</span> 习题</h3>
-<div class="outline-text-3" id="text-3-4">
+<div id="outline-container-org4980fcc" class="outline-3">
+<h3 id="org4980fcc"><span class="section-number-3">3.7.</span> 习题</h3>
+<div class="outline-text-3" id="text-3-7">
 </div>
 <div id="outline-container-org855c200" class="outline-4">
 <h4 id="org855c200">3-1</h4>
 <div class="outline-text-4" id="text-org855c200">
-<div class="exercise" id="org090f338">
+<div class="exercise" id="org23831cc">
 <p>
 1.如何利⽤⼀维原⼦链模型推导格波的⾊散关系？
 </p>
 
 </div>
-<div class="solution" id="org9284630">
+<div class="solution" id="org99f0184">
 \begin{gather*}
 M\ddot{u}=\beta(u_{n-1}+u_{n+1}-2u_n)
 \end{gather*}
@@ -1434,7 +1846,9 @@ M\ddot{u}=\beta(u_{n-1}+u_{n+1}-2u_n)
 <li>弹性波近似（直接变成二阶导数）</li>
 </ul>
 \begin{gather*}
-\beta\left[ u(x-a)+u(x+a)-2u(x) \right]= \frac{a}{a}\left[ \frac{a}{a}\left( u(x+a)-u(x) \right) - \frac{a}{a}\left( u(x)- u(u-a)\right)\right]\approx \beta a^2 \frac{\partial^2 u}{\partial x^2}\\
+\beta\left[ u(x-a)+u(x+a)-2u(x) \right]\\
+= \frac{a}{a}\left[ \frac{a}{a}\left( u(x+a)-u(x) \right) - \frac{a}{a}\left( u(x)- u(u-a)\right)\right]\\
+\approx \beta a^2 \frac{\partial^2 u}{\partial x^2}\\
 M\ddot{u}=\beta a^2u''
 \end{gather*}
 <p>
@@ -1452,24 +1866,31 @@ v_s=\sqrt{\frac{\beta a^2}{M}}
 \begin{gather*}
 M (\mathrm{i}\omega)^2 \left( A_q \mathrm{e}^{\mathrm{i}(qna-\omega t)} \right) =\beta \left[ \left( A_q \mathrm{e}^{\mathrm{i}(q(n+1)a-\omega t)} \right)+ \left( A_q \mathrm{e}^{\mathrm{i}(q(n-1)a-\omega t)} \right)-2 \left( A_q \mathrm{e}^{\mathrm{i}(qna-\omega t)} \right) \right]\\
 -M \omega^2 = \beta \left[ \mathrm{e}^{\mathrm{i}qa}+\mathrm{e}^{-\mathrm{i}qa}-2 \right]\\
-M 
+M
 \end{gather*}
 
 </div>
 
-<div class="exercise" id="org4b1f3c8">
+<div class="exercise" id="org93a1e07">
 <p>
 2.周期性边界条件在晶格振动分析中的作⽤是什么？
 </p>
 
 </div>
-<div class="solution" id="org9cc6ba3">
+<div class="solution" id="org807f685">
 <p>
-采⽤周期性边界条件之后，等价于我们把有限⼤的晶体变成⼀个环状的晶体
-• ⽽环状晶体具有严格的平移不变性，因此计算时可以充分利⽤平移不变形，得到的解具有单个波⽮ q 的平⾯波的形式，极⼤简化计算量
-• 除了计算简单之外，还有⼀个优势：格波为波⽮为 q 的平⾯波 ⇒ 量⼦化后（准）动量为 &hbar; q，很⼤程度上可以当成⾃由粒⼦，物理图像非常简单
-• 具有周期性边界条件的⽅形系统成为固体物理（凝聚态物理）⾥最常⽤的⼀种系统
+采⽤周期性边界条件之后，等价于我们把有限⼤的晶体变成⼀个环状的晶体，⽽环状晶体具有严格的平移不变性，因此计算时可以充分利⽤平移不变形，得到的解具有单个波⽮ q 的平⾯波的形式，极⼤简化计算量
 </p>
+<ul class="org-ul">
+<li>除了计算简单之外，还有⼀个优势：格波为波⽮为 q 的平⾯波 &rArr; 量⼦化后（准）动量为 &hbar; q，很⼤程度上可以当成⾃由粒⼦，物理图像非常简单</li>
+<li>具有周期性边界条件的⽅形系统成为固体物理（凝聚态物理）⾥最常⽤的⼀种系统</li>
+</ul>
+
+<blockquote>
+<p>
+我认为就是得到了一个条件 kL=2&pi; n
+</p>
+</blockquote>
 
 </div>
 <hr />
@@ -1478,13 +1899,13 @@ M
 <div id="outline-container-orgcf7b7f8" class="outline-4">
 <h4 id="orgcf7b7f8">3-2</h4>
 <div class="outline-text-4" id="text-orgcf7b7f8">
-<div class="exercise" id="org415f716">
+<div class="exercise" id="org348bc8b">
 <p>
 1.简述引入简正坐标的⽬的及关键步骤。
 </p>
 
 </div>
-<div class="solution" id="org776ffb7">
+<div class="solution" id="orgfda0b57">
 <p>
 ⽬的： 通过坐标变换，将多⾃由度系统中相互耦合的运动⽅程转换为独⽴简谐振动
 的形式，从⽽简化复杂系统的分析
@@ -1493,16 +1914,25 @@ M
 
 </div>
 
-<div class="exercise" id="org4e06b09">
+<div class="exercise" id="org93b3d31">
 <p>
 2.求解⼀维单原⼦链在周期性边界条件下的声⼦态密度。
 </p>
 
 </div>
-<div class="solution" id="orgc16348b">
+<div class="solution" id="org890bf1e">
+\begin{gather*}
+g(\omega)\mathrm{d}\omega=..=\frac{L}{\pi}\mathrm{d}q\\
+g(\omega)=\frac{L}{\pi}\frac{\mathrm{d}q}{\mathrm{d}\omega }
+\end{gather*}
 <p>
-
+用色散关系 \(\omega(q)=2\sqrt{\frac{\beta}{M}}|\sin \frac{aq}{2}|:=\omega_m \left| \sin \frac{aq}{2} \right|\)
 </p>
+\begin{gather*}
+g(\omega)=\frac{L}{\pi}\frac{1}{\omega_m\cos \frac{aq}{2}}\\
+=\frac{2}{\pi}\frac{L}{a}\frac{1}{\sqrt{\omega_m^2-\omega^2}}\\
+=\boxed{\frac{2N}{\pi}\frac{1}{\sqrt{\omega_m^2-\omega^2}}}
+\end{gather*}
 
 </div>
 <hr />
@@ -1511,26 +1941,27 @@ M
 <div id="outline-container-orgf937955" class="outline-4">
 <h4 id="orgf937955">3-3</h4>
 <div class="outline-text-4" id="text-orgf937955">
-<div class="exercise" id="orgd21a13a">
+<div class="exercise" id="org85bf995">
 <ol class="org-ol">
 <li>Einstein模型与Debye模型在解释固体热容时的核⼼区别是什么</li>
 </ol>
 
 </div>
-<div class="solution" id="orgcf42201">
-<p>
-Einstein模型：假设固体中所有原⼦以单⼀频率独⽴振动（量⼦谐振⼦模型），忽略原⼦间的相互作⽤。Debye模型：将固体视为连续弹性介质，振动模式以声波形式存在，更精确刻画固体热容的温度依赖性，尤其在低温区域显著优于前者。
-</p>
+<div class="solution" id="org999bf0b">
+<ul class="org-ul">
+<li>Einstein模型：假设固体中所有原⼦以单⼀频率独⽴振动（量⼦谐振⼦模型），忽略原⼦间的相互作⽤。</li>
+<li>Debye模型：将固体视为连续弹性介质，振动模式以声波形式存在，更精确刻画固体热容的温度依赖性，尤其在低温区域显著优于前者。</li>
+</ul>
 
 </div>
 
-<div class="exercise" id="orgb3aa0fd">
+<div class="exercise" id="org03fbf19">
 <p>
 2.Debye模型如何解释低温下固体热容随温度降低的现象︖
 </p>
 
 </div>
-<div class="solution" id="org077d5e1">
+<div class="solution" id="org29bafd5">
 <p>
 Debye模型通过声⼦态密度分布与热激发能量的协同作⽤，在低温下⾃然导出热容的规律，成为解释固体低温热容的标准理论框架。其核⼼突破在于从离散原⼦振动转向连续介质中的声⼦集体⾏为描述。具体数学推导参考Lec 3， P12 – P14。
 </p>
@@ -1542,26 +1973,26 @@ Debye模型通过声⼦态密度分布与热激发能量的协同作⽤，在低
 <div id="outline-container-org80ad4d8" class="outline-4">
 <h4 id="org80ad4d8">3-4</h4>
 <div class="outline-text-4" id="text-org80ad4d8">
-<div class="exercise" id="orga077322">
+<div class="exercise" id="orgb07ee71">
 <p>
 1.非简谐效应如何解释固体的热膨胀现象？
 </p>
 
 </div>
-<div class="solution" id="orgdae9a4d">
+<div class="solution" id="org2cb79d1">
 <p>
 在简谐近似下，原⼦势能仅考虑⼆次项，势能曲线对称，原⼦振动幅度增⼤但平衡位置不变，无法解释热膨胀。非简谐效应通过引入势能展开中的三次及更⾼次项，打破势能对称性。
 </p>
 
 </div>
 
-<div class="exercise" id="org19e1f13">
+<div class="exercise" id="org6fff32e">
 <p>
 2.绝缘体热导率在低温下为何随温度降低⽽显著增⼤?
 </p>
 
 </div>
-<div class="solution" id="orgf0b2264">
+<div class="solution" id="orgcb2c3e6">
 <p>
 较低温度下由于 U 过程慢慢被冻结， \(\kappa\propto \mathrm{e}^{-\frac{\theta D}{aT}}\) ，热导率指数上升
 </p>
@@ -1569,32 +2000,32 @@ Debye模型通过声⼦态密度分布与热激发能量的协同作⽤，在低
 </div>
 </div>
 </div>
-<div id="outline-container-org91d36c1" class="outline-4">
-<h4 id="org91d36c1">作业</h4>
-<div class="outline-text-4" id="text-org91d36c1">
-<div class="exercise" id="org679d218">
+<div id="outline-container-org374c35d" class="outline-4">
+<h4 id="org374c35d">作业</h4>
+<div class="outline-text-4" id="text-org374c35d">
+<div class="exercise" id="org059f4d0">
 <p>
 1.利⽤⼀维原⼦链模型推导格波的⾊散关系
 </p>
 
 </div>
-<div class="solution" id="orgafba903">
+<div class="solution" id="org71d8a2a">
 
-<div id="org4df36f2" class="figure">
+<div id="org4eb8a15" class="figure">
 <p><img src="SolidPhyRev/20250414092914.png" alt="20250414092914.png" />
 </p>
 </div>
 
 </div>
-<div class="exercise" id="org668dc3f">
+<div class="exercise" id="org9eefd32">
 <p>
 2*.求解⼀维原⼦链的声⼦态密度函数 \(g(\omega)\)
 </p>
 
 </div>
-<div class="solution" id="org928256e">
+<div class="solution" id="orga9fbccb">
 
-<div id="org4c0fa6b" class="figure">
+<div id="orgd8f849c" class="figure">
 <p><img src="SolidPhyRev/20250414093200.png" alt="20250414093200.png" />
 </p>
 </div>
@@ -1602,19 +2033,20 @@ Debye模型通过声⼦态密度分布与热激发能量的协同作⽤，在低
 \omega(q)=2 \sqrt{\frac{\beta}{M}}\left| \sin \frac{aq}{2} \right|=\omega_m \left| \sin \frac{aq}{2} \right|
 \end{gather*}
 
-<div id="org0355fbf" class="figure">
+<div id="orga835367" class="figure">
 <p><img src="SolidPhyRev/20250414093154.png" alt="20250414093154.png" />
 </p>
 </div>
 
 </div>
-<div class="exercise" id="org13476a8">
+
+<div class="exercise" id="org0ce1fd3">
 <p>
 3.简述引入简正坐标的⽬的及关键步骤
 </p>
 
 </div>
-<div class="solution" id="org500e8f0">
+<div class="solution" id="orgd20771d">
 <p>
 ⽬的： 通过坐标变换，将多⾃由度系统中相互耦合的运动⽅程转换为独⽴简谐振动
 的形式，从⽽简化复杂系统的分析。
@@ -1627,38 +2059,38 @@ Debye模型通过声⼦态密度分布与热激发能量的协同作⽤，在低
 
 </div>
 
-<div class="exercise" id="org64ad665">
+<div class="exercise" id="org3ff9f1a">
 <p>
 4.从数学上推导 Einstein 模型中热容的表达式，并讨论其在⾼温及低温时的热容极限
 </p>
 
 </div>
-<div class="solution" id="org1163fa8">
+<div class="solution" id="orgbc11fff">
 <p>
 
 </p>
 
 </div>
-<div class="exercise" id="orgce6f2dc">
+<div class="exercise" id="orgb2d7293">
 <p>
 5.Einstein 模型与 Debye 模型在解释固体热容时的核⼼区别是什么？他们对应的⾊散关系有什么分别
 </p>
 
 </div>
-<div class="solution" id="orgb8aea47">
+<div class="solution" id="orge39ef67">
 <p>
 Einstein模型：假设固体中所有原⼦以单⼀频率独⽴振动（量⼦谐振⼦模型），忽略原⼦间的相互作⽤。Debye模型：将固体视为连续弹性介质，振动模式以声波形式存在，更精确刻画固体热容的温度依赖性，尤其在低温区域显著优于前者。
 </p>
 
 </div>
 
-<div class="exercise" id="org2f4076d">
+<div class="exercise" id="org4678017">
 <p>
 6.非简谐效应如何解释固体的热膨胀现象？为什么在考虑三次⽅项的时候，膨胀系数是常数
 </p>
 
 </div>
-<div class="solution" id="orgd3b3fa2">
+<div class="solution" id="org39902e9">
 <p>
 在简谐近似下，原⼦势能仅考虑⼆次项，势能曲线对称，原⼦振动幅度增⼤但平衡位置不变，无法解释热膨胀。非简谐效应通过引入势能展开中的三次及更⾼次项，打破势能对称性。
 <img src="SolidPhyRev/20250414093653.png" alt="20250414093653.png" />
@@ -1674,7 +2106,118 @@ Einstein模型：假设固体中所有原⼦以单⼀频率独⽴振动（量⼦
 </p>
 
 </div>
+<div class="org-center">
+<p>
+期中
+</p>
 </div>
+<hr />
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org7b8538d" class="outline-2">
+<h2 id="org7b8538d"><span class="section-number-2">4.</span> 金属自由电子</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+上一章的应用
+</p>
+
+<p>
+计算电导
+</p>
+
+<p>
+用 Fermi-Dirac 分布取代上面特殊的（平衡态） Bolzmann
+</p>
+</div>
+<div id="outline-container-orgdf285ad" class="outline-3">
+<h3 id="orgdf285ad"><span class="section-number-3">4.1.</span> 薛定谔</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+像之前一样解方程
+</p>
+
+<p>
+\(N_s\) 表示电子自由度，2表示自旋可取上下（声子取1）
+</p>
+
+<p>
+使用态密度积分好处就是？方便各种写法统一
+</p>
+
+<p>
+单粒子的态密度。
+</p>
+<blockquote>
+<p>
+说单粒子情况时假设电子之间没有相互作用，如果有这里就要修正。超导、电声耦合方向的内容
+</p>
+</blockquote>
+
+<p>
+Debye 中
+声子： \(g(\omega)\propto \omega^2\)
+单原子情况。
+\(g \propto \sqrt{E}\)
+\(1/sqrt{\omega^2-\omega^2}\)
+</p>
+
+
+<p>
+？热导
+和平均自由程、热容关系一次方
+</p>
+
+<p>
+电子热导：
+一样
+</p>
+
+<p>
+基本结论
+</p>
+
+
+<p>
+基本状态一般就是 0K
+</p>
+<blockquote>
+<p>
+为什么电子对热容没有贡献－需要理解 Fermi 面：外界刺激影响 Fermi
+下面无影响：能量差太大。对热容贡献只有 Fermi 面电子，其它像被冻住了
+上面就是假设
+</p>
+</blockquote>
+<p>
+?研究空穴
+</p>
+
+<p>
+T=300K k<sub>B</sub> T= 26meV
+</p>
+
+<p>
+已知能量定义温度 E/k<sub>B</sub>
+</p>
+
+<p>
+定义 Fermi 量，能级…
+</p>
+
+<p>
+具体计算
+N 个电子填到轨道里面
+算出 Fermi 面附近电子态密度，得到电子输运性质
+</p>
+
+<p>
+Fermi 能级之上无电子 \(\int_0^{\varepsilon_F}\)
+</p>
+
+<p>
+量子指的就是 Fermi
+</p>
 </div>
 </div>
 </div>
@@ -1748,6 +2291,15 @@ Miller 指数代表晶⾯法线⽅向，可以证明 Miller 指数之比＝ 晶�
 
 <div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14" role="doc-backlink">14</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
 不懂为什么讲TOE 算符…，可能是说这个里面坐标太多算不出来
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.15" class="footnum" href="#fnr.15" role="doc-backlink">15</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+作者：Lyon
+链接：<a href="https://www.zhihu.com/question/299568591/answer/1884757745">https://www.zhihu.com/question/299568591/answer/1884757745</a> 
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.16" class="footnum" href="#fnr.16" role="doc-backlink">16</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara">
+之后解金属电子继续用 
 </p></div></div>
 
 

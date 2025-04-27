@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2025-04-26 Sat 12:42 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>量子力学速成版*</title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="/favicon.png">
+ <script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<header id="preamble" class="status">
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2025-04-15 Tue 15:15 | 凝墨 Modified: 2025-04-15 Tue 15:44 </p>
+</header>
+<main id="content" class="content">
+<h1 class="title">量子力学速成版*</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgcb4712c">1. 哲学理解部分</a></li>
+<li><a href="#org3ccc9f5">2. 方法部分</a>
+<ul>
+<li><a href="#orgdc0816b">2.1. 基本知识</a></li>
+<li><a href="#org5542c44">2.2. 一些规定</a></li>
+<li><a href="#org2deae56">2.3. 定理性质</a></li>
+<li><a href="#org5c2df84">2.4. 附常见矩阵</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<pre class="example" id="org3ea0956">
+这个我不称之为整理而是速成，因为深知有更优秀的教材辅导，我给出我的路径
+</pre>
+
+<div class="org-center">
+<p>
+学一门课，先懂了它想干嘛，之后在搞定方法，基本上就算是学有所成了
+</p>
+</div>
+<hr />
+<div id="outline-container-orgcb4712c" class="outline-2">
+<h2 id="orgcb4712c"><span class="section-number-2">1.</span> 哲学理解部分</h2>
+<div class="outline-text-2" id="text-1">
+<blockquote>
+<p>
+理清概念
+</p>
+</blockquote>
+<p>
+物理规律如何描述？我们可以把想研究的对象每一个状态表达出来，这样想知道什么就查看对应状态即可，因此我们来研究的是状态。
+量子力学中，状态被封装在函数里，即波函数 \(\psi(x,t)\) .随时间演化满足薛定谔方程（在教材中这被作为假设）：
+</p>
+\begin{equation*}
+ih\dot{\psi}=H \psi
+\end{equation*}
+<p>
+H 是哈密顿算符，这个方程被认为等价于量子力学的牛顿方程。
+</p>
+
+<p>
+下面解释 <b>算符</b> ：
+为了满足实验中物理量只能取固定值的现象（这也是量子物理的初衷），使用线性代数特征值（还有波动概念，波节也是整数化的这一点另谈），即可测量的物理量变成了（（厄米）矩阵）算符，算符乘上波函数得到了改物理量的值。
+厄米矩阵保证了取值为实数。
+</p>
+
+<p>
+换一种说法，就是我们有了状态，但我们怎么像原来经典力学一样知道这个对象现在位置速度呢，很简单你用对应算符（位置动量能量……）作用到态函数上就得到一个值，此即所求物理量。
+</p>
+\begin{gather*}
+H| \psi\rangle=\lambda \psi
+\end{gather*}
+
+<p>
+线代中的 <b>矢量</b> \(\mathbf{a}\) 似乎和量力 \(|\psi\rangle\) 不同，其实只是换了一套符号：
+</p>
+<ul class="org-ul">
+<li>\(|\psi\rangle\) 右矢就是一般的列向量，可以表示波函数等等（向量表示函数，这里向量是在 Hilbert 空间，即无限维度的 Euclid 空间，Euclid 空间是有内积的线性空间）。所以量力中，向量和函数同样的（值得思考的问题：什么是向量，向量就是箭头吗）</li>
+<li>\(\langle\psi|\) 左矢则是右矢转置，数学上这两者是对偶空间关系。</li>
+</ul>
+<p>
+个人认为使用左矢和右矢只是方便，方括号看多了觉得很规整。英文中左右分别叫 bra,(c),ket
+</p>
+
+<p>
+于是可以得知， \(\left\langle \psi \right|\psi \rangle\) 得到数， \(\left\langle \psi \right|\psi \rangle\) 得到矩阵
+</p>
+
+
+<p>
+量子力学成立时吊诡之处就是波动方程的解无法消除虚数部分（虚数的来源是……），为此波恩做出著名波恩诠释：波函数的模平方为粒子概率。
+</p>
+
+<p>
+<b>塌缩</b> collapse 指的就是算符乘波函数得到了实数值（没有任何神秘之处，因为所有信息本来多都蕴含在波函数里面）
+</p>
+
+
+<p>
+接下来有了很多算符，我们会介绍算符互易性，也就是可交换性。之所以研究这个，是因为我们发现有些算符可以共享特征向量。如果可以找到一个范围内
+CSCO：
+</p>
+
+<p>
+量子力学后半部分繁复的点在于它用到了许多（所谓数学物理方法）特殊函数和结论，一般课程直接提供或记住即可。
+如：厄米多项式
+</p>
+
+<hr />
+</div>
+</div>
+<div id="outline-container-org3ccc9f5" class="outline-2">
+<h2 id="org3ccc9f5"><span class="section-number-2">2.</span> 方法部分</h2>
+<div class="outline-text-2" id="text-2">
+<blockquote>
+<p>
+或称之为做题技巧
+</p>
+</blockquote>
+</div>
+<div id="outline-container-orgdc0816b" class="outline-3">
+<h3 id="orgdc0816b"><span class="section-number-3">2.1.</span> 基本知识</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+如何解矩阵的特征值——行列式法
+（唯一）
+</p>
+
+<p>
+厄米矩阵：满足 \(H^{\dagger}=H\) 矩阵
+</p>
+
+<p>
+如何对角化（唯一）：
+利用特征值
+</p>
+
+<p>
+找基底
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5542c44" class="outline-3">
+<h3 id="org5542c44"><span class="section-number-3">2.2.</span> 一些规定</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+算符中每个量如何得到
+</p>
+</div>
+</div>
+<div id="outline-container-org2deae56" class="outline-3">
+<h3 id="org2deae56"><span class="section-number-3">2.3.</span> 定理性质</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="exercise" id="orgbe875e5">
+<p>
+若 V 為有限維空間，則在 V 上任一厄米特運算子的固有向量，恆可做為空間 V 的基底
+。
+( When V is finite-dimensional, it is always possible to 和rm a
+basis with the eigenvectors of a Hermitian operator. )
+</p>
+
+</div>
+
+<div class="exercise" id="org9e2a704">
+<p>
+找空間之綦底＝尋找厄米特運算子之特征向量
+</p>
+
+</div>
+
+<div class="exercise" id="org16031a6">
+<p>
+作用在有限維空間中任意－厄米特運算子，其矩陣表示永遠可寫成對角線形式。
+(Any matrix representation of a Hermitian operator acting in a finite
+dimensional vector space can always be brought into a diagonal form. )
+</p>
+
+</div>
+
+<div class="exercise" id="org678b014">
+<p>
+若二厄米特運算子 A, B 彼此可交換，則此空間上可建立一維基底，同時為運算子 A, B 之固有向量
+。
+( If two Hermitian operators A , B commute,one can construct an orthonormal basis of the state space with eigenvectors
+common to A and B . )
+</p>
+
+</div>
+<div class="exercise" id="org867a560">
+<p>
+二厄米特運算子 A, B ，若 AB = BA， 則它倆可同時被對角化。
+( If two Hermitian operators A, B commute, they can be simultaneously diagonized.)
+</p>
+
+</div>
+<div class="solution" id="org05fbc59">
+<p>
+公设：
+</p>
+<div class="org-center">
+<p>
+量子公設一
+</p>
+</div>
+<p>
+在一特定時間 t。，物理系統的状态，可由狀態空間 V 中特定元素
+ \(|\psi\rangle\) 來定義。
+</p>
+<div class="org-center">
+<p>
+【量子 公設二】
+</p>
+</div>
+<p>
+任何可測量的物理量 A, 皆可以作用在状态空間 V 上的算符 A 來描述；且此運算子必為一厄米特運算子。
+</p>
+<div class="org-center">
+<p>
+【 量 子 公設 三】
+</p>
+</div>
+<p>
+一物理量 A 唯一可能的測量結杲·就是其對處運算子 A 之特征值。
+</p>
+<div class="org-center">
+<p>
+【量子公設四】
+</p>
+</div>
+<p>
+對一個在己歸一化状态 \(|\psi\rangle\) 下的物理量 A 進行測量，得到实验值或特征值為 a<sub>n</sub> 機率為
+</p>
+\begin{equation*}
+P(a_n)=|\langle u_n|\psi \rangle|^2
+\end{equation*}
+<p>
+其中 \(|u_n\rangle\) 為算符 A 特征值 \(a_{n}\) 的歸一化向量
+。
+</p>
+<div class="org-center">
+<p>
+【 量子 公設 五】
+</p>
+</div>
+<p>
+對狀態為 \(|\psi\rangle\) 之系統，進行一物理量 A 的測量，得到 \(a_n\)， 則測量後此系統將變為 \(P_n|\psi\rangle\)
+此 \(P\) 為投影運算子 \(P=|u_n\rangle\langle u_n|\)
+u<sub>n</sub> 所對慮之歸一化固有向量。
+</p>
+
+<div class="org-center">
+<p>
+【量子 公設 六 】
+</p>
+</div>
+<p>
+狀趨向量随着時間約演變，由薛定谔方程
+</p>
+
+<p>
+决定，其中 H(t) 為對處於此系統的能量算符。
+</p>
+
+</div>
+<p>
+厄米矩阵特征值为实数
+</p>
+</div>
+</div>
+<div id="outline-container-org5c2df84" class="outline-3">
+<h3 id="org5c2df84"><span class="section-number-3">2.4.</span> 附常见矩阵</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+自旋（很常见，原因二维是便于考察计算特征值）
+</p>
+</div>
+</div>
+</div>
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+</body>
+</html>
