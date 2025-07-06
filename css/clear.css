@@ -42,7 +42,7 @@ nav {
 }
 
 #content {
-    width: 90%;
+    /* width: 90%; */
     max-width: 1000px;
     z-index: 2;
     /* overflow-x:auto; */

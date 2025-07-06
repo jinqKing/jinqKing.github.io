@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
 <head>
-<!-- 2025-04-26 Sat 12:42 -->
+<!-- 2025-07-06 Sun 10:04 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>量子力学速成版*</title>
@@ -55,7 +55,7 @@
 </head>
 <body>
 <header id="preamble" class="status">
-<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2025-04-15 Tue 15:15 | 凝墨 Modified: 2025-04-15 Tue 15:44 </p>
+<p class='author'>作者 Author：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p><p>起笔 Created: 2025-04-15 Tue 15:15 | 凝墨 Modified: 2025-07-06 Sun 09:55 </p>
 </header>
 <main id="content" class="content">
 <h1 class="title">量子力学速成版*</h1>
@@ -72,10 +72,11 @@
 <li><a href="#org5c2df84">2.4. 附常见矩阵</a></li>
 </ul>
 </li>
+<li><a href="#org32f027c">3. x</a></li>
 </ul>
 </div>
 </div>
-<pre class="example" id="org3ea0956">
+<pre class="example" id="orga78a395">
 这个我不称之为整理而是速成，因为深知有更优秀的教材辅导，我给出我的路径
 </pre>
 
@@ -84,6 +85,10 @@
 学一门课，先懂了它想干嘛，之后在搞定方法，基本上就算是学有所成了
 </p>
 </div>
+
+<p>
+太难写啦：建议看结尾关于考试内容部分
+</p>
 <hr />
 <div id="outline-container-orgcb4712c" class="outline-2">
 <h2 id="orgcb4712c"><span class="section-number-2">1.</span> 哲学理解部分</h2>
@@ -98,7 +103,7 @@
 量子力学中，状态被封装在函数里，即波函数 \(\psi(x,t)\) .随时间演化满足薛定谔方程（在教材中这被作为假设）：
 </p>
 \begin{equation*}
-ih\dot{\psi}=H \psi
+i\hbar\dot{\psi(x,t)}=H \psi(x,t)
 \end{equation*}
 <p>
 H 是哈密顿算符，这个方程被认为等价于量子力学的牛顿方程。
@@ -107,15 +112,17 @@ H 是哈密顿算符，这个方程被认为等价于量子力学的牛顿方程
 <p>
 下面解释 <b>算符</b> ：
 为了满足实验中物理量只能取固定值的现象（这也是量子物理的初衷），使用线性代数特征值（还有波动概念，波节也是整数化的这一点另谈），即可测量的物理量变成了（（厄米）矩阵）算符，算符乘上波函数得到了改物理量的值。
-厄米矩阵保证了取值为实数。
+<code>厄米矩阵保证了取值为实数。</code>
 </p>
 
 <p>
 换一种说法，就是我们有了状态，但我们怎么像原来经典力学一样知道这个对象现在位置速度呢，很简单你用对应算符（位置动量能量……）作用到态函数上就得到一个值，此即所求物理量。
+这是怎么得到的呢，看上面的薛定谔方程，我们去求解它，方法是经典的分离变量
 </p>
-\begin{gather*}
-H| \psi\rangle=\lambda \psi
-\end{gather*}
+
+<p>
+\[ H| \psi\rangle=\lambda \psi \]
+</p>
 
 <p>
 线代中的 <b>矢量</b> \(\mathbf{a}\) 似乎和量力 \(|\psi\rangle\) 不同，其实只是换了一套符号：
@@ -138,19 +145,33 @@ H| \psi\rangle=\lambda \psi
 </p>
 
 <p>
-<b>塌缩</b> collapse 指的就是算符乘波函数得到了实数值（没有任何神秘之处，因为所有信息本来多都蕴含在波函数里面）
+<b>坍缩</b> collapse 指的就是算符乘波函数得到了实数值（没有任何神秘之处，因为所有信息本来多都蕴含在波函数里面）
 </p>
 
 
 <p>
-接下来有了很多算符，我们会介绍算符互易性，也就是可交换性。之所以研究这个，是因为我们发现有些算符可以共享特征向量。如果可以找到一个范围内
-CSCO：
+接下来有了很多算符，我们会介绍算符互易性，也就是可交换性。之所以研究这个，是因为我们发现有些算符可以共享特征向量。
+如果可以找到几个互相对易的算符，它们构成了空间一组基，我们就把它们称为 <span class="underline">CSCO</span>
 </p>
+
 
 <p>
 量子力学后半部分繁复的点在于它用到了许多（所谓数学物理方法）特殊函数和结论，一般课程直接提供或记住即可。
 如：厄米多项式
 </p>
+
+
+<p>
+下面是清晰的一个线索，可以直接承接做题的部分：
+</p>
+
+
+<div id="orgbb09679" class="figure">
+<p><img src="tdse_flowchart.png" alt="tdse_flowchart.png" />
+</p>
+</div>
+
+
 
 <hr />
 </div>
@@ -168,13 +189,16 @@ CSCO：
 <h3 id="orgdc0816b"><span class="section-number-3">2.1.</span> 基本知识</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-如何解矩阵的特征值——行列式法
-（唯一）
+厄米矩阵：满足 \(H^{\dagger}=H\) 矩阵
 </p>
 
 <p>
-厄米矩阵：满足 \(H^{\dagger}=H\) 矩阵
+如何解矩阵的特征值——行列式法
+（唯一）
+\[ A-\lambda I=0\]
 </p>
+
+
 
 <p>
 如何对角化（唯一）：
@@ -198,7 +222,7 @@ CSCO：
 <div id="outline-container-org2deae56" class="outline-3">
 <h3 id="org2deae56"><span class="section-number-3">2.3.</span> 定理性质</h3>
 <div class="outline-text-3" id="text-2-3">
-<div class="exercise" id="orgbe875e5">
+<div class="exercise" id="org9c03525">
 <p>
 若 V 為有限維空間，則在 V 上任一厄米特運算子的固有向量，恆可做為空間 V 的基底
 。
@@ -208,14 +232,14 @@ basis with the eigenvectors of a Hermitian operator. )
 
 </div>
 
-<div class="exercise" id="org9e2a704">
+<div class="exercise" id="org4cc2f40">
 <p>
 找空間之綦底＝尋找厄米特運算子之特征向量
 </p>
 
 </div>
 
-<div class="exercise" id="org16031a6">
+<div class="exercise" id="org0019ea1">
 <p>
 作用在有限維空間中任意－厄米特運算子，其矩陣表示永遠可寫成對角線形式。
 (Any matrix representation of a Hermitian operator acting in a finite
@@ -224,7 +248,7 @@ dimensional vector space can always be brought into a diagonal form. )
 
 </div>
 
-<div class="exercise" id="org678b014">
+<div class="exercise" id="org3a72618">
 <p>
 若二厄米特運算子 A, B 彼此可交換，則此空間上可建立一維基底，同時為運算子 A, B 之固有向量
 。
@@ -233,14 +257,14 @@ common to A and B . )
 </p>
 
 </div>
-<div class="exercise" id="org867a560">
+<div class="exercise" id="org3b8c652">
 <p>
 二厄米特運算子 A, B ，若 AB = BA， 則它倆可同時被對角化。
 ( If two Hermitian operators A, B commute, they can be simultaneously diagonized.)
 </p>
 
 </div>
-<div class="solution" id="org05fbc59">
+<div class="solution" id="org39ab9f7">
 <p>
 公设：
 </p>
@@ -321,6 +345,26 @@ u<sub>n</sub> 所對慮之歸一化固有向量。
 自旋（很常见，原因二维是便于考察计算特征值）
 </p>
 </div>
+</div>
+</div>
+<div id="outline-container-org32f027c" class="outline-2">
+<h2 id="org32f027c"><span class="section-number-2">3.</span> x</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+考试内容：
+</p>
+<ol class="org-ol">
+<li>能量算波长</li>
+<li>幺正算符性质证明</li>
+<li>非坐标轴方向自旋（xz 平面夹角）</li>
+<li>谐振子x利用升降算符证明</li>
+<li>nlm 计算能量角动量大小</li>
+</ol>
+
+<p>
+附加：
+升降算符本征函数问题
+</p>
 </div>
 </div>
 </main>
