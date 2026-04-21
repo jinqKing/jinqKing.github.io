@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2026-04-21 Mon -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CoAI 畅想</title>
+<meta name="author" content="Justin King" />
+<meta name="generator" content="Text to HTML" />
+
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link rel="icon" type="image/png" href="/favicon.png">
+<script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+<style>
+#preamble { text-align: center; }
+#preamble .author, #preamble p { margin: 0; }
+#table-of-contents { text-align: center; }
+#table-of-contents ul { list-style: none; padding: 0; }
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+
+<p class='author'>作者：Justin King</p><p>起笔：2026-04-21 | 凝墨：2026-04-21</p>
+</div>
+<div id="content" class="content">
+<h1 class="title">CoAI 畅想</h1>
+<h2 class="subtitle">副标题：一个产品描述</h2>
+
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#motivation">动机</a></li>
+<li><a href="#core">核心</a></li>
+<li><a href="#workflow">流程</a></li>
+<li><a href="#further">进一步</a></li>
+<li><a href="#implementation">实现方式</a></li>
+<li><a href="#risks">风险</a></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-motivation" class="outline-2">
+<h2 id="motivation">动机</h2>
+<div class="outline-text-2" id="text-motivation">
+<p>
+做一个方便把和各个 AI 聊天快速导出整理的工具。
+</p>
+
+<p>
+每天有很多和 AI 有意义的探索，我们谈论生活和未来。
+</p>
+
+<p>
+如何快速整理？这个是没有门槛的（门槛在于搭建一个入口或者协议形式，使用一套规范来记录）。
+做成电脑端和手机多端同步——这个有价值。
+</p>
+</div>
+</div>
+
+<div id="outline-container-core" class="outline-2">
+<h2 id="core">核心</h2>
+<div class="outline-text-2" id="text-core">
+<p>
+收集和不同 AI 的聊天记录，可以重新追问，换一种方法，修改对话分支。
+</p>
+</div>
+</div>
+
+<div id="outline-container-workflow" class="outline-2">
+<h2 id="workflow">流程</h2>
+<div class="outline-text-2" id="text-workflow">
+<ol class="org-ol">
+<li>收集和 AI 的聊天记录（ChatGPT、豆包、元宝、DeepSeek、Gemini）</li>
+<li>整理（本地化、云端化：登录）</li>
+<li>本地可接入 API 继续对话、更换对话继续对话</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-further" class="outline-2">
+<h2 id="further">进一步</h2>
+<div class="outline-text-2" id="text-further">
+<ul class="org-ul">
+<li>生成个人 profile</li>
+<li>自动 refresh</li>
+<li>手动导入</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-implementation" class="outline-2">
+<h2 id="implementation">实现方式</h2>
+<div class="outline-text-2" id="text-implementation">
+<p>
+电脑端通过浏览器实现（手机？伪造浏览器需要登录——cookie）。
+脚本化登录。
+</p>
+
+<p>
+针对纯对话用户、agent 等暂时不考虑。
+</p>
+</div>
+</div>
+
+<div id="outline-container-risks" class="outline-2">
+<h2 id="risks">风险</h2>
+<div class="outline-text-2" id="text-risks">
+<p>
+用户隐私、安全性——两个版本：离线本地、登录（订阅）。
+</p>
+
+<ul class="org-ul">
+<li><b>离线</b>：不登陆使用可以收集、可以接入 API，但无法用 App 同步看消息</li>
+<li><b>登录</b>：账号</li>
+</ul>
+
+<p>
+我的担心：不知道怎么实现账号管理、云服务。如何云服务部署 AI（前期可以靠买 API）让用户问私人的问题。
+</p>
+</div>
+</div>
+
+</div>
+</body>
+</html>
