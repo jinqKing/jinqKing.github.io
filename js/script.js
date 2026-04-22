@@ -1,23 +1,3 @@
-// 定义一个数组，包含所有需要加载的外部脚本
-var scriptsToLoad = [
-    // 'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
-    // 你可以在这里添加更多的脚本URL
-    // '/scripts/fold.js'
-];
-
-// 定义一个函数来动态加载这些脚本
-function loadScripts(scripts) {
-    scripts.forEach(function(src) {
-        var script = document.createElement('script');
-        script.src = src;
-        script.type = 'text/javascript';
-        document.getElementsByTagName('head')[0].appendChild(script);
-    });
-}
-
-// 调用函数加载所有的脚本
-loadScripts(scriptsToLoad);
-
 function tocBasicDisplay(){    
     const toc = document.getElementById("table-of-contents");
     if (toc) {
@@ -217,57 +197,116 @@ function tableExpand(){
 }
 
 function imgDisplay(){
-// 创建模态框元素
+    // 检查模态框是否已存在，避免重复创建
+    if (document.getElementById('myModal')) return;
+
     const modal = document.createElement('div');
     modal.id = 'myModal';
     modal.className = 'modal';
-    // 创建关闭按钮元素
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-label', '图片查看器');
+
     const closeBtn = document.createElement('span');
     closeBtn.className = 'close';
-    closeBtn.textContent = '×';
+    closeBtn.innerHTML = '&times;';
+    closeBtn.setAttribute('aria-label', '关闭');
     modal.appendChild(closeBtn);
-    // 创建模态框内的图片元素
+
     const modalImg = document.createElement('img');
     modalImg.className = 'modal-content';
-    modalImg.id = 'img01';
+    modalImg.id = 'modal-img';
+    modalImg.alt = '放大查看';
     modal.appendChild(modalImg);
-    // 将模态框添加到页面中
+
     document.body.appendChild(modal);
-    // 获取页面上所有的 img 元素
-    const images = document.querySelectorAll('img');
-    // 为每个 img 元素添加点击事件监听器
-    images.forEach((img) => {
-      img.addEventListener('click', function () {
-        modal.style.display = 'block';
-        modalImg.src = this.src;
-      });
-    });
-    // 为关闭按钮添加点击事件监听器
-    closeBtn.addEventListener('click', function () {
+
+    // 点击关闭按钮
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       modal.style.display = 'none';
     });
-    // 点击模态框外部关闭模态框
-    window.addEventListener('click', function (event) {
-      if (event.target === modal) {
+
+    // 点击模态框外部关闭
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
         modal.style.display = 'none';
       }
     });
-    // 监听键盘事件，按 Esc 键关闭模态框
-    window.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && modal.style.display === 'block') {
+
+    // Esc 键关闭
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'block') {
         modal.style.display = 'none';
       }
+    });
+
+    // 为图片添加点击事件，跳过小图标和装饰性图片
+    document.querySelectorAll('img').forEach((img) => {
+      const w = img.naturalWidth || 0;
+      const h = img.naturalHeight || 0;
+      // 跳过宽度小于 50px 或高度小于 50px 的小图标
+      if (w < 50 && h < 50) return;
+      // 跳过 src 为空或 data 图片
+      if (!img.src || img.src.startsWith('data:')) return;
+      // 跳过带 no-modal 类的图片
+      if (img.classList.contains('no-modal')) return;
+
+      img.style.cursor = 'pointer';
+      img.title = '点击放大';
+      img.addEventListener('click', () => {
+        modal.style.display = 'block';
+        modalImg.src = img.src;
+      });
     });
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     tocBasicDisplay();
     collapsePreAddHead();
     addCopyCodeButtons();
     foonotePreview();
     tableExpand();
     imgDisplay();
+    filmFilterInit();
 
 });
+
+/* Film filter functionality */
+function filmFilterInit() {
+    const filmGrid = document.getElementById('film-grid');
+    if (!filmGrid) return;
+
+    const filmCards = filmGrid.querySelectorAll('.film-card');
+    const filterCheckboxes = document.querySelectorAll('.film-filters input[type="checkbox"]');
+
+    function filterFilms() {
+        const checkedRatings = [];
+        filterCheckboxes.forEach(cb => {
+            if (cb.checked) {
+                const rating = cb.id.replace('filter-', '');
+                if (rating !== 'all') {
+                    checkedRatings.push(parseInt(rating));
+                }
+            }
+        });
+
+        filmCards.forEach(card => {
+            const cardRating = parseInt(card.getAttribute('data-rating'));
+            if (checkedRatings.includes('all')) {
+                card.classList.remove('hidden');
+            } else if (checkedRatings.length === 0) {
+                card.classList.add('hidden');
+            } else if (checkedRatings.includes(cardRating)) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    }
+
+    filterCheckboxes.forEach(cb => {
+        cb.addEventListener('change', filterFilms);
+    });
+}
 

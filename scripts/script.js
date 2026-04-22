@@ -1,36 +1,3 @@
-const copyLabel = "<i class='bx bx-copy-alt' ></i>";
-
-async function copyCode(block, button) {
-  let codes = block.querySelector('pre.src').childNodes;
-  let text = '';
-  codes.forEach((code) => {
-    if (code.nodeType == 3) {
-      text += code.data;
-    } else if (code.className != 'linenr') {
-      text += code.innerText;
-    }
-  });
-  text = text.slice(0, -1);
-  await navigator.clipboard.writeText(text);
-  button.innerText = 'Copied';
-  setTimeout(() => {
-    button.innerHTML = copyLabel;
-  }, 500);
-}
-
-function addCopyCodeButtons() {
-  if (!navigator.clipboard) return;
-  let blocks = document.querySelectorAll('.org-src-container');
-  blocks.forEach((block) => {
-    let button = document.createElement('button');
-    button.innerHTML = copyLabel;
-    button.classList.add('copy-code');
-    block.append(button);
-    button.addEventListener('click', async() => {
-      await copyCode(block, button);
-    });
-  });
-}
 
 function hideExpandedCode() {
   let parents = document.querySelectorAll('.multilang');
