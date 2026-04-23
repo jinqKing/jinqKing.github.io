@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh" xml:lang="zh">
+<head>
+<!-- 2026-04-22 Tue -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>为什么组一个私有云 NAS</title>
+<meta name="author" content="Justin King" />
+<meta name="generator" content="Text to HTML" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="stylesheet" type="text/css" href="/css/htmlize.css"/>
+<link rel="icon" type="image/png" href="/favicon.png">
+<script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+<style>
+#preamble { text-align: center; }
+#preamble .author, #preamble p { margin: 0; }
+#table-of-contents { text-align: center; }
+#table-of-contents ul { list-style: none; padding: 0; }
+
+/* Custom styles for this post */
+.subtitle {
+  color: #666;
+  font-size: 1.2em;
+  margin-top: -1em;
+}
+
+.tagline {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin: 2em 0;
+}
+
+blockquote.highlight {
+  background-color: #f9f9f9;
+  border-left-color: #d47500;
+  font-style: normal;
+}
+
+.milestone {
+  border-left: 3px solid #d47500;
+  padding-left: 1em;
+  margin: 1.5em 0;
+  color: #555;
+}
+
+/* Reading progress bar */
+#reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(to right, #d47500, #f5a623);
+  z-index: 9999;
+  transition: width 0.1s ease;
+}
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</ul></nav>
+
+<p class='author'>作者：Justin King</p><p>起笔：2026-04-22</p>
+</div>
+
+<div id="reading-progress"></div>
+
+<div id="content" class="content">
+<h1 class="title">为什么组一个私有云 NAS</h1>
+<h2 class="subtitle">Why a NAS</h2>
+
+<p class="tagline">"自来水"</p>
+
+<p>国庆入的绿联云 4800plus</p>
+
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#motivation">动机</a></li>
+<li><a href="#new-reasons">新增原因</a></li>
+<li><a href="#elegant">优雅起来</a></li>
+<li><a href="#trigger">导火索</a></li>
+<li><a href="#why-uglink">为什么绿联？</a></li>
+<li><a href="#tutorials">一些教程</a></li>
+<li><a href="#special">我的特殊需求</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-motivation" class="outline-2">
+<h2 id="motivation">动机</h2>
+<div class="outline-text-2" id="text-motivation">
+<ul class="org-ul">
+<li><strong>摄影</strong>——当时还有机会拍视频</li>
+<li><strong>存档</strong>——我每年写文章做项目，一般不会再看，但也不是所有都删去。可以直接移走。网盘里的资源给他们一个家，古老的视频一直没存下来</li>
+<li><strong>跑一个 7*24 服务</strong>——但当时还不知道有什么</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-new-reasons" class="outline-2">
+<h2 id="new-reasons">新增原因</h2>
+<div class="outline-text-2" id="text-new-reasons">
+<ul class="org-ul">
+<li><strong>存电影</strong>——本意是 b 站没有的资源</li>
+<li><strong>虚拟机</strong>——一个方便的 win11 和 ubuntu 做各种测试</li>
+<li><strong>openclaw 免费额度</strong>——虽然现在没有了但也是体验过一把</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-elegant" class="outline-2">
+<h2 id="elegant">优雅起来</h2>
+<div class="outline-text-2" id="text-elegant">
+<blockquote class="highlight">
+<p>以前总说国外计软就用 MacBook 轻量优雅的设备，数据都跑在云端……我现在也可以优雅起来了</p>
+</blockquote>
+</div>
+</div>
+
+<div id="outline-container-trigger" class="outline-2">
+<h2 id="trigger">导火索</h2>
+<div class="outline-text-2" id="text-trigger">
+<p>一个朋友用极空间网盘，当时就想买点东西，消费填补一下空乏的内心。感觉绿联很不错。</p>
+</div>
+</div>
+
+<div id="outline-container-why-uglink" class="outline-2">
+<h2 id="why-uglink">为什么绿联？</h2>
+<div class="outline-text-2" id="text-why-uglink">
+<p>听说他们硬件很给力，系统软件已知在<strong>高强度更新</strong>。</p>
+<p>UI 设计整体比较讨喜。</p>
+<p>其他厂商基本没看，也不想费心研究。因为品牌所以就信任，再加上各路广告视频介绍。虽然时广告但这样的话，至少我加入遇到问题，Mamet 也会是很多人遇到，应该解决方法会现成。于是就下单了。</p>
+<p>当时购买想之下好的，一步到位。虽然也不知道什么是万兆网口，但感觉对我看电影连局域网速度应该很快。</p>
+
+<div class="milestone">
+<p><strong>长期资源：</strong>硬盘、高清电影</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-tutorials" class="outline-2">
+<h2 id="tutorials">一些教程</h2>
+<div class="outline-text-2" id="text-tutorials">
+<ul class="org-ul">
+<li>去哪里下载电影：<a href="https://thepiratebay.org">piratebay</a></li>
+<li>安装虚拟机：
+<ul class="org-ul">
+<li><a href="https://www.ugnas.com/tutorial-detail/id-59.html">官方文档</a></li>
+<li><a href="https://blog.zwbcc.cn/archives/lu-lian-xu-ni-ji-an-zhuang-windows-linuxtong-yong-jiao-cheng">博客教程</a>（主要是 Win 要留意）</li>
+</ul>
+</li>
+<li>如何连接……</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-special" class="outline-2">
+<h2 id="special">我的特殊需求</h2>
+<div class="outline-text-2" id="text-special">
+<p>联通网络。</p>
+<p>本来用青龙，但青龙有风险。就开了一个 docker 容器专门定时测试一下网络连通性，断了就尝试登录。</p>
+</div>
+</div>
+
+</div>
+</body>
+<script>
+// Reading progress bar
+function updateReadingProgress() {
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight - windowHeight;
+  const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+  const scrollPercent = (scrollTop / documentHeight) * 100;
+  const progress = document.getElementById('reading-progress');
+  if (progress) {
+    progress.style.width = scrollPercent + '%';
+  }
+}
+
+window.addEventListener('scroll', updateReadingProgress);
+window.addEventListener('DOMContentLoaded', updateReadingProgress);
+</script>
+</html>

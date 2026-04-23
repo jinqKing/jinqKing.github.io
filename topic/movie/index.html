@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>影视收藏 - </title>
+<meta name="author" content="Justin" />
+<meta name="generator" content="Org Mode" />
+
+<link rel="stylesheet" type="text/css" href="/css/clear.css"/>
+<link rel="icon" type="image/png" href="favicon.png">
+<script src="/js/script.js"></script>
+<script src="/scripts/toc.js"></script>
+
+<style>
+/* Film card grid layout */
+.film-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2em;
+  margin: 2em 0;
+}
+
+.film-card {
+  background: #f8f9fa;
+  border-radius: 0.8em;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.film-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.film-poster {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  background: #e9ecef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+  font-size: 0.9em;
+}
+
+.film-info {
+  padding: 1em;
+}
+
+.film-title {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0 0 0.5em 0;
+  color: #212529;
+}
+
+.film-meta {
+  font-size: 0.85em;
+  color: #6c757d;
+  margin: 0.3em 0;
+}
+
+.film-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: 0.5em;
+}
+
+.star {
+  color: #ffc107;
+}
+
+.rating-num {
+  font-weight: bold;
+  color: #212529;
+}
+
+.film-year {
+  font-size: 0.8em;
+  color: #999;
+}
+
+.film-genre {
+  font-size: 0.75em;
+  color: #6c757d;
+  margin-top: 0.5em;
+}
+
+/* Filter section */
+.film-filters {
+  text-align: center;
+  margin: 2em 0;
+  padding: 1em;
+  background: #f8f9fa;
+  border-radius: 0.8em;
+}
+
+.film-filters .filter-category {
+  display: inline-block;
+  margin: 0.3em;
+}
+
+.film-filters input[type="checkbox"] {
+  display: none;
+}
+
+.film-filters label {
+  display: inline-block;
+  padding: 0.5em 1em;
+  border: 2px solid #dee2e6;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+}
+
+.film-filters input:checked + label {
+  background: #212529;
+  color: white;
+  border-color: #212529;
+}
+
+.film-card.hidden {
+  display: none;
+}
+
+/* Summary section */
+.film-summary {
+  background: #f8f9fa;
+  padding: 1.5em;
+  border-radius: 0.8em;
+  margin: 2em 0;
+}
+
+.film-summary h3 {
+  margin-top: 0;
+}
+
+.summary-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-top: 1em;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2em;
+  font-weight: bold;
+  color: #212529;
+}
+
+.stat-label {
+  font-size: 0.85em;
+  color: #6c757d;
+}
+</style>
+
+<nav><ul>
+<a href='/index.html'>Home</a>
+<a href='/blogRecord.html'>Index</a>
+<a href='/about.html'>About</a>
+</nav>
+</head>
+<body>
+<header id="preamble" class="status">
+
+<p class='author'>作者：Justin（ <a href="mailto:j_q_king@foxmail.com">j_q_king@foxmail.com</a> ）</p>
+</header>
+<main id="content" class="content">
+<h1 class="title">影视收藏</h1>
+<p align="right">
+本页面记录观看过的影片
+</p>
+<hr />
+
+<p>
+这是一个影视收藏页面，记录观看过的影片。卡片式布局展示，支持按类型筛选。
+</p>
+
+<div class="film-filters">
+  <span class="filter-category">
+    <input type="checkbox" id="filter-all" checked onchange="filterFilms('all')">
+    <label for="filter-all">全部</label>
+  </span>
+  <span class="filter-category">
+    <input type="checkbox" id="filter-classic" onchange="filterFilms('classic')">
+    <label for="filter-classic">经典</label>
+  </span>
+  <span class="filter-category">
+    <input type="checkbox" id="filter-art" onchange="filterFilms('art')">
+    <label for="filter-art">艺术</label>
+  </span>
+  <span class="filter-category">
+    <input type="checkbox" id="filter-contemporary" onchange="filterFilms('contemporary')">
+    <label for="filter-contemporary">当代</label>
+  </span>
+</div>
+
+<div class="film-summary">
+<h3>收藏统计</h3>
+<div class="summary-stats">
+  <div class="stat-item">
+    <div class="stat-number">0</div>
+    <div class="stat-label">影片总数</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">0.0</div>
+    <div class="stat-label">平均评分</div>
+  </div>
+</div>
+</div>
+
+<div class="film-grid" id="filmGrid">
+<!-- Film cards will be inserted here by JavaScript -->
+</div>
+
+</main>
+<footer id="postamble" class="status">
+<div><hr><nav class='prev-next-links'></nav></div><script src='https://giscus.app/client.js'
+        data-repo='jinqKing/jinqKing.github.io'
+        data-repo-id='R_kgDOK-0BQA'
+        data-category='Announcements'
+        data-category-id='DIC_kwDOK-0BQM4CcRvM'
+        data-mapping='pathname'
+        data-strict='0'
+        data-reactions-enabled='1'
+        data-emit-metadata='0'
+        data-input-position='bottom'
+        data-theme='preferred_color_scheme'
+        data-lang='zh-CN'
+        crossorigin='anonymous'
+        async></script><div class='giscus'></div>
+</footer>
+
+<script>
+// Film data - replace with your Douban export
+const films = [
+  {
+    title: "E.T. 外星人",
+    year: 1982,
+    rating: 8.7,
+    genre: "剧情 / 科幻 / 家庭",
+    type: "classic",
+    poster: null,
+    review: "斯皮尔伯格的经典之作，童真的视角讲述异星来客的故事。"
+  },
+  {
+    title: "霸王别姬",
+    year: 1993,
+    rating: 9.6,
+    genre: "剧情 / 爱情 / 同性",
+    type: "classic",
+    poster: null,
+    review: "陈凯歌导演巅峰之作，张国荣的程蝶衣成为永恒的经典形象。"
+  },
+  {
+    title: "千与千寻",
+    year: 2001,
+    rating: 9.4,
+    genre: "动画 / 奇幻 / 冒险",
+    type: "classic",
+    poster: null,
+    review: "宫崎骏的集大成之作，动画电影的巅峰。"
+  },
+  {
+    title: "寄生虫",
+    year: 2019,
+    rating: 8.8,
+    genre: "剧情 / 喜剧 / 惊悚",
+    type: "contemporary",
+    poster: null,
+    review: "奉俊昊的社会寓言，阶级差异的黑色幽默表达。"
+  },
+  {
+    title: "燃烧",
+    year: 2018,
+    rating: 8.1,
+    genre: "剧情 / 悬疑 / 爱情",
+    type: "art",
+    poster: null,
+    review: "李沧东对村上春树小说的改编，现代年轻人的空虚与迷茫。"
+  },
+  {
+    title: "月光男孩",
+    year: 2016,
+    rating: 7.4,
+    genre: "剧情 / 同性",
+    type: "art",
+    poster: null,
+    review: "三段式叙事，关于身份认同与成长的温柔诗篇。"
+  },
+  {
+    title: "爱在黎明破晓前",
+    year: 1995,
+    rating: 8.8,
+    genre: "剧情 / 爱情",
+    type: "classic",
+    poster: null,
+    review: "林克莱特的对话式浪漫，两个陌生人在维也纳的邂逅。"
+  },
+  {
+    title: "布达佩斯大饭店",
+    year: 2014,
+    rating: 8.9,
+    genre: "剧情 / 喜剧",
+    type: "contemporary",
+    poster: null,
+    review: "韦斯·安德森的对称美学极致展现，欧洲旧时代的挽歌。"
+  }
+];
+
+// Render film cards
+function renderFilms() {
+  const grid = document.getElementById('filmGrid');
+  grid.innerHTML = '';
+
+  films.forEach((film, index) => {
+    const card = document.createElement('div');
+    card.className = 'film-card';
+    card.id = `film-${index}`;
+    card.dataset.type = film.type;
+
+    const stars = '★'.repeat(Math.floor(film.rating / 2)) + '☆'.repeat(5 - Math.floor(film.rating / 2));
+
+    card.innerHTML = `
+      <div class="film-poster">
+        ${film.poster ? `<img src="${film.poster}" alt="${film.title}">` : `<span>${film.title}</span>`}
+      </div>
+      <div class="film-info">
+        <h4 class="film-title">${film.title}</h4>
+        <div class="film-meta">
+          <span class="film-year">${film.year}</span>
+        </div>
+        <div class="film-rating">
+          <span class="star">${stars}</span>
+          <span class="rating-num">${film.rating}</span>
+        </div>
+        <div class="film-genre">${film.genre}</div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+
+  updateStats();
+}
+
+// Filter films by type
+function filterFilms(type) {
+  const cards = document.querySelectorAll('.film-card');
+
+  if (type === 'all') {
+    cards.forEach(card => card.classList.remove('hidden'));
+  } else {
+    cards.forEach(card => {
+      if (card.dataset.type === type) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+}
+
+// Update summary statistics
+function updateStats() {
+  const visibleCards = document.querySelectorAll('.film-card:not(.hidden)');
+  const totalFilms = films.length;
+  const avgRating = (films.reduce((sum, film) => sum + film.rating, 0) / totalFilms).toFixed(1);
+
+  document.querySelector('.summary-stats .stat-number').textContent = totalFilms;
+  document.querySelectorAll('.summary-stats .stat-number')[1].textContent = avgRating;
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', renderFilms);
+</script>
+</body>
+</html>
