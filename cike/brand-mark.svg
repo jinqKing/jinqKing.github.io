@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">此课</title>
+  <desc id="desc">“此”字几何化品牌标记</desc>
+  <g fill="#8b2533">
+    <path d="M12 25h6v17l9-3v7L7 53v-7l5-1.8z"/>
+    <path d="M22 10h7v36h-7z"/>
+    <path d="M34 10h7v35h-7z"/>
+    <path d="M40 27l13-6v7l-13 6z"/>
+    <path d="M34 39l23 8v7l-23-8z"/>
+  </g>
+</svg>
